@@ -45,8 +45,8 @@ params:
         customText:
     timeZone: Asia/Shanghai
     dateFormat:
-        published: 2006-01-02 15:04:05
-        lastUpdated: 2006-01-02 15:04:05
+        published: 2006-01-02 
+        lastUpdated: 2006-01-02 15:04
     sidebar:
         emoji: 🌓
         subtitle: Progress Everyday!
