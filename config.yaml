@@ -188,7 +188,6 @@ params:
             enabled: true
         content:
             enabled: true
-    syntaxHighlighter: "highlight.js"
         
 
 ### Custom menu
