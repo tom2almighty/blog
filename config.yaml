@@ -43,10 +43,10 @@ params:
     footer:
         since: 2020
         customText:
-
+    timeZone: Asia/Shanghai
     dateFormat:
-        published: 2006-01-02 CST
-        lastUpdated: 2006-01-02 CST
+        published: 2006-01-02 15:04:05
+        lastUpdated: 2006-01-02 15:04:05
     sidebar:
         emoji: 🌓
         subtitle: 欢迎来的我的博客！
