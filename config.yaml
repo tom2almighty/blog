@@ -49,7 +49,7 @@ params:
         lastUpdated: 2006-01-02 15:04:05
     sidebar:
         emoji: 🌓
-        subtitle: 欢迎来的我的博客！
+        subtitle: Progress Everyday!
         avatar:
             enabled: true
             local: true
