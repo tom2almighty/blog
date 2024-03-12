@@ -1,7 +1,7 @@
 ---
 title: "记录一次PHP启动失败"
 author: "Tom Almighty"
-date: 2024-03-12T16:41:49+08:00
+date: 2024-01-26
 math: true
 license: false
 hidden: false
