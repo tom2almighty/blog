@@ -1,5 +1,5 @@
 ---
-title: VPS
+title: 折腾记录
 description: VPS 折腾记录。
 slug: "vps"
 image: "vps.webp"
