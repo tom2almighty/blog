@@ -19,20 +19,18 @@ categories: ["折腾记录"]
 
 项目地址：[sublink](https://github.com/jaaksii/sublink)
 
-# 安装 docker
+# 安装 docker 和 docker-compose
 
 ```bash
 # 卸载旧版本
 sudo apt-get remove docker \
              docker-engine \
              docker.io
+# 安装 docker
 curl -fsSL get.docker.com -o get-docker.sh
 # 启动并设置开机自启
 sudo systemctl enable docker
 sudo systemctl start docker
-```
-
-```bash
 # 安装 docker-compose
 sudo curl -L "https://github.com/docker/compose/releases/download/1.29.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
@@ -49,14 +47,10 @@ curl -sS -O https://raw.githubusercontent.com/kejilion/sh/main/kejilion.sh && ch
 
 # 部署程序
 
-## docker-compose
-
 ```bash
 cd /opt && mkdir sublink && cd sublink
 wget https://raw.githubusercontent.com/jaaksii/sublink/master/docker-compose.yml
 docker-compose up -d
-```
-ompose up -d
 ```
 
 之后可创建网站，反向代理 `http://127.0.0.1:8000` 。
