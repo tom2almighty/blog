@@ -56,11 +56,7 @@ categories: ["折腾记录"]
 可以部署到本地电脑，也可以部署到 `vps`，这里以 `vps` 为例。
 
 ```bash
-cd /opt
-mkdir cogpt
-cd cogpt
-touch docker-compose.yml
-vim docker-compose.yml
+mkdir -p /opt/cogpt && cd /opt/cogpt && vim docker-compose.yml
 ```
 
 粘贴下面内容
@@ -104,7 +100,7 @@ OPENAI_API_KEY:token1,token2,token3 # 刚刚获取的 token，可以用英文逗
 BASE_URL:https://cogpt.yourdomain.com # 反向代理的域名，如果不使用 https 会出现错误
 ```
 
-# 📎 参考文章
+#  参考文章
 
 - [CoGPT 作者博客](https://blog.geniucker.top/2024/01/26/%E9%80%9A%E8%BF%87-GitHub-Copilot-%E5%85%8D%E8%B4%B9%E4%BD%BF%E7%94%A8-gpt-4/#%E4%BD%BF%E7%94%A8)
 - [CoGPT](https://github.com/Geniucker/CoGPT)
