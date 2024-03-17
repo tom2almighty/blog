@@ -49,58 +49,18 @@ curl -sS -O https://raw.githubusercontent.com/kejilion/sh/main/kejilion.sh && ch
 
 # 部署程序
 
-下面两种方式选择一种即可，推荐第二种。
-
-## docker cli
-
-```bash
-docker pull jaaksi/sublink
-docker volume create sublink_data
-docker run --name sublink -p 8000:5000 \
--v sublink_data:/app/app/db \
--e PORT=5000 \
--d jaaksi/sublink
-```
-
 ## docker-compose
 
 ```bash
-cd /opt
-mkdir sublink
-cd sublink
-touch docker-compose.yml
-vim docker-compose.yml
-```
-
-粘贴如下内容：
-
-```yaml
-version: '3.8'
-services:
-  sublink:
-    image: jaaksi/sublink
-    container_name: sublink
-    ports:
-      - "8000:5000"
-    volumes:
-      - sublink_data:/app/app/db
-    environment:
-      - PORT=5000
-    restart: always
-
-volumes:
-  sublink_data:
-
-```
-
-完成后输入 `:wq` 保存退出，之后运行容器：
-
-```docker
+cd /opt && mkdir sublink && cd sublink
+wget https://raw.githubusercontent.com/jaaksii/sublink/master/docker-compose.yml
 docker-compose up -d
+```
+ompose up -d
 ```
 
 之后可创建网站，反向代理 `http://127.0.0.1:8000` 。
 
-# 📎 参考文章
+# 参考文章
 
 - [项目地址](https://github.com/jaaksii/sublink)

@@ -17,17 +17,14 @@ categories: ["折腾记录"]
 
 > 通过 `DNSmasq` 和一台已解锁 `Netflix` 的服务器，将其余服务器全部解锁 `Netflix` 。
 
-> 💡 原理：使用[Dnsmasq](http://thekelleys.org.uk/dnsmasq/doc.html)的DNS将网站解析劫持到[SNIproxy](https://github.com/dlundquist/sniproxy)反向代理的页面上。
+> 原理：使用[Dnsmasq](http://thekelleys.org.uk/dnsmasq/doc.html)的DNS将网站解析劫持到[SNIproxy](https://github.com/dlundquist/sniproxy)反向代理的页面上。
 
 
 > 特性：脚本默认解锁`Netflix Hulu HBO` 等，如需增减域名，请编辑下面文件：
 `/etc/dnsmasq.d/custom_netflix.conf`
 `/etc/sniproxy.conf`
-> 
 
-**项目地址：**https://github.com/myxuchangbin/dnsmasq_sniproxy_install
-
-[https://github.com/myxuchangbin/dnsmasq_sniproxy_install](https://github.com/myxuchangbin/dnsmasq_sniproxy_install)
+**项目地址：**[Github](https://github.com/myxuchangbin/dnsmasq_sniproxy_install)
 
 # 安装
 

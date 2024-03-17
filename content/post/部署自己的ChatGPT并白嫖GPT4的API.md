@@ -90,7 +90,7 @@ services:
 
 ## 获取 token
 
-部署完成后需要获取 `token` ，在 [Release](https://github.com/Geniucker/CoGPT/releases) 页面下载对应的版本，彬彬解压压缩包，之后运行 `cogpt-get-apptoken` 文件，终端会提示打开对应的页面，填入对应的代码，这时只需要登录有 `copilot` 使用权限的 `Github` 账号授权，随后终端会返回对应的 `token`，保存 `token`，可以多生成几个轮询使用。
+部署完成后需要获取 `token` ，在 [Release](https://github.com/Geniucker/CoGPT/releases) 页面下载对应的版本，解压压缩包，之后运行 `cogpt-get-apptoken` 文件，终端会提示打开对应的页面，填入对应的代码，这时只需要登录有 `copilot` 使用权限的 `Github` 账号授权，随后终端会返回对应的 `token`，保存 `token`，可以多生成几个轮询使用。
 
 # 部署 ChatGPTNextWeb
 
