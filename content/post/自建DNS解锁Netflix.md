@@ -17,7 +17,7 @@ categories: ["折腾记录"]
 
 > 通过 `DNSmasq` 和一台已解锁 `Netflix` 的服务器，将其余服务器全部解锁 `Netflix` 。
 
-> 原理：使用[Dnsmasq](http://thekelleys.org.uk/dnsmasq/doc.html)的DNS将网站解析劫持到[SNIproxy](https://github.com/dlundquist/sniproxy)反向代理的页面上。
+> 原理：使用 [Dnsmasq](http://thekelleys.org.uk/dnsmasq/doc.html) 的DNS将网站解析劫持到 [SNIproxy](https://github.com/dlundquist/sniproxy) 反向代理的页面上。
 
 
 > 特性：脚本默认解锁`Netflix Hulu HBO` 等，如需增减域名，请编辑下面文件：
@@ -33,9 +33,12 @@ categories: ["折腾记录"]
 - 一台解锁 `Netflix` 的服务器
 - 放行 `53`、`80`、`443`端口
 
+快速安装：
+
 ```bash
 wget --no-check-certificate -O dnsmasq_sniproxy.sh https://raw.githubusercontent.com/myxuchangbin/dnsmasq_sniproxy_install/master/dnsmasq_sniproxy.sh && bash dnsmasq_sniproxy.sh -f
 ```
+卸载：
 
 ```bash
 wget --no-check-certificate -O dnsmasq_sniproxy.sh https://raw.githubusercontent.com/myxuchangbin/dnsmasq_sniproxy_install/master/dnsmasq_sniproxy.sh && bash dnsmasq_sniproxy.sh -u
@@ -62,6 +65,7 @@ DNS=8.8.8.8 1.1.1.1 #取消注释，增加dns
 DNSStubListener=no  #取消注释，把yes改为no
 ```
 
+重启服务：
 ```bash
 ln -sf /run/systemd/resolve/resolv.conf /etc/resolv.conf
 systemctl restart systemd-resolved.service
