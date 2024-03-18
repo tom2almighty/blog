@@ -1,5 +1,5 @@
 ---
-title: "自建订阅转换"
+title: "订阅转换之一：subconverter加sub-web项目"
 author: "Tom Almighty"
 date: 2022-08-22
 math: true
@@ -8,7 +8,7 @@ hidden: false
 comments: true
 draft: false
 image: "https://pic.imgdb.cn/item/65f00c8c9f345e8d03e0d8b8.webp"
-description: 通过 subconverter 部署自己的订阅转换项目。
+description: 通过 subconverter 和 sub-web 部署自己的订阅转换项目。
 slug: "subconverter"
 tags: ["订阅转换"]
 categories: ["折腾记录"]

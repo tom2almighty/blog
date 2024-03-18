@@ -1,5 +1,5 @@
 ---
-title: "一键部署订阅转换前后端加MyURL短链"
+title: "订阅转换之二：subweb项目"
 author: "Tom Almighty"
 date: 2024-01-27
 math: true
@@ -7,10 +7,11 @@ license: false
 hidden: false
 comments: true
 draft: false
+series: ["订阅转换"]
 image: "https://pic.imgdb.cn/item/65f00c8c9f345e8d03e0d8b8.webp"
 description: Docker compose 一键部署订阅转换前后端加短链
 slug: "sub-web"
-tags: ["subconverter","sub-web","Docker"]
+tags: ["订阅转换","Docker"]
 categories: ["折腾记录"]
 ---
 ## 前言：

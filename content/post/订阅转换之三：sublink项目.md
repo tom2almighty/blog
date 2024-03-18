@@ -1,5 +1,5 @@
 ---
-title: "Docker部署订阅管理系统"
+title: "订阅转换之三：sublink项目"
 author: "Tom Almighty"
 date: 2024-03-06
 math: true
@@ -7,10 +7,11 @@ license: false
 hidden: false
 comments: true
 draft: false
+series: ["订阅管理"]
 image: "https://pic.imgdb.cn/item/65f00c8c9f345e8d03e0d8b8.webp"
 description: 通过 docker 部署订阅管理系统，快捷管理自建节点。
 slug: "sublink"
-tags: ["订阅转换"]
+tags: ["订阅转换","Dokcer",""]
 categories: ["折腾记录"]
 ---
 
