@@ -147,7 +147,7 @@ Set-PSReadLineKeyHandler -Key DownArrow -ScriptBlock {
 
 
 
-## 参考文献
+## 参考
 
 - [syxdevcode 博客](https://syxdevcode.github.io/2021/09/04/PowerShell%EF%BC%9A%E5%9B%A0%E4%B8%BA%E5%9C%A8%E6%AD%A4%E7%B3%BB%E7%BB%9F%E4%B8%8A%E7%A6%81%E6%AD%A2%E8%BF%90%E8%A1%8C%E8%84%9A%E6%9C%AC%EF%BC%8C%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/)
 
