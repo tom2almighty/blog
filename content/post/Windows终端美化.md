@@ -109,7 +109,7 @@ Import-Module PSReadLine
 Set-PSReadlineKeyHandler -Key Tab -Function Complete
 ```
 
-或者可以直接在配置文件中添加官方示例的代码，地址[点击这里](https://raw.githubusercontent.com/PowerShell/PSReadLine/master/PSReadLine/SamplePSReadLineProfile.ps1)，需要注意的是，下面两行代码需要放到最开头，同时在 `Import-Module PSReadLine` 添加 `Set-PSReadlineKeyHandler -Key Tab -Function Complete`。
+或者可以直接在配置文件中添加官方示例的代码，地址[点击这里](https://raw.githubusercontent.com/PowerShell/PSReadLine/master/PSReadLine/SamplePSReadLineProfile.ps1)，需要注意的是，下面两行代码需要放到最开头，同时在 `Import-Module PSReadLine` 下一行添加 `Set-PSReadlineKeyHandler -Key Tab -Function Complete`。
 
 ```powershell
 # 放到开头
