@@ -26,7 +26,7 @@ categories: ["折腾记录"]
 
 **项目地址：**[Github](https://github.com/myxuchangbin/dnsmasq_sniproxy_install)
 
-# 安装
+## 安装
 
 **前提需求：**
 
@@ -44,7 +44,7 @@ wget --no-check-certificate -O dnsmasq_sniproxy.sh https://raw.githubusercontent
 wget --no-check-certificate -O dnsmasq_sniproxy.sh https://raw.githubusercontent.com/myxuchangbin/dnsmasq_sniproxy_install/master/dnsmasq_sniproxy.sh && bash dnsmasq_sniproxy.sh -u
 ```
 
-# `systemd-resolve` 服务占用53端口解决方法
+## `systemd-resolve` 服务占用53端口解决方法
 
 ```bash
 systemctl stop systemd-resolved
@@ -71,7 +71,7 @@ ln -sf /run/systemd/resolve/resolv.conf /etc/resolv.conf
 systemctl restart systemd-resolved.service
 ```
 
-# 限制访问
+## 限制访问
 
 通过 iptables 放行白名单 IP 访问 53端口
 
@@ -80,6 +80,6 @@ iptables -I INPUT -p tcp --dport 53 -j DROP
 iptables -I INPUT -s 1.1.1.1 -p tcp --dport 53 -j ACCEPT
 ```
 
-# 📎 参考文章
+## 📎 参考文章
 
 - [Ypkin’s Blog](https://blog.passall.us/archives/627)

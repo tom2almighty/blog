@@ -25,12 +25,10 @@ categories: ["折腾记录"]
 - [CoGPT](https://github.com/Geniucker/CoGPT)
 - [NextChat](https://github.com/ChatGPTNextWeb/ChatGPT-Next-Web)
 
-# 部署 CoGPT
-
 > 💡 `cogpt` 可以把 `OpenAI` `API` 格式的请求转发到 `GitHub` `Copilot` 服务端，从而免费使用 `gpt-4`。
 
 
-## 警告（来自作者博客）
+### 警告（来自作者博客）
 
 这个项目仅适合**个人**使用。并不适合访问量巨大的盈利项目。
 
@@ -51,7 +49,7 @@ categories: ["折腾记录"]
 > 请不要尝试上述任何一种不建议的方式，否则可能会导致 `GitHub` `Copilot` 账号，甚至 `GitHub` 账号被封禁。
 > 
 
-## 部署服务
+### 部署服务
 
 可以部署到本地电脑，也可以部署到 `vps`，这里以 `vps` 为例。
 
@@ -84,11 +82,11 @@ services:
 > 💡 **注意：如果在 `vps` 部署，需要反向代理并配置域名，如果使用 `http` 访问 `API` ，而 `web` 页面使用 `https`，会因为不一致返回错误。**
 
 
-## 获取 token
+### 获取 token
 
 部署完成后需要获取 `token` ，在 [Release](https://github.com/Geniucker/CoGPT/releases) 页面下载对应的版本，解压压缩包，之后运行 `cogpt-get-apptoken` 文件，终端会提示打开对应的页面，填入对应的代码，这时只需要登录有 `copilot` 使用权限的 `Github` 账号授权，随后终端会返回对应的 `token`，保存 `token`，可以多生成几个轮询使用。
 
-# 部署 ChatGPTNextWeb
+## 部署 ChatGPTNextWeb
 
 这里的部署非常简单，直接使用项目的 `vercel` 一键部署，如果想随时保持更新，首先 `fork` 官方的项目，在 `vercel` 选择自己 `fork` 的仓库即可，随后在 `Actions` 页面启用 `Workflows`，并启用 `Upstream Sync Action`，启用之后即可开启每小时定时自动更新。
 
@@ -100,7 +98,7 @@ OPENAI_API_KEY:token1,token2,token3 # 刚刚获取的 token，可以用英文逗
 BASE_URL:https://cogpt.yourdomain.com # 反向代理的域名，如果不使用 https 会出现错误
 ```
 
-#  参考文章
+##  参考文章
 
 - [CoGPT 作者博客](https://blog.geniucker.top/2024/01/26/%E9%80%9A%E8%BF%87-GitHub-Copilot-%E5%85%8D%E8%B4%B9%E4%BD%BF%E7%94%A8-gpt-4/#%E4%BD%BF%E7%94%A8)
 - [CoGPT](https://github.com/Geniucker/CoGPT)

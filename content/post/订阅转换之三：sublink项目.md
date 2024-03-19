@@ -20,7 +20,7 @@ categories: ["折腾记录"]
 
 项目地址：[sublink](https://github.com/jaaksii/sublink)
 
-# 安装 docker 和 docker-compose
+## 安装 docker 和 docker-compose
 
 ```bash
 # 卸载旧版本
@@ -46,7 +46,7 @@ docker-compose --version
 curl -sS -O https://raw.githubusercontent.com/kejilion/sh/main/kejilion.sh && chmod +x kejilion.sh && ./kejilion.sh
 ```
 
-# 部署程序
+## 部署程序
 
 ```bash
 cd /opt && mkdir sublink && cd sublink
@@ -56,6 +56,6 @@ docker-compose up -d
 
 之后可创建网站，反向代理 `http://127.0.0.1:8000` 。
 
-# 参考文章
+## 参考文章
 
 - [项目地址](https://github.com/jaaksii/sublink)

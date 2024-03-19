@@ -24,9 +24,9 @@ categories: ["折腾记录","日常生活"]
 
 [文档](https://alist.nn.ci/zh/)
 
-# 一、官方 Alist
+## 一、官方 Alist
 
-## 1. 安装
+### 1. 安装
 
 安装非常简单，直接使用官方的一键脚本
 
@@ -51,7 +51,7 @@ curl -fsSL "https://alist.nn.ci/v3.sh" | bash -s update /root
 curl -fsSL "https://alist.nn.ci/v3.sh" | bash -s uninstall /root
 ```
 
-## 2. 获取密码
+### 2. 获取密码
 
 随机生成一个密码
 
@@ -69,7 +69,7 @@ curl -fsSL "https://alist.nn.ci/v3.sh" | bash -s uninstall /root
 
 如果想瞬间拥有很多资源，我们可以部署别人整理好的 Alist 镜像。
 
-# 二、小雅 Alist
+## 二、小雅 Alist
 
 首先列出作者的频道和文档：
 
@@ -83,7 +83,7 @@ curl -fsSL "https://alist.nn.ci/v3.sh" | bash -s uninstall /root
 > 💡 接下来的教程来自官方文档，部署在 VPS 上，由于家里并没有 NAS 和软路由，也不用电视看，因此记录仅限于电脑手机端观看，如果后续设备变化再更新记录。
 
 
-## 1. 安装 Dokcer
+### 1. 安装 Dokcer
 
 ```bash
 # 卸载旧版本
@@ -100,7 +100,7 @@ sudo systemctl enable docker
 sudo systemctl start docker
 ```
 
-## 2. 安装小雅 Alist
+### 2. 安装小雅 Alist
 
 首先获取阿里云盘的三个参数
 
@@ -168,7 +168,7 @@ bash -c "$(curl -s https://xiaoyahelper.zengge99.eu.org/aliyun_clear.sh | tail -
 
 以上所有模式加上 **`-tg`** 功能均可绑定消息推送的TG账号，只有第一次运行需要加上 **`-tg`** 参数，**可以不加tg参数**
 
-# 📎 参考文章
+## 📎 参考文章
 
 - [博客](https://www.cnblogs.com/xyztank/articles/17944085)
 - [小雅文档](https://www.notion.so/xiaoya-docker-69404af849504fa5bcf9f2dd5ecaa75f?pvs=21)
