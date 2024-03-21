@@ -13,6 +13,15 @@ slug: "subconverter"
 tags: ["订阅转换"]
 categories: ["折腾记录"]
 ---
+
+> 更新
+网上找到的一键脚本，更加方便
+```bash
+# ubuntu
+apt-get install -y wget && wget -O install.sh https://cdn.mxlong.com/install/subweb/install.sh && chmod +x ./install.sh && ./install.sh
+# centos
+yum install -y wget && wget -O install.sh https://cdn.mxlong.com/install/subweb/install.sh && chmod +x ./install.sh && ./install.sh
+```
 ## **前言**
 
 目前各个平台的代理软件的格式各不相同，各个服务厂商通常会提供给我们各个软件的订阅链接，但一些比较小的厂商提供的链接有限，或者提供的分流策略组不符合我们的预期，这个时候我们可以通过转换工具转换成我们所用软件的链接格式，或者使用自己修改的策略组实现更加灵活的分流。
@@ -300,3 +309,4 @@ yarn build
 
 - [参考地址1](https://www.v2rayssr.com/sub-web.html)
 - [参考地址2](https://qingsay.com/subscription-converter.html)
+- [参考地址3](https://www.mxlong.com/13.html)
