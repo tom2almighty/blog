@@ -14,8 +14,7 @@ tags: ["订阅转换"]
 categories: ["折腾记录"]
 ---
 
-> 更新
-网上找到的一键脚本，更加方便
+> 更新：网上找到的一键脚本，更加方便
 ```bash
 # ubuntu
 apt-get install -y wget && wget -O install.sh https://cdn.mxlong.com/install/subweb/install.sh && chmod +x ./install.sh && ./install.sh
