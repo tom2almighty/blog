@@ -48,9 +48,9 @@ https://tool.cccyun.cc/favicon
 
 部署好站点后会发现网站样式无法正常加载，但是本地部署正常，解决方法：将 `layouts/partials` 文件夹下文件中 `relURL` 更换为 `absURL` 即可。
 
-> 在 `Hugo` 的模板中，`relURL` 用于将给定的路径转换为相对于网站根目录的 URL。如果你的 `Hugo` 网站部署在 `https://example.com/blog/`，则 `{{ "css/styles.css" | relURL }}` 将被渲染为 `/blog/css/styles.css`。
+> 在 `Hugo` 的模板中，`relURL` 用于将给定的路径转换为相对于网站根目录的 `URL`。如果你的 `Hugo` 网站部署在 `https://example.com/blog/`，则 `{{ "css/styles.css" | relURL }}` 将被渲染为 `/blog/css/styles.css`。
 >
-> 然而，如果你的 Hugo 网站部署在域名的根目录（如 `https://example.com/`），则 `relURL` 可能会导致问题，因为它会在路径的开始处添加一个额外的 `/`。因此删除所有的 `relURL` 调用可以解决样式不显示的问题。
+> 然而，如果你的 `Hugo` 网站部署在域名的根目录（如 `https://example.com/`），则 `relURL` 可能会导致问题，因为它会在路径的开始处添加一个额外的 `/`。因此删除所有的 `relURL` 调用可以解决样式不显示的问题。
 >
 > 另外，`GitHub Pages` 和 `Cloudflare Pages` 在处理静态资源路径时可能有所不同。`GitHub Pages` 默认将项目部署在子路径（如 `https://username.github.io/repo/`），而 `Cloudflare Pages` 可能将项目部署在域名的根目录。因此，如果 Hugo 模板使用了 `relURL`，则可能在 `GitHub Pages` 上出现问题，但在 `Cloudflare Pages` 上正常。
 
