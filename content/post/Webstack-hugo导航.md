@@ -24,7 +24,7 @@ categories: ["折腾记录"]
 hugo new site webstack-hugo
 ```
 
-2. 下载 `Webstack-Hugo` 源码，并解压到 ``~/webstack-hugo/themes` 文件夹下，名称更改为 `Webstack-Hugo`，将 `~/webstack-hugo/themes/Webstack-Hugo/exampleSite` 文件夹下所有内容复制到 `Hugo` 站点根目录，并删除站点根目录的 `hugo.toml` 文件。
+2. 下载 `Webstack-Hugo` 源码，并解压到 `~/webstack-hugo/themes` 文件夹下，名称更改为 `Webstack-Hugo`，将 `~/webstack-hugo/themes/Webstack-Hugo/exampleSite` 文件夹下所有内容复制到 `Hugo` 站点根目录，并删除站点根目录的 `hugo.toml` 文件。
 3. 修改网站配置。
    - 配置信息在 `config.toml` 文件中
    - 导航信息在 `data/webstack.yml` 文件中
