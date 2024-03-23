@@ -1,0 +1,238 @@
+{
+  "settings_version": "0.21.0",
+  "debug": false,
+  "obsidian_command_palette_prefix": "Execute: ",
+  "preview_variables_in_command_palette": true,
+  "show_autocomplete_menu": true,
+  "working_directory": "D:\\GitHub\\blog",
+  "default_shells": {},
+  "environment_variable_path_augmentations": {},
+  "show_installation_warnings": true,
+  "error_message_duration": 20,
+  "notification_message_duration": 10,
+  "execution_notification_mode": "disabled",
+  "output_channel_clipboard_also_outputs_to_notification": true,
+  "output_channel_notification_decorates_output": true,
+  "enable_events": true,
+  "approve_modals_by_pressing_enter_key": true,
+  "command_palette": {
+    "re_execute_last_shell_command": {
+      "enabled": true,
+      "prefix": "Re-execute: "
+    }
+  },
+  "max_visible_lines_in_shell_command_fields": false,
+  "shell_commands": [
+    {
+      "id": "vk3sf8aoyz",
+      "platform_specific_commands": {
+        "default": "hugo server --navigateToChanged --buildDrafts -p 5678  & start chrome http://localhost:5678"
+      },
+      "shells": {},
+      "alias": "预览文章",
+      "icon": "eye",
+      "confirm_execution": false,
+      "ignore_error_codes": [],
+      "input_contents": {
+        "stdin": null
+      },
+      "output_handlers": {
+        "stdout": {
+          "handler": "ignore",
+          "convert_ansi_code": true
+        },
+        "stderr": {
+          "handler": "notification",
+          "convert_ansi_code": true
+        }
+      },
+      "output_wrappers": {
+        "stdout": null,
+        "stderr": null
+      },
+      "output_channel_order": "stdout-first",
+      "output_handling_mode": "buffered",
+      "events": {},
+      "command_palette_availability": "enabled",
+      "preactions": [],
+      "variable_default_values": {}
+    },
+    {
+      "id": "fb82kcoa0p",
+      "platform_specific_commands": {
+        "default": "taskkill /f /t /im hugo.exe"
+      },
+      "shells": {},
+      "alias": "结束Hugo进程",
+      "icon": "stop-circle",
+      "confirm_execution": false,
+      "ignore_error_codes": [],
+      "input_contents": {
+        "stdin": null
+      },
+      "output_handlers": {
+        "stdout": {
+          "handler": "ignore",
+          "convert_ansi_code": true
+        },
+        "stderr": {
+          "handler": "notification",
+          "convert_ansi_code": true
+        }
+      },
+      "output_wrappers": {
+        "stdout": null,
+        "stderr": null
+      },
+      "output_channel_order": "stdout-first",
+      "output_handling_mode": "buffered",
+      "events": {
+        "on-quit": {
+          "enabled": true
+        }
+      },
+      "command_palette_availability": "enabled",
+      "preactions": [],
+      "variable_default_values": {}
+    },
+    {
+      "id": "xm2ur0dppf",
+      "platform_specific_commands": {
+        "default": "hugo new post/{{_post_title}}.md"
+      },
+      "shells": {},
+      "alias": "新建文章",
+      "icon": "open-vault",
+      "confirm_execution": false,
+      "ignore_error_codes": [],
+      "input_contents": {
+        "stdin": null
+      },
+      "output_handlers": {
+        "stdout": {
+          "handler": "ignore",
+          "convert_ansi_code": true
+        },
+        "stderr": {
+          "handler": "notification",
+          "convert_ansi_code": true
+        }
+      },
+      "output_wrappers": {
+        "stdout": null,
+        "stderr": null
+      },
+      "output_channel_order": "stdout-first",
+      "output_handling_mode": "buffered",
+      "events": {},
+      "command_palette_availability": "enabled",
+      "preactions": [
+        {
+          "type": "prompt",
+          "enabled": true,
+          "prompt_id": "tpbadmz98s"
+        }
+      ],
+      "variable_default_values": {}
+    },
+    {
+      "id": "76mtxb330m",
+      "platform_specific_commands": {
+        "default": "hugo && git add . && git commit -m \"{{_comment}}\" && git push -u origin master"
+      },
+      "shells": {},
+      "alias": "发布文章",
+      "icon": "check",
+      "confirm_execution": false,
+      "ignore_error_codes": [],
+      "input_contents": {
+        "stdin": null
+      },
+      "output_handlers": {
+        "stdout": {
+          "handler": "ignore",
+          "convert_ansi_code": true
+        },
+        "stderr": {
+          "handler": "notification",
+          "convert_ansi_code": true
+        }
+      },
+      "output_wrappers": {
+        "stdout": null,
+        "stderr": null
+      },
+      "output_channel_order": "stdout-first",
+      "output_handling_mode": "buffered",
+      "events": {},
+      "command_palette_availability": "enabled",
+      "preactions": [
+        {
+          "type": "prompt",
+          "enabled": true,
+          "prompt_id": "fcj5osdk69"
+        }
+      ],
+      "variable_default_values": {}
+    }
+  ],
+  "prompts": [
+    {
+      "id": "tpbadmz98s",
+      "title": "新建文章",
+      "description": "",
+      "preview_shell_command": false,
+      "fields": [
+        {
+          "type": "single-line-text",
+          "label": "请输入标题：",
+          "description": "",
+          "default_value": "",
+          "target_variable_id": "rgjcjkr6v5",
+          "required": true
+        }
+      ],
+      "execute_button_text": "Execute"
+    },
+    {
+      "id": "fcj5osdk69",
+      "title": "提交发布文章",
+      "description": "",
+      "preview_shell_command": false,
+      "fields": [
+        {
+          "type": "single-line-text",
+          "label": "请输入提交信息：",
+          "description": "",
+          "default_value": "update post",
+          "target_variable_id": "7zs1k4kf4c",
+          "required": true
+        }
+      ],
+      "execute_button_text": "Execute"
+    }
+  ],
+  "builtin_variables": {},
+  "custom_variables": [
+    {
+      "id": "ug3x4yjryu",
+      "name": "_post_title",
+      "description": "",
+      "default_value": null
+    },
+    {
+      "id": "rgjcjkr6v5",
+      "name": "post_title",
+      "description": "",
+      "default_value": null
+    },
+    {
+      "id": "7zs1k4kf4c",
+      "name": "comment",
+      "description": "",
+      "default_value": null
+    }
+  ],
+  "custom_shells": [],
+  "output_wrappers": []
+}

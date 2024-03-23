@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='服务器部署 Alist，并可部署小雅 Alist 镜像瞬间拥有海量影视资源。'>
+<title>Alist部署</title>
+
+<link rel='canonical' href='https://hugo.grew.cc/p/alist/'>
+
+<link rel="stylesheet" href="/scss/style.min.918b080848931f419a68278a85726ae4a3ac8d99ae37b77db96a5c50779e8a12.css"><meta property='og:title' content='Alist部署'>
+<meta property='og:description' content='服务器部署 Alist，并可部署小雅 Alist 镜像瞬间拥有海量影视资源。'>
+<meta property='og:url' content='https://hugo.grew.cc/p/alist/'>
+<meta property='og:site_name' content='Tom&#39;s Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Alist' /><meta property='article:published_time' content='2024-02-08T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-02-08T00:00:00&#43;00:00'/><meta property='og:image' content='https://pic.imgdb.cn/item/65f013c89f345e8d03fc5210.webp' />
+<meta name="twitter:title" content="Alist部署">
+<meta name="twitter:description" content="服务器部署 Alist，并可部署小雅 Alist 镜像瞬间拥有海量影视资源。"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://pic.imgdb.cn/item/65f013c89f345e8d03fc5210.webp' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hucd6abb5a6ccd5c545bfe3e391578d67c_52582_300x0_resize_box_3.png" width="300"
+                            height="318" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🌓</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Tom&#39;s Blog</a></h1>
+            <h2 class="site-description">Progress Everyday!</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://grew.cc'
+                        target="_blank"
+                        title="Homepage"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/tom2almighty'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='mailto:bboyc80@gmail.com'
+                        target="_blank"
+                        title="Mail"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" />
+  <path d="M3 7l9 6l9 -6" />
+</svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://hugo.grew.cc/index.xml'
+                        target="_blank"
+                        title="RSS"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-rss" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="5" cy="19" r="1" />
+  <path d="M4 4a16 16 0 0 1 16 16" />
+  <path d="M4 11a9 9 0 0 1 9 9" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>链接</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#一官方-alist">一、官方 Alist</a>
+      <ol>
+        <li><a href="#1-安装">1. 安装</a></li>
+        <li><a href="#2-获取密码">2. 获取密码</a></li>
+      </ol>
+    </li>
+    <li><a href="#二小雅-alist">二、小雅 Alist</a>
+      <ol>
+        <li><a href="#1-安装-dokcer">1. 安装 Dokcer</a></li>
+        <li><a href="#2-安装小雅-alist">2. 安装小雅 Alist</a></li>
+      </ol>
+    </li>
+    <li><a href="#-参考文章">📎 参考文章</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/alist/">
+                
+                    <img src="https://pic.imgdb.cn/item/65f013c89f345e8d03fc5210.webp" loading="lazy" alt="Featured image of post Alist部署" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E6%8A%98%E8%85%BE%E8%AE%B0%E5%BD%95/" style="background-color: #2a9d8f; color: #fff;">
+                折腾记录
+            </a>
+        
+            <a href="/categories/%E6%97%A5%E5%B8%B8%E7%94%9F%E6%B4%BB/" style="background-color: #2a9d8f; color: #fff;">
+                日常生活
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/alist/">Alist部署</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            服务器部署 Alist，并可部署小雅 Alist 镜像瞬间拥有海量影视资源。
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2024-02-08</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 4 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>**前言：**目前很多人通过网盘分享影视资源，如阿里云盘、115网盘等，同时还有微软的 E5 管理员账号，一个账号就有 5T 空间，用来做存储很不错，但是众多网盘分享文件很不方便，网盘自己的页面看视频也比较简陋，这个时候我们可以通过目录列表整合各种网盘，如以前的  <code>oneindex、olaindex</code>，最近常用的是 Alist ，支持网盘众多，部署方便。</p>
+<blockquote>
+<p>Alist 是一个支持多种存储，支持网页浏览和 WebDAV 的文件列表程序，由 gin 和 Solidjs 驱动，程序开源地址以及文档如下：</p>
+</blockquote>
+<p><a class="link" href="https://github.com/alist-org/alist"  target="_blank" rel="noopener"
+    >Github</a></p>
+<p><a class="link" href="https://alist.nn.ci/zh/"  target="_blank" rel="noopener"
+    >文档</a></p>
+<h2 id="一官方-alist">一、官方 Alist</h2>
+<h3 id="1-安装">1. 安装</h3>
+<p>安装非常简单，直接使用官方的一键脚本</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 安装</span>
+</span></span><span class="line"><span class="cl">curl -fsSL <span class="s2">&#34;https://alist.nn.ci/v3.sh&#34;</span> <span class="p">|</span> bash -s install
+</span></span><span class="line"><span class="cl"><span class="c1"># 更新</span>
+</span></span><span class="line"><span class="cl">curl -fsSL <span class="s2">&#34;https://alist.nn.ci/v3.sh&#34;</span> <span class="p">|</span> bash -s update
+</span></span><span class="line"><span class="cl"><span class="c1"># 卸载</span>
+</span></span><span class="line"><span class="cl">curl -fsSL <span class="s2">&#34;https://alist.nn.ci/v3.sh&#34;</span> <span class="p">|</span> bash -s uninstall
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>默认安装在 <code>/opt/alist</code> 中。自定义安装路径，将安装路径作为第二个参数添加，必须是绝对路径（如果路径以 alist 结尾，则直接安装到给定路径，否则会安装在给定路径 alist 目录下），如 安装到 <code>/root</code>：</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Install</span>
+</span></span><span class="line"><span class="cl">curl -fsSL <span class="s2">&#34;https://alist.nn.ci/v3.sh&#34;</span> <span class="p">|</span> bash -s install /root
+</span></span><span class="line"><span class="cl"><span class="c1"># update</span>
+</span></span><span class="line"><span class="cl">curl -fsSL <span class="s2">&#34;https://alist.nn.ci/v3.sh&#34;</span> <span class="p">|</span> bash -s update /root
+</span></span><span class="line"><span class="cl"><span class="c1"># Uninstall</span>
+</span></span><span class="line"><span class="cl">curl -fsSL <span class="s2">&#34;https://alist.nn.ci/v3.sh&#34;</span> <span class="p">|</span> bash -s uninstall /root
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="2-获取密码">2. 获取密码</h3>
+<p>随机生成一个密码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">./alist admin random
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>手动设置一个密码,<code>NEW_PASSWORD</code>是指你需要设置的密码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">./alist admin <span class="nb">set</span> NEW_PASSWORD
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>部署的 Alist可以挂载自己的阿里云盘、Onedrive 等，官方文档都有详细介绍，上述安装也都来自官方文档，如果想美化以下界面，可以参考另一篇<a class="link" href="https://www.notion.so/Alist-f50ef25f1c1a4fdebd5f3b53fa830adb?pvs=21"  target="_blank" rel="noopener"
+    >文章</a>。</p>
+<p>如果想瞬间拥有很多资源，我们可以部署别人整理好的 Alist 镜像。</p>
+<h2 id="二小雅-alist">二、小雅 Alist</h2>
+<p>首先列出作者的频道和文档：</p>
+<p><a class="link" href="https://t.me/xiaoyaliu"  target="_blank" rel="noopener"
+    >xiaoya Liu</a></p>
+<p><a class="link" href="http://xiaoya.it-cxy.top/"  target="_blank" rel="noopener"
+    >小雅的分类 Alist</a></p>
+<p><a class="link" href="https://www.notion.so/xiaoya-docker-69404af849504fa5bcf9f2dd5ecaa75f?pvs=21"  target="_blank" rel="noopener"
+    >如何设置xiaoya的docker</a></p>
+<blockquote>
+<p>💡 接下来的教程来自官方文档，部署在 VPS 上，由于家里并没有 NAS 和软路由，也不用电视看，因此记录仅限于电脑手机端观看，如果后续设备变化再更新记录。</p>
+</blockquote>
+<h3 id="1-安装-dokcer">1. 安装 Dokcer</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 卸载旧版本</span>
+</span></span><span class="line"><span class="cl">sudo apt-get remove docker <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>             docker-engine <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>             <span class="o">[</span>docker.io<span class="o">](</span>http://docker.io/<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 安装</span>
+</span></span><span class="line"><span class="cl">curl -fsSL <span class="o">[</span>get.docker.com<span class="o">](</span>http://get.docker.com/<span class="o">)</span> -o <span class="o">[</span>get-docker.sh<span class="o">](</span>http://get-docker.sh/<span class="o">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 启动并设置开机自启</span>
+</span></span><span class="line"><span class="cl">sudo systemctl <span class="nb">enable</span> docker
+</span></span><span class="line"><span class="cl">sudo systemctl start docker
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="2-安装小雅-alist">2. 安装小雅 Alist</h3>
+<p>首先获取阿里云盘的三个参数</p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>参数必需</th>
+<th>对应文件</th>
+<th>获取地址</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>token</td>
+<td>是</td>
+<td>/etc/xiaoya/mytoken.txt</td>
+<td><a class="link" href="https://aliyuntoken.vercel.app/"  target="_blank" rel="noopener"
+    >https://aliyuntoken.vercel.app/</a></td>
+</tr>
+<tr>
+<td>open token</td>
+<td>是</td>
+<td>/etc/xiaoya/myopentoken.txt</td>
+<td><a class="link" href="https://alist.nn.ci/zh/guide/drivers/aliyundrive_open.html"  target="_blank" rel="noopener"
+    >https://alist.nn.ci/zh/guide/drivers/aliyundrive_open.html</a></td>
+</tr>
+<tr>
+<td>转存目录 ID</td>
+<td>是</td>
+<td>/etc/xiaoya/temp_transfer_folder_id.txt</td>
+<td>先转存这个</td>
+</tr>
+<tr>
+<td><a class="link" href="https://www.aliyundrive.com/s/rP9gP3h9asE"  target="_blank" rel="noopener"
+    >https://www.aliyundrive.com/s/rP9gP3h9asE</a> 到自己网盘（选择资源盘），然后浏览器打开转存后的目录，浏览器的url</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a class="link" href="https://www.aliyundrive.com/drive/file/resource/640xxxxxxxxxxxxxxxxxxxca8a"  target="_blank" rel="noopener"
+    >https://www.aliyundrive.com/drive/file/resource/640xxxxxxxxxxxxxxxxxxxca8a</a> 最后一串就是，记得这个目录不要删，里面的内容可以定期删除</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>登录</td>
+<td>否</td>
+<td>/etc/xiaoya/guestlogin.txt</td>
+<td>如果目录底下没有可以手动创建一个，里面不需要填写内容</td>
+</tr>
+<tr>
+<td>密码</td>
+<td>否(如果设置目录下有上一个登录参数，这个就得设置)</td>
+<td>/etc/xiaoya/guestpass.txt</td>
+<td>可以手动创建，里面填写用户的密码，但是尽量不要填写符号</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>💡 获取到前三个参数就可以，如果不想别人蹭你的网盘观看，就可以设置必须登录观看，登录的账号是 <code>dav</code> ，密码就是设置的密码。</p>
+</blockquote>
+<p>接下来安装，使用一键脚本：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">**bash -c <span class="s2">&#34;</span><span class="k">$(</span>curl http://docker.xiaoya.pro/update_new.sh<span class="k">)</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># host 模式**</span>
+</span></span><span class="line"><span class="cl">bash -c <span class="s2">&#34;</span><span class="k">$(</span>curl <span class="o">[</span>http://docker.xiaoya.pro/update_new.sh<span class="o">](</span>http://docker.xiaoya.pro/update_new.sh<span class="k">)</span><span class="s2">)&#34;</span> -s host
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>安装过程中填写三个参数，等待完成就可以了，服务器记得放行 5678 端口，后续如果需要反向代理也是这个端口。完成后可以通过 <a class="link" href="http://ip:5678"  target="_blank" rel="noopener"
+    >http://ip:5678</a> 进入，第一次进入会比较慢，如果很久没加载到存储，可以手动重启一下容器：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker restart xiaoya
+</span></span><span class="line"><span class="cl"><span class="c1"># 更新也是这个命令，所以可以将这个命令设置定时任务，每天定时重启</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>💡 <strong>不建议使用 infuse 等挂载扫描，可能会触发风控。</strong></p>
+</blockquote>
+<p>接下来你可以将小雅 <code>Alist</code> 挂载到自己的 <code>Alist</code> 上，挂载时地址填写本机地址 <a class="link" href="http://127.0.0.1:5678"  target="_blank" rel="noopener"
+    >http://127.0.0.1:5678</a> 就可以。</p>
+<p>观看视频时，是先将视频转存到自己的目录，也就是安装时的那个文件夹，因此确保网盘有足够的容量，并定期清理，或者可以通过下面的小雅助手容器定时更新、签到、清理文件夹。此助手脚本包括几个模式，如下：</p>
+<ul>
+<li><strong>模式0</strong>：每天自动清理一次。如果系统重启需要手动重新运行或把命令加入系统启动。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">bash -c <span class="s2">&#34;</span><span class="k">$(</span>curl -s https://xiaoyahelper.zengge99.eu.org/aliyun_clear.sh <span class="p">|</span> tail -n +2<span class="k">)</span><span class="s2">&#34;</span> -s <span class="m">0</span> -tg
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><strong>模式1</strong>：一次性清理，一般用于测试效果。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">bash -c <span class="s2">&#34;</span><span class="k">$(</span>curl -s https://xiaoyahelper.zengge99.eu.org/aliyun_clear.sh <span class="p">|</span> tail -n +2<span class="k">)</span><span class="s2">&#34;</span> -s <span class="m">1</span> -tg
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><strong>模式3：<strong>创建一个名为 xiaoyakeeper 的docker</strong>定时运行小雅转存清理</strong>并升级小雅镜像</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">bash -c <span class="s2">&#34;</span><span class="k">$(</span>curl -s https://xiaoyahelper.zengge99.eu.org/aliyun_clear.sh <span class="p">|</span> tail -n +2<span class="k">)</span><span class="s2">&#34;</span> -s <span class="m">3</span> -tg
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>**模式5：**与模式3的区别是实时清理，<strong>只要产生了播放缓存一分钟内立即清理</strong>。签到和定时升级同模式3</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">bash -c <span class="s2">&#34;</span><span class="k">$(</span>curl -s https://xiaoyahelper.zengge99.eu.org/aliyun_clear.sh <span class="p">|</span> tail -n +2<span class="k">)</span><span class="s2">&#34;</span> -s <span class="m">5</span> -tg
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>以上所有模式加上 <strong><code>-tg</code></strong> 功能均可绑定消息推送的TG账号，只有第一次运行需要加上 <strong><code>-tg</code></strong> 参数，<strong>可以不加tg参数</strong></p>
+<h2 id="-参考文章">📎 参考文章</h2>
+<ul>
+<li><a class="link" href="https://www.cnblogs.com/xyztank/articles/17944085"  target="_blank" rel="noopener"
+    >博客</a></li>
+<li><a class="link" href="https://www.notion.so/xiaoya-docker-69404af849504fa5bcf9f2dd5ecaa75f?pvs=21"  target="_blank" rel="noopener"
+    >小雅文档</a></li>
+</ul>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/alist/">Alist</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/plex/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://pic.imgdb.cn/item/65f0121c9f345e8d03f6691c.webp" loading="lazy" data-key="plex" data-hash="https://pic.imgdb.cn/item/65f0121c9f345e8d03f6691c.webp"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">部署Plex并挂载Alist</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/stack/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://pic.imgdb.cn/item/65fc10be9f345e8d0349611a.webp" loading="lazy" data-key="stack" data-hash="https://pic.imgdb.cn/item/65fc10be9f345e8d0349611a.webp"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Hugo Stack主题修改</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/hugo-blog/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://pic.imgdb.cn/item/65fc06b79f345e8d0317dd50.webp" loading="lazy" data-key="hugo-blog" data-hash="https://pic.imgdb.cn/item/65fc06b79f345e8d0317dd50.webp"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">使用Hugo搭建个人博客</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/bitwarden/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://pic.imgdb.cn/item/65dc436d9f345e8d0301ccba.webp" loading="lazy" data-key="bitwarden" data-hash="https://pic.imgdb.cn/item/65dc436d9f345e8d0301ccba.webp"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">宝塔面板部署Bitwarden密码管理</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/alist-modify/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://pic.imgdb.cn/item/65f013c89f345e8d03fc5210.webp" loading="lazy" data-key="alist-modify" data-hash="https://pic.imgdb.cn/item/65f013c89f345e8d03fc5210.webp"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Alist自定义美化</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2024 Tom Almighty
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.24.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Surge on Tom&#39;s Blog</title>
+        <link>https://hugo.grew.cc/tags/surge/</link>
+        <description>Recent content in Surge on Tom&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <copyright>Tom Almighty</copyright>
+        <lastBuildDate>Fri, 23 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.grew.cc/tags/surge/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>解决Surge部分应用代理提示</title>
+        <link>https://hugo.grew.cc/p/surge/</link>
+        <pubDate>Fri, 23 Sep 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://hugo.grew.cc/p/surge/</guid>
+        <description>&lt;img src="https://pic.imgdb.cn/item/65dc44029f345e8d030343ea.webp" alt="Featured image of post 解决Surge部分应用代理提示" /&gt;&lt;blockquote&gt;
+&lt;p&gt;注意：Surge 更改了方式，目前已不需要此模块。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+&lt;p&gt;很多应用在开启时会检测是否开启代理，如果开启则无法正常使用，这里记录一下如何解决此类问题。&lt;/p&gt;
+&lt;h2 id=&#34;跳过代理&#34;&gt;跳过代理&lt;/h2&gt;
+&lt;p&gt;有的应用只需要设&lt;code&gt;跳过代理&lt;/code&gt;即可解决。&lt;/p&gt;
+&lt;p&gt;首先打开 &lt;code&gt;Surge&lt;/code&gt; 的 &lt;code&gt;工具&lt;/code&gt;-&lt;code&gt;最近请求&lt;/code&gt;，查找目标 &lt;code&gt;APP&lt;/code&gt; 的 域名，然后在&lt;code&gt;首页&lt;/code&gt;-&lt;code&gt;更多设置&lt;/code&gt;中将其添加入&lt;code&gt;跳过代理&lt;/code&gt;的列表中。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://pic.imgdb.cn/item/632d754916f2c2beb183432a.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;https://pic.imgdb.cn/item/632d754916f2c2beb183432a.jpg&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;如果此种方法不能解决，可尝试以下两种方法。&lt;/p&gt;
+&lt;h2 id=&#34;兼容模式&#34;&gt;兼容模式&lt;/h2&gt;
+&lt;p&gt;对于第一种方法无法解决的 &lt;code&gt;APP&lt;/code&gt; ，可以打开 &lt;code&gt;Surge&lt;/code&gt; 的兼容模式，位置在&lt;code&gt;首页&lt;/code&gt;-&lt;code&gt;更多设置&lt;/code&gt;-&lt;code&gt;兼容性&lt;/code&gt;-&lt;code&gt;Tun-Only&lt;/code&gt;。这种方法设置简单，然而存在一定问题。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;部分应用在启动时会检查是否配置了代理，如果检查到代理就会停止工作（如浦发银行）。这是一种不专业的做法，代理既不会降低安全性，也是在企业网络下一种常见的配置。&lt;/p&gt;
+&lt;p&gt;Surge 在启动时，为了实现多种复杂功能，会同时配置虚拟代理设置和虚拟 VPN，从而引发上述应用的反代理检查。（部分同类应用没有此问题是因为只配置了虚拟 VPN）&lt;/p&gt;
+&lt;p&gt;该问题可通过开启 Surge 的兼容性模式 VIF Only 解决，但是开启后会导致 HTTP 相关高级功能失效，不推荐。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://nssurge.zendesk.com/hc/zh-cn/articles/900000083086-%E5%85%B3%E4%BA%8E%E9%83%A8%E5%88%86%E5%BA%94%E7%94%A8%E5%9C%A8-Surge-%E8%BF%90%E8%A1%8C%E6%97%B6%E6%8F%90%E7%A4%BA%E8%AF%B7%E5%8B%BF%E4%BD%BF%E7%94%A8%E4%BB%A3%E7%90%86%E7%9A%84%E8%AF%B4%E6%98%8E&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Surge 手册&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;如果希望更好地解决可使用第三种方法。&lt;/p&gt;
+&lt;h2 id=&#34;快捷指令&#34;&gt;快捷指令&lt;/h2&gt;
+&lt;p&gt;此方法其实是创建一个自动化的快捷指令，在每次打开特定应用时打开兼容模式，关闭应用时再关闭兼容模式，因为 &lt;code&gt;Surge&lt;/code&gt; &lt;code&gt;模块&lt;/code&gt;的优先级比配置更高，因此使用模块控制兼容模式的开关，然后通过 &lt;code&gt;API&lt;/code&gt; 控制模块的开关。&lt;/p&gt;
+&lt;h3 id=&#34;1-打开-surge-http-api-功能&#34;&gt;1. 打开 Surge HTTP API 功能&lt;/h3&gt;
+&lt;p&gt;首先打开 &lt;code&gt;Surge&lt;/code&gt; 的 &lt;code&gt;API&lt;/code&gt; 功能。在配置文件 &lt;code&gt;General&lt;/code&gt; 下加入如下设置：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;l&#34;&gt;General]&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;l&#34;&gt;http-api = 你的密码@127.0.0.1:7170&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;2-创建模块&#34;&gt;2. 创建模块&lt;/h3&gt;
+&lt;p&gt;创建一个模块控制兼容模式的开关，可以建立本地模块也可使用外部链接。&lt;/p&gt;
+&lt;p&gt;模块内容如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;#!name=TUN Only&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;#!desc=开启 Tun Only 兼容模式，解决某些 APP 不能正常连接的问题&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;#!system=ios&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;l&#34;&gt;General]&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;l&#34;&gt;compatibility-mode = 3&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;3-新建快捷指令&#34;&gt;3. 新建快捷指令&lt;/h3&gt;
+&lt;p&gt;创建打开和关闭应用的快捷指令，步骤如下：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://pic.imgdb.cn/item/632d783916f2c2beb1875ca5.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;https://pic.imgdb.cn/item/632d783916f2c2beb1875ca5.jpg&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;选择 &lt;code&gt;App&lt;/code&gt; -&lt;code&gt;已打开&lt;/code&gt;，然后选择目标应用，点击下一步后 &lt;code&gt;添加操作&lt;/code&gt;，搜索 &lt;code&gt;URL&lt;/code&gt;，并选择 &lt;code&gt;获取URL内容&lt;/code&gt;，然后填入相关内容。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://pic.imgdb.cn/item/632d7a5916f2c2beb189c64e.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;https://pic.imgdb.cn/item/632d7a5916f2c2beb189c64e.jpg&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://pic.imgdb.cn/item/632d7a6c16f2c2beb189dc58.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;https://pic.imgdb.cn/item/632d7a6c16f2c2beb189dc58.jpg&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;这里：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;URL&lt;/code&gt; 填“&lt;a class=&#34;link&#34; href=&#34;http://127.0.0.1:7170/v1/modules%E2%80%9D&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://127.0.0.1:7170/v1/modules”&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;方法选择 &lt;code&gt;POST&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;头部这里添加文本，键填入 &lt;code&gt;X-Key&lt;/code&gt;，文本填写密码&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;添加新的请求体，类型选择&lt;code&gt;布尔值&lt;/code&gt;，键填写模块名称，值设置为 &lt;code&gt;True&lt;/code&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;上述参数可自由更改，配置文件中的端口以及密码需要和快捷指令中相对应。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;最后把运行前询问关闭。这样打开应用的快捷指令就设置完毕了，然后再添加一个关闭应用的快捷指令，只需要在选择 APP 后把 &lt;code&gt;已打开&lt;/code&gt;改为&lt;code&gt;已关闭&lt;/code&gt;即可。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;*最后：**如果嫌设置麻烦也可以使用其他应用如 Qx，网上也有大佬收集了可能会跳出代理提示的应用并整理成了模块可直接引用，不过不支持买单吧这类 APP，链接地址如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/VirgilClyne&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;VirgilClyne 的 GitHub&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
+&lt;p&gt;本文内容全部来源于以下博客：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://baiyun.me/surge-with-china-apps&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;BAI YUN&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

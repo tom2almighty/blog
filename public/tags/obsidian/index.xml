@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Obsidian on Tom&#39;s Blog</title>
+        <link>https://hugo.grew.cc/tags/obsidian/</link>
+        <description>Recent content in Obsidian on Tom&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <copyright>Tom Almighty</copyright>
+        <lastBuildDate>Sat, 23 Mar 2024 13:13:25 +0800</lastBuildDate><atom:link href="https://hugo.grew.cc/tags/obsidian/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Obsidian快速发布hugo文章</title>
+        <link>https://hugo.grew.cc/p/obsidian%E5%BF%AB%E9%80%9F%E5%8F%91%E5%B8%83hugo%E6%96%87%E7%AB%A0/</link>
+        <pubDate>Sat, 23 Mar 2024 13:13:25 +0800</pubDate>
+        
+        <guid>https://hugo.grew.cc/p/obsidian%E5%BF%AB%E9%80%9F%E5%8F%91%E5%B8%83hugo%E6%96%87%E7%AB%A0/</guid>
+        <description>&lt;img src="https://pic.imgdb.cn/item/65fc06b79f345e8d0317dd50.webp" alt="Featured image of post Obsidian快速发布hugo文章" /&gt;&lt;p&gt;&lt;strong&gt;前言：&lt;/strong&gt; 通常使用静态博客写文章比较麻烦，上传图片也不方便，最近发现使用 obsidian 配合 shellcommands 插件可以快速创建文章并预览发布，配合 image auto upload 插件还可以快捷上传图片到图床。
+需要用到的工具：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;obsidian&lt;/li&gt;
+&lt;li&gt;picgo 或者 piclist 软件&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;使用&#34;&gt;使用&lt;/h2&gt;
+&lt;p&gt;首先下载好 obsidian 并且开启第三方插件，在插件市场下载三个插件：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Image auto upload&lt;/li&gt;
+&lt;li&gt;Shellcommands&lt;/li&gt;
+&lt;li&gt;Commanders
+&lt;img src=&#34;https://jsd.cdn.zzko.cn/gh/tom2almighty/picx-images-hosting@master/piclist/202403231359340.webp&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

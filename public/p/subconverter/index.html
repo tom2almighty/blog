@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='通过 subconverter 和 sub-web 部署自己的订阅转换项目。'>
+<title>订阅转换之一：subconverter加sub-web项目</title>
+
+<link rel='canonical' href='https://hugo.grew.cc/p/subconverter/'>
+
+<link rel="stylesheet" href="/scss/style.min.918b080848931f419a68278a85726ae4a3ac8d99ae37b77db96a5c50779e8a12.css"><meta property='og:title' content='订阅转换之一：subconverter加sub-web项目'>
+<meta property='og:description' content='通过 subconverter 和 sub-web 部署自己的订阅转换项目。'>
+<meta property='og:url' content='https://hugo.grew.cc/p/subconverter/'>
+<meta property='og:site_name' content='Tom&#39;s Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='订阅转换' /><meta property='article:published_time' content='2022-08-22T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-08-22T00:00:00&#43;00:00'/><meta property='og:image' content='https://pic.imgdb.cn/item/65f00c8c9f345e8d03e0d8b8.webp' />
+<meta name="twitter:title" content="订阅转换之一：subconverter加sub-web项目">
+<meta name="twitter:description" content="通过 subconverter 和 sub-web 部署自己的订阅转换项目。"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://pic.imgdb.cn/item/65f00c8c9f345e8d03e0d8b8.webp' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hucd6abb5a6ccd5c545bfe3e391578d67c_52582_300x0_resize_box_3.png" width="300"
+                            height="318" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🌓</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Tom&#39;s Blog</a></h1>
+            <h2 class="site-description">Progress Everyday!</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://grew.cc'
+                        target="_blank"
+                        title="Homepage"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/tom2almighty'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='mailto:bboyc80@gmail.com'
+                        target="_blank"
+                        title="Mail"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" />
+  <path d="M3 7l9 6l9 -6" />
+</svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://hugo.grew.cc/index.xml'
+                        target="_blank"
+                        title="RSS"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-rss" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="5" cy="19" r="1" />
+  <path d="M4 4a16 16 0 0 1 16 16" />
+  <path d="M4 11a9 9 0 0 1 9 9" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>链接</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#前言"><strong>前言</strong></a></li>
+    <li><a href="#准备工作"><strong>准备工作</strong></a></li>
+    <li><a href="#步骤"><strong>步骤</strong></a>
+      <ol>
+        <li><a href="#后端搭建"><strong>后端搭建</strong></a></li>
+        <li><a href="#前端搭建"><strong>前端搭建</strong></a></li>
+      </ol>
+    </li>
+    <li><a href="#参考"><strong>参考</strong></a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/subconverter/">
+                
+                    <img src="https://pic.imgdb.cn/item/65f00c8c9f345e8d03e0d8b8.webp" loading="lazy" alt="Featured image of post 订阅转换之一：subconverter加sub-web项目" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E6%8A%98%E8%85%BE%E8%AE%B0%E5%BD%95/" style="background-color: #2a9d8f; color: #fff;">
+                折腾记录
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/subconverter/">订阅转换之一：subconverter加sub-web项目</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            通过 subconverter 和 sub-web 部署自己的订阅转换项目。
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2022-08-22</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 5 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <blockquote>
+<p>更新：网上找到的一键脚本，更加方便</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># ubuntu</span>
+</span></span><span class="line"><span class="cl">apt-get install -y wget <span class="o">&amp;&amp;</span> wget -O install.sh https://cdn.mxlong.com/install/subweb/install.sh <span class="o">&amp;&amp;</span> chmod +x ./install.sh <span class="o">&amp;&amp;</span> ./install.sh
+</span></span><span class="line"><span class="cl"><span class="c1"># centos</span>
+</span></span><span class="line"><span class="cl">yum install -y wget <span class="o">&amp;&amp;</span> wget -O install.sh https://cdn.mxlong.com/install/subweb/install.sh <span class="o">&amp;&amp;</span> chmod +x ./install.sh <span class="o">&amp;&amp;</span> ./install.sh
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="前言"><strong>前言</strong></h2>
+<p>目前各个平台的代理软件的格式各不相同，各个服务厂商通常会提供给我们各个软件的订阅链接，但一些比较小的厂商提供的链接有限，或者提供的分流策略组不符合我们的预期，这个时候我们可以通过转换工具转换成我们所用软件的链接格式，或者使用自己修改的策略组实现更加灵活的分流。</p>
+<h2 id="准备工作"><strong>准备工作</strong></h2>
+<ul>
+<li><code>VPS</code>一台</li>
+<li>两个解析的域名，二级域名即可</li>
+</ul>
+<p><strong>所用项目：</strong></p>
+<p>前端：<a class="link" href="https://github.com/CareyWang/sub-web"  target="_blank" rel="noopener"
+    >sub-web</a></p>
+<p>后端：<a class="link" href="https://github.com/tindy2013/subconverter"  target="_blank" rel="noopener"
+    >subconverter</a></p>
+<h2 id="步骤"><strong>步骤</strong></h2>
+<h3 id="后端搭建"><strong>后端搭建</strong></h3>
+<ol>
+<li>首先解析一个域名用作后端访问，这里以 <code>backend.domain.com</code> 为例，实际以自己的域名为准。</li>
+<li>连接VPS后，下载并解压后端程序，可以使用如下命令，也可以使用宝塔面板，下载程序后解压。</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> /opt <span class="c1"># 这里是程序安装目录，可以自行更换</span>
+</span></span><span class="line"><span class="cl">wget https://github.com/tindy2013/subconverter/releases/download/v0.8.1/subconverter_linux64.tar.gz
+</span></span><span class="line"><span class="cl">tar -zxvf subconverter_linux64.tar.gz
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>完成以后在 <code>/opt</code> 文件夹下会出现 <code>subconverter</code>文件夹，出现如下结构：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"> .
+</span></span><span class="line"><span class="cl"> ├── subconverter
+</span></span><span class="line"><span class="cl"> │   ├── base
+</span></span><span class="line"><span class="cl"> │   ├── cache
+</span></span><span class="line"><span class="cl"> │   ├── config
+</span></span><span class="line"><span class="cl"> │   ├── generate.ini
+</span></span><span class="line"><span class="cl"> │   ├── gistconf.ini
+</span></span><span class="line"><span class="cl"> │   ├── pref.example.ini
+</span></span><span class="line"><span class="cl"> │   ├── pref.example.toml
+</span></span><span class="line"><span class="cl"> │   ├── pref.example.yml
+</span></span><span class="line"><span class="cl"> │   ├── pref.toml
+</span></span><span class="line"><span class="cl"> │   ├── profiles
+</span></span><span class="line"><span class="cl"> │   ├── rules
+</span></span><span class="line"><span class="cl"> │   ├── snippets
+</span></span><span class="line"><span class="cl"> │   └── subconverter
+</span></span><span class="line"><span class="cl"> └── subconverter_linux64.tar.gz
+</span></span><span class="line"><span class="cl"> 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol>
+<li>修改相关配置参数</li>
+</ol>
+<p>找到如下文件：</p>
+<p><code>/opt/subconverter/pref.toml</code>，修改下面两个参数：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">api_access_token</span> <span class="o">=</span> <span class="s2">&#34;密码可以随意更改，也不用记住&#34;</span>  <span class="c1"># 大概在第7行</span>
+</span></span><span class="line"><span class="cl"><span class="nv">managed_config_prefix</span> <span class="o">=</span> <span class="s2">&#34;https://backend.domain.com&#34;</span> <span class="c1"># 改成解析的后端域名，大概在第149行</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这里需要注意以下两点：</p>
+<blockquote>
+<p>配置文件按照 <code>pref.toml pref.yml pref.ini</code> 的顺序加载第一次解压程序后会发现只有<code>pref.example.toml</code> 文件，这时候可以在程序所在目录 <code>/opt/subconverter</code> 手动运行一下程序：<code>./subconverter</code>，文件就会出现。</p>
+</blockquote>
+<ol>
+<li>创建开机自启服务</li>
+</ol>
+<p>在终端窗口输入如下命令，全部粘贴回车即可</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">cat &gt; /etc/systemd/system/sub.service <span class="s">&lt;&lt;EOF
+</span></span></span><span class="line"><span class="cl"><span class="s">[Unit]
+</span></span></span><span class="line"><span class="cl"><span class="s">Description=Subconverter
+</span></span></span><span class="line"><span class="cl"><span class="s">After=network.target
+</span></span></span><span class="line"><span class="cl"><span class="s"> 
+</span></span></span><span class="line"><span class="cl"><span class="s">[Service]
+</span></span></span><span class="line"><span class="cl"><span class="s">Type=simple
+</span></span></span><span class="line"><span class="cl"><span class="s">LimitAS=infinity
+</span></span></span><span class="line"><span class="cl"><span class="s">LimitRSS=infinity
+</span></span></span><span class="line"><span class="cl"><span class="s">LimitCORE=infinity
+</span></span></span><span class="line"><span class="cl"><span class="s">LimitNOFILE=65535
+</span></span></span><span class="line"><span class="cl"><span class="s">ExecStart=/opt/subconverter/subconverter
+</span></span></span><span class="line"><span class="cl"><span class="s">Restart=on-failure
+</span></span></span><span class="line"><span class="cl"><span class="s">RestartSec=10
+</span></span></span><span class="line"><span class="cl"><span class="s"> 
+</span></span></span><span class="line"><span class="cl"><span class="s">[Install]
+</span></span></span><span class="line"><span class="cl"><span class="s">WantedBy=multi-user.target
+</span></span></span><span class="line"><span class="cl"><span class="s">EOF</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>如果修改了后端的运行目录，上边命令中第12行运行位置也要相应更改。</p>
+</blockquote>
+<p>设置开机自启：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">systemctl <span class="nb">enable</span> sub <span class="c1"># 开机自启</span>
+</span></span><span class="line"><span class="cl">systemctl start sub <span class="c1"># 启动</span>
+</span></span><span class="line"><span class="cl">systemctl restart sub <span class="c1"># 重启</span>
+</span></span><span class="line"><span class="cl">systemctl status sub <span class="c1"># 查看运行状态</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>到这里后端地址是 <code>http://127.0.0.1:25500/sub?</code>，由于上边修改了 <code>managed_config_prefix</code>，这时候我们需要反向代理。</p>
+<ol>
+<li>以后端域名新建一个站点</li>
+</ol>
+<p>这里以宝塔为例，新建站点后打开设置，点击 <code>反向代理</code>，设置如下内容</p>
+<p><img src="https://pic.imgdb.cn/item/62f5bb0716f2c2beb1f69f76.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="https://pic.imgdb.cn/item/62f5bb0716f2c2beb1f69f76.png"
+	
+	
+></p>
+<p>保存后添加 <code>SSL</code>访问，至此后端搭建完成。</p>
+<h3 id="前端搭建"><strong>前端搭建</strong></h3>
+<ol>
+<li>首先可以新建一个前端站点目录，无需数据库，新建后配置好 <code>SSL</code>，这里以 <code>web.domain.com</code> 为例。</li>
+<li>前端项目需要用到 <code>Node</code> 和 <code>Yarn</code> ，因此首先安装：</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">apt update <span class="o">&amp;&amp;</span> apt upgrade
+</span></span><span class="line"><span class="cl">apt install nodejs
+</span></span><span class="line"><span class="cl">apt install yarn
+</span></span><span class="line"><span class="cl"><span class="c1"># 完成后使用如下命令查看是否安装成功</span>
+</span></span><span class="line"><span class="cl">node -v
+</span></span><span class="line"><span class="cl">yarn --version
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol>
+<li>下载 <code>sub-web</code></li>
+</ol>
+<p>命令下载到当前目录，默认为 <code>/root</code>，下载的位置可以自行选择，可以下载到前端站点目录中下（首先进入<code>/web.domain.com</code>后再执行如下命令）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git clone https://github.com/CareyWang/sub-web.git
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> sub-web
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol>
+<li>安装依赖</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yarn install
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol>
+<li>修改后端配置及策略组文件</li>
+</ol>
+<p>找到<code>/root/sub-web/src/views/Subconverter.vue</code> 文件，打开后在258行找到如下内容并修改，即将本地地址修改为后端地址，也可以添加多个后端地址。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"> backendOptions: <span class="o">[{</span> value: <span class="s2">&#34;http://127.0.0.1:25500/sub?&#34;</span> <span class="o">}]</span>
+</span></span><span class="line"><span class="cl">                              ↓
+</span></span><span class="line"><span class="cl"> backendOptions: <span class="o">[{</span> value: <span class="s2">&#34;https://backend.domain.com/sub?&#34;</span> <span class="o">}]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>然后随后在下边的 <code>remoteConfig</code> 后修改策略组配置地址，可以根据文件的格式添加，这里给出 <code>ACL4SSR规则</code>配置，<code>remoteConfig[</code>后回车复制即可。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">             label: <span class="s2">&#34;ACL4SSR&#34;</span>,
+</span></span><span class="line"><span class="cl">             options: <span class="o">[</span>
+</span></span><span class="line"><span class="cl">               <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                 label: <span class="s2">&#34;ACL4SSR_Online 默认版 分组比较全 (与Github同步)&#34;</span>,
+</span></span><span class="line"><span class="cl">                 value:
+</span></span><span class="line"><span class="cl">                   <span class="s2">&#34;https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online.ini&#34;</span>
+</span></span><span class="line"><span class="cl">               <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">               <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                 label: <span class="s2">&#34;ACL4SSR_Online_AdblockPlus 更多去广告 (与Github同步)&#34;</span>,
+</span></span><span class="line"><span class="cl">                 value:
+</span></span><span class="line"><span class="cl">                   <span class="s2">&#34;https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_AdblockPlus.ini&#34;</span>
+</span></span><span class="line"><span class="cl">               <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">               <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                 label: <span class="s2">&#34;ACL4SSR_Online_NoAuto 无自动测速 (与Github同步)&#34;</span>,
+</span></span><span class="line"><span class="cl">                 value:
+</span></span><span class="line"><span class="cl">                   <span class="s2">&#34;https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_NoAuto.ini&#34;</span>
+</span></span><span class="line"><span class="cl">               <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">               <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                 label: <span class="s2">&#34;ACL4SSR_Online_NoReject 无广告拦截规则 (与Github同步)&#34;</span>,
+</span></span><span class="line"><span class="cl">                 value:
+</span></span><span class="line"><span class="cl">                   <span class="s2">&#34;https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_NoReject.ini&#34;</span>
+</span></span><span class="line"><span class="cl">               <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">               <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                 label: <span class="s2">&#34;ACL4SSR_Online_Mini 精简版 (与Github同步)&#34;</span>,
+</span></span><span class="line"><span class="cl">                 value:
+</span></span><span class="line"><span class="cl">                   <span class="s2">&#34;https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_Mini.ini&#34;</span>
+</span></span><span class="line"><span class="cl">               <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">               <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                 label: <span class="s2">&#34;ACL4SSR_Online_Mini_AdblockPlus.ini 精简版 更多去广告 (与Github同步)&#34;</span>,
+</span></span><span class="line"><span class="cl">                 value:
+</span></span><span class="line"><span class="cl">                   <span class="s2">&#34;https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_Mini_AdblockPlus.ini&#34;</span>
+</span></span><span class="line"><span class="cl">               <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">               <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                 label: <span class="s2">&#34;ACL4SSR_Online_Mini_NoAuto.ini 精简版 不带自动测速 (与Github同步)&#34;</span>,
+</span></span><span class="line"><span class="cl">                 value:
+</span></span><span class="line"><span class="cl">                   <span class="s2">&#34;https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_Mini_NoAuto.ini&#34;</span>
+</span></span><span class="line"><span class="cl">               <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">               <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                 label: <span class="s2">&#34;ACL4SSR_Online_Mini_Fallback.ini 精简版 带故障转移 (与Github同步)&#34;</span>,
+</span></span><span class="line"><span class="cl">                 value:
+</span></span><span class="line"><span class="cl">                   <span class="s2">&#34;https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_Mini_Fallback.ini&#34;</span>
+</span></span><span class="line"><span class="cl">               <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">               <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                 label: <span class="s2">&#34;ACL4SSR_Online_Mini_MultiMode.ini 精简版 自动测速、故障转移、负载均衡 (与Github同步)&#34;</span>,
+</span></span><span class="line"><span class="cl">                 value:
+</span></span><span class="line"><span class="cl">                   <span class="s2">&#34;https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_Mini_MultiMode.ini&#34;</span>
+</span></span><span class="line"><span class="cl">               <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">               <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                 label: <span class="s2">&#34;ACL4SSR_Online_Full 全分组 重度用户使用 (与Github同步)&#34;</span>,
+</span></span><span class="line"><span class="cl">                 value:
+</span></span><span class="line"><span class="cl">                   <span class="s2">&#34;https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_Full.ini&#34;</span>
+</span></span><span class="line"><span class="cl">               <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">               <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                 label: <span class="s2">&#34;ACL4SSR_Online_Full_NoAuto.ini 全分组 无自动测速 重度用户使用 (与Github同步)&#34;</span>,
+</span></span><span class="line"><span class="cl">                 value:
+</span></span><span class="line"><span class="cl">                   <span class="s2">&#34;https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_Full_NoAuto.ini&#34;</span>
+</span></span><span class="line"><span class="cl">               <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">               <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                 label: <span class="s2">&#34;ACL4SSR_Online_Full_AdblockPlus 全分组 重度用户使用 更多去广告 (与Github同步)&#34;</span>,
+</span></span><span class="line"><span class="cl">                 value:
+</span></span><span class="line"><span class="cl">                   <span class="s2">&#34;https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_Full_AdblockPlus.ini&#34;</span>
+</span></span><span class="line"><span class="cl">               <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">               <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                 label: <span class="s2">&#34;ACL4SSR_Online_Full_Netflix 全分组 重度用户使用 奈飞全量 (与Github同步)&#34;</span>,
+</span></span><span class="line"><span class="cl">                 value:
+</span></span><span class="line"><span class="cl">                   <span class="s2">&#34;https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_Full_Netflix.ini&#34;</span>
+</span></span><span class="line"><span class="cl">               <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">               <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                 label: <span class="s2">&#34;ACL4SSR 本地 默认版 分组比较全&#34;</span>,
+</span></span><span class="line"><span class="cl">                 value: <span class="s2">&#34;config/ACL4SSR.ini&#34;</span>
+</span></span><span class="line"><span class="cl">               <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">               <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                 label: <span class="s2">&#34;ACL4SSR_Mini 本地 精简版&#34;</span>,
+</span></span><span class="line"><span class="cl">                 value: <span class="s2">&#34;config/ACL4SSR_Mini.ini&#34;</span>
+</span></span><span class="line"><span class="cl">               <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">               <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                 label: <span class="s2">&#34;ACL4SSR_Mini_NoAuto.ini 本地 精简版+无自动测速&#34;</span>,
+</span></span><span class="line"><span class="cl">                 value: <span class="s2">&#34;config/ACL4SSR_Mini_NoAuto.ini&#34;</span>
+</span></span><span class="line"><span class="cl">               <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">               <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                 label: <span class="s2">&#34;ACL4SSR_Mini_Fallback.ini 本地 精简版+fallback&#34;</span>,
+</span></span><span class="line"><span class="cl">                 value: <span class="s2">&#34;config/ACL4SSR_Mini_Fallback.ini&#34;</span>
+</span></span><span class="line"><span class="cl">               <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">               <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                 label: <span class="s2">&#34;ACL4SSR_BackCN 本地 回国&#34;</span>,
+</span></span><span class="line"><span class="cl">                 value: <span class="s2">&#34;config/ACL4SSR_BackCN.ini&#34;</span>
+</span></span><span class="line"><span class="cl">               <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">               <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                 label: <span class="s2">&#34;ACL4SSR_NoApple 本地 无苹果分流&#34;</span>,
+</span></span><span class="line"><span class="cl">                 value: <span class="s2">&#34;config/ACL4SSR_NoApple.ini&#34;</span>
+</span></span><span class="line"><span class="cl">               <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">               <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                 label: <span class="s2">&#34;ACL4SSR_NoAuto 本地 无自动测速 &#34;</span>,
+</span></span><span class="line"><span class="cl">                 value: <span class="s2">&#34;config/ACL4SSR_NoAuto.ini&#34;</span>
+</span></span><span class="line"><span class="cl">               <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">               <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                 label: <span class="s2">&#34;ACL4SSR_NoAuto_NoApple 本地 无自动测速&amp;无苹果分流&#34;</span>,
+</span></span><span class="line"><span class="cl">                 value: <span class="s2">&#34;config/ACL4SSR_NoAuto_NoApple.ini&#34;</span>
+</span></span><span class="line"><span class="cl">               <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">               <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                 label: <span class="s2">&#34;ACL4SSR_NoMicrosoft 本地 无微软分流&#34;</span>,
+</span></span><span class="line"><span class="cl">                 value: <span class="s2">&#34;config/ACL4SSR_NoMicrosoft.ini&#34;</span>
+</span></span><span class="line"><span class="cl">               <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">               <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                 label: <span class="s2">&#34;ACL4SSR_WithGFW 本地 GFW列表&#34;</span>,
+</span></span><span class="line"><span class="cl">                 value: <span class="s2">&#34;config/ACL4SSR_WithGFW.ini&#34;</span>
+</span></span><span class="line"><span class="cl">               <span class="o">}</span>
+</span></span><span class="line"><span class="cl">             <span class="o">]</span>
+</span></span><span class="line"><span class="cl">           <span class="o">}</span>,
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol>
+<li>打包网站</li>
+</ol>
+<p>执行如下命令可打包网站：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yarn build
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>完成后会在 <code>/root/sub-web/</code>文件夹下生成一个 <code>dist</code>目录，这个目录就是网站的全部内容，可以将里面所有内容复制到前端站点的目录，如果是将前端下载到了站点目录而不是根目录，可以在宝塔面板中设置网站的运行目录，选择为 <code>/dist</code>即可。</p>
+<p><img src="https://pic.imgdb.cn/item/62f5c5af16f2c2beb1146e2d.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="https://pic.imgdb.cn/item/62f5c5af16f2c2beb1146e2d.png"
+	
+	
+></p>
+<blockquote>
+<p>如需要修改前端的配置，如加入更多的策略组配置文件，修改 <code>/root/sub-web/src/views/Subconverter.vue</code> 文件后，再在 <code>/root/sub-web</code> 目录下执行 <code>yarn build</code> 命令，随后再把 <code>/dist</code> 目录下内容替换到网站目录。</p>
+</blockquote>
+<p>至此前后端都已搭建完毕，打开前端地址即可正常使用。</p>
+<h2 id="参考"><strong>参考</strong></h2>
+<ul>
+<li><a class="link" href="https://www.v2rayssr.com/sub-web.html"  target="_blank" rel="noopener"
+    >参考地址1</a></li>
+<li><a class="link" href="https://qingsay.com/subscription-converter.html"  target="_blank" rel="noopener"
+    >参考地址2</a></li>
+<li><a class="link" href="https://www.mxlong.com/13.html"  target="_blank" rel="noopener"
+    >参考地址3</a></li>
+</ul>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/%E8%AE%A2%E9%98%85%E8%BD%AC%E6%8D%A2/">订阅转换</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/sub2clash/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://pic.imgdb.cn/item/65f00c8c9f345e8d03e0d8b8.webp" loading="lazy" data-key="sub2clash" data-hash="https://pic.imgdb.cn/item/65f00c8c9f345e8d03e0d8b8.webp"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">订阅转换之四：sub2clash项目</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/sublink/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://pic.imgdb.cn/item/65f00c8c9f345e8d03e0d8b8.webp" loading="lazy" data-key="sublink" data-hash="https://pic.imgdb.cn/item/65f00c8c9f345e8d03e0d8b8.webp"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">订阅转换之三：sublink项目</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/sub-web/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://pic.imgdb.cn/item/65f00c8c9f345e8d03e0d8b8.webp" loading="lazy" data-key="sub-web" data-hash="https://pic.imgdb.cn/item/65f00c8c9f345e8d03e0d8b8.webp"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">订阅转换之二：subweb项目</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/webstack-hugo/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://pic.imgdb.cn/item/65fc44b29f345e8d03b73249.webp" loading="lazy" data-key="webstack-hugo" data-hash="https://pic.imgdb.cn/item/65fc44b29f345e8d03b73249.webp"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Webstack Hugo导航</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/stack/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://pic.imgdb.cn/item/65fc10be9f345e8d0349611a.webp" loading="lazy" data-key="stack" data-hash="https://pic.imgdb.cn/item/65fc10be9f345e8d0349611a.webp"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Hugo Stack主题修改</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2024 Tom Almighty
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.24.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

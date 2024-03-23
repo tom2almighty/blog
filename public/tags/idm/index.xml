@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>IDM on Tom&#39;s Blog</title>
+        <link>https://hugo.grew.cc/tags/idm/</link>
+        <description>Recent content in IDM on Tom&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <copyright>Tom Almighty</copyright>
+        <lastBuildDate>Sun, 21 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.grew.cc/tags/idm/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Windows安装IDM下载器并解除限制</title>
+        <link>https://hugo.grew.cc/p/idm/</link>
+        <pubDate>Sun, 21 Jan 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://hugo.grew.cc/p/idm/</guid>
+        <description>&lt;img src="https://pic.imgdb.cn/item/65dc4aef9f345e8d031516e3.webp" alt="Featured image of post Windows安装IDM下载器并解除限制" /&gt;&lt;p&gt;**前言：**在众多下载管理器中，IDM（Internet Download Manager）以其强大的功能和稳定的性能脱颖而出，成为许多用户的首选下载工具之一。IDM不仅能够加速下载速度，还具备智能任务管理、断点续传、调度下载等一系列实用功能，极大地提升了下载文件的效率。之前的破解版很多已经不能使用，因此这里介绍新发现的工具。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;⚠️本教程仅供学习和研究使用，如果你决定采用这种方法，那么风险自负。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;1安装-idm&#34;&gt;1.安装 IDM&lt;/h2&gt;
+&lt;p&gt;首先，你需要在官方网站上下载 IDM 的安装包。下载完成后，按照提示进行安装。安装过程中可能会提示你关闭浏览器等软件，以保证安装顺利完成。IDM的安装过程非常简单，只需要按照提示一步步操作即可。&lt;/p&gt;
+&lt;h2 id=&#34;2idm-破解方法&#34;&gt;2.IDM 破解方法&lt;/h2&gt;
+&lt;p&gt;本教程的工具来自以下网站：&lt;/p&gt;
+&lt;p&gt;[&lt;a class=&#34;link&#34; href=&#34;https://massgrave.dev/index.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Microsoft Activation Scripts&lt;/a&gt;]&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://massgrave.dev/idm-activation-script.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;IDM Activation Script&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;方法一&#34;&gt;方法一&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;打开&lt;code&gt;Powershell&lt;/code&gt;工具，不是&lt;code&gt;CMD&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;粘贴如下命令&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-jsx&#34; data-lang=&#34;jsx&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;irm&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;https&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;//massgrave.dev/ias](https://massgrave.dev/ias) | iex
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;打开后界面如下：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://pic.imgdb.cn/item/65acde6b871b83018a03dd0f.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;https://pic.imgdb.cn/item/65acde6b871b83018a03dd0f.png&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;选择选项1安装即可&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;方法二&#34;&gt;方法二&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;在&lt;a class=&#34;link&#34; href=&#34;https://github.com/WindowsAddict/IDM-Activation-Script/archive/refs/heads/main.zip&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;点这个下载&lt;/a&gt;或&lt;a class=&#34;link&#34; href=&#34;https://bitbucket.org/WindowsAddict/idm-activation-script/get/main.zip&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;点这个下载&lt;/a&gt;)压缩包并解压。&lt;/li&gt;
+&lt;li&gt;解压后的文件夹内运行&lt;code&gt;IAS.cmd&lt;/code&gt;文件，即可看到破解界面。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;-总结&#34;&gt;🤗 总结&lt;/h1&gt;
+&lt;p&gt;通过以上步骤，你应该已经学会了如何在Windows系统上安装和破解 IDM。但是，如果有能力仍然建议你购买正版软件，以支持软件开发者的工作并保证自己的电脑安全。在享受便利的同时，也要注重合法合规，尊重软件开发者的辛勤努力。&lt;/p&gt;
+&lt;h1 id=&#34;-参考文章&#34;&gt;📎 参考文章&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://massgrave.dev/index.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Microsoft Activation Scripts&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.kkckk.com/archives/Internet-Download-Manage-Crack&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;引用文章&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/aside&gt;</description>
+        </item>
+        
+    </channel>
+</rss>

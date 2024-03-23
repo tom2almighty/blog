@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=5678&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='原理解释 了解一下原理有助于软件的使用。不想看也可以直接跳到下一节。以下是非专业人士的理解，如有错误请指出。 首先需要知道，我们所有的网络活动都'>
+<title>Windows解除网络限制</title>
+
+<link rel='canonical' href='http://localhost:5678/p/windows-network/'>
+
+<link rel="stylesheet" href="/scss/style.min.918b080848931f419a68278a85726ae4a3ac8d99ae37b77db96a5c50779e8a12.css"><meta property='og:title' content='Windows解除网络限制'>
+<meta property='og:description' content='原理解释 了解一下原理有助于软件的使用。不想看也可以直接跳到下一节。以下是非专业人士的理解，如有错误请指出。 首先需要知道，我们所有的网络活动都'>
+<meta property='og:url' content='http://localhost:5678/p/windows-network/'>
+<meta property='og:site_name' content='Tom&#39;s Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Windows' /><meta property='article:tag' content='网络' /><meta property='article:published_time' content='2022-06-07T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-06-07T00:00:00&#43;00:00'/><meta property='og:image' content='https://pic.imgdb.cn/item/65dc4c5c9f345e8d0318832b.webp' />
+<meta name="twitter:title" content="Windows解除网络限制">
+<meta name="twitter:description" content="原理解释 了解一下原理有助于软件的使用。不想看也可以直接跳到下一节。以下是非专业人士的理解，如有错误请指出。 首先需要知道，我们所有的网络活动都"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://pic.imgdb.cn/item/65dc4c5c9f345e8d0318832b.webp' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hucd6abb5a6ccd5c545bfe3e391578d67c_52582_300x0_resize_box_3.png" width="300"
+                            height="318" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🌓</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Tom&#39;s Blog</a></h1>
+            <h2 class="site-description">Progress Everyday!</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://grew.cc'
+                        target="_blank"
+                        title="Homepage"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/tom2almighty'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='mailto:bboyc80@gmail.com'
+                        target="_blank"
+                        title="Mail"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" />
+  <path d="M3 7l9 6l9 -6" />
+</svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://hugo.grew.cc/index.xml'
+                        target="_blank"
+                        title="RSS"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-rss" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="5" cy="19" r="1" />
+  <path d="M4 4a16 16 0 0 1 16 16" />
+  <path d="M4 11a9 9 0 0 1 9 9" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>链接</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#原理解释"><strong>原理解释</strong></a></li>
+    <li><a href="#v2rayn"><strong>v2rayN</strong></a></li>
+    <li><a href="#clash-for-windows"><strong>Clash for Windows</strong></a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/windows-network/">
+                
+                    <img src="https://pic.imgdb.cn/item/65dc4c5c9f345e8d0318832b.webp" loading="lazy" alt="Featured image of post Windows解除网络限制" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E6%8A%98%E8%85%BE%E8%AE%B0%E5%BD%95/" style="background-color: #2a9d8f; color: #fff;">
+                折腾记录
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/windows-network/">Windows解除网络限制</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2022-06-07</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 6 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="原理解释"><strong>原理解释</strong></h2>
+<p>了解一下原理有助于软件的使用。不想看也可以直接跳到下一节。以下是非专业人士的理解，如有错误请指出。</p>
+<p>首先需要知道，我们所有的网络活动都是进行数据交换，这些数据存储在服务器上，服务器可以理解为配置很高的电脑。我们浏览网页或者观看视频的过程就是向存储这些内容的服务器发起请求，然后服务器给我们返回内容，就像你要在图书馆看书，告诉管理员我要看哪一本书，然后管理员找到这本书交给你。只是这个过程再稍微复杂一点，也就是我们找书给书的过程需要遵循一定的准则，也就是网络通讯的协议。
+目前网络通讯的主要协议为 <code>TCP/IP</code> 协议。为了能让我们能准确拿到想要的东西，所有的计算机设备都会分配一个唯一的IP地址，也就是说IP地址和我们的设备绑定，IP的形式为32位的二进制数，通常被分割为4个“8位二进制数”，用点分十进制表示为 <code>a.b.c.d</code> 的形式，abcd的取值为 <code>0-255</code> 间的十进制整数，以上内容为 <code>IPv4</code> 地址，由于目前IPv4地址快不够用了，所以正在大力发展 <code>IPv6</code>，地址数更多。
+IP地址分为公有地址和私有地址，像我们平时路由器使用的地址如 <code>192.168.0.0</code> 就属于私有地址，也就是我们可以用这些地址组件内网，不能从互联网直接访问。留出的私有地址如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">A类 10.0.0.0--10.255.255.255
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">B类 172.16.0.0--172.31.255.255
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">C类 192.168.0.0--192.168.255.255
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>当我们访问网页时不可能每次输入一大串数字，因此我们通过一些好记的名称，指代IP地址，当我们输入这些名称时，就自动访问对应的IP，这就是域名。</p>
+<p>比如当我们访问 <code>www.baidu.com</code>，实际上我们访问的是 <code>220.181.38.148</code>。那么我们怎么才能知道那个域名对应的是那个主机呢，这时候就需要一台专门的服务器做这个事情。也就是说你告诉管理员你要看一本书，这时候有一个人我们叫他小明，他告诉管理员你要看的书在哪个书架，管理员知道后再把书拿给你，完成这个流程的服务器叫域名服务器（Domain Name Server，DNS）。</p>
+<p>那么知道这些后我们就能了解 <code>GFW</code> 防火墙简单的阻断方法，比如你说你要看越狱类的书，这时候小明一看你要看这种书？不行，直接给你拦下，或者给告诉管理员一个错误的信息，那么你就看不到你想要的书了。还有一种情况就是小明记住了哪一个书架的书不能看，也就是哪一个服务器上的内容不可以访问，那么发现你要看的书在这里，对不起，也不行。</p>
+<p>那么如何解决呢？防火墙不可能不让你访问所有的服务器内容。这个时候我们可以找一个中间人，即让一台在防火墙外，不在防火墙名单上的服务器访问我们想要的内容，然后我们访问这台服务器，就可以拿到我们想要的东西。这个服务器就是一个代理人的角色，这也就是很多软件里会有的 <code>Proxy</code> 设置，即代理。</p>
+<p>虽说有这种方法，但是如果小明能看到最后书的内容，那还是会被拦下来，因此我们就要对这些信息进行加密，这样他只知道你要看书，并且看的书不在黑名单书架上，内容也不清楚，那么他只能先给你。</p>
+<p>因此就衍生出各种加密方法手段，这些加密方法都要有一定的载体，就像我们把书放在一个盒子里，不同的盒子都可以装书，但是我们的锁不一样。</p>
+<p>总结一下解除限制的原理：以我们访问 <code>YouTube</code> 为例，首先我们本地通过加密发往防火墙外一台服务器，服务器进行解密，然后访问谷歌的服务器，将得到的视频进行加密，最后通过防火墙，我们本地再进行解密。所以我们本地安装的软件只是加密解密的载体，还需要我们的服务器信息才能正常使用，每一台服务器的信息称为一个节点（Node），因为有些服务器会根据IP地址返回不同的内容，比如首页的热门视频等，或者有些网站也会设置防火墙对 <code>IP</code> 地址进行限制，某些国家的 <code>IP</code> 不能访问因此不同的节点访问到的内容也是不一样的。</p>
+<p>目前有很多核心如 <code>Clash</code>, <code>v2ray(xray)</code>，基于这些核心很多开发者做出了图形界面方便我们操作，这些软件都是开源免费的，但真正核心的是服务器节点，有一些公益的，但是不稳定，主要还是收费的节点更稳定一些，提供这些节点的服务商称为 <code>机场</code>。</p>
+<blockquote>
+<p>另外说一下 VPN，VPN 的初衷不是为了跨过防火墙，而是为了企业的信息安全，因为其加密特征十分明显，很容易被识别，所以如果正常访问谷歌学术或者观看视频不建议使用VPN。</p>
+</blockquote>
+<p>接下来介绍两个电脑软件的使用，电脑会用后安卓上的操作也异曲同工，而iOS上软件都收费，这里就先不讲。</p>
+<h2 id="v2rayn"><strong>v2rayN</strong></h2>
+<p>此软件使用较为简单，适合简单用途，初上手使用。</p>
+<ol>
+<li>
+<p>首先下载软件，下载 <code>v2rayN-Core.zip</code>。
+这是GUI图形界面和核心，如果下载另一个只有界面，还得再下载核心。
+<a class="link" href="https://github.com/2dust/v2rayN/releases"  target="_blank" rel="noopener"
+    >链接点这里</a></p>
+</li>
+<li>
+<p>下载后直接解压，不需要安装，之后打开 <code>v2rayN.exe</code>。</p>
+</li>
+<li>
+<p>打开后电脑任务栏右下角会有图标，双击打开界面，界面元素如下：</p>
+<p><img src="https://pic.imgdb.cn/item/63218e1816f2c2beb1b3db6a.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="https://pic.imgdb.cn/item/63218e1816f2c2beb1b3db6a.png"
+	
+	
+></p>
+</li>
+<li>
+<p>点击 <code>订阅-订阅设置</code> 即可添加订阅，添加完成后点击 <code>订阅-更新订阅</code>。</p>
+</li>
+<li>
+<p>右击电脑任务栏右下角图标，将 <code>系统代理</code> 后的选项设置为 <code>自动配置系统代理</code>，即可正常使用。</p>
+<p><img src="https://pic.imgdb.cn/item/63218e5616f2c2beb1b41b67.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="https://pic.imgdb.cn/item/63218e5616f2c2beb1b41b67.png"
+	
+	
+></p>
+</li>
+</ol>
+<blockquote>
+<p>关闭软件前一定要将系统代理后的选项设置为清除系统代理，然后退出软件，如果不清除只退出软件，会无法访问网络。</p>
+</blockquote>
+<h2 id="clash-for-windows"><strong>Clash for Windows</strong></h2>
+<p>此软件适合进阶用户使用，通过使用 <code>策略组</code>，以域名或关键字进行分流，如一些流媒体视频网站使用某个节点，谷歌的服务使用某个节点。</p>
+<ol>
+<li>下载软件，此软件最好安装，可以第一时间更新，链接<a class="link" href="https://github.com/Fndroid/clash_for_windows_pkg/releases"  target="_blank" rel="noopener"
+    >点这里</a>，安装后打开软件。</li>
+<li>软件构成如下，只需要用到前三个。</li>
+</ol>
+<p><img src="https://pic.imgdb.cn/item/6321901d16f2c2beb1b63047.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="https://pic.imgdb.cn/item/6321901d16f2c2beb1b63047.png"
+	
+	
+></p>
+<p><img src="https://pic.imgdb.cn/item/63218ee116f2c2beb1b4be11.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="https://pic.imgdb.cn/item/63218ee116f2c2beb1b4be11.png"
+	
+	
+></p>
+<ol>
+<li>
+<p>首先打开 <code>Profiles</code>，将服务商给的链接粘贴，下载配置文件。</p>
+<p><img src="https://pic.imgdb.cn/item/63218f2816f2c2beb1b50cfc.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="https://pic.imgdb.cn/item/63218f2816f2c2beb1b50cfc.png"
+	
+	
+></p>
+</li>
+<li>
+<p>然后打开 <code>Proxies</code>，最上方选择 <code>Rule</code>，代表通过策略组的设置分流代理，如果选择 <code>Global</code> 代表全部流量经过节点代理，如果选择 <code>Direct</code>，代表即使打开软件，仍然是直接访问目标服务器，不经过代理，人话就是开没开一样。</p>
+</li>
+<li>
+<p>选择各个策略组想用的节点，比如上图，<code>Proxy</code> 组里包括了国外常用的网站，那么可以选择一个节点，<code>Netflix</code> 组是 <code>Netflix</code> 的域名和服务器的地址，那么我选择香港节点，<code>HBO Max</code> 由于只有美国有，因此只能使用美国节点。策略组之间是可以嵌套选择的，比如如果我 <code>Netflix</code> 策略组下面选择 <code>HBO Max</code> 策略组，那么最后 <code>Netflix</code> 也选用的美国节点，这样可以提高使用效率，不用频繁切换节点。图上只是自用的一些策略组，通常不同服务商提供的策略组有差异，当然如果有探索的心，也可进阶使用，根据自身需求定制策略组。</p>
+</li>
+</ol>
+<blockquote>
+<p>如果学校订阅了一些期刊，代理后 IP 地址变化了，就无法正常使用学校的数据库了，这时候可以建立一个学术的策略组，这个组选择 Direct，那么就相当于直接通过学校的网络访问，其余一些情况也同理。</p>
+</blockquote>
+<ol>
+<li>最后同第一个软件，打开代理，不用了也是需要在这里关掉再退出软件。</li>
+</ol>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/windows/">Windows</a>
+        
+            <a href="/tags/%E7%BD%91%E7%BB%9C/">网络</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/windows-terminal/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://pic.imgdb.cn/item/65f7c4779f345e8d03321bad.webp" loading="lazy" data-key="windows-terminal" data-hash="https://pic.imgdb.cn/item/65f7c4779f345e8d03321bad.webp"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Windows终端美化</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/webstack-hugo/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://pic.imgdb.cn/item/65fc44b29f345e8d03b73249.webp" loading="lazy" data-key="webstack-hugo" data-hash="https://pic.imgdb.cn/item/65fc44b29f345e8d03b73249.webp"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Webstack Hugo导航</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/stack/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://pic.imgdb.cn/item/65fc10be9f345e8d0349611a.webp" loading="lazy" data-key="stack" data-hash="https://pic.imgdb.cn/item/65fc10be9f345e8d0349611a.webp"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Hugo Stack主题修改</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/hugo-blog/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://pic.imgdb.cn/item/65fc06b79f345e8d0317dd50.webp" loading="lazy" data-key="hugo-blog" data-hash="https://pic.imgdb.cn/item/65fc06b79f345e8d0317dd50.webp"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">使用Hugo搭建个人博客</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/sub2clash/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://pic.imgdb.cn/item/65f00c8c9f345e8d03e0d8b8.webp" loading="lazy" data-key="sub2clash" data-hash="https://pic.imgdb.cn/item/65f00c8c9f345e8d03e0d8b8.webp"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">订阅转换之四：sub2clash项目</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2024 Tom Almighty
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.24.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

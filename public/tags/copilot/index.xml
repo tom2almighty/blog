@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Copilot on Tom&#39;s Blog</title>
+        <link>https://hugo.grew.cc/tags/copilot/</link>
+        <description>Recent content in Copilot on Tom&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <copyright>Tom Almighty</copyright>
+        <lastBuildDate>Thu, 07 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.grew.cc/tags/copilot/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>部署自己的ChatGPT并白嫖GPT4的API</title>
+        <link>https://hugo.grew.cc/p/cogpt/</link>
+        <pubDate>Thu, 07 Mar 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://hugo.grew.cc/p/cogpt/</guid>
+        <description>&lt;img src="https://pic.imgdb.cn/item/65e941339f345e8d03417c14.webp" alt="Featured image of post 部署自己的ChatGPT并白嫖GPT4的API" /&gt;&lt;blockquote&gt;
+&lt;p&gt;😀 &lt;strong&gt;前言：&lt;/strong&gt;&lt;code&gt;ChatGPT&lt;/code&gt; 官网使用不便，并且访问速度不佳，因此部署自己的 &lt;code&gt;web&lt;/code&gt; 页面，通过 &lt;code&gt;API&lt;/code&gt; 使用成为了主流选择，本文通过 &lt;code&gt;ChatGPTNextWeb&lt;/code&gt; 部署页面，并通过 &lt;code&gt;copilot&lt;/code&gt; 项目白嫖 &lt;code&gt;GPT4&lt;/code&gt; 的 &lt;code&gt;API&lt;/code&gt;。
+&lt;strong&gt;前提：&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;copilot&lt;/code&gt; 访问权限（Github 学生包可以白嫖）&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;vercel&lt;/code&gt; 账号&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;本文用到的项目地址如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/Geniucker/CoGPT&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;CoGPT&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/ChatGPTNextWeb/ChatGPT-Next-Web&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;NextChat&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;💡 &lt;code&gt;cogpt&lt;/code&gt; 可以把 &lt;code&gt;OpenAI&lt;/code&gt; &lt;code&gt;API&lt;/code&gt; 格式的请求转发到 &lt;code&gt;GitHub&lt;/code&gt; &lt;code&gt;Copilot&lt;/code&gt; 服务端，从而免费使用 &lt;code&gt;gpt-4&lt;/code&gt;。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;警告来自作者博客&#34;&gt;警告（来自作者博客）&lt;/h3&gt;
+&lt;p&gt;这个项目仅适合&lt;strong&gt;个人&lt;/strong&gt;使用。并不适合访问量巨大的盈利项目。&lt;/p&gt;
+&lt;p&gt;最佳实践方式：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;本机部署，仅自己使用（推荐）&lt;/li&gt;
+&lt;li&gt;部署在个人服务器上，仅自己使用，或和几个朋友共同使用（不公开）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;不建议的方式：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;提供公共服务
+&lt;ul&gt;
+&lt;li&gt;在一个 &lt;code&gt;ip&lt;/code&gt; 上使用了很多 &lt;code&gt;token&lt;/code&gt; 容易被判定为异常行为&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;使用 &lt;code&gt;Serverless&lt;/code&gt; 服务
+&lt;ul&gt;
+&lt;li&gt;由于 &lt;code&gt;Serverless&lt;/code&gt; 服务的 &lt;code&gt;ip&lt;/code&gt; 不固定，所以很容易被判定为异常行为&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;用于盈利项目
+&lt;ul&gt;
+&lt;li&gt;请求量过大，容易被判定为异常行为&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;请不要尝试上述任何一种不建议的方式，否则可能会导致 &lt;code&gt;GitHub&lt;/code&gt; &lt;code&gt;Copilot&lt;/code&gt; 账号，甚至 &lt;code&gt;GitHub&lt;/code&gt; 账号被封禁。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;部署服务&#34;&gt;部署服务&lt;/h3&gt;
+&lt;p&gt;可以部署到本地电脑，也可以部署到 &lt;code&gt;vps&lt;/code&gt;，这里以 &lt;code&gt;vps&lt;/code&gt; 为例。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mkdir -p /opt/cogpt &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; /opt/cogpt &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; vim docker-compose.yml
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;粘贴下面内容&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;version&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;3&amp;#39;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;services&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;cogpt-api&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;image&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;geniucker/cogpt:latest&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;environment&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;      &lt;/span&gt;- &lt;span class=&#34;l&#34;&gt;HOST=0.0.0.0&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;ports&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;      &lt;/span&gt;- &lt;span class=&#34;m&#34;&gt;8080&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;8080&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;volumes&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;      &lt;/span&gt;- &lt;span class=&#34;l&#34;&gt;./db:/app/db&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;      &lt;/span&gt;- &lt;span class=&#34;l&#34;&gt;./log:/app/log&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;restart&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;unless-stopped&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;container_name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;cogpt-api&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;完成后执行 &lt;code&gt;docker-compose up -d&lt;/code&gt; 启动服务。部署完成后打开对应的页面端口会出现 &lt;code&gt;Hi, it&#39;s CoGPT!&lt;/code&gt; 代表服务运行成功。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;💡 &lt;strong&gt;注意：如果在 &lt;code&gt;vps&lt;/code&gt; 部署，需要反向代理并配置域名，如果使用 &lt;code&gt;http&lt;/code&gt; 访问 &lt;code&gt;API&lt;/code&gt; ，而 &lt;code&gt;web&lt;/code&gt; 页面使用 &lt;code&gt;https&lt;/code&gt;，会因为不一致返回错误。&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;获取-token&#34;&gt;获取 token&lt;/h3&gt;
+&lt;p&gt;部署完成后需要获取 &lt;code&gt;token&lt;/code&gt; ，在 &lt;a class=&#34;link&#34; href=&#34;https://github.com/Geniucker/CoGPT/releases&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Release&lt;/a&gt; 页面下载对应的版本，解压压缩包，之后运行 &lt;code&gt;cogpt-get-apptoken&lt;/code&gt; 文件，终端会提示打开对应的页面，填入对应的代码，这时只需要登录有 &lt;code&gt;copilot&lt;/code&gt; 使用权限的 &lt;code&gt;Github&lt;/code&gt; 账号授权，随后终端会返回对应的 &lt;code&gt;token&lt;/code&gt;，保存 &lt;code&gt;token&lt;/code&gt;，可以多生成几个轮询使用。&lt;/p&gt;
+&lt;h2 id=&#34;部署-chatgptnextweb&#34;&gt;部署 ChatGPTNextWeb&lt;/h2&gt;
+&lt;p&gt;这里的部署非常简单，直接使用项目的 &lt;code&gt;vercel&lt;/code&gt; 一键部署，如果想随时保持更新，首先 &lt;code&gt;fork&lt;/code&gt; 官方的项目，在 &lt;code&gt;vercel&lt;/code&gt; 选择自己 &lt;code&gt;fork&lt;/code&gt; 的仓库即可，随后在 &lt;code&gt;Actions&lt;/code&gt; 页面启用 &lt;code&gt;Workflows&lt;/code&gt;，并启用 &lt;code&gt;Upstream Sync Action&lt;/code&gt;，启用之后即可开启每小时定时自动更新。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;部署的时候务必添加以下几个环境变量：&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;CODE:yourpassword &lt;span class=&#34;c1&#34;&gt;# 务必设置强密码，否则会被爆破&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;OPENAI_API_KEY:token1,token2,token3 &lt;span class=&#34;c1&#34;&gt;# 刚刚获取的 token，可以用英文逗号分隔多个 key(此项为必须)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;BASE_URL:https://cogpt.yourdomain.com &lt;span class=&#34;c1&#34;&gt;# 反向代理的域名，如果不使用 https 会出现错误&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;参考文章&#34;&gt;参考文章&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.geniucker.top/2024/01/26/%E9%80%9A%E8%BF%87-GitHub-Copilot-%E5%85%8D%E8%B4%B9%E4%BD%BF%E7%94%A8-gpt-4/#%E4%BD%BF%E7%94%A8&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;CoGPT 作者博客&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/Geniucker/CoGPT&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;CoGPT&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/ChatGPTNextWeb/ChatGPT-Next-Web/blob/main/README_CN.md&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;NextChat&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

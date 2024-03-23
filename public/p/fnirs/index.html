@@ -1,0 +1,1929 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='fNIRS Data Preprocessing使用步骤。'>
+<title>近红外数据分析步骤</title>
+
+<link rel='canonical' href='https://hugo.grew.cc/p/fnirs/'>
+
+<link rel="stylesheet" href="/scss/style.min.918b080848931f419a68278a85726ae4a3ac8d99ae37b77db96a5c50779e8a12.css"><meta property='og:title' content='近红外数据分析步骤'>
+<meta property='og:description' content='fNIRS Data Preprocessing使用步骤。'>
+<meta property='og:url' content='https://hugo.grew.cc/p/fnirs/'>
+<meta property='og:site_name' content='Tom&#39;s Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='fNIRS' /><meta property='article:published_time' content='2023-05-13T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-05-13T00:00:00&#43;00:00'/><meta property='og:image' content='https://pic.imgdb.cn/item/65f021be9f345e8d03339c1b.webp' />
+<meta name="twitter:title" content="近红外数据分析步骤">
+<meta name="twitter:description" content="fNIRS Data Preprocessing使用步骤。"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://pic.imgdb.cn/item/65f021be9f345e8d03339c1b.webp' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hucd6abb5a6ccd5c545bfe3e391578d67c_52582_300x0_resize_box_3.png" width="300"
+                            height="318" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🌓</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Tom&#39;s Blog</a></h1>
+            <h2 class="site-description">Progress Everyday!</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://grew.cc'
+                        target="_blank"
+                        title="Homepage"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/tom2almighty'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='mailto:bboyc80@gmail.com'
+                        target="_blank"
+                        title="Mail"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" />
+  <path d="M3 7l9 6l9 -6" />
+</svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://hugo.grew.cc/index.xml'
+                        target="_blank"
+                        title="RSS"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-rss" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="5" cy="19" r="1" />
+  <path d="M4 4a16 16 0 0 1 16 16" />
+  <path d="M4 11a9 9 0 0 1 9 9" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>链接</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#fnirs-data-preprocessing-宏程序介绍">fNIRS Data Preprocessing 宏程序介绍</a></li>
+    <li><a href="#脑内激活intra-brain-activation">脑内激活（Intra-brain activation）</a>
+      <ol>
+        <li><a href="#step01-hitachi">Step01. Hitachi</a></li>
+        <li><a href="#step02-trigger-check">Step02. Trigger Check</a></li>
+        <li><a href="#step03-格式转换-xlsx-to-mat">Step03. 格式转换 xlsx to mat</a></li>
+        <li><a href="#step04-带通滤波bandpass-filter">Step04. 带通滤波(bandpass-filter)</a></li>
+        <li><a href="#step05-将-txt-格式转为-xlsx-文件">Step05. 将 <code>txt</code> 格式转为 <code>xlsx</code> 文件</a></li>
+        <li><a href="#step06-提取行为数据">Step06. 提取行为数据</a></li>
+        <li><a href="#step07-整合行为数据">Step07. 整合行为数据</a></li>
+        <li><a href="#step08-添加-mark">Step08. 添加 <code>Mark</code></a></li>
+        <li><a href="#step09-基线校正和z分数转换">Step09. 基线校正和Z分数转换</a></li>
+        <li><a href="#step10-分离条件">Step10. 分离条件</a></li>
+        <li><a href="#step11-计算平均脑激活">Step11. 计算平均脑激活</a></li>
+        <li><a href="#step12-将所有被试数据按条件整合">Step12. 将所有被试数据按条件整合</a></li>
+        <li><a href="#step13-将所有被试数据集中到一个-sheet">Step13. 将所有被试数据集中到一个 Sheet</a></li>
+        <li><a href="#step14-整合条件">Step14. 整合条件</a></li>
+        <li><a href="#step15-切分通道">Step15. 切分通道</a></li>
+        <li><a href="#step16-平均-run">Step16. 平均 <code>run</code></a></li>
+      </ol>
+    </li>
+    <li><a href="#脑间同步inter-brain-neural-synchronization-">脑间同步（Inter-brain neural synchronization ）</a>
+      <ol>
+        <li><a href="#step01---step09">Step01 - Step09</a></li>
+        <li><a href="#step10-分离条件-1">Step10. 分离条件</a></li>
+        <li><a href="#step11-将所有被试数据按条件整合">Step11. 将所有被试数据按条件整合</a></li>
+        <li><a href="#step12-将所有被试数据集中到一个-sheet">Step12. 将所有被试数据集中到一个 Sheet</a></li>
+        <li><a href="#step13-计算基于-ins-的相关矩阵">Step13. 计算基于 INS 的相关矩阵</a></li>
+        <li><a href="#step14-提取相关数据">Step14. 提取相关数据</a></li>
+        <li><a href="#step15-平均-run">Step15. 平均 run</a></li>
+        <li><a href="#step16-配对样本-t-检验">Step16. 配对样本 t 检验</a></li>
+        <li><a href="#step17-切分通道">Step17. 切分通道</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/fnirs/">
+                
+                    <img src="https://pic.imgdb.cn/item/65f021be9f345e8d03339c1b.webp" loading="lazy" alt="Featured image of post 近红外数据分析步骤" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="background-color: #2a9d8f; color: #fff;">
+                学习笔记
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/fnirs/">近红外数据分析步骤</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            fNIRS Data Preprocessing使用步骤。
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2023-05-13</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 13 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="fnirs-data-preprocessing使用步骤">fNIRS Data Preprocessing使用步骤</h1>
+<p>本文是近红外数据分析步骤，适用于<code>joint Simon task</code>，使用 宏程序<code>fNIRS Data Preprocessing</code> 以及其他宏程序完成，<code>ETG7100</code>型号设备数据格式为<code>编号_HBA_Probe1_Oxy.csv</code>，编号自定义，最好写成<code>sub001_run1</code>这种形式，命名最好采用单数，即第1对被试为<code>sub01</code>，第2对为<code>sub03</code>，方便后续分割两个被试的数据。</p>
+<h2 id="fnirs-data-preprocessing-宏程序介绍">fNIRS Data Preprocessing 宏程序介绍</h2>
+<p>程序界面包括三部分，步骤选择、设置、文件列表查看，如下图。</p>
+<p><img src="https://pic.imgdb.cn/item/65f01f4e9f345e8d032a4b57.webp"
+	
+	
+	
+	loading="lazy"
+	
+		alt="程序界面"
+	
+	
+></p>
+<p>主要使用步骤为首先选择源数据路径，粘贴进对话框后点击<code>File List</code>查看是否正确，然后在 <code>Type of calculation</code> 选择程序，点击<code>Set </code>设置，设置无误后点击 <code>Start</code>开始。</p>
+<h2 id="脑内激活intra-brain-activation">脑内激活（Intra-brain activation）</h2>
+<p>前面步骤使用 <code>fNIRS Data Preprocessing</code>程序完成，十三步后可使用自定义宏程序。</p>
+<h3 id="step01-hitachi">Step01. Hitachi</h3>
+<p>使用 <code>Excel</code> 程序<code>Hitachi</code>更新数据格式</p>
+<ol>
+<li>输入目标文件的路径保存 <code>Oxy</code> 数据，按 <code>File List</code> 按钮</li>
+<li>从<code>Type of Calculation</code>中选择<code>Hitachi</code>，按<code>Set</code>按钮</li>
+<li>按 <code>Start</code>开始程序</li>
+<li>结束后程序<strong>不会</strong>输出新的文件</li>
+</ol>
+<h3 id="step02-trigger-check">Step02. Trigger Check</h3>
+<ol>
+<li>输入目标文件路径，按 <code>File List</code> 按钮</li>
+<li>输入结果文件<code>Trigger.xlsx</code>的保存路径</li>
+<li>从<code>Type of Calculation</code>中选择<code>Trigger Check</code>，按<code>Set</code>按钮</li>
+<li>按 <code>Start</code>开始程序，对话框中输入 <code>1</code></li>
+<li>结束后程序<strong>会</strong>输出新的文件 <code>Trigger.xlsx</code></li>
+</ol>
+<h3 id="step03-格式转换-xlsx-to-mat">Step03. 格式转换 xlsx to mat</h3>
+<ol>
+<li>打开 <code>Matlab</code>，路径选择到 <code>Hitachi</code>后的文件路径，左侧出现文件后即成功</li>
+<li>输入下列代码转换格式</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="line"><span class="cl"><span class="k">for</span> <span class="nb">i</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="mi">9</span> # <span class="n">i代表</span> <span class="n">sub0</span> 后的数量 这里表示 <span class="n">sub01到</span> <span class="n">sub09</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="nb">j</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="mi">2</span> # <span class="nb">j</span> 代表<span class="n">run数量</span>，有几个修改一下即可
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">k</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="mi">4</span> # <span class="n">k</span> 代表 <span class="n">Probe数量</span>，即光极片数量
+</span></span><span class="line"><span class="cl"><span class="n">a</span> <span class="p">=</span> <span class="p">[</span><span class="s">&#39;sub0&#39;</span><span class="p">,</span><span class="n">num2str</span><span class="p">(</span><span class="nb">i</span><span class="p">),</span><span class="s">&#39;_run&#39;</span><span class="p">,</span> <span class="n">num2str</span><span class="p">(</span><span class="nb">j</span><span class="p">),</span><span class="s">&#39;_HBA_Probe&#39;</span><span class="p">,</span> <span class="n">num2str</span><span class="p">(</span><span class="n">k</span><span class="p">),</span><span class="s">&#39;_Oxy.csv&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">xlsread</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">b</span> <span class="p">=</span> <span class="p">[</span><span class="s">&#39;sub0&#39;</span><span class="p">,</span><span class="n">num2str</span><span class="p">(</span><span class="nb">i</span><span class="p">),</span><span class="s">&#39;_run&#39;</span><span class="p">,</span> <span class="n">num2str</span><span class="p">(</span><span class="nb">j</span><span class="p">),</span><span class="s">&#39;_HBA_Probe&#39;</span><span class="p">,</span> <span class="n">num2str</span><span class="p">(</span><span class="n">k</span><span class="p">),</span><span class="s">&#39;_Oxy.mat&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">save</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="3">
+<li>上述代码可以修改 01-09编号的被试数据，如果要修改10以后的数据，可以将第4 、6行代码中 <code>sub0</code> 改为 <code>sub1</code></li>
+<li>回车键执行代码，被试超过10需要多次执行</li>
+</ol>
+<h3 id="step04-带通滤波bandpass-filter">Step04. 带通滤波(bandpass-filter)</h3>
+<p>使用 <code>Matlab</code>代码进行带通滤波（通常设置0.01-0.1Hz）（作用是降噪）,将 <code>matlab</code>代码文件和转换格式后的文件放到一个文件夹下</p>
+<ol>
+<li>将<code>bandpass-filter</code>设置为当前路径</li>
+<li>打开 M 文件<code>data_bpfilt.m</code>，将<code>fs</code>修改为正确采样率（默认设置为fs=10）并保存</li>
+<li>打开<code>filt_all.m</code>，设置正确的文件路径，该路径需包含<code>data_bpfilt.m</code>文件,文件路径后记得加“\”</li>
+<li>按<code>Run</code>按钮运行<code>filt_all.m</code>代码</li>
+</ol>
+<p><img src="C:%5cUsers%5ccc%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20230513193756552.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image-20230513193756552"
+	
+	
+></p>
+<h3 id="step05-将-txt-格式转为-xlsx-文件">Step05. 将 <code>txt</code> 格式转为 <code>xlsx</code> 文件</h3>
+<ol>
+<li>将 <code>Eprime</code>数据 <code>txt</code> 格式文件整理到一起</li>
+<li>使用 <code>Make xls files</code>程序读取</li>
+<li>需要输入源文件路径和保存路径</li>
+<li>保存后会输出新的 <code>xlsx</code> 文件</li>
+</ol>
+<h3 id="step06-提取行为数据">Step06. 提取行为数据</h3>
+<ol>
+<li>输入源文件路径</li>
+<li>选择 <code>BehavData_gather</code>程序</li>
+<li>结束后不会生成新的文件，会在原有文件生成新的工作表</li>
+</ol>
+<h3 id="step07-整合行为数据">Step07. 整合行为数据</h3>
+<ol>
+<li>输入目标文件 <code>Eprime (.xls)</code>的路径，按 <code>File List</code>按钮</li>
+<li>输入行为数据的目标保存路径</li>
+<li>输入行为数据的文件名（保留“EprimeData.xlsx”）</li>
+<li>输入包含行为数据的表格编号，这里为 <code>2</code></li>
+<li>选择 <code>Gather the files</code>，并开始程序</li>
+</ol>
+<h3 id="step08-添加-mark">Step08. 添加 <code>Mark</code></h3>
+<ol>
+<li>
+<p>打开第 7 步后生成的文件 <code>EprimeData.xlsx</code></p>
+</li>
+<li>
+<p>输入包含带通滤波后的Oxy的目标文件的路径(第4步)</p>
+</li>
+<li>
+<p>输入“Sheet number of the data”，这里为 1</p>
+</li>
+<li>
+<p>选择 <code>Mark Add</code>，<code>Set</code> 并 <code>Start</code></p>
+</li>
+<li>
+<p>结束后可再执行一次 <code>Trigger Check</code> 程序，步骤与 <code>Step02</code>一致，Step02第4步对话框选择时输入 <code>2</code></p>
+</li>
+</ol>
+<blockquote>
+<p>前八步都是进行mark补充的功能，如果Eprime编实验程序时，设置刺激出现前打一个mark，刺激刚出现时打一个mark，刺激出现结束后两秒打一个mark。Mark在设计程序时就已经打好的话，那么前八步就不用操作了。</p>
+</blockquote>
+<h3 id="step09-基线校正和z分数转换">Step09. 基线校正和Z分数转换</h3>
+<ol>
+<li>使用添加 <code>mark</code> 后的 <code>oxy</code>文件，如果文件少 <code>mark</code> 会报错</li>
+<li>使用程序<code>Baseline correction</code></li>
+<li>结束后不会生成新的文件</li>
+</ol>
+<h3 id="step10-分离条件">Step10. 分离条件</h3>
+<ol>
+<li>输入基线校正和Z分数转换后的数据路径</li>
+<li>选择程序 <code>Data Cut (mode1)</code></li>
+<li>结束后不会生成新的文件</li>
+</ol>
+<h3 id="step11-计算平均脑激活">Step11. 计算平均脑激活</h3>
+<ol>
+<li>输入分离条件后的数据文件夹为源文件夹</li>
+<li>选择程序 <code>Average Calculation</code>计算平均脑激活</li>
+<li>结束后不会生成新的文件</li>
+</ol>
+<h3 id="step12-将所有被试数据按条件整合">Step12. 将所有被试数据按条件整合</h3>
+<ol>
+<li>输入包含平均脑激活的目标文件的路径</li>
+<li>输入保存文件的目标路径</li>
+<li>输入文件名保存不同实验条件的平均脑激活数据，Condition1/2/3/4，并选择相应的Sheet number，第1个条件在 <code>Sheet1</code>，以此类推</li>
+<li>选择程序 <code>Gather the files</code>，按 <code>Set</code> 并 <code>Start</code></li>
+</ol>
+<h3 id="step13-将所有被试数据集中到一个-sheet">Step13. 将所有被试数据集中到一个 Sheet</h3>
+<ol>
+<li>输入包含Condition文件目标文件的路径</li>
+<li>选择程序 <code>Data Gather(mode1)</code></li>
+<li>按 <code>Set</code> 并 <code>Start</code></li>
+</ol>
+<h3 id="step14-整合条件">Step14. 整合条件</h3>
+<ol>
+<li>接下来步骤需要自己新建宏程序</li>
+<li>在个人宏工作簿中点击 <code>开发工具-Visual Basic</code></li>
+<li>点击<code>插入-模块</code></li>
+<li>输入下列代码：</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-vb" data-lang="vb"><span class="line"><span class="cl"><span class="k">Option</span> <span class="n">Explicit</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">Sub</span> <span class="nf">组内整合条件</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">Dim</span> <span class="n">ws</span> <span class="ow">As</span> <span class="n">Worksheet</span>
+</span></span><span class="line"><span class="cl">    <span class="k">Dim</span> <span class="n">wb</span> <span class="ow">As</span> <span class="n">Workbook</span>
+</span></span><span class="line"><span class="cl">    <span class="k">Dim</span> <span class="n">newWb</span> <span class="ow">As</span> <span class="n">Workbook</span>
+</span></span><span class="line"><span class="cl">    <span class="k">Dim</span> <span class="n">myPath</span> <span class="ow">As</span> <span class="kt">String</span>
+</span></span><span class="line"><span class="cl">    <span class="k">Dim</span> <span class="n">myFile</span> <span class="ow">As</span> <span class="kt">String</span>
+</span></span><span class="line"><span class="cl">    <span class="k">Dim</span> <span class="n">i</span> <span class="ow">As</span> <span class="kt">Long</span>
+</span></span><span class="line"><span class="cl">    <span class="k">Dim</span> <span class="n">col</span> <span class="ow">As</span> <span class="kt">Long</span>
+</span></span><span class="line"><span class="cl">    <span class="k">Dim</span> <span class="n">lastRow</span> <span class="ow">As</span> <span class="kt">Long</span>
+</span></span><span class="line"><span class="cl">    <span class="k">Dim</span> <span class="n">header</span> <span class="ow">As</span> <span class="n">Range</span>
+</span></span><span class="line"><span class="cl">    <span class="k">Dim</span> <span class="n">filtereRange</span> <span class="ow">As</span> <span class="n">Range</span>
+</span></span><span class="line"><span class="cl">    <span class="k">Dim</span> <span class="n">filterValue</span> <span class="ow">As</span> <span class="kt">String</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">Application</span><span class="p">.</span><span class="n">ScreenUpdating</span> <span class="o">=</span> <span class="k">False</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c">&#39; 获取当前文件夹路径&#39;
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>    <span class="n">myPath</span> <span class="o">=</span> <span class="n">InputBox</span><span class="p">(</span><span class="s">&#34;请输入文件路径:&#34;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="s">&#34;\&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">myFile</span> <span class="o">=</span> <span class="n">Dir</span><span class="p">(</span><span class="n">myPath</span> <span class="o">&amp;</span> <span class="s">&#34;*.xlsx&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c">&#39; 新建all_condition工作簿&#39;
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>    <span class="k">Set</span> <span class="n">newWb</span> <span class="o">=</span> <span class="n">Workbooks</span><span class="p">.</span><span class="n">Add</span>
+</span></span><span class="line"><span class="cl">    <span class="n">newWb</span><span class="p">.</span><span class="n">SaveAs</span> <span class="n">myPath</span> <span class="o">&amp;</span> <span class="s">&#34;all_condition.xlsx&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">Set</span> <span class="n">ws</span> <span class="o">=</span> <span class="n">newWb</span><span class="p">.</span><span class="n">Worksheets</span><span class="p">(</span><span class="n">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">col</span> <span class="o">=</span> <span class="n">3</span>
+</span></span><span class="line"><span class="cl">    <span class="c">&#39; 遍历目录下的所有Excel文件&#39;
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>    <span class="k">Do</span> <span class="k">While</span> <span class="n">myFile</span> <span class="o">&lt;&gt;</span> <span class="s">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">If</span> <span class="n">myFile</span> <span class="o">&lt;&gt;</span> <span class="s">&#34;all_condition.xlsx&#34;</span> <span class="k">Then</span>
+</span></span><span class="line"><span class="cl">            <span class="c">&#39; 打开原始工作簿&#39;
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>            <span class="k">Set</span> <span class="n">wb</span> <span class="o">=</span> <span class="n">Workbooks</span><span class="p">.</span><span class="n">Open</span><span class="p">(</span><span class="n">myPath</span> <span class="o">&amp;</span> <span class="n">myFile</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">            <span class="c">&#39; 复制第2个工作表的第3到6列到新工作簿&#39;
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>            <span class="k">With</span> <span class="n">wb</span><span class="p">.</span><span class="n">Worksheets</span><span class="p">(</span><span class="s">&#34;Sheet1DataListSPSS&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="n">lastRow</span> <span class="o">=</span> <span class="p">.</span><span class="n">Cells</span><span class="p">(.</span><span class="n">Rows</span><span class="p">.</span><span class="n">Count</span><span class="p">,</span> <span class="n">3</span><span class="p">).</span><span class="n">End</span><span class="p">(</span><span class="n">xlUp</span><span class="p">).</span><span class="n">Row</span>
+</span></span><span class="line"><span class="cl">                <span class="p">.</span><span class="n">Range</span><span class="p">(.</span><span class="n">Cells</span><span class="p">(</span><span class="n">1</span><span class="p">,</span> <span class="n">3</span><span class="p">),</span> <span class="p">.</span><span class="n">Cells</span><span class="p">(</span><span class="n">lastRow</span><span class="p">,</span> <span class="n">6</span><span class="p">)).</span><span class="n">Copy</span> <span class="n">ws</span><span class="p">.</span><span class="n">Cells</span><span class="p">(</span><span class="n">1</span><span class="p">,</span> <span class="n">col</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">End</span> <span class="k">With</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">            <span class="c">&#39; 补充表头&#39;
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>            <span class="k">For</span> <span class="n">i</span> <span class="o">=</span> <span class="n">1</span> <span class="k">To</span> <span class="n">4</span>
+</span></span><span class="line"><span class="cl">                <span class="n">ws</span><span class="p">.</span><span class="n">Cells</span><span class="p">(</span><span class="n">1</span><span class="p">,</span> <span class="n">col</span> <span class="o">+</span> <span class="n">i</span> <span class="o">-</span> <span class="n">1</span><span class="p">).</span><span class="n">Value</span> <span class="o">=</span> <span class="n">ws</span><span class="p">.</span><span class="n">Cells</span><span class="p">(</span><span class="n">1</span><span class="p">,</span> <span class="n">col</span> <span class="o">+</span> <span class="n">i</span> <span class="o">-</span> <span class="n">1</span><span class="p">).</span><span class="n">Value</span> <span class="o">&amp;</span> <span class="s">&#34;_&#34;</span> <span class="o">&amp;</span> <span class="n">Replace</span><span class="p">(</span><span class="n">myFile</span><span class="p">,</span> <span class="s">&#34;.xlsx&#34;</span><span class="p">,</span> <span class="s">&#34;&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">Next</span> <span class="n">i</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">            <span class="n">col</span> <span class="o">=</span> <span class="n">col</span> <span class="o">+</span> <span class="n">4</span>
+</span></span><span class="line"><span class="cl">            <span class="n">wb</span><span class="p">.</span><span class="n">Close</span> <span class="n">SaveChanges</span><span class="p">:</span><span class="o">=</span><span class="k">False</span>
+</span></span><span class="line"><span class="cl">        <span class="k">End</span> <span class="k">If</span>
+</span></span><span class="line"><span class="cl">        <span class="n">myFile</span> <span class="o">=</span> <span class="n">Dir</span>
+</span></span><span class="line"><span class="cl">    <span class="k">Loop</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c">&#39;复制第一个原始工作簿的前两列&#39;
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>    <span class="k">Set</span> <span class="n">wb</span> <span class="o">=</span> <span class="n">Workbooks</span><span class="p">.</span><span class="n">Open</span><span class="p">(</span><span class="n">myPath</span> <span class="o">&amp;</span> <span class="n">Dir</span><span class="p">(</span><span class="n">myPath</span> <span class="o">&amp;</span> <span class="s">&#34;Condition1.xlsx&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="k">With</span> <span class="n">wb</span><span class="p">.</span><span class="n">Worksheets</span><span class="p">(</span><span class="s">&#34;Sheet1DataListSPSS&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">lastRow</span> <span class="o">=</span> <span class="p">.</span><span class="n">Cells</span><span class="p">(.</span><span class="n">Rows</span><span class="p">.</span><span class="n">Count</span><span class="p">,</span> <span class="n">1</span><span class="p">).</span><span class="n">End</span><span class="p">(</span><span class="n">xlUp</span><span class="p">).</span><span class="n">Row</span>
+</span></span><span class="line"><span class="cl">        <span class="p">.</span><span class="n">Range</span><span class="p">(.</span><span class="n">Cells</span><span class="p">(</span><span class="n">1</span><span class="p">,</span> <span class="n">1</span><span class="p">),</span> <span class="p">.</span><span class="n">Cells</span><span class="p">(</span><span class="n">lastRow</span><span class="p">,</span> <span class="n">2</span><span class="p">)).</span><span class="n">Copy</span> <span class="n">ws</span><span class="p">.</span><span class="n">Cells</span><span class="p">(</span><span class="n">1</span><span class="p">,</span> <span class="n">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">End</span> <span class="k">With</span>
+</span></span><span class="line"><span class="cl">    <span class="n">wb</span><span class="p">.</span><span class="n">Close</span> <span class="n">SaveChanges</span><span class="p">:</span><span class="o">=</span><span class="k">False</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c">&#39; 保存新工作簿修改&#39;
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>    <span class="n">newWb</span><span class="p">.</span><span class="n">Save</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c">&#39; 复制第一个工作表&#39;
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>    <span class="n">ws</span><span class="p">.</span><span class="n">Copy</span> <span class="n">After</span><span class="p">:</span><span class="o">=</span><span class="n">ws</span>
+</span></span><span class="line"><span class="cl">    <span class="k">Set</span> <span class="n">ws</span> <span class="o">=</span> <span class="n">newWb</span><span class="p">.</span><span class="n">Worksheets</span><span class="p">(</span><span class="n">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c">&#39; 添加subject列&#39;
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>    <span class="n">ws</span><span class="p">.</span><span class="n">Columns</span><span class="p">(</span><span class="n">2</span><span class="p">).</span><span class="n">Insert</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ws</span><span class="p">.</span><span class="n">Cells</span><span class="p">(</span><span class="n">1</span><span class="p">,</span> <span class="n">1</span><span class="p">).</span><span class="n">Value</span> <span class="o">=</span> <span class="s">&#34;subject_pair&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ws</span><span class="p">.</span><span class="n">Cells</span><span class="p">(</span><span class="n">1</span><span class="p">,</span> <span class="n">2</span><span class="p">).</span><span class="n">Value</span> <span class="o">=</span> <span class="s">&#34;subject&#34;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c">&#39; 修改subject列内容&#39;
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>    <span class="n">lastRow</span> <span class="o">=</span> <span class="n">ws</span><span class="p">.</span><span class="n">Cells</span><span class="p">(</span><span class="n">ws</span><span class="p">.</span><span class="n">Rows</span><span class="p">.</span><span class="n">Count</span><span class="p">,</span> <span class="n">1</span><span class="p">).</span><span class="n">End</span><span class="p">(</span><span class="n">xlUp</span><span class="p">).</span><span class="n">Row</span>
+</span></span><span class="line"><span class="cl">    <span class="k">For</span> <span class="n">i</span> <span class="o">=</span> <span class="n">2</span> <span class="k">To</span> <span class="n">lastRow</span>
+</span></span><span class="line"><span class="cl">        <span class="k">Dim</span> <span class="n">parts</span><span class="p">()</span> <span class="ow">As</span> <span class="kt">String</span>
+</span></span><span class="line"><span class="cl">        <span class="n">parts</span> <span class="o">=</span> <span class="n">Split</span><span class="p">(</span><span class="n">ws</span><span class="p">.</span><span class="n">Cells</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">1</span><span class="p">).</span><span class="n">Value</span><span class="p">,</span> <span class="s">&#34;_&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">If</span> <span class="n">InStr</span><span class="p">(</span><span class="n">parts</span><span class="p">(</span><span class="n">2</span><span class="p">),</span> <span class="s">&#34;Probe1&#34;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">0</span> <span class="ow">Or</span> <span class="n">InStr</span><span class="p">(</span><span class="n">parts</span><span class="p">(</span><span class="n">2</span><span class="p">),</span> <span class="s">&#34;Probe2&#34;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">0</span> <span class="k">Then</span>
+</span></span><span class="line"><span class="cl">            <span class="n">ws</span><span class="p">.</span><span class="n">Cells</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">2</span><span class="p">).</span><span class="n">Value</span> <span class="o">=</span> <span class="n">parts</span><span class="p">(</span><span class="n">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="s">&#34;_&#34;</span> <span class="o">&amp;</span> <span class="n">parts</span><span class="p">(</span><span class="n">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">Else</span>
+</span></span><span class="line"><span class="cl">            <span class="n">ws</span><span class="p">.</span><span class="n">Cells</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">2</span><span class="p">).</span><span class="n">Value</span> <span class="o">=</span> <span class="s">&#34;sub&#34;</span> <span class="o">&amp;</span> <span class="n">Format</span><span class="p">(</span><span class="k">CInt</span><span class="p">(</span><span class="n">Mid</span><span class="p">(</span><span class="n">parts</span><span class="p">(</span><span class="n">0</span><span class="p">),</span> <span class="n">4</span><span class="p">))</span> <span class="o">+</span> <span class="n">1</span><span class="p">,</span> <span class="s">&#34;000&#34;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="s">&#34;_&#34;</span> <span class="o">&amp;</span> <span class="n">parts</span><span class="p">(</span><span class="n">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="c">&#39; 交换第3到6列和第7到10列&#39;
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>            <span class="k">Dim</span> <span class="n">temp</span> <span class="ow">As</span> <span class="kt">Variant</span>
+</span></span><span class="line"><span class="cl">            <span class="k">Dim</span> <span class="n">j</span> <span class="ow">As</span> <span class="kt">Long</span>
+</span></span><span class="line"><span class="cl">            <span class="k">Dim</span> <span class="n">k</span> <span class="ow">As</span> <span class="kt">Long</span>
+</span></span><span class="line"><span class="cl">            <span class="k">For</span> <span class="n">j</span> <span class="o">=</span> <span class="n">4</span> <span class="k">To</span> <span class="n">7</span>
+</span></span><span class="line"><span class="cl">                <span class="n">temp</span> <span class="o">=</span> <span class="n">ws</span><span class="p">.</span><span class="n">Cells</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">).</span><span class="n">Value</span>
+</span></span><span class="line"><span class="cl">                <span class="n">ws</span><span class="p">.</span><span class="n">Cells</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">).</span><span class="n">Value</span> <span class="o">=</span> <span class="n">ws</span><span class="p">.</span><span class="n">Cells</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="o">+</span> <span class="n">4</span><span class="p">).</span><span class="n">Value</span>
+</span></span><span class="line"><span class="cl">                <span class="n">ws</span><span class="p">.</span><span class="n">Cells</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="o">+</span> <span class="n">4</span><span class="p">).</span><span class="n">Value</span> <span class="o">=</span> <span class="n">temp</span>
+</span></span><span class="line"><span class="cl">            <span class="k">Next</span> <span class="n">j</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">            <span class="c">&#39; 交换第11到14列和第15到18列&#39;
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>            <span class="k">For</span> <span class="n">k</span> <span class="o">=</span> <span class="n">12</span> <span class="k">To</span> <span class="n">15</span>
+</span></span><span class="line"><span class="cl">                <span class="n">temp</span> <span class="o">=</span> <span class="n">ws</span><span class="p">.</span><span class="n">Cells</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">k</span><span class="p">).</span><span class="n">Value</span>
+</span></span><span class="line"><span class="cl">                <span class="n">ws</span><span class="p">.</span><span class="n">Cells</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">k</span><span class="p">).</span><span class="n">Value</span> <span class="o">=</span> <span class="n">ws</span><span class="p">.</span><span class="n">Cells</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">k</span> <span class="o">+</span> <span class="n">4</span><span class="p">).</span><span class="n">Value</span>
+</span></span><span class="line"><span class="cl">                <span class="n">ws</span><span class="p">.</span><span class="n">Cells</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">k</span> <span class="o">+</span> <span class="n">4</span><span class="p">).</span><span class="n">Value</span> <span class="o">=</span> <span class="n">temp</span>
+</span></span><span class="line"><span class="cl">            <span class="k">Next</span> <span class="n">k</span>
+</span></span><span class="line"><span class="cl">        <span class="k">End</span> <span class="k">If</span>
+</span></span><span class="line"><span class="cl">    <span class="k">Next</span> <span class="n">i</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c">&#39; 删除第1列并排序&#39;
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>    <span class="n">ws</span><span class="p">.</span><span class="n">Columns</span><span class="p">(</span><span class="n">1</span><span class="p">).</span><span class="n">Delete</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ws</span><span class="p">.</span><span class="n">Sort</span><span class="p">.</span><span class="n">SortFields</span><span class="p">.</span><span class="n">Clear</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ws</span><span class="p">.</span><span class="n">Sort</span><span class="p">.</span><span class="n">SortFields</span><span class="p">.</span><span class="n">Add</span> <span class="n">Key</span><span class="p">:</span><span class="o">=</span><span class="n">ws</span><span class="p">.</span><span class="n">Range</span><span class="p">(</span><span class="s">&#34;A2&#34;</span><span class="p">),</span> <span class="n">SortOn</span><span class="p">:</span><span class="o">=</span><span class="n">xlSortOnValues</span><span class="p">,</span> <span class="n">Order</span><span class="p">:</span><span class="o">=</span><span class="n">xlAscending</span><span class="p">,</span> <span class="n">DataOption</span><span class="p">:</span><span class="o">=</span><span class="n">xlSortNormal</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ws</span><span class="p">.</span><span class="n">Sort</span><span class="p">.</span><span class="n">SortFields</span><span class="p">.</span><span class="n">Add</span> <span class="n">Key</span><span class="p">:</span><span class="o">=</span><span class="n">ws</span><span class="p">.</span><span class="n">Range</span><span class="p">(</span><span class="s">&#34;B2&#34;</span><span class="p">),</span> <span class="n">SortOn</span><span class="p">:</span><span class="o">=</span><span class="n">xlSortOnValues</span><span class="p">,</span> <span class="n">Order</span><span class="p">:</span><span class="o">=</span><span class="n">xlAscending</span><span class="p">,</span> <span class="n">DataOption</span><span class="p">:</span><span class="o">=</span><span class="n">xlSortNormal</span>
+</span></span><span class="line"><span class="cl">    <span class="k">With</span> <span class="n">ws</span><span class="p">.</span><span class="n">Sort</span>
+</span></span><span class="line"><span class="cl">        <span class="p">.</span><span class="n">SetRange</span> <span class="n">ws</span><span class="p">.</span><span class="n">Range</span><span class="p">(</span><span class="s">&#34;A1&#34;</span><span class="p">).</span><span class="n">CurrentRegion</span>
+</span></span><span class="line"><span class="cl">        <span class="p">.</span><span class="n">Header</span> <span class="o">=</span> <span class="n">xlYes</span>
+</span></span><span class="line"><span class="cl">        <span class="p">.</span><span class="n">MatchCase</span> <span class="o">=</span> <span class="k">False</span>
+</span></span><span class="line"><span class="cl">        <span class="p">.</span><span class="n">Orientation</span> <span class="o">=</span> <span class="n">xlTopToBottom</span>
+</span></span><span class="line"><span class="cl">        <span class="p">.</span><span class="n">SortMethod</span> <span class="o">=</span> <span class="n">xlPinYin</span>
+</span></span><span class="line"><span class="cl">        <span class="p">.</span><span class="n">Apply</span>
+</span></span><span class="line"><span class="cl">    <span class="k">End</span> <span class="k">With</span>
+</span></span><span class="line"><span class="cl">    <span class="c">&#39; Turn on screen updating&#39;
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>    <span class="n">Application</span><span class="p">.</span><span class="n">ScreenUpdating</span> <span class="o">=</span> <span class="k">True</span>
+</span></span><span class="line"><span class="cl">    <span class="n">newWb</span><span class="p">.</span><span class="n">Save</span>
+</span></span><span class="line"><span class="cl"><span class="k">End</span> <span class="k">Sub</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="5">
+<li>保存后运行，输入 <code>Step13</code> 后的文件路径后点击确定开始</li>
+</ol>
+<blockquote>
+<p>**注意：**这里程序会将 <code>Probe1 &amp; 2</code>的数据 和<code>Probe3 &amp; 4</code>的数据分开，将 <code>Probe3 &amp; 4</code>的数据编号加1，<strong>如果被试编号不是单数命名则不能使用此程序</strong></p>
+</blockquote>
+<blockquote>
+<p>同时程序会将被试对中第2个被试的 condition1 和 condition2的数据交换，condition3 和 condition4的数据交换。原因如下：</p>
+<p>Eprime 程序中 Mark 设置为 condition1 为 <code>左侧-红色</code>刺激，condition2为 <code>右侧-绿色</code>刺激，condition3为 <code>右侧-红色</code>刺激，condition2为 <code>左侧-绿色</code>刺激，因此交换后被试对中两名对应的一致性和反应性相符。</p>
+</blockquote>
+<h3 id="step15-切分通道">Step15. 切分通道</h3>
+<ol>
+<li>新建一个宏程序，粘贴下面代码</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-vb" data-lang="vb"><span class="line"><span class="cl"><span class="k">Option</span> <span class="n">Explicit</span>
+</span></span><span class="line"><span class="cl"><span class="c">&#39;切分通道
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="k">Sub</span> <span class="nf">组内切分通道</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">Dim</span> <span class="n">wbSource</span> <span class="ow">As</span> <span class="n">Workbook</span>
+</span></span><span class="line"><span class="cl">    <span class="k">Dim</span> <span class="n">wsSource</span> <span class="ow">As</span> <span class="n">Worksheet</span>
+</span></span><span class="line"><span class="cl">    <span class="k">Dim</span> <span class="n">wsNew</span> <span class="ow">As</span> <span class="n">Worksheet</span>
+</span></span><span class="line"><span class="cl">    <span class="k">Dim</span> <span class="n">rngData</span> <span class="ow">As</span> <span class="n">Range</span>
+</span></span><span class="line"><span class="cl">    <span class="k">Dim</span> <span class="n">cell</span> <span class="ow">As</span> <span class="n">Range</span>
+</span></span><span class="line"><span class="cl">    <span class="k">Dim</span> <span class="n">filterValue</span> <span class="ow">As</span> <span class="kt">Variant</span>
+</span></span><span class="line"><span class="cl">    <span class="k">Dim</span> <span class="n">dict</span> <span class="ow">As</span> <span class="kt">Object</span>
+</span></span><span class="line"><span class="cl">    <span class="k">Dim</span> <span class="n">key</span> <span class="ow">As</span> <span class="kt">Variant</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c">&#39; 1. 选择要执行的工作簿，将输入的工作簿第2个工作表设置为活动表
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>    <span class="k">Set</span> <span class="n">wbSource</span> <span class="o">=</span> <span class="n">Workbooks</span><span class="p">.</span><span class="n">Open</span><span class="p">(</span><span class="n">Application</span><span class="p">.</span><span class="n">GetOpenFilename</span><span class="p">(</span><span class="n">FileFilter</span><span class="p">:</span><span class="o">=</span><span class="s">&#34;Excel Files (*.xls; *.xlsx; *.xlsm),*.xls; *.xlsx; *.xlsm&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="k">Set</span> <span class="n">wsSource</span> <span class="o">=</span> <span class="n">wbSource</span><span class="p">.</span><span class="n">Worksheets</span><span class="p">(</span><span class="n">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">wsSource</span><span class="p">.</span><span class="n">Activate</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c">&#39; 2. 根据第2列值筛选表格数据
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>    <span class="k">Set</span> <span class="n">rngData</span> <span class="o">=</span> <span class="n">wsSource</span><span class="p">.</span><span class="n">Range</span><span class="p">(</span><span class="s">&#34;A1&#34;</span><span class="p">).</span><span class="n">CurrentRegion</span>
+</span></span><span class="line"><span class="cl">    <span class="k">Set</span> <span class="n">dict</span> <span class="o">=</span> <span class="n">CreateObject</span><span class="p">(</span><span class="s">&#34;Scripting.Dictionary&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c">&#39; a. 重复值只筛选一次，空白值不筛选，从第2列第2个单元格开始筛选
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>    <span class="k">For</span> <span class="k">Each</span> <span class="n">cell</span> <span class="ow">In</span> <span class="n">rngData</span><span class="p">.</span><span class="n">Columns</span><span class="p">(</span><span class="n">2</span><span class="p">).</span><span class="n">Cells</span>
+</span></span><span class="line"><span class="cl">        <span class="k">If</span> <span class="n">cell</span><span class="p">.</span><span class="n">Row</span> <span class="o">&gt;</span> <span class="n">1</span> <span class="ow">And</span> <span class="k">Not</span> <span class="n">IsEmpty</span><span class="p">(</span><span class="n">cell</span><span class="p">.</span><span class="n">Value</span><span class="p">)</span> <span class="k">Then</span>
+</span></span><span class="line"><span class="cl">            <span class="n">dict</span><span class="p">(</span><span class="n">cell</span><span class="p">.</span><span class="n">Value</span><span class="p">)</span> <span class="o">=</span> <span class="n">1</span>
+</span></span><span class="line"><span class="cl">        <span class="k">End</span> <span class="k">If</span>
+</span></span><span class="line"><span class="cl">    <span class="k">Next</span> <span class="n">cell</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c">&#39; b. 根据筛选值创建新表，表名字为筛选值
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>    <span class="c">&#39; c. 将筛选后的值保存到对应名字的新表中
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>    <span class="c">&#39; d. 筛选结束后取消筛选
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>    <span class="n">Application</span><span class="p">.</span><span class="n">ScreenUpdating</span> <span class="o">=</span> <span class="k">False</span>
+</span></span><span class="line"><span class="cl">    <span class="k">For</span> <span class="k">Each</span> <span class="n">key</span> <span class="ow">In</span> <span class="n">dict</span><span class="p">.</span><span class="n">keys</span>
+</span></span><span class="line"><span class="cl">        <span class="n">wsSource</span><span class="p">.</span><span class="n">Rows</span><span class="p">(</span><span class="n">1</span><span class="p">).</span><span class="n">AutoFilter</span> <span class="n">Field</span><span class="p">:</span><span class="o">=</span><span class="n">2</span><span class="p">,</span> <span class="n">Criteria1</span><span class="p">:</span><span class="o">=</span><span class="n">key</span>
+</span></span><span class="line"><span class="cl">        <span class="k">Set</span> <span class="n">wsNew</span> <span class="o">=</span> <span class="n">wbSource</span><span class="p">.</span><span class="n">Worksheets</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">After</span><span class="p">:</span><span class="o">=</span><span class="n">wbSource</span><span class="p">.</span><span class="n">Worksheets</span><span class="p">(</span><span class="n">wbSource</span><span class="p">.</span><span class="n">Worksheets</span><span class="p">.</span><span class="n">Count</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="n">wsNew</span><span class="p">.</span><span class="n">Name</span> <span class="o">=</span> <span class="n">key</span>
+</span></span><span class="line"><span class="cl">        <span class="n">rngData</span><span class="p">.</span><span class="n">SpecialCells</span><span class="p">(</span><span class="n">xlCellTypeVisible</span><span class="p">).</span><span class="n">Copy</span> <span class="n">Destination</span><span class="p">:</span><span class="o">=</span><span class="n">wsNew</span><span class="p">.</span><span class="n">Range</span><span class="p">(</span><span class="s">&#34;A1&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">wsSource</span><span class="p">.</span><span class="n">Rows</span><span class="p">(</span><span class="n">1</span><span class="p">).</span><span class="n">AutoFilter</span>
+</span></span><span class="line"><span class="cl">    <span class="k">Next</span> <span class="n">key</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c">&#39; 3. 删除第1个和第二个工作表
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>    <span class="n">Application</span><span class="p">.</span><span class="n">DisplayAlerts</span> <span class="o">=</span> <span class="k">False</span>
+</span></span><span class="line"><span class="cl">    <span class="n">wbSource</span><span class="p">.</span><span class="n">Worksheets</span><span class="p">(</span><span class="n">1</span><span class="p">).</span><span class="n">Delete</span>
+</span></span><span class="line"><span class="cl">    <span class="n">wsSource</span><span class="p">.</span><span class="n">Delete</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Application</span><span class="p">.</span><span class="n">DisplayAlerts</span> <span class="o">=</span> <span class="k">True</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c">&#39; 4. 将剩余工作表中第2列删除
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>    <span class="k">For</span> <span class="k">Each</span> <span class="n">wsNew</span> <span class="ow">In</span> <span class="n">wbSource</span><span class="p">.</span><span class="n">Worksheets</span>
+</span></span><span class="line"><span class="cl">        <span class="n">wsNew</span><span class="p">.</span><span class="n">Columns</span><span class="p">(</span><span class="n">2</span><span class="p">).</span><span class="n">Delete</span>
+</span></span><span class="line"><span class="cl">    <span class="k">Next</span> <span class="n">wsNew</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c">&#39; 5. 保存工作簿到当前工作簿下
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>    <span class="n">wbSource</span><span class="p">.</span><span class="n">SaveAs</span> <span class="n">wbSource</span><span class="p">.</span><span class="n">Path</span> <span class="o">&amp;</span> <span class="s">&#34;\&#34;</span> <span class="o">&amp;</span> <span class="n">Left</span><span class="p">(</span><span class="n">wbSource</span><span class="p">.</span><span class="n">Name</span><span class="p">,</span> <span class="n">InStrRev</span><span class="p">(</span><span class="n">wbSource</span><span class="p">.</span><span class="n">Name</span><span class="p">,</span> <span class="s">&#34;.&#34;</span><span class="p">)</span> <span class="o">-</span> <span class="n">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="s">&#34;_split&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Application</span><span class="p">.</span><span class="n">ScreenUpdating</span> <span class="o">=</span> <span class="k">True</span>
+</span></span><span class="line"><span class="cl">    <span class="n">MsgBox</span> <span class="s">&#34;操作完成&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">End</span> <span class="k">Sub</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">wbSource</span><span class="p">.</span><span class="n">SaveAs</span> 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>选择 <code>Step14</code> 后的文件路径后执行</li>
+</ol>
+<h3 id="step16-平均-run">Step16. 平均 <code>run</code></h3>
+<ol>
+<li>新建一个宏程序保存下面代码：</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-vb" data-lang="vb"><span class="line"><span class="cl"><span class="k">Sub</span> <span class="nf">AverageRuns</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">Dim</span> <span class="n">originalWorkbook</span> <span class="ow">As</span> <span class="n">Workbook</span>
+</span></span><span class="line"><span class="cl">    <span class="k">Dim</span> <span class="n">newWorkbook</span> <span class="ow">As</span> <span class="n">Workbook</span>
+</span></span><span class="line"><span class="cl">    <span class="k">Dim</span> <span class="n">originalWorksheet</span> <span class="ow">As</span> <span class="n">Worksheet</span>
+</span></span><span class="line"><span class="cl">    <span class="k">Dim</span> <span class="n">newWorksheet</span> <span class="ow">As</span> <span class="n">Worksheet</span>
+</span></span><span class="line"><span class="cl">    <span class="k">Dim</span> <span class="n">runCount</span> <span class="ow">As</span> <span class="kt">Integer</span>
+</span></span><span class="line"><span class="cl">    <span class="k">Dim</span> <span class="n">rowCount</span> <span class="ow">As</span> <span class="kt">Integer</span>
+</span></span><span class="line"><span class="cl">    <span class="k">Dim</span> <span class="n">colCount</span> <span class="ow">As</span> <span class="kt">Integer</span>
+</span></span><span class="line"><span class="cl">    <span class="k">Dim</span> <span class="n">currentRow</span> <span class="ow">As</span> <span class="kt">Integer</span>
+</span></span><span class="line"><span class="cl">    <span class="k">Dim</span> <span class="n">currentCol</span> <span class="ow">As</span> <span class="kt">Integer</span>
+</span></span><span class="line"><span class="cl">    <span class="k">Dim</span> <span class="n">sum</span> <span class="ow">As</span> <span class="kt">Double</span>
+</span></span><span class="line"><span class="cl">    <span class="k">Dim</span> <span class="n">count</span> <span class="ow">As</span> <span class="kt">Integer</span>
+</span></span><span class="line"><span class="cl">    <span class="k">Dim</span> <span class="n">average</span> <span class="ow">As</span> <span class="kt">Double</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c">&#39;获取当前活动的工作簿&#39;
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>    <span class="k">Set</span> <span class="n">originalWorkbook</span> <span class="o">=</span> <span class="n">ActiveWorkbook</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c">&#39;通过对话框获取run次数&#39;
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>    <span class="n">runCount</span> <span class="o">=</span> <span class="n">InputBox</span><span class="p">(</span><span class="s">&#34;请输入run次数:&#34;</span><span class="p">,</span> <span class="s">&#34;输入run次数&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c">&#39;创建一个新的工作簿，用于保存平均后的结果&#39;
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>    <span class="k">Set</span> <span class="n">newWorkbook</span> <span class="o">=</span> <span class="n">Workbooks</span><span class="p">.</span><span class="n">Add</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c">&#39;循环处理每个工作表&#39;
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>    <span class="k">For</span> <span class="k">Each</span> <span class="n">originalWorksheet</span> <span class="ow">In</span> <span class="n">originalWorkbook</span><span class="p">.</span><span class="n">Worksheets</span>
+</span></span><span class="line"><span class="cl">        <span class="c">&#39;添加一个新的工作表，并将名称设置为原名称+_average&#39;
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>        <span class="k">Set</span> <span class="n">newWorksheet</span> <span class="o">=</span> <span class="n">newWorkbook</span><span class="p">.</span><span class="n">Worksheets</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">After</span><span class="p">:</span><span class="o">=</span><span class="n">newWorkbook</span><span class="p">.</span><span class="n">Worksheets</span><span class="p">(</span><span class="n">newWorkbook</span><span class="p">.</span><span class="n">Worksheets</span><span class="p">.</span><span class="n">Count</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="n">newWorksheet</span><span class="p">.</span><span class="n">Name</span> <span class="o">=</span> <span class="n">originalWorksheet</span><span class="p">.</span><span class="n">Name</span> <span class="o">&amp;</span> <span class="s">&#34;_average&#34;</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c">&#39;获取行数和列数&#39;
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>        <span class="n">rowCount</span> <span class="o">=</span> <span class="n">originalWorksheet</span><span class="p">.</span><span class="n">Cells</span><span class="p">(</span><span class="n">Rows</span><span class="p">.</span><span class="n">Count</span><span class="p">,</span> <span class="n">1</span><span class="p">).</span><span class="n">End</span><span class="p">(</span><span class="n">xlUp</span><span class="p">).</span><span class="n">Row</span>
+</span></span><span class="line"><span class="cl">        <span class="n">colCount</span> <span class="o">=</span> <span class="n">originalWorksheet</span><span class="p">.</span><span class="n">Cells</span><span class="p">(</span><span class="n">1</span><span class="p">,</span> <span class="n">Columns</span><span class="p">.</span><span class="n">Count</span><span class="p">).</span><span class="n">End</span><span class="p">(</span><span class="n">xlToLeft</span><span class="p">).</span><span class="n">Column</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c">&#39;添加行标题&#39;
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>        <span class="k">For</span> <span class="n">currentCol</span> <span class="o">=</span> <span class="n">2</span> <span class="k">To</span> <span class="n">colCount</span>
+</span></span><span class="line"><span class="cl">            <span class="n">newWorksheet</span><span class="p">.</span><span class="n">Cells</span><span class="p">(</span><span class="n">1</span><span class="p">,</span> <span class="n">currentCol</span><span class="p">).</span><span class="n">Value</span> <span class="o">=</span> <span class="n">originalWorksheet</span><span class="p">.</span><span class="n">Cells</span><span class="p">(</span><span class="n">1</span><span class="p">,</span> <span class="n">currentCol</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">Next</span> <span class="n">currentCol</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c">&#39;添加列标题并计算每个被试每个通道的均值&#39;
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>        <span class="n">currentRow</span> <span class="o">=</span> <span class="n">2</span>
+</span></span><span class="line"><span class="cl">        <span class="k">For</span> <span class="n">i</span> <span class="o">=</span> <span class="n">2</span> <span class="k">To</span> <span class="n">rowCount</span> <span class="k">Step</span> <span class="n">runCount</span>
+</span></span><span class="line"><span class="cl">            <span class="n">newWorksheet</span><span class="p">.</span><span class="n">Cells</span><span class="p">(</span><span class="n">currentRow</span><span class="p">,</span> <span class="n">1</span><span class="p">).</span><span class="n">Value</span> <span class="o">=</span> <span class="n">Left</span><span class="p">(</span><span class="n">originalWorksheet</span><span class="p">.</span><span class="n">Cells</span><span class="p">(</span><span class="n">2</span> <span class="o">+</span> <span class="n">runCount</span> <span class="o">*</span> <span class="p">(</span><span class="n">currentRow</span> <span class="o">-</span> <span class="n">2</span><span class="p">),</span> <span class="n">1</span><span class="p">),</span> <span class="n">6</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">For</span> <span class="n">currentCol</span> <span class="o">=</span> <span class="n">2</span> <span class="k">To</span> <span class="n">colCount</span>
+</span></span><span class="line"><span class="cl">                <span class="n">sum</span> <span class="o">=</span> <span class="n">0</span>
+</span></span><span class="line"><span class="cl">                <span class="n">count</span> <span class="o">=</span> <span class="n">0</span>
+</span></span><span class="line"><span class="cl">                <span class="k">For</span> <span class="n">k</span> <span class="o">=</span> <span class="n">i</span> <span class="k">To</span> <span class="n">i</span> <span class="o">+</span> <span class="n">runCount</span> <span class="o">-</span> <span class="n">1</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">If</span> <span class="k">Not</span> <span class="n">IsEmpty</span><span class="p">(</span><span class="n">originalWorksheet</span><span class="p">.</span><span class="n">Cells</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">currentCol</span><span class="p">))</span> <span class="k">Then</span>
+</span></span><span class="line"><span class="cl">                        <span class="k">If</span> <span class="n">originalWorksheet</span><span class="p">.</span><span class="n">Cells</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">currentCol</span><span class="p">)</span> <span class="o">&lt;&gt;</span> <span class="n">0</span> <span class="k">Then</span>
+</span></span><span class="line"><span class="cl">                            <span class="n">sum</span> <span class="o">=</span> <span class="n">sum</span> <span class="o">+</span> <span class="k">CDbl</span><span class="p">(</span><span class="n">originalWorksheet</span><span class="p">.</span><span class="n">Cells</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">currentCol</span><span class="p">).</span><span class="n">Value</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                            <span class="n">count</span> <span class="o">=</span> <span class="n">count</span> <span class="o">+</span> <span class="n">1</span>
+</span></span><span class="line"><span class="cl">                        <span class="k">End</span> <span class="k">If</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">End</span> <span class="k">If</span>
+</span></span><span class="line"><span class="cl">                <span class="k">Next</span> <span class="n">k</span>
+</span></span><span class="line"><span class="cl">                <span class="k">If</span> <span class="n">count</span> <span class="o">&gt;</span> <span class="n">0</span> <span class="k">Then</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">average</span> <span class="o">=</span> <span class="n">sum</span> <span class="o">/</span> <span class="n">count</span>
+</span></span><span class="line"><span class="cl">                <span class="k">Else</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">average</span> <span class="o">=</span> <span class="n">0</span>
+</span></span><span class="line"><span class="cl">                <span class="k">End</span> <span class="k">If</span>
+</span></span><span class="line"><span class="cl">                <span class="n">newWorksheet</span><span class="p">.</span><span class="n">Cells</span><span class="p">(</span><span class="n">currentRow</span><span class="p">,</span> <span class="n">currentCol</span><span class="p">).</span><span class="n">Value</span> <span class="o">=</span> <span class="n">average</span>
+</span></span><span class="line"><span class="cl">            <span class="k">Next</span> <span class="n">currentCol</span>
+</span></span><span class="line"><span class="cl">            <span class="n">currentRow</span> <span class="o">=</span> <span class="n">currentRow</span> <span class="o">+</span> <span class="n">1</span>
+</span></span><span class="line"><span class="cl">        <span class="k">Next</span> <span class="n">i</span>
+</span></span><span class="line"><span class="cl">    <span class="k">Next</span> <span class="n">originalWorksheet</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c">&#39;保存新的工作簿到当前文件夹下&#39;
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>    <span class="n">newWorkbook</span><span class="p">.</span><span class="n">SaveAs</span> <span class="n">originalWorkbook</span><span class="p">.</span><span class="n">Path</span> <span class="o">&amp;</span> <span class="s">&#34;\&#34;</span> <span class="o">&amp;</span> <span class="n">originalWorkbook</span><span class="p">.</span><span class="n">Name</span> <span class="o">&amp;</span> <span class="s">&#34;_average.xlsx&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">newWorkbook</span><span class="p">.</span><span class="n">Close</span> <span class="n">SaveChanges</span><span class="p">:</span><span class="o">=</span><span class="k">True</span>
+</span></span><span class="line"><span class="cl"><span class="k">End</span> <span class="k">Sub</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>将需要处理的文件放到一个文件夹内，并打开第一个文件的第一个工作表</li>
+<li>运行程序，输入run的次数</li>
+</ol>
+<p>程序运行结束后可将16步的结果文件导入到 SPSS 进行重复测量方差分析。</p>
+<h2 id="脑间同步inter-brain-neural-synchronization-">脑间同步（Inter-brain neural synchronization ）</h2>
+<h3 id="step01---step09">Step01 - Step09</h3>
+<p>与脑内激活处理步骤相同，可直接使用脑内 <code>Step 09</code> 结果进行脑间 <code>Step10</code> 操作</p>
+<h3 id="step10-分离条件-1">Step10. 分离条件</h3>
+<ol>
+<li>输入基线校正和Z分数转换后的数据路径</li>
+<li>选择程序 <code>Data Cut (mode2)</code></li>
+<li>结束后不会生成新的文件</li>
+</ol>
+<h3 id="step11-将所有被试数据按条件整合">Step11. 将所有被试数据按条件整合</h3>
+<ol>
+<li>输入包含 <code>Data Cut(mode2)</code>目标文件的路径</li>
+<li>输入保存文件的目标路径</li>
+<li>输入文件名保存不同实验条件的平均脑激活数据，Condition1/2/3/4，并选择相应的Sheet number，第1个条件在 <code>Sheet1</code>，以此类推</li>
+<li>选择程序 <code>Gather the files</code>，按 <code>Set</code> 并 <code>Start</code></li>
+</ol>
+<h3 id="step12-将所有被试数据集中到一个-sheet">Step12. 将所有被试数据集中到一个 Sheet</h3>
+<ol>
+<li>输入包含Condition文件目标文件的路径</li>
+<li>选择程序 <code>Data Gather(mode2)</code></li>
+<li>按 <code>Set</code> 并 <code>Start</code></li>
+</ol>
+<h3 id="step13-计算基于-ins-的相关矩阵">Step13. 计算基于 INS 的相关矩阵</h3>
+<p>此步骤会计算出被试对中两名被试的激活值之间的相关，包括同对伪时间序列的相关矩阵</p>
+<ol>
+<li>输入 <code>Step12</code> 后的文件路径</li>
+<li>选择程序 <code>Correlation Cal</code>，按 <code>Set</code> 并 <code>Start</code></li>
+</ol>
+<h3 id="step14-提取相关数据">Step14. 提取相关数据</h3>
+<p>此步骤后需要自定义宏程序</p>
+<ol>
+<li>在个人宏工作簿新建一个宏程序，输入如下代码：</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span><span class="lnt">83
+</span><span class="lnt">84
+</span><span class="lnt">85
+</span><span class="lnt">86
+</span><span class="lnt">87
+</span><span class="lnt">88
+</span><span class="lnt">89
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-vb" data-lang="vb"><span class="line"><span class="cl"><span class="k">Option</span> <span class="n">Explicit</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">Sub</span> <span class="nf">组间提取相关数据</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">Dim</span> <span class="n">folderPath</span> <span class="ow">As</span> <span class="kt">String</span>
+</span></span><span class="line"><span class="cl">    <span class="k">Dim</span> <span class="n">fileName</span> <span class="ow">As</span> <span class="kt">String</span>
+</span></span><span class="line"><span class="cl">    <span class="k">Dim</span> <span class="n">wbSource</span> <span class="ow">As</span> <span class="n">Workbook</span><span class="p">,</span> <span class="n">wbNew</span> <span class="ow">As</span> <span class="n">Workbook</span>
+</span></span><span class="line"><span class="cl">    <span class="k">Dim</span> <span class="n">wsSource</span> <span class="ow">As</span> <span class="n">Worksheet</span><span class="p">,</span> <span class="n">wsTrueCol</span> <span class="ow">As</span> <span class="n">Worksheet</span><span class="p">,</span> <span class="n">wsPesudoCol</span> <span class="ow">As</span> <span class="n">Worksheet</span>
+</span></span><span class="line"><span class="cl">    <span class="k">Dim</span> <span class="n">cellCorrMatrix</span> <span class="ow">As</span> <span class="n">Range</span><span class="p">,</span> <span class="n">cellPseudoCorrMatrix</span> <span class="ow">As</span> <span class="n">Range</span>
+</span></span><span class="line"><span class="cl">    <span class="k">Dim</span> <span class="n">startCell</span> <span class="ow">As</span> <span class="n">Range</span>
+</span></span><span class="line"><span class="cl">    <span class="k">Dim</span> <span class="n">i</span> <span class="ow">As</span> <span class="kt">Long</span><span class="p">,</span> <span class="n">j</span> <span class="ow">As</span> <span class="kt">Long</span>
+</span></span><span class="line"><span class="cl">    <span class="k">Dim</span> <span class="n">newRowTrue</span> <span class="ow">As</span> <span class="kt">Long</span><span class="p">,</span> <span class="n">newRowPesudo</span> <span class="ow">As</span> <span class="kt">Long</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c">&#39; 选择目录
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>    <span class="k">With</span> <span class="n">Application</span><span class="p">.</span><span class="n">FileDialog</span><span class="p">(</span><span class="n">msoFileDialogFolderPicker</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">If</span> <span class="p">.</span><span class="n">Show</span> <span class="o">=</span> <span class="o">-</span><span class="n">1</span> <span class="k">Then</span>
+</span></span><span class="line"><span class="cl">            <span class="n">folderPath</span> <span class="o">=</span> <span class="p">.</span><span class="n">SelectedItems</span><span class="p">(</span><span class="n">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">Else</span>
+</span></span><span class="line"><span class="cl">            <span class="k">Exit</span> <span class="k">Sub</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">End</span> <span class="k">If</span>
+</span></span><span class="line"><span class="cl">    <span class="k">End</span> <span class="k">With</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">If</span> <span class="n">Right</span><span class="p">(</span><span class="n">folderPath</span><span class="p">,</span> <span class="n">1</span><span class="p">)</span> <span class="o">&lt;&gt;</span> <span class="s">&#34;\&#34;</span> <span class="k">Then</span> <span class="n">folderPath</span> <span class="o">=</span> <span class="n">folderPath</span> <span class="o">&amp;</span> <span class="s">&#34;\&#34;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c">&#39; 遍历目录下的所有工作簿
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>    <span class="n">fileName</span> <span class="o">=</span> <span class="n">Dir</span><span class="p">(</span><span class="n">folderPath</span> <span class="o">&amp;</span> <span class="s">&#34;*.xls*&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Application</span><span class="p">.</span><span class="n">ScreenUpdating</span> <span class="o">=</span> <span class="k">False</span>
+</span></span><span class="line"><span class="cl">    <span class="k">Do</span> <span class="k">While</span> <span class="n">fileName</span> <span class="o">&lt;&gt;</span> <span class="s">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">Set</span> <span class="n">wbSource</span> <span class="o">=</span> <span class="n">Workbooks</span><span class="p">.</span><span class="n">Open</span><span class="p">(</span><span class="n">folderPath</span> <span class="o">&amp;</span> <span class="n">fileName</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c">&#39; 创建新工作簿并命名工作表
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>        <span class="k">Set</span> <span class="n">wbNew</span> <span class="o">=</span> <span class="n">Workbooks</span><span class="p">.</span><span class="n">Add</span>
+</span></span><span class="line"><span class="cl">        <span class="k">Set</span> <span class="n">wsTrueCol</span> <span class="o">=</span> <span class="n">wbNew</span><span class="p">.</span><span class="n">Worksheets</span><span class="p">(</span><span class="n">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">wsTrueCol</span><span class="p">.</span><span class="n">Name</span> <span class="o">=</span> <span class="s">&#34;True_Col&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">Set</span> <span class="n">wsPesudoCol</span> <span class="o">=</span> <span class="n">wbNew</span><span class="p">.</span><span class="n">Worksheets</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">After</span><span class="p">:</span><span class="o">=</span><span class="n">wsTrueCol</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">wsPesudoCol</span><span class="p">.</span><span class="n">Name</span> <span class="o">=</span> <span class="s">&#34;Pesudo_Col&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">newRowTrue</span> <span class="o">=</span> <span class="n">2</span>
+</span></span><span class="line"><span class="cl">        <span class="n">newRowPesudo</span> <span class="o">=</span> <span class="n">2</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c">&#39; 遍历原始工作簿的所有工作表
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>        <span class="k">For</span> <span class="k">Each</span> <span class="n">wsSource</span> <span class="ow">In</span> <span class="n">wbSource</span><span class="p">.</span><span class="n">Worksheets</span>
+</span></span><span class="line"><span class="cl">            <span class="k">Set</span> <span class="n">cellCorrMatrix</span> <span class="o">=</span> <span class="n">wsSource</span><span class="p">.</span><span class="n">Cells</span><span class="p">.</span><span class="n">Find</span><span class="p">(</span><span class="s">&#34;Correlation matrix&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">Set</span> <span class="n">cellPseudoCorrMatrix</span> <span class="o">=</span> <span class="n">wsSource</span><span class="p">.</span><span class="n">Cells</span><span class="p">.</span><span class="n">Find</span><span class="p">(</span><span class="s">&#34;Correlation matrix (pseudo)&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="n">chCounts</span> <span class="o">=</span> <span class="n">Application</span><span class="p">.</span><span class="n">WorksheetFunction</span><span class="p">.</span><span class="n">CountA</span><span class="p">(</span><span class="n">wsSource</span><span class="p">.</span><span class="n">Rows</span><span class="p">(</span><span class="n">1</span><span class="p">))</span> <span class="o">\</span> <span class="n">2</span>
+</span></span><span class="line"><span class="cl">            <span class="n">wsSource</span><span class="p">.</span><span class="n">Rows</span><span class="p">(</span><span class="n">1</span><span class="p">).</span><span class="n">Cells</span><span class="p">(</span><span class="n">1</span><span class="p">).</span><span class="n">Resize</span><span class="p">(,</span> <span class="n">chCounts</span><span class="p">).</span><span class="n">Copy</span> <span class="n">Destination</span><span class="p">:</span><span class="o">=</span><span class="n">wsTrueCol</span><span class="p">.</span><span class="n">Cells</span><span class="p">(</span><span class="n">1</span><span class="p">,</span> <span class="n">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">wsSource</span><span class="p">.</span><span class="n">Rows</span><span class="p">(</span><span class="n">1</span><span class="p">).</span><span class="n">Cells</span><span class="p">(</span><span class="n">1</span><span class="p">).</span><span class="n">Resize</span><span class="p">(,</span> <span class="n">chCounts</span><span class="p">).</span><span class="n">Copy</span> <span class="n">Destination</span><span class="p">:</span><span class="o">=</span><span class="n">wsPesudoCol</span><span class="p">.</span><span class="n">Cells</span><span class="p">(</span><span class="n">1</span><span class="p">,</span> <span class="n">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">            <span class="c">&#39; 提取相关值
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>            <span class="k">If</span> <span class="k">Not</span> <span class="n">cellCorrMatrix</span> <span class="ow">Is</span> <span class="k">Nothing</span> <span class="k">Then</span>
+</span></span><span class="line"><span class="cl">                <span class="k">Set</span> <span class="n">startCell</span> <span class="o">=</span> <span class="n">cellCorrMatrix</span><span class="p">.</span><span class="n">Offset</span><span class="p">(</span><span class="n">50</span><span class="p">,</span> <span class="n">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                
+</span></span><span class="line"><span class="cl">                <span class="k">For</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span> <span class="k">To</span> <span class="n">chCounts</span> <span class="o">-</span> <span class="n">1</span>
+</span></span><span class="line"><span class="cl">                <span class="c">&#39;i = 0
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>                <span class="c">&#39;Do While Not IsEmpty(startCell.Offset(i, i))
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>                    <span class="n">wsTrueCol</span><span class="p">.</span><span class="n">Cells</span><span class="p">(</span><span class="n">newRowTrue</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="n">2</span><span class="p">).</span><span class="n">Value</span> <span class="o">=</span> <span class="n">startCell</span><span class="p">.</span><span class="n">Offset</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">).</span><span class="n">Value</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">wsTrueCol</span><span class="p">.</span><span class="n">Cells</span><span class="p">(</span><span class="n">newRowTrue</span><span class="p">,</span> <span class="n">1</span><span class="p">).</span><span class="n">Value</span> <span class="o">=</span> <span class="n">Left</span><span class="p">(</span><span class="n">wsSource</span><span class="p">.</span><span class="n">Name</span><span class="p">,</span> <span class="n">11</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                    <span class="c">&#39;i = i + 1
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>                <span class="c">&#39;Loop
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>                <span class="k">Next</span> <span class="n">i</span>
+</span></span><span class="line"><span class="cl">                <span class="n">newRowTrue</span> <span class="o">=</span> <span class="n">newRowTrue</span> <span class="o">+</span> <span class="n">1</span>
+</span></span><span class="line"><span class="cl">            <span class="k">End</span> <span class="k">If</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">            <span class="c">&#39; 提取伪相关值
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>            <span class="k">If</span> <span class="k">Not</span> <span class="n">cellPseudoCorrMatrix</span> <span class="ow">Is</span> <span class="k">Nothing</span> <span class="k">Then</span>
+</span></span><span class="line"><span class="cl">                <span class="k">Set</span> <span class="n">startCell</span> <span class="o">=</span> <span class="n">cellPseudoCorrMatrix</span><span class="p">.</span><span class="n">Offset</span><span class="p">(</span><span class="n">50</span><span class="p">,</span> <span class="n">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="c">&#39;j = 0
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>                <span class="c">&#39;Do While Not IsEmpty(startCell.Offset(j, j))
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>                <span class="k">For</span> <span class="n">j</span> <span class="o">=</span> <span class="n">0</span> <span class="k">To</span> <span class="n">chCounts</span> <span class="o">-</span> <span class="n">1</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">wsPesudoCol</span><span class="p">.</span><span class="n">Cells</span><span class="p">(</span><span class="n">newRowPesudo</span><span class="p">,</span> <span class="n">j</span> <span class="o">+</span> <span class="n">2</span><span class="p">).</span><span class="n">Value</span> <span class="o">=</span> <span class="n">startCell</span><span class="p">.</span><span class="n">Offset</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">j</span><span class="p">).</span><span class="n">Value</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">wsPesudoCol</span><span class="p">.</span><span class="n">Cells</span><span class="p">(</span><span class="n">newRowPesudo</span><span class="p">,</span> <span class="n">1</span><span class="p">).</span><span class="n">Value</span> <span class="o">=</span> <span class="n">Left</span><span class="p">(</span><span class="n">wsSource</span><span class="p">.</span><span class="n">Name</span><span class="p">,</span> <span class="n">11</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                    <span class="c">&#39;j = j + 1
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>                <span class="c">&#39;Loop
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>                <span class="k">Next</span> <span class="n">j</span>
+</span></span><span class="line"><span class="cl">                <span class="n">newRowPesudo</span> <span class="o">=</span> <span class="n">newRowPesudo</span> <span class="o">+</span> <span class="n">1</span>
+</span></span><span class="line"><span class="cl">            <span class="k">End</span> <span class="k">If</span>
+</span></span><span class="line"><span class="cl">        <span class="k">Next</span> <span class="n">wsSource</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c">&#39; 保存新工作簿
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>        <span class="n">wbNew</span><span class="p">.</span><span class="n">SaveAs</span> <span class="n">folderPath</span> <span class="o">&amp;</span> <span class="n">Left</span><span class="p">(</span><span class="n">wbSource</span><span class="p">.</span><span class="n">Name</span><span class="p">,</span> <span class="n">InStrRev</span><span class="p">(</span><span class="n">wbSource</span><span class="p">.</span><span class="n">Name</span><span class="p">,</span> <span class="s">&#34;.&#34;</span><span class="p">)</span> <span class="o">-</span> <span class="n">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="s">&#34;_ColExt.xlsx&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">wbNew</span><span class="p">.</span><span class="n">Close</span> <span class="n">SaveChanges</span><span class="p">:</span><span class="o">=</span><span class="k">False</span>
+</span></span><span class="line"><span class="cl">        <span class="n">wbSource</span><span class="p">.</span><span class="n">Close</span> <span class="n">SaveChanges</span><span class="p">:</span><span class="o">=</span><span class="k">False</span>
+</span></span><span class="line"><span class="cl">        <span class="n">fileName</span> <span class="o">=</span> <span class="n">Dir</span>
+</span></span><span class="line"><span class="cl">    <span class="k">Loop</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">Application</span><span class="p">.</span><span class="n">ScreenUpdating</span> <span class="o">=</span> <span class="k">True</span>
+</span></span><span class="line"><span class="cl">    <span class="n">MsgBox</span> <span class="s">&#34;提取相关数据完成！&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">End</span> <span class="k">Sub</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>运行宏程序，选择上一步结果的路径</li>
+</ol>
+<h3 id="step15-平均-run">Step15. 平均 run</h3>
+<ol>
+<li>与脑内步骤一致，将需要处理的文件放到一个文件夹内</li>
+<li>打开第1个文件第1个工作表，运行宏程序</li>
+</ol>
+<h3 id="step16-配对样本-t-检验">Step16. 配对样本 t 检验</h3>
+<p>对所有通道的脑间相关数据与伪随机数据进行配对样本T检验，这里使用 <code>R</code> 进行</p>
+<ol>
+<li>将 <code>Step15</code>后的数据放到一个文件夹</li>
+<li>建立一个文本文件，输入如下代码保存，并将文件后缀改为 <code>.r</code></li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-R" data-lang="R"><span class="line"><span class="cl"><span class="c1"># # 安装需要的包</span>
+</span></span><span class="line"><span class="cl"><span class="kr">if</span> <span class="p">(</span><span class="o">!</span><span class="nf">require</span><span class="p">(</span><span class="n">readxl</span><span class="p">))</span> <span class="nf">install.packages</span><span class="p">(</span><span class="s">&#34;readxl&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="kr">if</span> <span class="p">(</span><span class="o">!</span><span class="nf">require</span><span class="p">(</span><span class="n">writexl</span><span class="p">))</span> <span class="nf">install.packages</span><span class="p">(</span><span class="s">&#34;writexl&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="kr">if</span> <span class="p">(</span><span class="o">!</span><span class="nf">require</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">))</span> <span class="nf">install.packages</span><span class="p">(</span><span class="s">&#34;tidyverse&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="kr">if</span> <span class="p">(</span><span class="o">!</span><span class="nf">require</span><span class="p">(</span><span class="n">effsize</span><span class="p">))</span> <span class="nf">install.packages</span><span class="p">(</span><span class="s">&#34;effsize&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#if (!require(lsr)) install.packages(&#34;lsr&#34;)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">readxl</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">writexl</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">effsize</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#library(lsr)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 程序名称为&#34;t检验&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">t_test</span> <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="c1"># 选取工作目录</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">setwd</span><span class="p">(</span><span class="nf">choose.dir</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="c1"># 选取目录下所有excel工作簿循环执行程序</span>
+</span></span><span class="line"><span class="cl">  <span class="n">files</span> <span class="o">&lt;-</span> <span class="nf">list.files</span><span class="p">(</span><span class="n">path</span> <span class="o">=</span> <span class="nf">getwd</span><span class="p">(),</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s">&#34;\\.xlsx$&#34;</span><span class="p">,</span> <span class="n">full.names</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">ttest_result_list</span> <span class="o">&lt;-</span> <span class="nf">list</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="kr">for</span> <span class="p">(</span><span class="n">file</span> <span class="kr">in</span> <span class="n">files</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># 读取工作簿内的两个工作表</span>
+</span></span><span class="line"><span class="cl">    <span class="n">sheet1</span> <span class="o">&lt;-</span> <span class="nf">read_excel</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">sheet</span> <span class="o">=</span> <span class="m">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">sheet2</span> <span class="o">&lt;-</span> <span class="nf">read_excel</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">sheet</span> <span class="o">=</span> <span class="m">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1"># 初始化结果数据框</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ttest_res</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">Column</span> <span class="o">=</span> <span class="nf">character</span><span class="p">(),</span> <span class="n">p</span> <span class="o">=</span> <span class="nf">numeric</span><span class="p">(),</span> <span class="n">t</span> <span class="o">=</span> <span class="nf">numeric</span><span class="p">(),</span> <span class="n">d</span> <span class="o">=</span> <span class="nf">numeric</span><span class="p">(),</span> <span class="n">stringsAsFactors</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1"># 从第2列开始进行t检验和Cohen&#39;s d计算</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">for</span> <span class="p">(</span><span class="n">col_idx</span> <span class="kr">in</span> <span class="m">2</span><span class="o">:</span><span class="nf">ncol</span><span class="p">(</span><span class="n">sheet1</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">data1</span> <span class="o">&lt;-</span> <span class="n">sheet1[</span><span class="m">-1</span><span class="p">,</span> <span class="n">col_idx]</span>
+</span></span><span class="line"><span class="cl">      <span class="n">data2</span> <span class="o">&lt;-</span> <span class="n">sheet2[</span><span class="m">-1</span><span class="p">,</span> <span class="n">col_idx]</span>
+</span></span><span class="line"><span class="cl">      <span class="n">data1_num</span> <span class="o">&lt;-</span> <span class="nf">as.matrix</span><span class="p">(</span><span class="n">data1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="n">data2_num</span> <span class="o">&lt;-</span> <span class="nf">as.matrix</span><span class="p">(</span><span class="n">data2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="n">ttest</span> <span class="o">&lt;-</span> <span class="nf">t.test</span><span class="p">(</span><span class="n">data1_num</span><span class="p">,</span> <span class="n">data2_num</span><span class="p">,</span> <span class="n">paired</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span> <span class="n">var.equal</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span> <span class="n">conf.level</span> <span class="o">=</span> <span class="m">0.95</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="n">cohen_d</span> <span class="o">&lt;-</span> <span class="nf">cohen.d</span><span class="p">(</span><span class="n">data1_num</span><span class="p">,</span> <span class="n">data2_num</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      
+</span></span><span class="line"><span class="cl">      <span class="n">ttest_res</span> <span class="o">&lt;-</span> <span class="nf">rbind</span><span class="p">(</span><span class="n">ttest_res</span><span class="p">,</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">Column</span> <span class="o">=</span> <span class="nf">colnames</span><span class="p">(</span><span class="n">sheet1</span><span class="p">)</span><span class="n">[col_idx]</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">ttest</span><span class="o">$</span><span class="n">p.value</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">ttest</span><span class="o">$</span><span class="n">statistic</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="nf">abs</span><span class="p">(</span><span class="n">cohen_d</span><span class="o">$</span><span class="n">estimate</span><span class="p">),</span> <span class="n">stringsAsFactors</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">filename</span> <span class="o">&lt;-</span> <span class="nf">sub</span><span class="p">(</span><span class="s">&#34;.xlsx&#34;</span><span class="p">,</span> <span class="s">&#34;&#34;</span><span class="p">,</span> <span class="nf">basename</span><span class="p">(</span><span class="n">file</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1"># 将每一个工作簿的结果保存至ttest_result对应的工作表内，名称为执行程序的工作簿的名称</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ttest_result_list[[filename]]</span> <span class="o">&lt;-</span> <span class="n">ttest_res</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="c1"># 将每一次t检验的结果输出至一个新的工作簿，名称为&#34;ttest_result&#34;保存在当前目录下</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">write_xlsx</span><span class="p">(</span><span class="n">ttest_result_list</span><span class="p">,</span> <span class="s">&#34;ttest_result.xlsx&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">infoMes</span> <span class="o">&lt;-</span> <span class="s">&#34;检验完成!&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">print</span><span class="p">(</span><span class="n">infoMes</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 运行t检验程序</span>
+</span></span><span class="line"><span class="cl"><span class="nf">t_test</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="3">
+<li>打开 <code>R</code>，点击 <code>文件---运行 r 脚本文件</code>，选择刚才的代码文件运行</li>
+</ol>
+<h3 id="step17-切分通道">Step17. 切分通道</h3>
+<ol>
+<li>选择 <code>Step15</code> 运行后的结果文件路径，注意是第15步</li>
+<li>新建一个宏程序，粘贴如下代码，并运行：</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span><span class="lnt">83
+</span><span class="lnt">84
+</span><span class="lnt">85
+</span><span class="lnt">86
+</span><span class="lnt">87
+</span><span class="lnt">88
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-vb" data-lang="vb"><span class="line"><span class="cl"><span class="k">Option</span> <span class="n">Explicit</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">Sub</span> <span class="nf">组间切分通道</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">Dim</span> <span class="n">fDialog</span> <span class="ow">As</span> <span class="n">FileDialog</span><span class="p">,</span> <span class="n">sFolderPath</span> <span class="ow">As</span> <span class="kt">String</span>
+</span></span><span class="line"><span class="cl">    <span class="k">Dim</span> <span class="n">oFSO</span> <span class="ow">As</span> <span class="kt">Object</span><span class="p">,</span> <span class="n">oFolder</span> <span class="ow">As</span> <span class="kt">Object</span><span class="p">,</span> <span class="n">oFile</span> <span class="ow">As</span> <span class="kt">Object</span>
+</span></span><span class="line"><span class="cl">    <span class="k">Dim</span> <span class="n">oOriginalWorkbook</span> <span class="ow">As</span> <span class="n">Workbook</span><span class="p">,</span> <span class="n">oNewWorkbook</span> <span class="ow">As</span> <span class="n">Workbook</span>
+</span></span><span class="line"><span class="cl">    <span class="k">Dim</span> <span class="n">oOriginalWorksheet</span> <span class="ow">As</span> <span class="n">Worksheet</span><span class="p">,</span> <span class="n">oNewWorksheet</span> <span class="ow">As</span> <span class="n">Worksheet</span>
+</span></span><span class="line"><span class="cl">    <span class="k">Dim</span> <span class="n">lLastCol</span> <span class="ow">As</span> <span class="kt">Long</span><span class="p">,</span> <span class="n">lLastRow</span> <span class="ow">As</span> <span class="kt">Long</span><span class="p">,</span> <span class="n">i</span> <span class="ow">As</span> <span class="kt">Long</span><span class="p">,</span> <span class="n">j</span> <span class="ow">As</span> <span class="kt">Long</span><span class="p">,</span> <span class="n">k</span> <span class="ow">As</span> <span class="kt">Long</span>
+</span></span><span class="line"><span class="cl">    <span class="k">Dim</span> <span class="n">sFileName</span> <span class="ow">As</span> <span class="kt">String</span><span class="p">,</span> <span class="n">sSheetName</span> <span class="ow">As</span> <span class="kt">String</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c">&#39; 选择文件夹
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>    <span class="k">Set</span> <span class="n">fDialog</span> <span class="o">=</span> <span class="n">Application</span><span class="p">.</span><span class="n">FileDialog</span><span class="p">(</span><span class="n">msoFileDialogFolderPicker</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">fDialog</span><span class="p">.</span><span class="n">Title</span> <span class="o">=</span> <span class="s">&#34;选择工作目录&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">fDialog</span><span class="p">.</span><span class="n">AllowMultiSelect</span> <span class="o">=</span> <span class="k">False</span>
+</span></span><span class="line"><span class="cl">    <span class="k">If</span> <span class="n">fDialog</span><span class="p">.</span><span class="n">Show</span> <span class="o">&lt;&gt;</span> <span class="o">-</span><span class="n">1</span> <span class="k">Then</span> <span class="k">Exit</span> <span class="k">Sub</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">sFolderPath</span> <span class="o">=</span> <span class="n">fDialog</span><span class="p">.</span><span class="n">SelectedItems</span><span class="p">(</span><span class="n">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Application</span><span class="p">.</span><span class="n">ScreenUpdating</span> <span class="o">=</span> <span class="k">False</span>
+</span></span><span class="line"><span class="cl">    <span class="c">&#39;创建结果文件夹
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>    <span class="n">MkDir</span> <span class="n">sFolderPath</span> <span class="o">&amp;</span> <span class="s">&#34;\result&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="c">&#39; 创建新工作簿 &#34;all_condition_split&#34;
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>    <span class="k">Set</span> <span class="n">oNewWorkbook</span> <span class="o">=</span> <span class="n">Workbooks</span><span class="p">.</span><span class="n">Add</span>
+</span></span><span class="line"><span class="cl">    <span class="n">oNewWorkbook</span><span class="p">.</span><span class="n">SaveAs</span> <span class="n">sFolderPath</span> <span class="o">&amp;</span> <span class="s">&#34;\result&#34;</span> <span class="o">&amp;</span> <span class="s">&#34;\&#34;</span> <span class="o">&amp;</span> <span class="s">&#34;all_condition_split.xlsx&#34;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">   <span class="c">&#39; 遍历工作目录下的所有Excel文件
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>    <span class="k">Set</span> <span class="n">oFSO</span> <span class="o">=</span> <span class="n">CreateObject</span><span class="p">(</span><span class="s">&#34;Scripting.FileSystemObject&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">Set</span> <span class="n">oFolder</span> <span class="o">=</span> <span class="n">oFSO</span><span class="p">.</span><span class="n">GetFolder</span><span class="p">(</span><span class="n">sFolderPath</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">k</span> <span class="o">=</span> <span class="n">1</span>
+</span></span><span class="line"><span class="cl">    <span class="k">For</span> <span class="k">Each</span> <span class="n">oFile</span> <span class="ow">In</span> <span class="n">oFolder</span><span class="p">.</span><span class="n">Files</span>
+</span></span><span class="line"><span class="cl">        <span class="k">If</span> <span class="n">oFSO</span><span class="p">.</span><span class="n">GetExtensionName</span><span class="p">(</span><span class="n">oFile</span><span class="p">.</span><span class="n">Name</span><span class="p">)</span> <span class="o">=</span> <span class="s">&#34;xlsx&#34;</span> <span class="ow">Or</span> <span class="n">oFSO</span><span class="p">.</span><span class="n">GetExtensionName</span><span class="p">(</span><span class="n">oFile</span><span class="p">.</span><span class="n">Name</span><span class="p">)</span> <span class="o">=</span> <span class="s">&#34;xls&#34;</span> <span class="k">Then</span>
+</span></span><span class="line"><span class="cl">            <span class="k">If</span> <span class="n">oFile</span><span class="p">.</span><span class="n">Name</span> <span class="o">&lt;&gt;</span> <span class="s">&#34;all_condition_split.xlsx&#34;</span> <span class="k">Then</span>
+</span></span><span class="line"><span class="cl">                <span class="c">&#39; 打开原始工作簿
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>                <span class="k">Set</span> <span class="n">oOriginalWorkbook</span> <span class="o">=</span> <span class="n">Workbooks</span><span class="p">.</span><span class="n">Open</span><span class="p">(</span><span class="n">oFile</span><span class="p">.</span><span class="n">Path</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="k">Set</span> <span class="n">oOriginalWorksheet</span> <span class="o">=</span> <span class="n">oOriginalWorkbook</span><span class="p">.</span><span class="n">Worksheets</span><span class="p">(</span><span class="n">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                
+</span></span><span class="line"><span class="cl">                <span class="c">&#39; 新建工作表
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>                <span class="k">If</span> <span class="n">k</span> <span class="o">=</span> <span class="n">1</span> <span class="k">Then</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">lLastCol</span> <span class="o">=</span> <span class="n">oOriginalWorksheet</span><span class="p">.</span><span class="n">Cells</span><span class="p">(</span><span class="n">1</span><span class="p">,</span> <span class="n">Columns</span><span class="p">.</span><span class="n">Count</span><span class="p">).</span><span class="n">End</span><span class="p">(</span><span class="n">xlToLeft</span><span class="p">).</span><span class="n">Column</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">For</span> <span class="n">i</span> <span class="o">=</span> <span class="n">2</span> <span class="k">To</span> <span class="n">lLastCol</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">sSheetName</span> <span class="o">=</span> <span class="n">oOriginalWorksheet</span><span class="p">.</span><span class="n">Cells</span><span class="p">(</span><span class="n">1</span><span class="p">,</span> <span class="n">i</span><span class="p">).</span><span class="n">Value</span>
+</span></span><span class="line"><span class="cl">                        <span class="k">Set</span> <span class="n">oNewWorksheet</span> <span class="o">=</span> <span class="n">oNewWorkbook</span><span class="p">.</span><span class="n">Worksheets</span><span class="p">.</span><span class="n">Add</span><span class="p">(,</span> <span class="n">oNewWorkbook</span><span class="p">.</span><span class="n">Worksheets</span><span class="p">(</span><span class="n">oNewWorkbook</span><span class="p">.</span><span class="n">Worksheets</span><span class="p">.</span><span class="n">Count</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">oNewWorksheet</span><span class="p">.</span><span class="n">Name</span> <span class="o">=</span> <span class="n">sSheetName</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">oNewWorksheet</span><span class="p">.</span><span class="n">Cells</span><span class="p">(</span><span class="n">1</span><span class="p">,</span> <span class="n">1</span><span class="p">).</span><span class="n">Value</span> <span class="o">=</span> <span class="n">oOriginalWorksheet</span><span class="p">.</span><span class="n">Cells</span><span class="p">(</span><span class="n">1</span><span class="p">,</span> <span class="n">1</span><span class="p">).</span><span class="n">Value</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">Next</span> <span class="n">i</span>
+</span></span><span class="line"><span class="cl">                <span class="k">End</span> <span class="k">If</span>
+</span></span><span class="line"><span class="cl">                
+</span></span><span class="line"><span class="cl">                <span class="c">&#39; 复制数据到新工作簿
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>                <span class="k">For</span> <span class="n">i</span> <span class="o">=</span> <span class="n">2</span> <span class="k">To</span> <span class="n">lLastCol</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">Set</span> <span class="n">oNewWorksheet</span> <span class="o">=</span> <span class="n">oNewWorkbook</span><span class="p">.</span><span class="n">Worksheets</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">lLastRow</span> <span class="o">=</span> <span class="n">oOriginalWorksheet</span><span class="p">.</span><span class="n">Cells</span><span class="p">(</span><span class="n">Rows</span><span class="p">.</span><span class="n">Count</span><span class="p">,</span> <span class="n">i</span><span class="p">).</span><span class="n">End</span><span class="p">(</span><span class="n">xlUp</span><span class="p">).</span><span class="n">Row</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">oOriginalWorksheet</span><span class="p">.</span><span class="n">Range</span><span class="p">(</span><span class="n">oOriginalWorksheet</span><span class="p">.</span><span class="n">Cells</span><span class="p">(</span><span class="n">2</span><span class="p">,</span> <span class="n">i</span><span class="p">),</span> <span class="n">oOriginalWorksheet</span><span class="p">.</span><span class="n">Cells</span><span class="p">(</span><span class="n">lLastRow</span><span class="p">,</span> <span class="n">i</span><span class="p">)).</span><span class="n">Copy</span> <span class="n">oNewWorksheet</span><span class="p">.</span><span class="n">Cells</span><span class="p">(</span><span class="n">2</span><span class="p">,</span> <span class="n">k</span> <span class="o">+</span> <span class="n">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">oNewWorksheet</span><span class="p">.</span><span class="n">Cells</span><span class="p">(</span><span class="n">1</span><span class="p">,</span> <span class="n">k</span> <span class="o">+</span> <span class="n">1</span><span class="p">).</span><span class="n">Value</span> <span class="o">=</span> <span class="n">Split</span><span class="p">(</span><span class="n">oFile</span><span class="p">.</span><span class="n">Name</span><span class="p">,</span> <span class="s">&#34;_&#34;</span><span class="p">)(</span><span class="n">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                    
+</span></span><span class="line"><span class="cl">                    <span class="c">&#39; 复制第一列数据到新工作簿
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>                    <span class="n">oOriginalWorksheet</span><span class="p">.</span><span class="n">Range</span><span class="p">(</span><span class="n">oOriginalWorksheet</span><span class="p">.</span><span class="n">Cells</span><span class="p">(</span><span class="n">2</span><span class="p">,</span> <span class="n">1</span><span class="p">),</span> <span class="n">oOriginalWorksheet</span><span class="p">.</span><span class="n">Cells</span><span class="p">(</span><span class="n">lLastRow</span><span class="p">,</span> <span class="n">1</span><span class="p">)).</span><span class="n">Copy</span> <span class="n">oNewWorksheet</span><span class="p">.</span><span class="n">Cells</span><span class="p">(</span><span class="n">2</span><span class="p">,</span> <span class="n">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="k">Next</span> <span class="n">i</span>
+</span></span><span class="line"><span class="cl">                
+</span></span><span class="line"><span class="cl">                <span class="n">k</span> <span class="o">=</span> <span class="n">k</span> <span class="o">+</span> <span class="n">1</span>
+</span></span><span class="line"><span class="cl">                <span class="n">oOriginalWorkbook</span><span class="p">.</span><span class="n">Close</span> <span class="k">False</span>
+</span></span><span class="line"><span class="cl">            <span class="k">End</span> <span class="k">If</span>
+</span></span><span class="line"><span class="cl">        <span class="k">End</span> <span class="k">If</span>
+</span></span><span class="line"><span class="cl">    <span class="k">Next</span> <span class="n">oFile</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c">&#39; 保存新工作簿
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>    <span class="n">oNewWorkbook</span><span class="p">.</span><span class="n">Save</span>
+</span></span><span class="line"><span class="cl">    <span class="n">oNewWorkbook</span><span class="p">.</span><span class="n">Close</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c">&#39; 打开 &#34;all_condition_split&#34; 工作簿
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>    <span class="k">Set</span> <span class="n">oNewWorkbook</span> <span class="o">=</span> <span class="n">Workbooks</span><span class="p">.</span><span class="n">Open</span><span class="p">(</span><span class="n">sFolderPath</span> <span class="o">&amp;</span> <span class="s">&#34;\result&#34;</span> <span class="o">&amp;</span> <span class="s">&#34;\&#34;</span> <span class="o">&amp;</span> <span class="s">&#34;all_condition_split.xlsx&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c">&#39; 循环操作每个工作表
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>    <span class="k">For</span> <span class="k">Each</span> <span class="n">oNewWorksheet</span> <span class="ow">In</span> <span class="n">oNewWorkbook</span><span class="p">.</span><span class="n">Worksheets</span>
+</span></span><span class="line"><span class="cl">        <span class="n">lLastRow</span> <span class="o">=</span> <span class="n">oNewWorksheet</span><span class="p">.</span><span class="n">Cells</span><span class="p">(</span><span class="n">Rows</span><span class="p">.</span><span class="n">Count</span><span class="p">,</span> <span class="n">1</span><span class="p">).</span><span class="n">End</span><span class="p">(</span><span class="n">xlUp</span><span class="p">).</span><span class="n">Row</span>
+</span></span><span class="line"><span class="cl">        <span class="n">oNewWorksheet</span><span class="p">.</span><span class="n">Range</span><span class="p">(</span><span class="n">oNewWorksheet</span><span class="p">.</span><span class="n">Cells</span><span class="p">(</span><span class="n">2</span><span class="p">,</span> <span class="n">3</span><span class="p">),</span> <span class="n">oNewWorksheet</span><span class="p">.</span><span class="n">Cells</span><span class="p">(</span><span class="n">lLastRow</span><span class="p">,</span> <span class="n">3</span><span class="p">)).</span><span class="n">Copy</span> <span class="n">oNewWorksheet</span><span class="p">.</span><span class="n">Cells</span><span class="p">(</span><span class="n">lLastRow</span> <span class="o">+</span> <span class="n">1</span><span class="p">,</span> <span class="n">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">oNewWorksheet</span><span class="p">.</span><span class="n">Range</span><span class="p">(</span><span class="n">oNewWorksheet</span><span class="p">.</span><span class="n">Cells</span><span class="p">(</span><span class="n">2</span><span class="p">,</span> <span class="n">5</span><span class="p">),</span> <span class="n">oNewWorksheet</span><span class="p">.</span><span class="n">Cells</span><span class="p">(</span><span class="n">lLastRow</span><span class="p">,</span> <span class="n">5</span><span class="p">)).</span><span class="n">Copy</span> <span class="n">oNewWorksheet</span><span class="p">.</span><span class="n">Cells</span><span class="p">(</span><span class="n">lLastRow</span> <span class="o">+</span> <span class="n">1</span><span class="p">,</span> <span class="n">4</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">oNewWorksheet</span><span class="p">.</span><span class="n">Range</span><span class="p">(</span><span class="n">oNewWorksheet</span><span class="p">.</span><span class="n">Cells</span><span class="p">(</span><span class="n">2</span><span class="p">,</span> <span class="n">1</span><span class="p">),</span> <span class="n">oNewWorksheet</span><span class="p">.</span><span class="n">Cells</span><span class="p">(</span><span class="n">lLastRow</span><span class="p">,</span> <span class="n">1</span><span class="p">)).</span><span class="n">Copy</span> <span class="n">oNewWorksheet</span><span class="p">.</span><span class="n">Cells</span><span class="p">(</span><span class="n">lLastRow</span> <span class="o">+</span> <span class="n">1</span><span class="p">,</span> <span class="n">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c">&#39; 删除第3列和第5列
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>        <span class="n">oNewWorksheet</span><span class="p">.</span><span class="n">Columns</span><span class="p">(</span><span class="n">5</span><span class="p">).</span><span class="n">Delete</span>
+</span></span><span class="line"><span class="cl">        <span class="n">oNewWorksheet</span><span class="p">.</span><span class="n">Columns</span><span class="p">(</span><span class="n">3</span><span class="p">).</span><span class="n">Delete</span>
+</span></span><span class="line"><span class="cl">    <span class="k">Next</span> <span class="n">oNewWorksheet</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c">&#39; 保存修改并关闭
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>    <span class="n">oNewWorkbook</span><span class="p">.</span><span class="n">Save</span>
+</span></span><span class="line"><span class="cl">    <span class="n">oNewWorkbook</span><span class="p">.</span><span class="n">Close</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Application</span><span class="p">.</span><span class="n">ScreenUpdating</span> <span class="o">=</span> <span class="k">True</span>
+</span></span><span class="line"><span class="cl">    <span class="n">MsgBox</span> <span class="s">&#34;切分通道完成，结果保存在当前文件夹 result 目录下!&#34;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl"><span class="k">End</span> <span class="k">Sub</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>程序运行结束后可将17步的结果文件导入到 SPSS 进行重复测量方差分析。</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/fnirs/">FNIRS</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/obsidian%E5%BF%AB%E9%80%9F%E5%8F%91%E5%B8%83hugo%E6%96%87%E7%AB%A0/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://pic.imgdb.cn/item/65fc06b79f345e8d0317dd50.webp" loading="lazy" data-key="Obsidian快速发布hugo文章" data-hash="https://pic.imgdb.cn/item/65fc06b79f345e8d0317dd50.webp"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Obsidian快速发布hugo文章</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/stack/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://pic.imgdb.cn/item/65fc10be9f345e8d0349611a.webp" loading="lazy" data-key="stack" data-hash="https://pic.imgdb.cn/item/65fc10be9f345e8d0349611a.webp"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Hugo Stack主题修改</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/hugo-blog/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://pic.imgdb.cn/item/65fc06b79f345e8d0317dd50.webp" loading="lazy" data-key="hugo-blog" data-hash="https://pic.imgdb.cn/item/65fc06b79f345e8d0317dd50.webp"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">使用Hugo搭建个人博客</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/gpower/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://pic.imgdb.cn/item/65dc4b779f345e8d031659f6.webp" loading="lazy" data-key="gpower" data-hash="https://pic.imgdb.cn/item/65dc4b779f345e8d031659f6.webp"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Gpower计算效应量</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/thesis-writing/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">英文论文写作</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2024 Tom Almighty
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.24.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

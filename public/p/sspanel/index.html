@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=5678&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='SSPanel-Uim 部署及修复订阅下发'>
+<title>SSPanel Uim部署及修复SS订阅下发教程</title>
+
+<link rel='canonical' href='http://localhost:5678/p/sspanel/'>
+
+<link rel="stylesheet" href="/scss/style.min.918b080848931f419a68278a85726ae4a3ac8d99ae37b77db96a5c50779e8a12.css"><meta property='og:title' content='SSPanel Uim部署及修复SS订阅下发教程'>
+<meta property='og:description' content='SSPanel-Uim 部署及修复订阅下发'>
+<meta property='og:url' content='http://localhost:5678/p/sspanel/'>
+<meta property='og:site_name' content='Tom&#39;s Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='面板' /><meta property='article:published_time' content='2024-01-26T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-01-26T00:00:00&#43;00:00'/><meta property='og:image' content='https://pic.imgdb.cn/item/65f01aa99f345e8d03171a8d.webp' />
+<meta name="twitter:title" content="SSPanel Uim部署及修复SS订阅下发教程">
+<meta name="twitter:description" content="SSPanel-Uim 部署及修复订阅下发"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://pic.imgdb.cn/item/65f01aa99f345e8d03171a8d.webp' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hucd6abb5a6ccd5c545bfe3e391578d67c_52582_300x0_resize_box_3.png" width="300"
+                            height="318" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🌓</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Tom&#39;s Blog</a></h1>
+            <h2 class="site-description">Progress Everyday!</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://grew.cc'
+                        target="_blank"
+                        title="Homepage"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/tom2almighty'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='mailto:bboyc80@gmail.com'
+                        target="_blank"
+                        title="Mail"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" />
+  <path d="M3 7l9 6l9 -6" />
+</svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://hugo.grew.cc/index.xml'
+                        target="_blank"
+                        title="RSS"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-rss" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="5" cy="19" r="1" />
+  <path d="M4 4a16 16 0 0 1 16 16" />
+  <path d="M4 11a9 9 0 0 1 9 9" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>链接</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#前言">前言</a></li>
+    <li><a href="#1-安装宝塔面板-77">1. 安装宝塔面板 7.7</a></li>
+    <li><a href="#2-配置宝塔面板">2. 配置宝塔面板</a></li>
+    <li><a href="#3-创建网站并添加-ssl-证书">3. 创建网站并添加 SSL 证书</a></li>
+    <li><a href="#4-下载并安装面板源码">4. 下载并安装面板源码</a></li>
+    <li><a href="#5-设置站点运行目录和伪静态">5. 设置站点运行目录和伪静态</a></li>
+    <li><a href="#6-设置站点根目录整体权限">6. 设置站点根目录整体权限</a></li>
+    <li><a href="#7-编辑网站配置文件">7. 编辑网站配置文件</a></li>
+    <li><a href="#8-站点初始化">8. 站点初始化</a></li>
+    <li><a href="#9-设置定时任务">9. 设置定时任务</a></li>
+    <li><a href="#10-修改节点订阅下发端口问题">10. 修改节点订阅下发端口问题</a></li>
+    <li><a href="#11-重启服务器">11. 重启服务器</a></li>
+    <li><a href="#参考">参考</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/sspanel/">
+                
+                    <img src="https://pic.imgdb.cn/item/65f01aa99f345e8d03171a8d.webp" loading="lazy" alt="Featured image of post SSPanel Uim部署及修复SS订阅下发教程" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E6%8A%98%E8%85%BE%E8%AE%B0%E5%BD%95/" style="background-color: #2a9d8f; color: #fff;">
+                折腾记录
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/sspanel/">SSPanel Uim部署及修复SS订阅下发教程</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            SSPanel-Uim 部署及修复订阅下发
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2024-01-26</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 3 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="前言">前言</h2>
+<p>请注意，本教程仅用于学习目的，切勿将其用于非法用途。使用本教程搭建面板需要遵循法律法规，谨慎使用相关技术。</p>
+<h2 id="1-安装宝塔面板-77">1. 安装宝塔面板 7.7</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 更新系统和安装 wget、curl</span>
+</span></span><span class="line"><span class="cl">apt-get update -y <span class="o">&amp;&amp;</span> apt-get install wget -y <span class="o">&amp;&amp;</span> apt-get install curl -y
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 安装宝塔面板</span>
+</span></span><span class="line"><span class="cl">curl -sSO &lt;https://raw.githubusercontent.com/zhucaidan/btpanel-v7.7.0/main/install/install_panel.sh&gt; <span class="o">&amp;&amp;</span> bash install_panel.sh
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 删除登录验证</span>
+</span></span><span class="line"><span class="cl">sed -i <span class="s2">&#34;s|if (bind_user == &#39;True&#39;) {|if (bind_user == &#39;REMOVED&#39;) {|g&#34;</span> /www/server/panel/BTPanel/static/js/index.js
+</span></span><span class="line"><span class="cl">rm -rf /www/server/panel/data/bind.pl
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="2-配置宝塔面板">2. 配置宝塔面板</h2>
+<ul>
+<li>安装如下：
+<ul>
+<li><code>Nginx 1.22.1</code></li>
+<li><code>PHP 8.2 +</code></li>
+<li><code>MySQL 10.11.6-MariaDB</code></li>
+<li><code>Redis 7.0.11</code></li>
+<li><code>phpMyAdmin 4.9</code></li>
+<li><code>Pure-Ftpd 1.0.49</code></li>
+</ul>
+</li>
+<li>安装 <code>PHP</code> 扩展：<code>fileinfo</code>、<code>redis</code>、<code>yaml</code>。</li>
+<li>删除 <code>PHP</code> 被禁用函数：<code>proc_open</code>、<code>proc_get_status</code>、<code>putenv</code>。</li>
+</ul>
+<h2 id="3-创建网站并添加-ssl-证书">3. 创建网站并添加 SSL 证书</h2>
+<h2 id="4-下载并安装面板源码">4. 下载并安装面板源码</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> /www/wwwroot
+</span></span><span class="line"><span class="cl"><span class="c1"># 版本参考 GitHub</span>
+</span></span><span class="line"><span class="cl">git clone -b 2023.6 https://github.com/Anankke/SSPanel-Uim.git
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="5-设置站点运行目录和伪静态">5. 设置站点运行目录和伪静态</h2>
+<ol>
+<li>站点目录设置为 <code>/www/wwwroot/SSPanel-Uim/public</code>，关闭<code>防跨站攻击</code>。</li>
+<li>编辑 Nginx 配置文件，在 location / 下添加：</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">location</span> <span class="o">/</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">try_files</span> <span class="nv">$uri</span> <span class="o">/</span><span class="nx">index</span><span class="o">.</span><span class="nx">php</span><span class="nv">$is_args$args</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol>
+<li>重启 Nginx。</li>
+</ol>
+<h2 id="6-设置站点根目录整体权限">6. 设置站点根目录整体权限</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">chmod -R <span class="m">775</span> /www/wwwroot/SSPanel-Uim
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="7-编辑网站配置文件">7. 编辑网站配置文件</h2>
+<ul>
+<li>将 <code>appprofile.example.php</code> 重命名为 <code>appprofile.php</code>。</li>
+<li>将 <code>.config.example.php</code> 重命名为 <code>.config.php</code>。</li>
+<li>编辑 <code>.config.php</code>，填写必要的参数。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nv">$_ENV</span><span class="p">[</span><span class="s1">&#39;key&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;abcde&#39;</span><span class="p">;</span>  <span class="c1">//Cookie加密密钥，请务必修改此key为随机字符串
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nv">$_ENV</span><span class="p">[</span><span class="s1">&#39;appName&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="s1">&#39;sspanel&#39;</span><span class="p">;</span> <span class="c1">//站点名称
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nv">$_ENV</span><span class="p">[</span><span class="s1">&#39;baseUrl&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="s1">&#39;&lt;https://www.aaa.com&gt;&#39;</span><span class="p">;</span>  <span class="c1">//站点地址,结尾不要带斜杠
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nv">$_ENV</span><span class="p">[</span><span class="s1">&#39;muKey&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;abcde&#39;</span><span class="p">;</span>   <span class="c1">//WebAPI密钥，用于节点服务端与面板通信
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nv">$_ENV</span><span class="p">[</span><span class="s1">&#39;db_database&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="s1">&#39;database&#39;</span><span class="p">;</span> <span class="c1">//数据库名
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nv">$_ENV</span><span class="p">[</span><span class="s1">&#39;db_username&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="s1">&#39;user&#39;</span><span class="p">;</span> <span class="c1">//数据库用户名
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nv">$_ENV</span><span class="p">[</span><span class="s1">&#39;db_password&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="s1">&#39;password&#39;</span><span class="p">;</span> <span class="c1">//用户名对应的密码
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nv">$_ENV</span><span class="p">[</span><span class="s1">&#39;enable_login_bind_ip&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span> <span class="c1">//是否将登陆和IP绑定,建议false
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nv">$_ENV</span><span class="p">[</span><span class="s1">&#39;checkNodeIp&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="k">false</span><span class="p">;</span> <span class="c1">//是否webapi验证节点ip,建议false
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nv">$_ENV</span><span class="p">[</span><span class="s1">&#39;cloudflare_enable&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span> <span class="c1">//是否开启 Cloudflare 解析
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nv">$_ENV</span><span class="p">[</span><span class="s1">&#39;cloudflare_email&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;aa@gmail.com&#39;</span><span class="p">;</span> <span class="c1">//Cloudflare 邮箱地址
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nv">$_ENV</span><span class="p">[</span><span class="s1">&#39;cloudflare_key&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;key&#39;</span><span class="p">;</span> <span class="c1">//Cloudflare API Key
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nv">$_ENV</span><span class="p">[</span><span class="s1">&#39;cloudflare_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;www.aaa.com&#39;</span><span class="p">;</span> <span class="c1">//站点域名
+</span></span></span><span class="line"><span class="cl"><span class="c1">// ...其他参数
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="8-站点初始化">8. 站点初始化</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> /www/wwwroot/SSPanel-Uim
+</span></span><span class="line"><span class="cl"><span class="c1"># 切换为PHP8.2</span>
+</span></span><span class="line"><span class="cl">sudo ln -sf /www/server/php/82/bin/php /usr/bin/php
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">wget https://getcomposer.org/installer -O composer.phar
+</span></span><span class="line"><span class="cl">php composer.phar
+</span></span><span class="line"><span class="cl">php composer.phar install --no-dev
+</span></span><span class="line"><span class="cl">php xcat Migration new
+</span></span><span class="line"><span class="cl">php xcat Tool importAllSettings
+</span></span><span class="line"><span class="cl">php xcat Tool createAdmin
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 将目录权限用户设为 www</span>
+</span></span><span class="line"><span class="cl">chmod -R <span class="m">755</span> /www/wwwroot/SSPanel-Uim
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="9-设置定时任务">9. 设置定时任务</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 安装 cron</span>
+</span></span><span class="line"><span class="cl">sudo apt-get install cron
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 编辑定时任务</span>
+</span></span><span class="line"><span class="cl">crontab -e
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 添加以下任务</span>
+</span></span><span class="line"><span class="cl">*/5 * * * * /usr/bin/php /www/wwwroot/SSPanel-Uim/xcat Cron
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 保存并退出，重启 cron</span>
+</span></span><span class="line"><span class="cl">systemctl restart cron
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="10-修改节点订阅下发端口问题">10. 修改节点订阅下发端口问题</h2>
+<blockquote>
+<p>面板会将用户端口下发为ss节点端口</p>
+</blockquote>
+<ol>
+<li>在 <code>SSPanel-Uim/src/Services/Subscribe</code> 目录下，除了 <code>base.php</code>、<code>Trojan.php</code>、<code>V2ray.php</code> 之外的文件都需要修改。</li>
+<li>在每个文件的 <code>foreach ($nodes_raw as $node_raw) {</code> 后添加以下代码：</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="c1"># 在 foreach ($nodes_raw as $node_raw) { 这一行的下一行添加下面这一行代码：
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nv">$node_custom_config</span> <span class="o">=</span> <span class="nx">json_decode</span><span class="p">(</span><span class="nv">$node_raw</span><span class="o">-&gt;</span><span class="na">custom_config</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 在if ((int) $node_raw-&gt;sort === 0) { 这一行的下一行添加下面这一行代码：
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nv">$ss_port</span> <span class="o">=</span> <span class="nv">$node_custom_config</span><span class="p">[</span><span class="s1">&#39;offset_port_user&#39;</span><span class="p">]</span> <span class="o">??</span> <span class="p">(</span><span class="nv">$node_custom_config</span><span class="p">[</span><span class="s1">&#39;offset_port_node&#39;</span><span class="p">]</span> <span class="o">??</span> <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">port</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 这里是指按照 offset_port_user、offset_port_node、用户端口的顺序加载端口
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><ol>
+<li>将后面 <code>$links</code> 开头的代码中的 <code>$user-&gt;port</code> 改为 <code>$ss_port</code>。</li>
+</ol>
+<h2 id="11-重启服务器">11. 重启服务器</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">reboot
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="参考">参考</h2>
+<ul>
+<li><a class="link" href="https://streamernote.online/index.php/2024/01/12/sspanel%E9%9D%A2%E6%9D%BF%E6%90%AD%E5%BB%BA%E6%94%AF%E6%8C%81reality/"  target="_blank" rel="noopener"
+    >Streamerfans之家</a></li>
+</ul>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/%E9%9D%A2%E6%9D%BF/">面板</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/shenji/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://pic.imgdb.cn/item/65f01b5d9f345e8d031a6315.webp" loading="lazy" data-key="shenji" data-hash="https://pic.imgdb.cn/item/65f01b5d9f345e8d031a6315.webp"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">常用审计规则</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/webstack-hugo/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://pic.imgdb.cn/item/65fc44b29f345e8d03b73249.webp" loading="lazy" data-key="webstack-hugo" data-hash="https://pic.imgdb.cn/item/65fc44b29f345e8d03b73249.webp"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Webstack Hugo导航</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/stack/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://pic.imgdb.cn/item/65fc10be9f345e8d0349611a.webp" loading="lazy" data-key="stack" data-hash="https://pic.imgdb.cn/item/65fc10be9f345e8d0349611a.webp"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Hugo Stack主题修改</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/hugo-blog/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://pic.imgdb.cn/item/65fc06b79f345e8d0317dd50.webp" loading="lazy" data-key="hugo-blog" data-hash="https://pic.imgdb.cn/item/65fc06b79f345e8d0317dd50.webp"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">使用Hugo搭建个人博客</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/sub2clash/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://pic.imgdb.cn/item/65f00c8c9f345e8d03e0d8b8.webp" loading="lazy" data-key="sub2clash" data-hash="https://pic.imgdb.cn/item/65f00c8c9f345e8d03e0d8b8.webp"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">订阅转换之四：sub2clash项目</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2024 Tom Almighty
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.24.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

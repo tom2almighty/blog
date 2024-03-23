@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='解决 Windows10 经常出现的奇奇怪怪的问题。'>
+<title>Windows10常见问题</title>
+
+<link rel='canonical' href='https://hugo.grew.cc/p/windows10/'>
+
+<link rel="stylesheet" href="/scss/style.min.918b080848931f419a68278a85726ae4a3ac8d99ae37b77db96a5c50779e8a12.css"><meta property='og:title' content='Windows10常见问题'>
+<meta property='og:description' content='解决 Windows10 经常出现的奇奇怪怪的问题。'>
+<meta property='og:url' content='https://hugo.grew.cc/p/windows10/'>
+<meta property='og:site_name' content='Tom&#39;s Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Windows' /><meta property='article:published_time' content='2020-09-01T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2020-09-01T00:00:00&#43;00:00'/><meta property='og:image' content='https://pic.imgdb.cn/item/62d6de99f54cd3f937dd4e5f.jpg' />
+<meta name="twitter:title" content="Windows10常见问题">
+<meta name="twitter:description" content="解决 Windows10 经常出现的奇奇怪怪的问题。"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://pic.imgdb.cn/item/62d6de99f54cd3f937dd4e5f.jpg' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hucd6abb5a6ccd5c545bfe3e391578d67c_52582_300x0_resize_box_3.png" width="300"
+                            height="318" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🌓</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Tom&#39;s Blog</a></h1>
+            <h2 class="site-description">Progress Everyday!</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://grew.cc'
+                        target="_blank"
+                        title="Homepage"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/tom2almighty'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='mailto:bboyc80@gmail.com'
+                        target="_blank"
+                        title="Mail"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" />
+  <path d="M3 7l9 6l9 -6" />
+</svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://hugo.grew.cc/index.xml'
+                        target="_blank"
+                        title="RSS"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-rss" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="5" cy="19" r="1" />
+  <path d="M4 4a16 16 0 0 1 16 16" />
+  <path d="M4 11a9 9 0 0 1 9 9" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>链接</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#删除自带输入法"><strong>删除自带输入法</strong></a></li>
+    <li><a href="#linux--windows-双系统时间问题"><strong>Linux + Windows 双系统时间问题</strong></a></li>
+    <li><a href="#解决部分图标加载不出来"><strong>解决部分图标加载不出来</strong></a></li>
+    <li><a href="#缩放问题"><strong>缩放问题</strong></a></li>
+    <li><a href="#anne-pro-2-连接设备"><strong>Anne Pro 2 连接设备</strong></a></li>
+    <li><a href="#网络连接问题"><strong>网络连接问题</strong></a></li>
+    <li><a href="#安全中心"><strong>安全中心</strong></a></li>
+    <li><a href="#hevc-插件地址"><strong>HEVC 插件地址</strong></a></li>
+    <li><a href="#win11跳过开机联网"><strong>win11跳过开机联网</strong></a></li>
+    <li><a href="#ltsc版本安装-microsoft-store"><strong>LTSC版本安装 Microsoft Store</strong></a></li>
+    <li><a href="#参考"><strong>参考</strong></a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/windows10/">
+                
+                    <img src="https://pic.imgdb.cn/item/62d6de99f54cd3f937dd4e5f.jpg" loading="lazy" alt="Featured image of post Windows10常见问题" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E6%97%A5%E5%B8%B8%E7%94%9F%E6%B4%BB/" style="background-color: #2a9d8f; color: #fff;">
+                日常生活
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/windows10/">Windows10常见问题</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            解决 Windows10 经常出现的奇奇怪怪的问题。
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2020-09-01</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 3 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="删除自带输入法"><strong>删除自带输入法</strong></h2>
+<p>删除以下注册表</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">HKEY_LOCAL_MACHINE</span><span class="p">\\\\</span><span class="n">SOFTWARE</span><span class="p">\\\\</span><span class="n">Microsoft</span><span class="p">\\\\</span><span class="n">CTF</span><span class="p">\\\\</span><span class="n">TIP</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl"><span class="p">{</span><span class="n">81d4e9c9</span><span class="p">-</span><span class="n">1d3b</span><span class="p">-</span><span class="n">41bc</span><span class="p">-</span><span class="n">9e6c</span><span class="p">-</span><span class="n">4b40bf79e35e</span><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="linux--windows-双系统时间问题"><strong>Linux + Windows 双系统时间问题</strong></h2>
+<p>Windows 下以管理员身份打开命令行窗口</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">Reg</span> <span class="n">add</span> <span class="n">HKLM</span><span class="p">\\\\</span><span class="n">SYSTEM</span><span class="p">\\\\</span><span class="n">CurrentControlSet</span><span class="p">\\\\</span><span class="n">Control</span><span class="p">\\\\</span><span class="n">TimeZoneInformation</span> <span class="p">/</span><span class="n">v</span> <span class="n">RealTimeIsUniversal</span> <span class="p">/</span><span class="n">t</span> <span class="n">REG_DWORD</span> <span class="p">/</span><span class="n">d</span> <span class="mf">1</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="解决部分图标加载不出来"><strong>解决部分图标加载不出来</strong></h2>
+<ol>
+<li>在桌面新建文本文档，复制以下代码</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">rem 关闭Windows外壳程序explorer
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">taskkill /f /im explorer.exe
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">rem 清理系统图标缓存数据库
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">attrib -h -s -r <span class="s2">&#34;%userprofile%\\\\AppData\\\\Local\\\\IconCache.db&#34;</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">del /f <span class="s2">&#34;%userprofile%\\\\AppData\\\\Local\\\\IconCache.db&#34;</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">attrib /s /d -h -s -r <span class="s2">&#34;%userprofile%\\\\AppData\\\\Local\\\\Microsoft\\\\Windows\\\\Explorer\\\\*&#34;</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">del /f <span class="s2">&#34;%userprofile%\\\\AppData\\\\Local\\\\Microsoft\\\\Windows\\\\Explorer\\\\thumbcache_32.db&#34;</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">del /f <span class="s2">&#34;%userprofile%\\\\AppData\\\\Local\\\\Microsoft\\\\Windows\\\\Explorer\\\\thumbcache_96.db&#34;</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">del /f <span class="s2">&#34;%userprofile%\\\\AppData\\\\Local\\\\Microsoft\\\\Windows\\\\Explorer\\\\thumbcache_102.db&#34;</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">del /f <span class="s2">&#34;%userprofile%\\\\AppData\\\\Local\\\\Microsoft\\\\Windows\\\\Explorer\\\\thumbcache_256.db&#34;</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">del /f <span class="s2">&#34;%userprofile%\\\\AppData\\\\Local\\\\Microsoft\\\\Windows\\\\Explorer\\\\thumbcache_1024.db&#34;</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">del /f <span class="s2">&#34;%userprofile%\\\\AppData\\\\Local\\\\Microsoft\\\\Windows\\\\Explorer\\\\thumbcache_idx.db&#34;</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">del /f <span class="s2">&#34;%userprofile%\\\\AppData\\\\Local\\\\Microsoft\\\\Windows\\\\Explorer\\\\thumbcache_sr.db&#34;</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">rem 清理 系统托盘记忆的图标
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> y<span class="p">|</span>reg delete <span class="s2">&#34;HKEY_CLASSES_ROOT\\\\Local Settings\\\\Software\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\TrayNotify&#34;</span> /v IconStreams
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> y<span class="p">|</span>reg delete <span class="s2">&#34;HKEY_CLASSES_ROOT\\\\Local Settings\\\\Software\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\TrayNotify&#34;</span> /v PastIconsStream
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">rem 重启Windows外壳程序explorer
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">start explorer
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol>
+<li>将 <code>txt</code> 后缀修改为 <code>bat</code></li>
+<li>双击运行</li>
+</ol>
+<h2 id="缩放问题"><strong>缩放问题</strong></h2>
+<p>Win10 修改<code>字体大小</code>后，再改回去任务窗口顶栏并不会改变，此时只需要修改缩放为<code>自定义缩放</code>，然后再调整回去即可。</p>
+<h2 id="anne-pro-2-连接设备"><strong>Anne Pro 2 连接设备</strong></h2>
+<p><code>Anne Pro 2</code> 由于固件问题，可能出现连接不上电脑的情况，这里给出淘宝客服的的步骤，已测试可以成功连接。</p>
+<ol>
+<li>插线连接电脑，打开键盘灯光，并清除蓝牙连接信息。</li>
+<li>准备连接，先打开蓝牙搜索界面，再打开键盘背部的开关，然后长按 <code>Fn2 + 1</code>5秒以上，不要放手，键盘上按键 <code>1</code> 的灯快速闪烁的时候，在蓝牙设备点击连接。</li>
+</ol>
+<blockquote>
+<p>注意：闪烁的数字其实就是连接的设备编号，如果没连接成功可以数字 1-4 都试一下</p>
+</blockquote>
+<p>Anne Pro 设备驱动：<a class="link" href="https://www.hexcore.xyz/obinskit"  target="_blank" rel="noopener"
+    >点击下载</a></p>
+<h2 id="网络连接问题"><strong>网络连接问题</strong></h2>
+<p>win10 18362版本后连接WiFi后可能出现已连接网络但显示未连接的情况，虽然仍能正常访问网络，但部分情境下可能受限，解决方法如下：</p>
+<ol>
+<li>找到如下注册表：</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="se">\H</span>KEY_LOCAL_MACHINE<span class="se">\S</span>YSTEM<span class="se">\C</span>urrentControlSet<span class="se">\S</span>ervices<span class="se">\N</span>laSvc<span class="se">\P</span>arameters<span class="se">\I</span>nternet
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol>
+<li>修改如下项目值为右侧内容：</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ActiveWebProbeContent        →     Microsoft NCSI
+</span></span><span class="line"><span class="cl">ActiveWebProbeContentV6      →     Microsoft NCSI
+</span></span><span class="line"><span class="cl">ActiveWebProbeHost           →     www.msftncsi.com
+</span></span><span class="line"><span class="cl">ActiveWebProbeHostV6         →     ipv6.msftncsi.com
+</span></span><span class="line"><span class="cl">ActiveWebProbePath           →     ncsi.txt
+</span></span><span class="line"><span class="cl">ActiveWebProbePathV6         →     ncsi.txt
+</span></span><span class="line"><span class="cl">EnableActiveProbing          →     1
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>原因：每当连网后，系统会自动向微软的 <a class="link" href="http://dns.msftncsi.com"  target="_blank" rel="noopener"
+    >http://dns.msftncsi.com</a>发出请求，然后返回一个NCSI.txt的值，这一值如果正确时，则确认为已连网。而Win10最近的版本中，这个返回服务器和值有了新变化并反映为6个注册表项中。这些变化因国内部分运行商的网络重定向，不能得到正确的反馈，因此出现实际能上网确显示为无internet的问题。</p>
+</blockquote>
+<h2 id="安全中心"><strong>安全中心</strong></h2>
+<p><code>windows11</code>部分精简系统重启后任务栏会出现安全中心图标，删除方法如下：</p>
+<p>以管理员身份运行终端，粘贴如下内容回车：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">reg delete HKEY_LOCAL_MACHINE<span class="se">\S</span>OFTWARE<span class="se">\M</span>icrosoft<span class="se">\W</span>indows<span class="se">\C</span>urrentVersion<span class="se">\R</span>un /v <span class="s2">&#34;SecurityHealth&#34;</span> /f
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="hevc-插件地址"><strong>HEVC 插件地址</strong></h2>
+<p><a class="link" href="https://www.microsoft.com/store/productId/9N4WGH0Z6VHQ"  target="_blank" rel="noopener"
+    >HEVC</a></p>
+<h2 id="win11跳过开机联网"><strong>win11跳过开机联网</strong></h2>
+<p>按键盘上的Shift+F10调出命令提示符，输入以下内容后回车，等待系统重启：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">oobe\bepassnro
+</span></span><span class="line"><span class="cl"># 注意：不需要区分大小写
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="ltsc版本安装-microsoft-store"><strong>LTSC版本安装 Microsoft Store</strong></h2>
+<p>管理员身份运行 <code>cmd</code>，输入以下内容：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wsreset -i
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>适用于 LTSC2021 以及 LTSC2019，自行测试。</p>
+</blockquote>
+<h2 id="参考"><strong>参考</strong></h2>
+<ul>
+<li>重启资源管理器：<a class="link" href="https://blog.csdn.net/win_turn/article/details/73612220"  target="_blank" rel="noopener"
+    >原文</a></li>
+<li>WiFi连接后无 Internet：<a class="link" href="https://www.zhihu.com/question/48856675/answer/814251635"  target="_blank" rel="noopener"
+    >知乎链接</a>)</li>
+<li>安全中心：<a class="link" href="https://bbs.pcbeta.com/viewthread-1912644-1-1.html"  target="_blank" rel="noopener"
+    >远景论坛</a></li>
+<li>win11跳过开机联网：<a class="link" href="https://bbs.pcbeta.com/viewthread-1951653-1-3.htmlhttps://bbs.pcbeta.com/viewthread-1951653-1-3.html"  target="_blank" rel="noopener"
+    >远景论坛</a></li>
+<li>LTSC 安装 Microsoft Store<a class="link" href="https://bbs.pcbeta.com/viewthread-1945054-1-2.html"  target="_blank" rel="noopener"
+    >远景论坛</a></li>
+</ul>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/windows/">Windows</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/office/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://pic.imgdb.cn/item/62d6dc96f54cd3f937d50c8a.png" loading="lazy" data-key="office" data-hash="https://pic.imgdb.cn/item/62d6dc96f54cd3f937d50c8a.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Windows10 Office安装指南</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/stack/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://pic.imgdb.cn/item/65fc10be9f345e8d0349611a.webp" loading="lazy" data-key="stack" data-hash="https://pic.imgdb.cn/item/65fc10be9f345e8d0349611a.webp"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Hugo Stack主题修改</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/hugo-blog/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://pic.imgdb.cn/item/65fc06b79f345e8d0317dd50.webp" loading="lazy" data-key="hugo-blog" data-hash="https://pic.imgdb.cn/item/65fc06b79f345e8d0317dd50.webp"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">使用Hugo搭建个人博客</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/plex/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://pic.imgdb.cn/item/65f0121c9f345e8d03f6691c.webp" loading="lazy" data-key="plex" data-hash="https://pic.imgdb.cn/item/65f0121c9f345e8d03f6691c.webp"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">部署Plex并挂载Alist</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/alist/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://pic.imgdb.cn/item/65f013c89f345e8d03fc5210.webp" loading="lazy" data-key="alist" data-hash="https://pic.imgdb.cn/item/65f013c89f345e8d03fc5210.webp"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Alist部署</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2024 Tom Almighty
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.24.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

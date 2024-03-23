@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>面板 on Tom&#39;s Blog</title>
+        <link>http://localhost:5678/tags/%E9%9D%A2%E6%9D%BF/</link>
+        <description>Recent content in 面板 on Tom&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <copyright>Tom Almighty</copyright>
+        <lastBuildDate>Tue, 12 Mar 2024 16:42:34 +0800</lastBuildDate><atom:link href="http://localhost:5678/tags/%E9%9D%A2%E6%9D%BF/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>常用审计规则</title>
+        <link>http://localhost:5678/p/shenji/</link>
+        <pubDate>Tue, 12 Mar 2024 16:42:34 +0800</pubDate>
+        
+        <guid>http://localhost:5678/p/shenji/</guid>
+        <description>&lt;img src="https://pic.imgdb.cn/item/65f01b5d9f345e8d031a6315.webp" alt="Featured image of post 常用审计规则" /&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;api&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;ps&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;sv&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;offnavi&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;newvector&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;ulog&lt;span class=&#34;se&#34;&gt;\.&lt;/span&gt;imap&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;newloc&lt;span class=&#34;o&#34;&gt;)(&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\.&lt;/span&gt;map&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\.&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;baidu&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;n&lt;span class=&#34;se&#34;&gt;\.&lt;/span&gt;shifen&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\.&lt;/span&gt;com
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;.+&lt;span class=&#34;se&#34;&gt;\.&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;^&lt;span class=&#34;o&#34;&gt;)(&lt;/span&gt;360&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;so&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\.&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;cn&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;com&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;.*&lt;span class=&#34;se&#34;&gt;\\&lt;/span&gt;.&lt;span class=&#34;o&#34;&gt;||)(&lt;/span&gt;dafahao&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;minghui&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;dongtaiwang&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;epochtimes&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;ntdtv&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;falundafa&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;wujieliulan&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;zhengjian&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\.&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;org&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;com&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;net&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;.*&lt;span class=&#34;se&#34;&gt;\\&lt;/span&gt;.&lt;span class=&#34;o&#34;&gt;||)(&lt;/span&gt;shenzhoufilm&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;secretchina&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;renminbao&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;aboluowang&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;mhradio&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;guangming&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;zhengwunet&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;soundofhope&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;yuanming&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;zhuichaguoji&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;fgmtv&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;xinsheng&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;shenyunperformingarts&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;epochweekly&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;tuidang&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;shenyun&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;falundata&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;bannedbook&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\.&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;org&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;com&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;net&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;.*&lt;span class=&#34;se&#34;&gt;\\&lt;/span&gt;.&lt;span class=&#34;o&#34;&gt;||)(&lt;/span&gt;icbc&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;ccb&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;boc&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;bankcomm&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;abchina&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;cmbchina&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;psbc&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;cebbank&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;cmbc&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;pingan&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;spdb&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;citicbank&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;cib&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;hxb&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;bankofbeijing&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;hsbank&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;tccb&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;4001961200&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;bosc&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;hkbchina&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;njcb&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;nbcb&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;lj-bank&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;bjrcb&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;jsbchina&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;gzcb&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;cqcbank&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;czbank&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;hzbank&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;srcb&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;cbhb&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;cqrcb&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;grcbank&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;qdccb&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;bocd&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;hrbcb&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;jlbank&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;bankofdl&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;qlbchina&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;dongguanbank&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;cscb&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;hebbank&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;drcbank&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;zzbank&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;bsb&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;xmccb&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;hljrcc&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;jxnxs&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;gsrcu&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;fjnx&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;sxnxs&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;gx966888&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;gx966888&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;zj96596&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;hnnxs&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;ahrcu&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;shanxinj&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;hainanbank&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;scrcu&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;gdrcu&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;hbxh&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;ynrcc&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;lnrcc&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;nmgnxs&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;hebnx&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;jlnls&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;js96008&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;hnnx&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;sdnxs&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\.&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;org&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;com&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;net&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;cn&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;.*&lt;span class=&#34;se&#34;&gt;\\&lt;/span&gt;.&lt;span class=&#34;o&#34;&gt;||)(&lt;/span&gt;unionpay&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;alipay&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;baifubao&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;yeepay&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;99bill&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;95516&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;51credit&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;cmpay&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;tenpay&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;lakala&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;jdpay&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\.&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;org&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;com&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;net&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;cn&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;.*&lt;span class=&#34;se&#34;&gt;\\&lt;/span&gt;.&lt;span class=&#34;o&#34;&gt;||)(&lt;/span&gt;firstbank&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;bot&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;cotabank&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;megabank&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;tcb-bank&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;landbank&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;hncb&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;bankchb&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;tbb&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;ktb&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;tcbbank&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;scsb&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;bop&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;sunnybank&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;kgibank&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;fubon&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;ctbcbank&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;cathaybk&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;eximbank&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;bok&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;ubot&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;feib&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;yuantabank&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;sinopac&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;esunbank&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;taishinbank&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;jihsunbank&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;entiebank&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;hwataibank&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;csc&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;skbank&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\.&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;org&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;com&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;net&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;tw&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;Subject&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;HELO&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;SMTP&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;torrent&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\.&lt;/span&gt;torrent&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;peer_id&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;info_hash&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;get_peers&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;find_node&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;BitTorrent&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;announce_peer&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;announce&lt;span class=&#34;se&#34;&gt;\.&lt;/span&gt;php&lt;span class=&#34;se&#34;&gt;\?&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;passkey&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;BitTorrent protocol
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;^.*&lt;span class=&#34;se&#34;&gt;\@&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)(&lt;/span&gt;guerrillamail&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;guerrillamailblock&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;sharklasers&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;grr&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;pokemail&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;spam4&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;bccto&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;chacuo&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;027168&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\.&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;info&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;biz&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;com&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;de&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;net&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;org&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;me&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;la&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;.?&lt;span class=&#34;o&#34;&gt;)(&lt;/span&gt;xunlei&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;sandai&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;Thunder&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;XLLiveUD&lt;span class=&#34;o&#34;&gt;)(&lt;/span&gt;.&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
+        </item>
+        <item>
+        <title>SSPanel Uim部署及修复SS订阅下发教程</title>
+        <link>http://localhost:5678/p/sspanel/</link>
+        <pubDate>Fri, 26 Jan 2024 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:5678/p/sspanel/</guid>
+        <description>&lt;img src="https://pic.imgdb.cn/item/65f01aa99f345e8d03171a8d.webp" alt="Featured image of post SSPanel Uim部署及修复SS订阅下发教程" /&gt;&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+&lt;p&gt;请注意，本教程仅用于学习目的，切勿将其用于非法用途。使用本教程搭建面板需要遵循法律法规，谨慎使用相关技术。&lt;/p&gt;
+&lt;h2 id=&#34;1-安装宝塔面板-77&#34;&gt;1. 安装宝塔面板 7.7&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;9
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 更新系统和安装 wget、curl&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;apt-get update -y &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt-get install wget -y &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt-get install curl -y
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 安装宝塔面板&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;curl -sSO &amp;lt;https://raw.githubusercontent.com/zhucaidan/btpanel-v7.7.0/main/install/install_panel.sh&amp;gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; bash install_panel.sh
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 删除登录验证&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sed -i &lt;span class=&#34;s2&#34;&gt;&amp;#34;s|if (bind_user == &amp;#39;True&amp;#39;) {|if (bind_user == &amp;#39;REMOVED&amp;#39;) {|g&amp;#34;&lt;/span&gt; /www/server/panel/BTPanel/static/js/index.js
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;rm -rf /www/server/panel/data/bind.pl
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;2-配置宝塔面板&#34;&gt;2. 配置宝塔面板&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;安装如下：
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Nginx 1.22.1&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;PHP 8.2 +&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;MySQL 10.11.6-MariaDB&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Redis 7.0.11&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;phpMyAdmin 4.9&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Pure-Ftpd 1.0.49&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;安装 &lt;code&gt;PHP&lt;/code&gt; 扩展：&lt;code&gt;fileinfo&lt;/code&gt;、&lt;code&gt;redis&lt;/code&gt;、&lt;code&gt;yaml&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;删除 &lt;code&gt;PHP&lt;/code&gt; 被禁用函数：&lt;code&gt;proc_open&lt;/code&gt;、&lt;code&gt;proc_get_status&lt;/code&gt;、&lt;code&gt;putenv&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;3-创建网站并添加-ssl-证书&#34;&gt;3. 创建网站并添加 SSL 证书&lt;/h2&gt;
+&lt;h2 id=&#34;4-下载并安装面板源码&#34;&gt;4. 下载并安装面板源码&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; /www/wwwroot
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 版本参考 GitHub&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git clone -b 2023.6 https://github.com/Anankke/SSPanel-Uim.git
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;5-设置站点运行目录和伪静态&#34;&gt;5. 设置站点运行目录和伪静态&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;站点目录设置为 &lt;code&gt;/www/wwwroot/SSPanel-Uim/public&lt;/code&gt;，关闭&lt;code&gt;防跨站攻击&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;编辑 Nginx 配置文件，在 location / 下添加：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;location&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nx&#34;&gt;try_files&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$uri&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;index&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;php&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$is_args$args&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ol&gt;
+&lt;li&gt;重启 Nginx。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;6-设置站点根目录整体权限&#34;&gt;6. 设置站点根目录整体权限&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;chmod -R &lt;span class=&#34;m&#34;&gt;775&lt;/span&gt; /www/wwwroot/SSPanel-Uim
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;7-编辑网站配置文件&#34;&gt;7. 编辑网站配置文件&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;将 &lt;code&gt;appprofile.example.php&lt;/code&gt; 重命名为 &lt;code&gt;appprofile.php&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;将 &lt;code&gt;.config.example.php&lt;/code&gt; 重命名为 &lt;code&gt;.config.php&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;编辑 &lt;code&gt;.config.php&lt;/code&gt;，填写必要的参数。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;$_ENV&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;key&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;abcde&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;//Cookie加密密钥，请务必修改此key为随机字符串
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$_ENV&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;appName&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;sspanel&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;//站点名称
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$_ENV&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;baseUrl&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;&amp;lt;https://www.aaa.com&amp;gt;&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;//站点地址,结尾不要带斜杠
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$_ENV&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;muKey&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;abcde&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;   &lt;span class=&#34;c1&#34;&gt;//WebAPI密钥，用于节点服务端与面板通信
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$_ENV&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;db_database&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;database&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;//数据库名
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$_ENV&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;db_username&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;user&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;//数据库用户名
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$_ENV&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;db_password&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;password&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;//用户名对应的密码
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$_ENV&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;enable_login_bind_ip&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;false&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;//是否将登陆和IP绑定,建议false
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$_ENV&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;checkNodeIp&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;false&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;//是否webapi验证节点ip,建议false
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$_ENV&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;cloudflare_enable&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;//是否开启 Cloudflare 解析
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$_ENV&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;cloudflare_email&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;aa@gmail.com&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;//Cloudflare 邮箱地址
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$_ENV&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;cloudflare_key&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;key&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;//Cloudflare API Key
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$_ENV&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;cloudflare_name&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;www.aaa.com&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;//站点域名
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// ...其他参数
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;8-站点初始化&#34;&gt;8. 站点初始化&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; /www/wwwroot/SSPanel-Uim
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 切换为PHP8.2&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo ln -sf /www/server/php/82/bin/php /usr/bin/php
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;wget https://getcomposer.org/installer -O composer.phar
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;php composer.phar
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;php composer.phar install --no-dev
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;php xcat Migration new
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;php xcat Tool importAllSettings
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;php xcat Tool createAdmin
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 将目录权限用户设为 www&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;chmod -R &lt;span class=&#34;m&#34;&gt;755&lt;/span&gt; /www/wwwroot/SSPanel-Uim
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;9-设置定时任务&#34;&gt;9. 设置定时任务&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 安装 cron&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt-get install cron
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 编辑定时任务&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;crontab -e
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 添加以下任务&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;*/5 * * * * /usr/bin/php /www/wwwroot/SSPanel-Uim/xcat Cron
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 保存并退出，重启 cron&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;systemctl restart cron
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;10-修改节点订阅下发端口问题&#34;&gt;10. 修改节点订阅下发端口问题&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;面板会将用户端口下发为ss节点端口&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;在 &lt;code&gt;SSPanel-Uim/src/Services/Subscribe&lt;/code&gt; 目录下，除了 &lt;code&gt;base.php&lt;/code&gt;、&lt;code&gt;Trojan.php&lt;/code&gt;、&lt;code&gt;V2ray.php&lt;/code&gt; 之外的文件都需要修改。&lt;/li&gt;
+&lt;li&gt;在每个文件的 &lt;code&gt;foreach ($nodes_raw as $node_raw) {&lt;/code&gt; 后添加以下代码：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 在 foreach ($nodes_raw as $node_raw) { 这一行的下一行添加下面这一行代码：
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$node_custom_config&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;json_decode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$node_raw&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;custom_config&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 在if ((int) $node_raw-&amp;gt;sort === 0) { 这一行的下一行添加下面这一行代码：
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$ss_port&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$node_custom_config&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;offset_port_user&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;??&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$node_custom_config&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;offset_port_node&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;??&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$user&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;port&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 这里是指按照 offset_port_user、offset_port_node、用户端口的顺序加载端口
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ol&gt;
+&lt;li&gt;将后面 &lt;code&gt;$links&lt;/code&gt; 开头的代码中的 &lt;code&gt;$user-&amp;gt;port&lt;/code&gt; 改为 &lt;code&gt;$ss_port&lt;/code&gt;。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;11-重启服务器&#34;&gt;11. 重启服务器&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;reboot
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://streamernote.online/index.php/2024/01/12/sspanel%E9%9D%A2%E6%9D%BF%E6%90%AD%E5%BB%BA%E6%94%AF%E6%8C%81reality/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Streamerfans之家&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>
