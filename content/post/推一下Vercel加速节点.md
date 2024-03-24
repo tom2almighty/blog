@@ -8,7 +8,7 @@ license: false
 hidden: false
 comments: true
 draft: false
-image: " https://jsd.cdn.zzko.cn/gh/tom2almighty/picx-images-hosting@master/20240324/image.86tevvs230.webp"
+image: "https://jsd.cdn.zzko.cn/gh/tom2almighty/picx-images-hosting@master/20240324/image.86tevvs230.webp"
 description: 
 slug: "推一下Vercel加速节点"
 tags: ["Vercel"]
