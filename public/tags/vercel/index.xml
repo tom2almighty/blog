@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Vercel on Tom&#39;s Blog</title>
+        <link>http://localhost:5678/tags/vercel/</link>
+        <description>Recent content in Vercel on Tom&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <copyright>Tom Almighty</copyright>
+        <lastBuildDate>Sun, 24 Mar 2024 18:09:38 +0800</lastBuildDate><atom:link href="http://localhost:5678/tags/vercel/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>推一下Vercel加速节点</title>
+        <link>http://localhost:5678/p/%E6%8E%A8%E4%B8%80%E4%B8%8Bvercel%E5%8A%A0%E9%80%9F%E8%8A%82%E7%82%B9/</link>
+        <pubDate>Sun, 24 Mar 2024 18:09:38 +0800</pubDate>
+        
+        <guid>http://localhost:5678/p/%E6%8E%A8%E4%B8%80%E4%B8%8Bvercel%E5%8A%A0%E9%80%9F%E8%8A%82%E7%82%B9/</guid>
+        <description>&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;转载文章，文章来源：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://dusays.com/669/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;杜老师说&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;[Fgaoxing 博客] ( &lt;a class=&#34;link&#34; href=&#34;https://vercel-cyfan.yt-blog.top/9952/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://vercel-cyfan.yt-blog.top/9952/&lt;/a&gt; )&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;写在前面&#34;&gt;写在前面&lt;/h2&gt;
+&lt;p&gt;Vercel 不仅可以部署 Hexo 博客，还能部署很多服务。
+境内选择 Vercel 的站长很多，为了提升访问速度，自然选择了距离大陆最近的香港节点。
+选的多了，节点压力自然就会增大，就算 Vercel 属于大平台，对陆带宽依旧有限，必然会出现互相影响的情况。
+再加上滥用资源等问题出现，不少小伙伴反馈 Vercel 越来越慢。
+今天为 Vercel 用户提供一个加速方案。&lt;/p&gt;
+&lt;h2 id=&#34;食用方法&#34;&gt;食用方法&lt;/h2&gt;
+&lt;p&gt;将原来解析至 &lt;code&gt;cname.vercel.com&lt;/code&gt; 改为 &lt;code&gt;vercel.cdn.yt-blog.top&lt;/code&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;两个 CNAME 速度有差距，这个 CNAME 对应  &lt;a class=&#34;link&#34; href=&#34;https://vercel-cyfan.yt-blog.top/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://vercel-cyfan.yt-blog.top/&lt;/a&gt; ，这主要是由于 104.199.217.228 只有电信快，18.162.37.140 相对不稳定，但联通和移动快，大部分 Vercel 节点都是联通和移动快。vercel.cdn.cyfan.top 使用了更多的 IP 确保在一台出现问题后不会有太面积影响，但灵感来自 vercel.cdn.cyfan.top&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;https://resources.blog.duolaa.asia/img/202402102312848.webp&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;img&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;可访问 &lt;a class=&#34;link&#34; href=&#34;https://vercel.cdn.yt-blog.top/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Vercel CDN (vercel.cdn.yt-blog.top)&lt;/a&gt; 查看&lt;/p&gt;
+&lt;h2 id=&#34;加速原理&#34;&gt;加速原理&lt;/h2&gt;
+&lt;p&gt;Vercel 在大陆周围还有很多节点，其中包含中国台湾、韩国、日本、新加坡等，这些节点的访问延迟在接受范围，且相对香港节点来说带宽更充足。&lt;/p&gt;
+&lt;p&gt;Vercel 的 Anycast 会自动将节点解析至距离最近的香港服务器，但如果手动解析则太过麻烦。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;vercel.cdn.yt-blog.top&lt;/code&gt; 经过不断测速（大约消耗了 200 MB 流量）手动解析，并通过 D 监控检查状态，无法访问时会及时暂停节点。使用时自动解析至附近可用节点，尽可能的选择优质节点。&lt;/p&gt;
+&lt;p&gt;这更加类似于 CF 自选 IP，而不是真正的节点，节点 IP 基于 Cyfan 的 &lt;a class=&#34;link&#34; href=&#34;https://gist.github.com/ChenYFan/fc2bd4ec1795766f2613b52ba123c0f8&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Vercel All IP (github.com)&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;更进一步&#34;&gt;更进一步&lt;/h2&gt;
+&lt;p&gt;可以通过 Vercel 官方提供的缓存进行加速&lt;br&gt;
+详细请看：&lt;a class=&#34;link&#34; href=&#34;https://vercel.com/docs/edge-network/caching#cdn-cache-control&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://vercel.com/docs/edge-network/caching#cdn-cache-control&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;静态网站参考本博客，在根目录放置 vercel. Json&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;#34;headers&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nt&#34;&gt;&amp;#34;source&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;/sw.js&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nt&#34;&gt;&amp;#34;headers&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;          &lt;span class=&#34;nt&#34;&gt;&amp;#34;key&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Cache-Control&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;          &lt;span class=&#34;nt&#34;&gt;&amp;#34;value&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;public, max-age=0, must-revalidate&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nt&#34;&gt;&amp;#34;source&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;(.*)&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nt&#34;&gt;&amp;#34;headers&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;          &lt;span class=&#34;nt&#34;&gt;&amp;#34;key&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Cache-Control&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;          &lt;span class=&#34;nt&#34;&gt;&amp;#34;value&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;public, s-maxage=86400, max-age=86400&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;          &lt;span class=&#34;nt&#34;&gt;&amp;#34;key&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Vercel-CDN-Cache-Control&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;          &lt;span class=&#34;nt&#34;&gt;&amp;#34;value&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;max-age=3600&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Vercel 在部署时会自动刷新缓存，静态网站缓存可以拉到无限长，动态网站缓存按实际需要&lt;/p&gt;
+&lt;h2 id=&#34;测速截图&#34;&gt;测速截图&lt;/h2&gt;
+&lt;p&gt;测速工具（节点很多，非常推荐）：&lt;a class=&#34;link&#34; href=&#34;https://zhale.me/http/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://zhale.me/http/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://resources.blog.duolaa.asia/img/202402102312250.webp&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;bu.dusays.com/2024/01/16/65a6740fc36ea.png&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;问题反馈&#34;&gt;问题反馈&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/Fgaoxing/Vercel-CDN&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/Fgaoxing/Vercel-CDN&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;我们无法觉得谁使用了 CNAME，所以也有一些人通过解析我们 CNAME 的方式建立自己的 Vercel CDN (我给他个面子，不在这里说了)，但多次 CNAME 会导致速度变慢，如果有人给你发送一张对比图说他的测速比我这个快，大概是因为我这个有宣传页面，所以网站测速比不上 Vercel 的 404&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

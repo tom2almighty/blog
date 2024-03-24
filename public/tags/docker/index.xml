@@ -8,12 +8,12 @@
         <language>zh-cn</language>
         <copyright>Tom Almighty</copyright>
         <lastBuildDate>Mon, 18 Mar 2024 14:01:34 +0800</lastBuildDate><atom:link href="http://localhost:5678/tags/docker/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>订阅转换之四：sub2clash项目</title>
+        <title>订阅转换(四)：sub2clash项目</title>
         <link>http://localhost:5678/p/sub2clash/</link>
         <pubDate>Mon, 18 Mar 2024 14:01:34 +0800</pubDate>
         
         <guid>http://localhost:5678/p/sub2clash/</guid>
-        <description>&lt;img src="https://pic.imgdb.cn/item/65f00c8c9f345e8d03e0d8b8.webp" alt="Featured image of post 订阅转换之四：sub2clash项目" /&gt;&lt;p&gt;&lt;strong&gt;前言：&lt;/strong&gt; 部分订阅转换修改节点后无法使用相同的链接，本次的项目可以方便地添加最新协议节点，同时可以灵活添加国家和地区分组，并且可以添加自定义规则，也可以使用自定义短链接。&lt;/p&gt;
+        <description>&lt;img src="https://pic.imgdb.cn/item/65f00c8c9f345e8d03e0d8b8.webp" alt="Featured image of post 订阅转换(四)：sub2clash项目" /&gt;&lt;p&gt;&lt;strong&gt;前言：&lt;/strong&gt; 部分订阅转换修改节点后无法使用相同的链接，本次的项目可以方便地添加最新协议节点，同时可以灵活添加国家和地区分组，并且可以添加自定义规则，也可以使用自定义短链接。&lt;/p&gt;
 &lt;p&gt;本次项目地址如下：&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/nitezs/sub2clash&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;sub2clash&lt;/a&gt;&lt;/p&gt;
@@ -708,12 +708,12 @@
 </description>
         </item>
         <item>
-        <title>订阅转换之二：subweb项目</title>
+        <title>订阅转换(二)：subweb项目</title>
         <link>http://localhost:5678/p/sub-web/</link>
         <pubDate>Sat, 27 Jan 2024 00:00:00 +0000</pubDate>
         
         <guid>http://localhost:5678/p/sub-web/</guid>
-        <description>&lt;img src="https://pic.imgdb.cn/item/65f00c8c9f345e8d03e0d8b8.webp" alt="Featured image of post 订阅转换之二：subweb项目" /&gt;&lt;h2 id=&#34;前言&#34;&gt;前言：&lt;/h2&gt;
+        <description>&lt;img src="https://pic.imgdb.cn/item/65f00c8c9f345e8d03e0d8b8.webp" alt="Featured image of post 订阅转换(二)：subweb项目" /&gt;&lt;h2 id=&#34;前言&#34;&gt;前言：&lt;/h2&gt;
 &lt;p&gt;整理服务器时发现部署的 &lt;code&gt;Subconverter&lt;/code&gt; 后端一直出问题，无法正确转换，经过搜索发现了一个前后端加短链的 &lt;code&gt;Docker&lt;/code&gt; 整合版，相比较原项目前后端，有如下优点：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;Docker Compose&lt;/code&gt;部署十分方便&lt;/li&gt;
