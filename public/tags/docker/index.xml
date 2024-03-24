@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Docker on Tom&#39;s Blog</title>
-        <link>https://hugo.grew.cc/tags/docker/</link>
+        <link>http://localhost:5678/tags/docker/</link>
         <description>Recent content in Docker on Tom&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Tom Almighty</copyright>
-        <lastBuildDate>Mon, 18 Mar 2024 14:01:34 +0800</lastBuildDate><atom:link href="https://hugo.grew.cc/tags/docker/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 18 Mar 2024 14:01:34 +0800</lastBuildDate><atom:link href="http://localhost:5678/tags/docker/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>订阅转换之四：sub2clash项目</title>
-        <link>https://hugo.grew.cc/p/sub2clash/</link>
+        <link>http://localhost:5678/p/sub2clash/</link>
         <pubDate>Mon, 18 Mar 2024 14:01:34 +0800</pubDate>
         
-        <guid>https://hugo.grew.cc/p/sub2clash/</guid>
+        <guid>http://localhost:5678/p/sub2clash/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65f00c8c9f345e8d03e0d8b8.webp" alt="Featured image of post 订阅转换之四：sub2clash项目" /&gt;&lt;p&gt;&lt;strong&gt;前言：&lt;/strong&gt; 部分订阅转换修改节点后无法使用相同的链接，本次的项目可以方便地添加最新协议节点，同时可以灵活添加国家和地区分组，并且可以添加自定义规则，也可以使用自定义短链接。&lt;/p&gt;
 &lt;p&gt;本次项目地址如下：&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/nitezs/sub2clash&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -101,10 +101,10 @@
         </item>
         <item>
         <title>部署Plex并挂载Alist</title>
-        <link>https://hugo.grew.cc/p/plex/</link>
+        <link>http://localhost:5678/p/plex/</link>
         <pubDate>Fri, 09 Feb 2024 00:00:00 +0000</pubDate>
         
-        <guid>https://hugo.grew.cc/p/plex/</guid>
+        <guid>http://localhost:5678/p/plex/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65f0121c9f345e8d03f6691c.webp" alt="Featured image of post 部署Plex并挂载Alist" /&gt;&lt;blockquote&gt;
 &lt;p&gt;😀 由于最近 &lt;code&gt;Netflix&lt;/code&gt; 清退了一大批低价区用户，并且不退款，需要与银行争议，就开了一个月的土耳其区，然而土耳其第一个月并不能用土耳其之外的 &lt;code&gt;IP&lt;/code&gt; 观看，白白浪费一个月，虽然最近尼日利亚的低价已经超过了巴基斯坦，但还是决定放弃了，花钱找罪受，不如买个 &lt;code&gt;Emby&lt;/code&gt; 。
 之后在网上看到可以通过服务器部署 &lt;code&gt;Plex Media Server&lt;/code&gt; ，将 &lt;code&gt;Alist&lt;/code&gt; 挂载到服务器，&lt;code&gt;Plex&lt;/code&gt; 添加 &lt;code&gt;Alist&lt;/code&gt; 目录，然后 &lt;code&gt;infuse&lt;/code&gt; 连接 &lt;code&gt;Plex&lt;/code&gt; ，这样可以实现刮削，并且全平台同步，还可以搭配 &lt;code&gt;Aria2&lt;/code&gt; 下载自动上传网盘，达到良好的观影效果。&lt;/p&gt;
@@ -709,10 +709,10 @@
         </item>
         <item>
         <title>订阅转换之二：subweb项目</title>
-        <link>https://hugo.grew.cc/p/sub-web/</link>
+        <link>http://localhost:5678/p/sub-web/</link>
         <pubDate>Sat, 27 Jan 2024 00:00:00 +0000</pubDate>
         
-        <guid>https://hugo.grew.cc/p/sub-web/</guid>
+        <guid>http://localhost:5678/p/sub-web/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65f00c8c9f345e8d03e0d8b8.webp" alt="Featured image of post 订阅转换之二：subweb项目" /&gt;&lt;h2 id=&#34;前言&#34;&gt;前言：&lt;/h2&gt;
 &lt;p&gt;整理服务器时发现部署的 &lt;code&gt;Subconverter&lt;/code&gt; 后端一直出问题，无法正确转换，经过搜索发现了一个前后端加短链的 &lt;code&gt;Docker&lt;/code&gt; 整合版，相比较原项目前后端，有如下优点：&lt;/p&gt;
 &lt;ul&gt;
@@ -852,10 +852,10 @@
         </item>
         <item>
         <title>宝塔面板部署Bitwarden密码管理</title>
-        <link>https://hugo.grew.cc/p/bitwarden/</link>
+        <link>http://localhost:5678/p/bitwarden/</link>
         <pubDate>Fri, 22 Jul 2022 00:00:00 +0000</pubDate>
         
-        <guid>https://hugo.grew.cc/p/bitwarden/</guid>
+        <guid>http://localhost:5678/p/bitwarden/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65dc436d9f345e8d0301ccba.webp" alt="Featured image of post 宝塔面板部署Bitwarden密码管理" /&gt;&lt;h2 id=&#34;bitwarden-简介&#34;&gt;Bitwarden 简介&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://bitwarden.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Bitwarden&lt;/a&gt; 是一款免费开源的密码管理软件，同时官方提供了 &lt;code&gt;docker&lt;/code&gt; 镜像，将服务端部署在自己的设备上。&lt;code&gt;Bitwarden&lt;/code&gt; 官方 &lt;code&gt;docker&lt;/code&gt; 要求服务器内存在 &lt;code&gt;2G&lt;/code&gt; 以上，但有大佬使用 &lt;code&gt;Rust&lt;/code&gt; 进行重写，项目名为 &lt;code&gt;vaultwarden&lt;/code&gt;, 降低了配置要求,地址如下：

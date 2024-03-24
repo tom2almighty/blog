@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>终端 on Tom&#39;s Blog</title>
-        <link>https://hugo.grew.cc/tags/%E7%BB%88%E7%AB%AF/</link>
+        <link>http://localhost:5678/tags/%E7%BB%88%E7%AB%AF/</link>
         <description>Recent content in 终端 on Tom&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Tom Almighty</copyright>
-        <lastBuildDate>Mon, 18 Mar 2024 10:27:32 +0800</lastBuildDate><atom:link href="https://hugo.grew.cc/tags/%E7%BB%88%E7%AB%AF/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 18 Mar 2024 10:27:32 +0800</lastBuildDate><atom:link href="http://localhost:5678/tags/%E7%BB%88%E7%AB%AF/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Windows终端美化</title>
-        <link>https://hugo.grew.cc/p/windows-terminal/</link>
+        <link>http://localhost:5678/p/windows-terminal/</link>
         <pubDate>Mon, 18 Mar 2024 10:27:32 +0800</pubDate>
         
-        <guid>https://hugo.grew.cc/p/windows-terminal/</guid>
+        <guid>http://localhost:5678/p/windows-terminal/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65f7c4779f345e8d03321bad.webp" alt="Featured image of post Windows终端美化" /&gt;&lt;p&gt;**前言：**Windows 推出了新的终端 &lt;code&gt;Windows Teminal&lt;/code&gt;，虽然外观有所进步，但还是达不到自己预期，因此可以自己简单修改一下。&lt;/p&gt;
 &lt;h2 id=&#34;准备工作&#34;&gt;准备工作&lt;/h2&gt;
 &lt;p&gt;计算机上启动 &lt;code&gt;Windows PowerShell&lt;/code&gt; 时，执行策略很可能是 &lt;code&gt;Restricted&lt;/code&gt;（默认设置）。&lt;/p&gt;

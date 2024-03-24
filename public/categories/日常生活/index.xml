@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>日常生活 on Tom&#39;s Blog</title>
-        <link>https://hugo.grew.cc/categories/%E6%97%A5%E5%B8%B8%E7%94%9F%E6%B4%BB/</link>
+        <link>http://localhost:5678/categories/%E6%97%A5%E5%B8%B8%E7%94%9F%E6%B4%BB/</link>
         <description>Recent content in 日常生活 on Tom&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Tom Almighty</copyright>
-        <lastBuildDate>Thu, 21 Mar 2024 17:13:54 +0800</lastBuildDate><atom:link href="https://hugo.grew.cc/categories/%E6%97%A5%E5%B8%B8%E7%94%9F%E6%B4%BB/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 21 Mar 2024 17:13:54 +0800</lastBuildDate><atom:link href="http://localhost:5678/categories/%E6%97%A5%E5%B8%B8%E7%94%9F%E6%B4%BB/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Hugo Stack主题修改</title>
-        <link>https://hugo.grew.cc/p/stack/</link>
+        <link>http://localhost:5678/p/stack/</link>
         <pubDate>Thu, 21 Mar 2024 17:13:54 +0800</pubDate>
         
-        <guid>https://hugo.grew.cc/p/stack/</guid>
+        <guid>http://localhost:5678/p/stack/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65fc10be9f345e8d0349611a.webp" alt="Featured image of post Hugo Stack主题修改" /&gt;&lt;p&gt;&lt;strong&gt;前言&lt;/strong&gt;：上一篇文章介绍了如何部署 Hugo 博客，这里针对 Stack 主题的修改做一些记录。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;修改全部来自参考文章，这里仅记录。&lt;/p&gt;
@@ -1428,10 +1428,10 @@
         </item>
         <item>
         <title>使用Hugo搭建个人博客</title>
-        <link>https://hugo.grew.cc/p/hugo-blog/</link>
+        <link>http://localhost:5678/p/hugo-blog/</link>
         <pubDate>Thu, 21 Mar 2024 17:13:32 +0800</pubDate>
         
-        <guid>https://hugo.grew.cc/p/hugo-blog/</guid>
+        <guid>http://localhost:5678/p/hugo-blog/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65fc06b79f345e8d0317dd50.webp" alt="Featured image of post 使用Hugo搭建个人博客" /&gt;&lt;p&gt;&lt;strong&gt;前言&lt;/strong&gt;：博客的引擎选择一直是个问题。动态博客和静态博客各有优劣。动态博客 &lt;code&gt;Wordpress&lt;/code&gt;、&lt;code&gt;Typecho&lt;/code&gt; 等拥有精美的主题，后台管理也比较方便，但是需要服务器。静态博客如 &lt;code&gt;Hexo&lt;/code&gt;、&lt;code&gt;Hugo&lt;/code&gt;、&lt;code&gt;Astro&lt;/code&gt; 等可以直接部署静态页面，但是相对写文章比较繁琐一点。今天再次记录一下之前折腾的 &lt;code&gt;Hugo&lt;/code&gt;，之前使用的主题是 &lt;code&gt;Loveit&lt;/code&gt;，后来觉得 &lt;code&gt;Stack&lt;/code&gt; 不错，所以本次就拿这个主题记录一下。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;前提&lt;/strong&gt;：&lt;/p&gt;
 &lt;p&gt;部署静态博客需要的：&lt;/p&gt;
@@ -1542,10 +1542,10 @@
         </item>
         <item>
         <title>部署Plex并挂载Alist</title>
-        <link>https://hugo.grew.cc/p/plex/</link>
+        <link>http://localhost:5678/p/plex/</link>
         <pubDate>Fri, 09 Feb 2024 00:00:00 +0000</pubDate>
         
-        <guid>https://hugo.grew.cc/p/plex/</guid>
+        <guid>http://localhost:5678/p/plex/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65f0121c9f345e8d03f6691c.webp" alt="Featured image of post 部署Plex并挂载Alist" /&gt;&lt;blockquote&gt;
 &lt;p&gt;😀 由于最近 &lt;code&gt;Netflix&lt;/code&gt; 清退了一大批低价区用户，并且不退款，需要与银行争议，就开了一个月的土耳其区，然而土耳其第一个月并不能用土耳其之外的 &lt;code&gt;IP&lt;/code&gt; 观看，白白浪费一个月，虽然最近尼日利亚的低价已经超过了巴基斯坦，但还是决定放弃了，花钱找罪受，不如买个 &lt;code&gt;Emby&lt;/code&gt; 。
 之后在网上看到可以通过服务器部署 &lt;code&gt;Plex Media Server&lt;/code&gt; ，将 &lt;code&gt;Alist&lt;/code&gt; 挂载到服务器，&lt;code&gt;Plex&lt;/code&gt; 添加 &lt;code&gt;Alist&lt;/code&gt; 目录，然后 &lt;code&gt;infuse&lt;/code&gt; 连接 &lt;code&gt;Plex&lt;/code&gt; ，这样可以实现刮削，并且全平台同步，还可以搭配 &lt;code&gt;Aria2&lt;/code&gt; 下载自动上传网盘，达到良好的观影效果。&lt;/p&gt;
@@ -2150,10 +2150,10 @@
         </item>
         <item>
         <title>Alist部署</title>
-        <link>https://hugo.grew.cc/p/alist/</link>
+        <link>http://localhost:5678/p/alist/</link>
         <pubDate>Thu, 08 Feb 2024 00:00:00 +0000</pubDate>
         
-        <guid>https://hugo.grew.cc/p/alist/</guid>
+        <guid>http://localhost:5678/p/alist/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65f013c89f345e8d03fc5210.webp" alt="Featured image of post Alist部署" /&gt;&lt;p&gt;**前言：**目前很多人通过网盘分享影视资源，如阿里云盘、115网盘等，同时还有微软的 E5 管理员账号，一个账号就有 5T 空间，用来做存储很不错，但是众多网盘分享文件很不方便，网盘自己的页面看视频也比较简陋，这个时候我们可以通过目录列表整合各种网盘，如以前的  &lt;code&gt;oneindex、olaindex&lt;/code&gt;，最近常用的是 Alist ，支持网盘众多，部署方便。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Alist 是一个支持多种存储，支持网页浏览和 WebDAV 的文件列表程序，由 gin 和 Solidjs 驱动，程序开源地址以及文档如下：&lt;/p&gt;
@@ -2418,10 +2418,10 @@
         </item>
         <item>
         <title>本科和研究生专业目录</title>
-        <link>https://hugo.grew.cc/p/zhuanyemulu/</link>
+        <link>http://localhost:5678/p/zhuanyemulu/</link>
         <pubDate>Tue, 06 Feb 2024 00:00:00 +0000</pubDate>
         
-        <guid>https://hugo.grew.cc/p/zhuanyemulu/</guid>
+        <guid>http://localhost:5678/p/zhuanyemulu/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65dc499a9f345e8d0311caa6.webp" alt="Featured image of post 本科和研究生专业目录" /&gt;&lt;p&gt;最近对于所学专业的专业代码一直有所疑惑，因此搜索后得知本科的专业设置和研究生设置有所不同，教育部也对本科和研究生分别发布了对应的专业目录及相关管理办法，这里记录一下。&lt;/p&gt;
 &lt;p&gt;本科专业目录目前最新的是2022版，是在2012年版本的基础上完成。教育部通知链接如下：&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://www.moe.gov.cn/srcsite/A08/moe_1034/s4930/202304/t20230419_1056224.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -2438,10 +2438,10 @@
         </item>
         <item>
         <title>Windows安装IDM下载器并解除限制</title>
-        <link>https://hugo.grew.cc/p/idm/</link>
+        <link>http://localhost:5678/p/idm/</link>
         <pubDate>Sun, 21 Jan 2024 00:00:00 +0000</pubDate>
         
-        <guid>https://hugo.grew.cc/p/idm/</guid>
+        <guid>http://localhost:5678/p/idm/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65dc4aef9f345e8d031516e3.webp" alt="Featured image of post Windows安装IDM下载器并解除限制" /&gt;&lt;p&gt;**前言：**在众多下载管理器中，IDM（Internet Download Manager）以其强大的功能和稳定的性能脱颖而出，成为许多用户的首选下载工具之一。IDM不仅能够加速下载速度，还具备智能任务管理、断点续传、调度下载等一系列实用功能，极大地提升了下载文件的效率。之前的破解版很多已经不能使用，因此这里介绍新发现的工具。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;⚠️本教程仅供学习和研究使用，如果你决定采用这种方法，那么风险自负。&lt;/p&gt;
@@ -2501,10 +2501,10 @@
         </item>
         <item>
         <title>解决Surge部分应用代理提示</title>
-        <link>https://hugo.grew.cc/p/surge/</link>
+        <link>http://localhost:5678/p/surge/</link>
         <pubDate>Fri, 23 Sep 2022 00:00:00 +0000</pubDate>
         
-        <guid>https://hugo.grew.cc/p/surge/</guid>
+        <guid>http://localhost:5678/p/surge/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65dc44029f345e8d030343ea.webp" alt="Featured image of post 解决Surge部分应用代理提示" /&gt;&lt;blockquote&gt;
 &lt;p&gt;注意：Surge 更改了方式，目前已不需要此模块。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -2637,10 +2637,10 @@
         </item>
         <item>
         <title>宝塔面板部署Bitwarden密码管理</title>
-        <link>https://hugo.grew.cc/p/bitwarden/</link>
+        <link>http://localhost:5678/p/bitwarden/</link>
         <pubDate>Fri, 22 Jul 2022 00:00:00 +0000</pubDate>
         
-        <guid>https://hugo.grew.cc/p/bitwarden/</guid>
+        <guid>http://localhost:5678/p/bitwarden/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65dc436d9f345e8d0301ccba.webp" alt="Featured image of post 宝塔面板部署Bitwarden密码管理" /&gt;&lt;h2 id=&#34;bitwarden-简介&#34;&gt;Bitwarden 简介&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://bitwarden.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Bitwarden&lt;/a&gt; 是一款免费开源的密码管理软件，同时官方提供了 &lt;code&gt;docker&lt;/code&gt; 镜像，将服务端部署在自己的设备上。&lt;code&gt;Bitwarden&lt;/code&gt; 官方 &lt;code&gt;docker&lt;/code&gt; 要求服务器内存在 &lt;code&gt;2G&lt;/code&gt; 以上，但有大佬使用 &lt;code&gt;Rust&lt;/code&gt; 进行重写，项目名为 &lt;code&gt;vaultwarden&lt;/code&gt;, 降低了配置要求,地址如下：
@@ -2794,10 +2794,10 @@
         </item>
         <item>
         <title>Zotero简要使用指南</title>
-        <link>https://hugo.grew.cc/p/zotero/</link>
+        <link>http://localhost:5678/p/zotero/</link>
         <pubDate>Thu, 21 Apr 2022 00:00:00 +0000</pubDate>
         
-        <guid>https://hugo.grew.cc/p/zotero/</guid>
+        <guid>http://localhost:5678/p/zotero/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65dc484b9f345e8d030ea015.webp" alt="Featured image of post Zotero简要使用指南" /&gt;&lt;h2 id=&#34;前言&#34;&gt;&lt;strong&gt;前言：&lt;/strong&gt;&lt;/h2&gt;
 &lt;p&gt;Zotero 是一款文献及知识库管理软件，支持 Windows 、Mac、Linux 全平台，Zotero 词源可能来源于阿尔巴尼亚语动词，意为“掌握（to master）”。软件版本迭代周期较长，但每个版本都有非常实用的功能：&lt;/p&gt;
 &lt;ul&gt;
@@ -3073,10 +3073,10 @@
         </item>
         <item>
         <title>IOS订阅管理软件使用体验</title>
-        <link>https://hugo.grew.cc/p/ios-subscription/</link>
+        <link>http://localhost:5678/p/ios-subscription/</link>
         <pubDate>Mon, 11 Oct 2021 00:00:00 +0000</pubDate>
         
-        <guid>https://hugo.grew.cc/p/ios-subscription/</guid>
+        <guid>http://localhost:5678/p/ios-subscription/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65dc46e19f345e8d030b1569.webp" alt="Featured image of post IOS订阅管理软件使用体验" /&gt;&lt;h2 id=&#34;前言&#34;&gt;&lt;strong&gt;前言：&lt;/strong&gt;&lt;/h2&gt;
 &lt;p&gt;最初在&lt;a class=&#34;link&#34; href=&#34;https://www.hostloc.com/thread-807666-1-1.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;论坛&lt;/a&gt;看到一位大佬发帖讨论如何做订阅的笔记，大佬使用 &lt;code&gt;Notion&lt;/code&gt; 中 &lt;code&gt;Table&lt;/code&gt; 来管理订阅，界面看起来非常美观，自定义程度非常高，同时&lt;a class=&#34;link&#34; href=&#34;https://t.me/NewlearnerChannel&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -3388,10 +3388,10 @@
         </item>
         <item>
         <title>Windows10 Office安装指南</title>
-        <link>https://hugo.grew.cc/p/office/</link>
+        <link>http://localhost:5678/p/office/</link>
         <pubDate>Fri, 10 Sep 2021 00:00:00 +0000</pubDate>
         
-        <guid>https://hugo.grew.cc/p/office/</guid>
+        <guid>http://localhost:5678/p/office/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/62d6dc96f54cd3f937d50c8a.png" alt="Featured image of post Windows10 Office安装指南" /&gt;&lt;h2 id=&#34;前言&#34;&gt;&lt;strong&gt;前言：&lt;/strong&gt;&lt;/h2&gt;
 &lt;p&gt;Office 是日常办公必需品，目前新买到的笔记本都会自带正版 &lt;code&gt;Office 2019 家庭中文版&lt;/code&gt;，而且只需要拿邮箱激活一次，之后重装电脑只需要登录激活的邮箱账号即可自动激活，这里简单记录一下下载 &lt;code&gt;Office&lt;/code&gt; 的步骤。&lt;/p&gt;
 &lt;h2 id=&#34;使用工具&#34;&gt;&lt;strong&gt;使用工具&lt;/strong&gt;&lt;/h2&gt;
@@ -3463,10 +3463,10 @@
         </item>
         <item>
         <title>学习通刷课指南</title>
-        <link>https://hugo.grew.cc/p/xuexitong/</link>
+        <link>http://localhost:5678/p/xuexitong/</link>
         <pubDate>Thu, 10 Sep 2020 00:00:00 +0000</pubDate>
         
-        <guid>https://hugo.grew.cc/p/xuexitong/</guid>
+        <guid>http://localhost:5678/p/xuexitong/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65dc457b9f345e8d030782d8.webp" alt="Featured image of post 学习通刷课指南" /&gt;&lt;h2 id=&#34;前言&#34;&gt;&lt;strong&gt;前言：&lt;/strong&gt;&lt;/h2&gt;
 &lt;p&gt;很多学生需要完成网课的学习，但是这些课程往往很长，而且还会有一些题目，这就需要我们隔几分钟就要看一下页面，阻碍了我们进行&lt;del&gt;快乐的阅读文献&lt;/del&gt;，所以这里通过一些脚本插件来解放我们的双手。&lt;/p&gt;
 &lt;p&gt;通过插件可以实现：&lt;/p&gt;
@@ -3584,10 +3584,10 @@
         </item>
         <item>
         <title>Windows10常见问题</title>
-        <link>https://hugo.grew.cc/p/windows10/</link>
+        <link>http://localhost:5678/p/windows10/</link>
         <pubDate>Tue, 01 Sep 2020 00:00:00 +0000</pubDate>
         
-        <guid>https://hugo.grew.cc/p/windows10/</guid>
+        <guid>http://localhost:5678/p/windows10/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/62d6de99f54cd3f937dd4e5f.jpg" alt="Featured image of post Windows10常见问题" /&gt;&lt;h2 id=&#34;删除自带输入法&#34;&gt;&lt;strong&gt;删除自带输入法&lt;/strong&gt;&lt;/h2&gt;
 &lt;p&gt;删除以下注册表&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -3805,10 +3805,10 @@
         </item>
         <item>
         <title>Netflix剧集介绍</title>
-        <link>https://hugo.grew.cc/p/netflix-info/</link>
+        <link>http://localhost:5678/p/netflix-info/</link>
         <pubDate>Mon, 10 Aug 2020 00:00:00 +0000</pubDate>
         
-        <guid>https://hugo.grew.cc/p/netflix-info/</guid>
+        <guid>http://localhost:5678/p/netflix-info/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65dc49059f345e8d03107123.webp" alt="Featured image of post Netflix剧集介绍" /&gt;&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
 &lt;p&gt;很多朋友很喜欢看 &lt;code&gt;Netflix&lt;/code&gt; 的剧集，但是 &lt;code&gt;Netflix&lt;/code&gt; 对于 &lt;code&gt;IP&lt;/code&gt; 有一定的要求，很多广播 &lt;code&gt;IP&lt;/code&gt; 无法访问，连首页都进不去。但是今年可能由于疫情，&lt;code&gt;Netflix&lt;/code&gt; 放宽了 &lt;code&gt;IP&lt;/code&gt; 审查，大部分广播 &lt;code&gt;IP&lt;/code&gt; 都可以看大部分的剧集，但是部分剧集仍无法观看，所以特地详细了解了一下 &lt;code&gt;Netflix&lt;/code&gt; 的剧集类型，并对 &lt;code&gt;Netflix&lt;/code&gt;做一个简要介绍。&lt;/p&gt;
 &lt;h2 id=&#34;netflix-简介&#34;&gt;Netflix 简介&lt;/h2&gt;

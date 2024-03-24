@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>FNIRS on Tom&#39;s Blog</title>
-        <link>https://hugo.grew.cc/tags/fnirs/</link>
+        <link>http://localhost:5678/tags/fnirs/</link>
         <description>Recent content in FNIRS on Tom&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Tom Almighty</copyright>
-        <lastBuildDate>Sat, 13 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.grew.cc/tags/fnirs/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 13 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:5678/tags/fnirs/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>近红外数据分析步骤</title>
-        <link>https://hugo.grew.cc/p/fnirs/</link>
+        <link>http://localhost:5678/p/fnirs/</link>
         <pubDate>Sat, 13 May 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://hugo.grew.cc/p/fnirs/</guid>
+        <guid>http://localhost:5678/p/fnirs/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65f021be9f345e8d03339c1b.webp" alt="Featured image of post 近红外数据分析步骤" /&gt;&lt;h1 id=&#34;fnirs-data-preprocessing使用步骤&#34;&gt;fNIRS Data Preprocessing使用步骤&lt;/h1&gt;
 &lt;p&gt;本文是近红外数据分析步骤，适用于&lt;code&gt;joint Simon task&lt;/code&gt;，使用 宏程序&lt;code&gt;fNIRS Data Preprocessing&lt;/code&gt; 以及其他宏程序完成，&lt;code&gt;ETG7100&lt;/code&gt;型号设备数据格式为&lt;code&gt;编号_HBA_Probe1_Oxy.csv&lt;/code&gt;，编号自定义，最好写成&lt;code&gt;sub001_run1&lt;/code&gt;这种形式，命名最好采用单数，即第1对被试为&lt;code&gt;sub01&lt;/code&gt;，第2对为&lt;code&gt;sub03&lt;/code&gt;，方便后续分割两个被试的数据。&lt;/p&gt;
 &lt;h2 id=&#34;fnirs-data-preprocessing-宏程序介绍&#34;&gt;fNIRS Data Preprocessing 宏程序介绍&lt;/h2&gt;

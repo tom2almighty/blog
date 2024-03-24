@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Alist on Tom&#39;s Blog</title>
-        <link>https://hugo.grew.cc/tags/alist/</link>
+        <link>http://localhost:5678/tags/alist/</link>
         <description>Recent content in Alist on Tom&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Tom Almighty</copyright>
-        <lastBuildDate>Fri, 09 Feb 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.grew.cc/tags/alist/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 09 Feb 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:5678/tags/alist/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>部署Plex并挂载Alist</title>
-        <link>https://hugo.grew.cc/p/plex/</link>
+        <link>http://localhost:5678/p/plex/</link>
         <pubDate>Fri, 09 Feb 2024 00:00:00 +0000</pubDate>
         
-        <guid>https://hugo.grew.cc/p/plex/</guid>
+        <guid>http://localhost:5678/p/plex/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65f0121c9f345e8d03f6691c.webp" alt="Featured image of post 部署Plex并挂载Alist" /&gt;&lt;blockquote&gt;
 &lt;p&gt;😀 由于最近 &lt;code&gt;Netflix&lt;/code&gt; 清退了一大批低价区用户，并且不退款，需要与银行争议，就开了一个月的土耳其区，然而土耳其第一个月并不能用土耳其之外的 &lt;code&gt;IP&lt;/code&gt; 观看，白白浪费一个月，虽然最近尼日利亚的低价已经超过了巴基斯坦，但还是决定放弃了，花钱找罪受，不如买个 &lt;code&gt;Emby&lt;/code&gt; 。
 之后在网上看到可以通过服务器部署 &lt;code&gt;Plex Media Server&lt;/code&gt; ，将 &lt;code&gt;Alist&lt;/code&gt; 挂载到服务器，&lt;code&gt;Plex&lt;/code&gt; 添加 &lt;code&gt;Alist&lt;/code&gt; 目录，然后 &lt;code&gt;infuse&lt;/code&gt; 连接 &lt;code&gt;Plex&lt;/code&gt; ，这样可以实现刮削，并且全平台同步，还可以搭配 &lt;code&gt;Aria2&lt;/code&gt; 下载自动上传网盘，达到良好的观影效果。&lt;/p&gt;
@@ -617,10 +617,10 @@
         </item>
         <item>
         <title>Alist部署</title>
-        <link>https://hugo.grew.cc/p/alist/</link>
+        <link>http://localhost:5678/p/alist/</link>
         <pubDate>Thu, 08 Feb 2024 00:00:00 +0000</pubDate>
         
-        <guid>https://hugo.grew.cc/p/alist/</guid>
+        <guid>http://localhost:5678/p/alist/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65f013c89f345e8d03fc5210.webp" alt="Featured image of post Alist部署" /&gt;&lt;p&gt;**前言：**目前很多人通过网盘分享影视资源，如阿里云盘、115网盘等，同时还有微软的 E5 管理员账号，一个账号就有 5T 空间，用来做存储很不错，但是众多网盘分享文件很不方便，网盘自己的页面看视频也比较简陋，这个时候我们可以通过目录列表整合各种网盘，如以前的  &lt;code&gt;oneindex、olaindex&lt;/code&gt;，最近常用的是 Alist ，支持网盘众多，部署方便。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Alist 是一个支持多种存储，支持网页浏览和 WebDAV 的文件列表程序，由 gin 和 Solidjs 驱动，程序开源地址以及文档如下：&lt;/p&gt;
@@ -885,10 +885,10 @@
         </item>
         <item>
         <title>Alist自定义美化</title>
-        <link>https://hugo.grew.cc/p/alist-modify/</link>
+        <link>http://localhost:5678/p/alist-modify/</link>
         <pubDate>Sun, 04 Feb 2024 00:00:00 +0000</pubDate>
         
-        <guid>https://hugo.grew.cc/p/alist-modify/</guid>
+        <guid>http://localhost:5678/p/alist-modify/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65f013c89f345e8d03fc5210.webp" alt="Featured image of post Alist自定义美化" /&gt;&lt;h2 id=&#34;自定义头部&#34;&gt;自定义头部&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;

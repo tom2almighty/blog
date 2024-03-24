@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Bitwarden on Tom&#39;s Blog</title>
-        <link>https://hugo.grew.cc/tags/bitwarden/</link>
+        <link>http://localhost:5678/tags/bitwarden/</link>
         <description>Recent content in Bitwarden on Tom&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Tom Almighty</copyright>
-        <lastBuildDate>Fri, 22 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.grew.cc/tags/bitwarden/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 22 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:5678/tags/bitwarden/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>宝塔面板部署Bitwarden密码管理</title>
-        <link>https://hugo.grew.cc/p/bitwarden/</link>
+        <link>http://localhost:5678/p/bitwarden/</link>
         <pubDate>Fri, 22 Jul 2022 00:00:00 +0000</pubDate>
         
-        <guid>https://hugo.grew.cc/p/bitwarden/</guid>
+        <guid>http://localhost:5678/p/bitwarden/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65dc436d9f345e8d0301ccba.webp" alt="Featured image of post 宝塔面板部署Bitwarden密码管理" /&gt;&lt;h2 id=&#34;bitwarden-简介&#34;&gt;Bitwarden 简介&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://bitwarden.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Bitwarden&lt;/a&gt; 是一款免费开源的密码管理软件，同时官方提供了 &lt;code&gt;docker&lt;/code&gt; 镜像，将服务端部署在自己的设备上。&lt;code&gt;Bitwarden&lt;/code&gt; 官方 &lt;code&gt;docker&lt;/code&gt; 要求服务器内存在 &lt;code&gt;2G&lt;/code&gt; 以上，但有大佬使用 &lt;code&gt;Rust&lt;/code&gt; 进行重写，项目名为 &lt;code&gt;vaultwarden&lt;/code&gt;, 降低了配置要求,地址如下：

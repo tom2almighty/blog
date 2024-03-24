@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Surge on Tom&#39;s Blog</title>
-        <link>https://hugo.grew.cc/tags/surge/</link>
+        <link>http://localhost:5678/tags/surge/</link>
         <description>Recent content in Surge on Tom&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Tom Almighty</copyright>
-        <lastBuildDate>Fri, 23 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.grew.cc/tags/surge/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 23 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:5678/tags/surge/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>解决Surge部分应用代理提示</title>
-        <link>https://hugo.grew.cc/p/surge/</link>
+        <link>http://localhost:5678/p/surge/</link>
         <pubDate>Fri, 23 Sep 2022 00:00:00 +0000</pubDate>
         
-        <guid>https://hugo.grew.cc/p/surge/</guid>
+        <guid>http://localhost:5678/p/surge/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65dc44029f345e8d030343ea.webp" alt="Featured image of post 解决Surge部分应用代理提示" /&gt;&lt;blockquote&gt;
 &lt;p&gt;注意：Surge 更改了方式，目前已不需要此模块。&lt;/p&gt;
 &lt;/blockquote&gt;

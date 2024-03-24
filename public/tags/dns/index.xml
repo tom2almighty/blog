@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>DNS on Tom&#39;s Blog</title>
-        <link>https://hugo.grew.cc/tags/dns/</link>
+        <link>http://localhost:5678/tags/dns/</link>
         <description>Recent content in DNS on Tom&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Tom Almighty</copyright>
-        <lastBuildDate>Sun, 03 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.grew.cc/tags/dns/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 03 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:5678/tags/dns/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>自建DNS解锁Netflix</title>
-        <link>https://hugo.grew.cc/p/netfli-dns/</link>
+        <link>http://localhost:5678/p/netfli-dns/</link>
         <pubDate>Sun, 03 Mar 2024 00:00:00 +0000</pubDate>
         
-        <guid>https://hugo.grew.cc/p/netfli-dns/</guid>
+        <guid>http://localhost:5678/p/netfli-dns/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65dc49059f345e8d03107123.webp" alt="Featured image of post 自建DNS解锁Netflix" /&gt;&lt;blockquote&gt;
 &lt;p&gt;通过 &lt;code&gt;DNSmasq&lt;/code&gt; 和一台已解锁 &lt;code&gt;Netflix&lt;/code&gt; 的服务器，将其余服务器全部解锁 &lt;code&gt;Netflix&lt;/code&gt; 。&lt;/p&gt;
 &lt;/blockquote&gt;

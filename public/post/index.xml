@@ -2,46 +2,113 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Posts on Tom&#39;s Blog</title>
-        <link>https://hugo.grew.cc/post/</link>
+        <link>http://localhost:5678/post/</link>
         <description>Recent content in Posts on Tom&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Tom Almighty</copyright>
-        <lastBuildDate>Sat, 23 Mar 2024 13:13:25 +0800</lastBuildDate><atom:link href="https://hugo.grew.cc/post/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>Obsidian快速发布hugo文章</title>
-        <link>https://hugo.grew.cc/p/obsidian%E5%BF%AB%E9%80%9F%E5%8F%91%E5%B8%83hugo%E6%96%87%E7%AB%A0/</link>
+        <lastBuildDate>Sat, 23 Mar 2024 13:13:25 +0800</lastBuildDate><atom:link href="http://localhost:5678/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Obsidian快速发布Hugo文章</title>
+        <link>http://localhost:5678/p/obsidian%E5%BF%AB%E9%80%9F%E5%8F%91%E5%B8%83hugo%E6%96%87%E7%AB%A0/</link>
         <pubDate>Sat, 23 Mar 2024 13:13:25 +0800</pubDate>
         
-        <guid>https://hugo.grew.cc/p/obsidian%E5%BF%AB%E9%80%9F%E5%8F%91%E5%B8%83hugo%E6%96%87%E7%AB%A0/</guid>
-        <description>&lt;img src="https://pic.imgdb.cn/item/65fc06b79f345e8d0317dd50.webp" alt="Featured image of post Obsidian快速发布hugo文章" /&gt;&lt;p&gt;&lt;strong&gt;前言：&lt;/strong&gt; 通常使用静态博客写文章比较麻烦，上传图片也不方便，最近发现使用 obsidian 配合 shellcommands 插件可以快速创建文章并预览发布，配合 image auto upload 插件还可以快捷上传图片到图床。
+        <guid>http://localhost:5678/p/obsidian%E5%BF%AB%E9%80%9F%E5%8F%91%E5%B8%83hugo%E6%96%87%E7%AB%A0/</guid>
+        <description>&lt;img src="https://pic.imgdb.cn/item/65fc06b79f345e8d0317dd50.webp" alt="Featured image of post Obsidian快速发布Hugo文章" /&gt;&lt;p&gt;&lt;strong&gt;前言：&lt;/strong&gt; 通常使用静态博客写文章比较麻烦，上传图片也不方便，最近发现使用 &lt;code&gt;Obsidian&lt;/code&gt; 配合 &lt;code&gt;Shell commands&lt;/code&gt; 插件可以快速创建文章并预览发布，配合 &lt;code&gt;Image auto upload Plugin&lt;/code&gt; 还可以快捷上传图片到图床。
 需要用到的工具：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;obsidian&lt;/li&gt;
-&lt;li&gt;picgo 或者 piclist 软件&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Obsidian&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Picgo&lt;/code&gt; 或者 &lt;code&gt;Piclist&lt;/code&gt; 软件&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;使用&#34;&gt;使用&lt;/h2&gt;
-&lt;p&gt;首先下载好 obsidian 并且开启第三方插件，在插件市场下载三个插件：&lt;/p&gt;
+&lt;h2 id=&#34;快捷发布文章&#34;&gt;快捷发布文章&lt;/h2&gt;
+&lt;p&gt;首先下载好 &lt;code&gt;Obsidian&lt;/code&gt; 并且开启第三方插件，在插件市场下载三个插件：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Image auto upload&lt;/li&gt;
-&lt;li&gt;Shellcommands&lt;/li&gt;
-&lt;li&gt;Commanders
-&lt;img src=&#34;https://jsd.cdn.zzko.cn/gh/tom2almighty/picx-images-hosting@master/piclist/202403231359340.webp&#34;
+&lt;li&gt;&lt;code&gt;Image auto upload Plugin&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Shell commands&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Commander&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;然后在博客文章所在目录打开项目，即可看到所有博客文章。接下来通过 &lt;code&gt;Shell commands&lt;/code&gt; 插件配置文章新建、预览、发布。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;原理很简单，就是通过插件调用 &lt;code&gt;CMD&lt;/code&gt; 程序，使用命令新建发布文章，然后通过 &lt;code&gt;Commander&lt;/code&gt; 将命令绑定到  &lt;code&gt;Obsidian &lt;/code&gt; 左侧快捷键，这样只需要点击对应的俺按钮即可快速运行命令。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;创建命令&#34;&gt;创建命令&lt;/h3&gt;
+&lt;p&gt;详细步骤以 &lt;code&gt;新建文章&lt;/code&gt; 命令为参考，其余命令步骤相同。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;设置工作目录&lt;/strong&gt;：首先进入插件设置页面，选择 &lt;code&gt;Environments&lt;/code&gt; 选项卡，在 &lt;code&gt;Working Directiory&lt;/code&gt; 处输入自己博客的根目录。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;新建命令&lt;/strong&gt;：首先打开 &lt;code&gt;Shell commands&lt;/code&gt; 插件设置，点击 &lt;code&gt;New shell command&lt;/code&gt;，新建一个命令，输入命令 &lt;code&gt;hugo new post/{{_post_title}}.md&lt;/code&gt; 。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;设置别名&lt;/strong&gt;：点击齿轮图标可以进入命令设置页面，在 &lt;code&gt;Alias&lt;/code&gt; 处输入命名别名，输入 &lt;code&gt;新建文章 &lt;/code&gt; ，可以自定义。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;选择 &lt;code&gt;Preactions&lt;/code&gt;&lt;/strong&gt;： 在 &lt;code&gt;Preactions&lt;/code&gt; 界面 &lt;code&gt;Prompt&lt;/code&gt; 选项选择 &lt;code&gt;Create a new prompt&lt;/code&gt; ，&lt;code&gt;Prompt title&lt;/code&gt; 写 &lt;code&gt;新建文章&lt;/code&gt; ，然后点击 &lt;code&gt;New prompt field&lt;/code&gt;，&lt;code&gt;Field lable&lt;/code&gt; 设置为 &lt;code&gt;请输入文章标题：&lt;/code&gt;，这个是文章运行前的提示，然后 &lt;code&gt;target value&lt;/code&gt; 处选择 &lt;code&gt;create a new custom variable&lt;/code&gt;，在 &lt;code&gt;Variable name&lt;/code&gt; 处填写 &lt;code&gt;post_title&lt;/code&gt; ，点击创建，最终值应该为为 &lt;code&gt;{{_post_title}}&lt;/code&gt;，完成后点击创建，效果参考下图。接着在 &lt;code&gt;Preaction&lt;/code&gt; 页面选择新创建的 &lt;code&gt;Prompt&lt;/code&gt; 即可。
+&lt;img src=&#34;https://jsd.cdn.zzko.cn/gh/tom2almighty/picx-images-hosting@master/piclist/202403241154677.webp&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Uploading file&amp;hellip;5sar2&#34;
+	
+	
+&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;按照同样的步骤再创建预览文章、发布文章、停止 &lt;code&gt;Hugo&lt;/code&gt; 进程几个命令。其中发布文章还需要创建新的 &lt;code&gt;Prompt&lt;/code&gt; ，预览文章和停止进程仅需要输入命令即可。具体的命令和参数如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# 新建文章命令
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;hugo new post/{{_post_title}}.md
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# 新建文章 Prompt Variable 注意输入时仅需要输入 `post_title`
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;{{_post_title}}
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# 文章预览命令
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;hugo server --navigateToChanged --buildDrafts -p 5678  &lt;span class=&#34;p&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;start&lt;/span&gt; chrome http://localhost:5678
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# 发布文章命令
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git add . &lt;span class=&#34;p&#34;&gt;&amp;amp;&lt;/span&gt; git commit -m &lt;span class=&#34;s2&#34;&gt;&amp;#34;{{_comment}}&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;&amp;amp;&lt;/span&gt; git push -u origin master
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# 发布文章 Prompt Variable 注意输入时仅需要输入 `comment`
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;{{_comment}}
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# 停止 Hugo 进程命令
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;taskkill /f /t /im hugo.exe
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;strong&gt;注意：&lt;/strong&gt; 停止进程命令需要在命令设置页面的 &lt;code&gt;Events&lt;/code&gt; 选项卡下将 &lt;code&gt;Obsidian quits&lt;/code&gt; 打勾，即退出应用时执行。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;如果使用的是 Mac 那么命令连接符需要使用 &lt;code&gt;&amp;amp;&amp;amp;&lt;/code&gt;，如果使用 &lt;code&gt;Windows&lt;/code&gt; 的 &lt;code&gt;Powershell&lt;/code&gt; ，命令连接符需要使用 &lt;code&gt;;&lt;/code&gt;。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;绑定左侧菜单&#34;&gt;绑定左侧菜单&lt;/h3&gt;
+&lt;p&gt;这一部分很简单，只需要打开 &lt;code&gt;commander&lt;/code&gt; 插件设置，将命令绑定到自己想要的位置即可，这里以左侧菜单为例。
+&lt;img src=&#34;https://jsd.cdn.zzko.cn/gh/tom2almighty/picx-images-hosting@master/piclist/202403241221047.webp&#34;
 	
 	
 	
 	loading=&#34;lazy&#34;
 	
 	
-&gt;&lt;/li&gt;
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;快捷上传图片&#34;&gt;快捷上传图片&lt;/h2&gt;
+&lt;p&gt;下载 &lt;code&gt;Image auto upload Plugin&lt;/code&gt; 插件后，打开剪贴板上传，上传模式可以选择核心模式或者应用模式，应用模式需要打开应用才能正常上传，核心模式则需要输入 &lt;code&gt;.exe&lt;/code&gt; 程序的路径，自行选择即可，图床的设置可以参考另一篇文章：&lt;a class=&#34;link&#34; href=&#34;https://blog.grew.cc/article/typora&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Typora 配合 Piclist 快速上传图片并加速 &lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://yelleis.top/p/38f84bb0/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Hugo 发布流程&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
         </item>
         <item>
         <title>Webstack Hugo导航</title>
-        <link>https://hugo.grew.cc/p/webstack-hugo/</link>
+        <link>http://localhost:5678/p/webstack-hugo/</link>
         <pubDate>Thu, 21 Mar 2024 21:47:43 +0800</pubDate>
         
-        <guid>https://hugo.grew.cc/p/webstack-hugo/</guid>
+        <guid>http://localhost:5678/p/webstack-hugo/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65fc44b29f345e8d03b73249.webp" alt="Featured image of post Webstack Hugo导航" /&gt;&lt;p&gt;&lt;strong&gt;前言：&lt;/strong&gt;&lt;code&gt;Webstack-Hugo&lt;/code&gt; 导航是基于纯静态的网址导航网站 &lt;a class=&#34;link&#34; href=&#34;https://github.com/WebStackPage/WebStackPage.github.io&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;webstack.cc&lt;/a&gt; 制作的 &lt;a class=&#34;link&#34; href=&#34;https://gohugo.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Hugo&lt;/a&gt; 主题，是一个基于 &lt;code&gt;Hugo&lt;/code&gt; 的静态响应式网址导航主题。添加了天气及夜间模式，主要的配置信息都集成到了 &lt;code&gt;config.toml&lt;/code&gt;，导航的各个信息都集成在 &lt;code&gt;data/webstack.yml&lt;/code&gt; 文件中。&lt;/p&gt;
@@ -132,10 +199,10 @@
         </item>
         <item>
         <title>Hugo Stack主题修改</title>
-        <link>https://hugo.grew.cc/p/stack/</link>
+        <link>http://localhost:5678/p/stack/</link>
         <pubDate>Thu, 21 Mar 2024 17:13:54 +0800</pubDate>
         
-        <guid>https://hugo.grew.cc/p/stack/</guid>
+        <guid>http://localhost:5678/p/stack/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65fc10be9f345e8d0349611a.webp" alt="Featured image of post Hugo Stack主题修改" /&gt;&lt;p&gt;&lt;strong&gt;前言&lt;/strong&gt;：上一篇文章介绍了如何部署 Hugo 博客，这里针对 Stack 主题的修改做一些记录。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;修改全部来自参考文章，这里仅记录。&lt;/p&gt;
@@ -1551,10 +1618,10 @@
         </item>
         <item>
         <title>使用Hugo搭建个人博客</title>
-        <link>https://hugo.grew.cc/p/hugo-blog/</link>
+        <link>http://localhost:5678/p/hugo-blog/</link>
         <pubDate>Thu, 21 Mar 2024 17:13:32 +0800</pubDate>
         
-        <guid>https://hugo.grew.cc/p/hugo-blog/</guid>
+        <guid>http://localhost:5678/p/hugo-blog/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65fc06b79f345e8d0317dd50.webp" alt="Featured image of post 使用Hugo搭建个人博客" /&gt;&lt;p&gt;&lt;strong&gt;前言&lt;/strong&gt;：博客的引擎选择一直是个问题。动态博客和静态博客各有优劣。动态博客 &lt;code&gt;Wordpress&lt;/code&gt;、&lt;code&gt;Typecho&lt;/code&gt; 等拥有精美的主题，后台管理也比较方便，但是需要服务器。静态博客如 &lt;code&gt;Hexo&lt;/code&gt;、&lt;code&gt;Hugo&lt;/code&gt;、&lt;code&gt;Astro&lt;/code&gt; 等可以直接部署静态页面，但是相对写文章比较繁琐一点。今天再次记录一下之前折腾的 &lt;code&gt;Hugo&lt;/code&gt;，之前使用的主题是 &lt;code&gt;Loveit&lt;/code&gt;，后来觉得 &lt;code&gt;Stack&lt;/code&gt; 不错，所以本次就拿这个主题记录一下。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;前提&lt;/strong&gt;：&lt;/p&gt;
 &lt;p&gt;部署静态博客需要的：&lt;/p&gt;
@@ -1665,10 +1732,10 @@
         </item>
         <item>
         <title>订阅转换之四：sub2clash项目</title>
-        <link>https://hugo.grew.cc/p/sub2clash/</link>
+        <link>http://localhost:5678/p/sub2clash/</link>
         <pubDate>Mon, 18 Mar 2024 14:01:34 +0800</pubDate>
         
-        <guid>https://hugo.grew.cc/p/sub2clash/</guid>
+        <guid>http://localhost:5678/p/sub2clash/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65f00c8c9f345e8d03e0d8b8.webp" alt="Featured image of post 订阅转换之四：sub2clash项目" /&gt;&lt;p&gt;&lt;strong&gt;前言：&lt;/strong&gt; 部分订阅转换修改节点后无法使用相同的链接，本次的项目可以方便地添加最新协议节点，同时可以灵活添加国家和地区分组，并且可以添加自定义规则，也可以使用自定义短链接。&lt;/p&gt;
 &lt;p&gt;本次项目地址如下：&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/nitezs/sub2clash&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -1757,10 +1824,10 @@
         </item>
         <item>
         <title>Windows终端美化</title>
-        <link>https://hugo.grew.cc/p/windows-terminal/</link>
+        <link>http://localhost:5678/p/windows-terminal/</link>
         <pubDate>Mon, 18 Mar 2024 10:27:32 +0800</pubDate>
         
-        <guid>https://hugo.grew.cc/p/windows-terminal/</guid>
+        <guid>http://localhost:5678/p/windows-terminal/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65f7c4779f345e8d03321bad.webp" alt="Featured image of post Windows终端美化" /&gt;&lt;p&gt;**前言：**Windows 推出了新的终端 &lt;code&gt;Windows Teminal&lt;/code&gt;，虽然外观有所进步，但还是达不到自己预期，因此可以自己简单修改一下。&lt;/p&gt;
 &lt;h2 id=&#34;准备工作&#34;&gt;准备工作&lt;/h2&gt;
 &lt;p&gt;计算机上启动 &lt;code&gt;Windows PowerShell&lt;/code&gt; 时，执行策略很可能是 &lt;code&gt;Restricted&lt;/code&gt;（默认设置）。&lt;/p&gt;
@@ -1980,11 +2047,49 @@
 </description>
         </item>
         <item>
+        <title>常用审计规则</title>
+        <link>http://localhost:5678/p/shenji/</link>
+        <pubDate>Tue, 12 Mar 2024 16:42:34 +0800</pubDate>
+        
+        <guid>http://localhost:5678/p/shenji/</guid>
+        <description>&lt;img src="https://pic.imgdb.cn/item/65f01b5d9f345e8d031a6315.webp" alt="Featured image of post 常用审计规则" /&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;api&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;ps&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;sv&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;offnavi&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;newvector&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;ulog&lt;span class=&#34;se&#34;&gt;\.&lt;/span&gt;imap&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;newloc&lt;span class=&#34;o&#34;&gt;)(&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\.&lt;/span&gt;map&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\.&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;baidu&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;n&lt;span class=&#34;se&#34;&gt;\.&lt;/span&gt;shifen&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\.&lt;/span&gt;com
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;.+&lt;span class=&#34;se&#34;&gt;\.&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;^&lt;span class=&#34;o&#34;&gt;)(&lt;/span&gt;360&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;so&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\.&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;cn&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;com&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;.*&lt;span class=&#34;se&#34;&gt;\\&lt;/span&gt;.&lt;span class=&#34;o&#34;&gt;||)(&lt;/span&gt;dafahao&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;minghui&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;dongtaiwang&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;epochtimes&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;ntdtv&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;falundafa&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;wujieliulan&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;zhengjian&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\.&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;org&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;com&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;net&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;.*&lt;span class=&#34;se&#34;&gt;\\&lt;/span&gt;.&lt;span class=&#34;o&#34;&gt;||)(&lt;/span&gt;shenzhoufilm&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;secretchina&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;renminbao&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;aboluowang&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;mhradio&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;guangming&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;zhengwunet&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;soundofhope&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;yuanming&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;zhuichaguoji&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;fgmtv&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;xinsheng&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;shenyunperformingarts&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;epochweekly&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;tuidang&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;shenyun&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;falundata&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;bannedbook&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\.&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;org&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;com&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;net&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;.*&lt;span class=&#34;se&#34;&gt;\\&lt;/span&gt;.&lt;span class=&#34;o&#34;&gt;||)(&lt;/span&gt;icbc&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;ccb&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;boc&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;bankcomm&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;abchina&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;cmbchina&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;psbc&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;cebbank&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;cmbc&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;pingan&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;spdb&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;citicbank&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;cib&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;hxb&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;bankofbeijing&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;hsbank&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;tccb&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;4001961200&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;bosc&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;hkbchina&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;njcb&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;nbcb&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;lj-bank&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;bjrcb&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;jsbchina&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;gzcb&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;cqcbank&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;czbank&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;hzbank&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;srcb&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;cbhb&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;cqrcb&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;grcbank&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;qdccb&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;bocd&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;hrbcb&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;jlbank&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;bankofdl&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;qlbchina&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;dongguanbank&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;cscb&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;hebbank&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;drcbank&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;zzbank&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;bsb&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;xmccb&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;hljrcc&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;jxnxs&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;gsrcu&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;fjnx&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;sxnxs&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;gx966888&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;gx966888&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;zj96596&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;hnnxs&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;ahrcu&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;shanxinj&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;hainanbank&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;scrcu&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;gdrcu&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;hbxh&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;ynrcc&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;lnrcc&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;nmgnxs&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;hebnx&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;jlnls&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;js96008&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;hnnx&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;sdnxs&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\.&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;org&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;com&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;net&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;cn&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;.*&lt;span class=&#34;se&#34;&gt;\\&lt;/span&gt;.&lt;span class=&#34;o&#34;&gt;||)(&lt;/span&gt;unionpay&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;alipay&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;baifubao&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;yeepay&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;99bill&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;95516&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;51credit&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;cmpay&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;tenpay&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;lakala&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;jdpay&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\.&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;org&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;com&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;net&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;cn&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;.*&lt;span class=&#34;se&#34;&gt;\\&lt;/span&gt;.&lt;span class=&#34;o&#34;&gt;||)(&lt;/span&gt;firstbank&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;bot&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;cotabank&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;megabank&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;tcb-bank&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;landbank&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;hncb&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;bankchb&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;tbb&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;ktb&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;tcbbank&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;scsb&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;bop&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;sunnybank&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;kgibank&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;fubon&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;ctbcbank&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;cathaybk&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;eximbank&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;bok&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;ubot&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;feib&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;yuantabank&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;sinopac&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;esunbank&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;taishinbank&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;jihsunbank&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;entiebank&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;hwataibank&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;csc&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;skbank&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\.&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;org&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;com&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;net&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;tw&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;Subject&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;HELO&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;SMTP&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;torrent&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\.&lt;/span&gt;torrent&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;peer_id&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;info_hash&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;get_peers&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;find_node&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;BitTorrent&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;announce_peer&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;announce&lt;span class=&#34;se&#34;&gt;\.&lt;/span&gt;php&lt;span class=&#34;se&#34;&gt;\?&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;passkey&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;BitTorrent protocol
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;^.*&lt;span class=&#34;se&#34;&gt;\@&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)(&lt;/span&gt;guerrillamail&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;guerrillamailblock&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;sharklasers&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;grr&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;pokemail&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;spam4&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;bccto&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;chacuo&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;027168&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\.&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;info&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;biz&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;com&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;de&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;net&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;org&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;me&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;la&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;.?&lt;span class=&#34;o&#34;&gt;)(&lt;/span&gt;xunlei&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;sandai&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;Thunder&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;XLLiveUD&lt;span class=&#34;o&#34;&gt;)(&lt;/span&gt;.&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
+        </item>
+        <item>
         <title>部署自己的ChatGPT并白嫖GPT4的API</title>
-        <link>https://hugo.grew.cc/p/cogpt/</link>
+        <link>http://localhost:5678/p/cogpt/</link>
         <pubDate>Thu, 07 Mar 2024 00:00:00 +0000</pubDate>
         
-        <guid>https://hugo.grew.cc/p/cogpt/</guid>
+        <guid>http://localhost:5678/p/cogpt/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65e941339f345e8d03417c14.webp" alt="Featured image of post 部署自己的ChatGPT并白嫖GPT4的API" /&gt;&lt;blockquote&gt;
 &lt;p&gt;😀 &lt;strong&gt;前言：&lt;/strong&gt;&lt;code&gt;ChatGPT&lt;/code&gt; 官网使用不便，并且访问速度不佳，因此部署自己的 &lt;code&gt;web&lt;/code&gt; 页面，通过 &lt;code&gt;API&lt;/code&gt; 使用成为了主流选择，本文通过 &lt;code&gt;ChatGPTNextWeb&lt;/code&gt; 部署页面，并通过 &lt;code&gt;copilot&lt;/code&gt; 项目白嫖 &lt;code&gt;GPT4&lt;/code&gt; 的 &lt;code&gt;API&lt;/code&gt;。
 &lt;strong&gt;前提：&lt;/strong&gt;&lt;/p&gt;
@@ -2111,10 +2216,10 @@
         </item>
         <item>
         <title>订阅转换之三：sublink项目</title>
-        <link>https://hugo.grew.cc/p/sublink/</link>
+        <link>http://localhost:5678/p/sublink/</link>
         <pubDate>Wed, 06 Mar 2024 00:00:00 +0000</pubDate>
         
-        <guid>https://hugo.grew.cc/p/sublink/</guid>
+        <guid>http://localhost:5678/p/sublink/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65f00c8c9f345e8d03e0d8b8.webp" alt="Featured image of post 订阅转换之三：sublink项目" /&gt;&lt;blockquote&gt;
 &lt;p&gt;😀 自建的节点往往难以管理，可以通过搭建 &lt;code&gt;v2b&lt;/code&gt; 等面板管理，但难免繁琐，这里提供另一种方式。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -2189,10 +2294,10 @@
         </item>
         <item>
         <title>自建DNS解锁Netflix</title>
-        <link>https://hugo.grew.cc/p/netfli-dns/</link>
+        <link>http://localhost:5678/p/netfli-dns/</link>
         <pubDate>Sun, 03 Mar 2024 00:00:00 +0000</pubDate>
         
-        <guid>https://hugo.grew.cc/p/netfli-dns/</guid>
+        <guid>http://localhost:5678/p/netfli-dns/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65dc49059f345e8d03107123.webp" alt="Featured image of post 自建DNS解锁Netflix" /&gt;&lt;blockquote&gt;
 &lt;p&gt;通过 &lt;code&gt;DNSmasq&lt;/code&gt; 和一台已解锁 &lt;code&gt;Netflix&lt;/code&gt; 的服务器，将其余服务器全部解锁 &lt;code&gt;Netflix&lt;/code&gt; 。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -2300,10 +2405,10 @@
         </item>
         <item>
         <title>甲骨文相关</title>
-        <link>https://hugo.grew.cc/p/oracle/</link>
+        <link>http://localhost:5678/p/oracle/</link>
         <pubDate>Tue, 27 Feb 2024 00:00:00 +0000</pubDate>
         
-        <guid>https://hugo.grew.cc/p/oracle/</guid>
+        <guid>http://localhost:5678/p/oracle/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65f0112b9f345e8d03f2fe8b.webp" alt="Featured image of post 甲骨文相关" /&gt;&lt;p&gt;**前言：**记录甲骨文相关问题。&lt;/p&gt;
 &lt;h2 id=&#34;开启-root-登录&#34;&gt;开启 root 登录&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -2403,10 +2508,10 @@
         </item>
         <item>
         <title>部署Plex并挂载Alist</title>
-        <link>https://hugo.grew.cc/p/plex/</link>
+        <link>http://localhost:5678/p/plex/</link>
         <pubDate>Fri, 09 Feb 2024 00:00:00 +0000</pubDate>
         
-        <guid>https://hugo.grew.cc/p/plex/</guid>
+        <guid>http://localhost:5678/p/plex/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65f0121c9f345e8d03f6691c.webp" alt="Featured image of post 部署Plex并挂载Alist" /&gt;&lt;blockquote&gt;
 &lt;p&gt;😀 由于最近 &lt;code&gt;Netflix&lt;/code&gt; 清退了一大批低价区用户，并且不退款，需要与银行争议，就开了一个月的土耳其区，然而土耳其第一个月并不能用土耳其之外的 &lt;code&gt;IP&lt;/code&gt; 观看，白白浪费一个月，虽然最近尼日利亚的低价已经超过了巴基斯坦，但还是决定放弃了，花钱找罪受，不如买个 &lt;code&gt;Emby&lt;/code&gt; 。
 之后在网上看到可以通过服务器部署 &lt;code&gt;Plex Media Server&lt;/code&gt; ，将 &lt;code&gt;Alist&lt;/code&gt; 挂载到服务器，&lt;code&gt;Plex&lt;/code&gt; 添加 &lt;code&gt;Alist&lt;/code&gt; 目录，然后 &lt;code&gt;infuse&lt;/code&gt; 连接 &lt;code&gt;Plex&lt;/code&gt; ，这样可以实现刮削，并且全平台同步，还可以搭配 &lt;code&gt;Aria2&lt;/code&gt; 下载自动上传网盘，达到良好的观影效果。&lt;/p&gt;
@@ -3011,10 +3116,10 @@
         </item>
         <item>
         <title>Alist部署</title>
-        <link>https://hugo.grew.cc/p/alist/</link>
+        <link>http://localhost:5678/p/alist/</link>
         <pubDate>Thu, 08 Feb 2024 00:00:00 +0000</pubDate>
         
-        <guid>https://hugo.grew.cc/p/alist/</guid>
+        <guid>http://localhost:5678/p/alist/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65f013c89f345e8d03fc5210.webp" alt="Featured image of post Alist部署" /&gt;&lt;p&gt;**前言：**目前很多人通过网盘分享影视资源，如阿里云盘、115网盘等，同时还有微软的 E5 管理员账号，一个账号就有 5T 空间，用来做存储很不错，但是众多网盘分享文件很不方便，网盘自己的页面看视频也比较简陋，这个时候我们可以通过目录列表整合各种网盘，如以前的  &lt;code&gt;oneindex、olaindex&lt;/code&gt;，最近常用的是 Alist ，支持网盘众多，部署方便。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Alist 是一个支持多种存储，支持网页浏览和 WebDAV 的文件列表程序，由 gin 和 Solidjs 驱动，程序开源地址以及文档如下：&lt;/p&gt;
@@ -3279,10 +3384,10 @@
         </item>
         <item>
         <title>本科和研究生专业目录</title>
-        <link>https://hugo.grew.cc/p/zhuanyemulu/</link>
+        <link>http://localhost:5678/p/zhuanyemulu/</link>
         <pubDate>Tue, 06 Feb 2024 00:00:00 +0000</pubDate>
         
-        <guid>https://hugo.grew.cc/p/zhuanyemulu/</guid>
+        <guid>http://localhost:5678/p/zhuanyemulu/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65dc499a9f345e8d0311caa6.webp" alt="Featured image of post 本科和研究生专业目录" /&gt;&lt;p&gt;最近对于所学专业的专业代码一直有所疑惑，因此搜索后得知本科的专业设置和研究生设置有所不同，教育部也对本科和研究生分别发布了对应的专业目录及相关管理办法，这里记录一下。&lt;/p&gt;
 &lt;p&gt;本科专业目录目前最新的是2022版，是在2012年版本的基础上完成。教育部通知链接如下：&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://www.moe.gov.cn/srcsite/A08/moe_1034/s4930/202304/t20230419_1056224.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -3299,10 +3404,10 @@
         </item>
         <item>
         <title>Alist自定义美化</title>
-        <link>https://hugo.grew.cc/p/alist-modify/</link>
+        <link>http://localhost:5678/p/alist-modify/</link>
         <pubDate>Sun, 04 Feb 2024 00:00:00 +0000</pubDate>
         
-        <guid>https://hugo.grew.cc/p/alist-modify/</guid>
+        <guid>http://localhost:5678/p/alist-modify/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65f013c89f345e8d03fc5210.webp" alt="Featured image of post Alist自定义美化" /&gt;&lt;h2 id=&#34;自定义头部&#34;&gt;自定义头部&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -3997,10 +4102,10 @@
         </item>
         <item>
         <title>订阅转换之二：subweb项目</title>
-        <link>https://hugo.grew.cc/p/sub-web/</link>
+        <link>http://localhost:5678/p/sub-web/</link>
         <pubDate>Sat, 27 Jan 2024 00:00:00 +0000</pubDate>
         
-        <guid>https://hugo.grew.cc/p/sub-web/</guid>
+        <guid>http://localhost:5678/p/sub-web/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65f00c8c9f345e8d03e0d8b8.webp" alt="Featured image of post 订阅转换之二：subweb项目" /&gt;&lt;h2 id=&#34;前言&#34;&gt;前言：&lt;/h2&gt;
 &lt;p&gt;整理服务器时发现部署的 &lt;code&gt;Subconverter&lt;/code&gt; 后端一直出问题，无法正确转换，经过搜索发现了一个前后端加短链的 &lt;code&gt;Docker&lt;/code&gt; 整合版，相比较原项目前后端，有如下优点：&lt;/p&gt;
 &lt;ul&gt;
@@ -4139,11 +4244,249 @@
 </description>
         </item>
         <item>
-        <title>记录一次PHP启动失败</title>
-        <link>https://hugo.grew.cc/p/php/</link>
+        <title>SSPanel Uim部署及修复SS订阅下发教程</title>
+        <link>http://localhost:5678/p/sspanel/</link>
         <pubDate>Fri, 26 Jan 2024 00:00:00 +0000</pubDate>
         
-        <guid>https://hugo.grew.cc/p/php/</guid>
+        <guid>http://localhost:5678/p/sspanel/</guid>
+        <description>&lt;img src="https://pic.imgdb.cn/item/65f01aa99f345e8d03171a8d.webp" alt="Featured image of post SSPanel Uim部署及修复SS订阅下发教程" /&gt;&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+&lt;p&gt;请注意，本教程仅用于学习目的，切勿将其用于非法用途。使用本教程搭建面板需要遵循法律法规，谨慎使用相关技术。&lt;/p&gt;
+&lt;h2 id=&#34;1-安装宝塔面板-77&#34;&gt;1. 安装宝塔面板 7.7&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;9
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 更新系统和安装 wget、curl&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;apt-get update -y &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt-get install wget -y &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt-get install curl -y
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 安装宝塔面板&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;curl -sSO &amp;lt;https://raw.githubusercontent.com/zhucaidan/btpanel-v7.7.0/main/install/install_panel.sh&amp;gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; bash install_panel.sh
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 删除登录验证&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sed -i &lt;span class=&#34;s2&#34;&gt;&amp;#34;s|if (bind_user == &amp;#39;True&amp;#39;) {|if (bind_user == &amp;#39;REMOVED&amp;#39;) {|g&amp;#34;&lt;/span&gt; /www/server/panel/BTPanel/static/js/index.js
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;rm -rf /www/server/panel/data/bind.pl
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;2-配置宝塔面板&#34;&gt;2. 配置宝塔面板&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;安装如下：
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Nginx 1.22.1&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;PHP 8.2 +&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;MySQL 10.11.6-MariaDB&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Redis 7.0.11&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;phpMyAdmin 4.9&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Pure-Ftpd 1.0.49&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;安装 &lt;code&gt;PHP&lt;/code&gt; 扩展：&lt;code&gt;fileinfo&lt;/code&gt;、&lt;code&gt;redis&lt;/code&gt;、&lt;code&gt;yaml&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;删除 &lt;code&gt;PHP&lt;/code&gt; 被禁用函数：&lt;code&gt;proc_open&lt;/code&gt;、&lt;code&gt;proc_get_status&lt;/code&gt;、&lt;code&gt;putenv&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;3-创建网站并添加-ssl-证书&#34;&gt;3. 创建网站并添加 SSL 证书&lt;/h2&gt;
+&lt;h2 id=&#34;4-下载并安装面板源码&#34;&gt;4. 下载并安装面板源码&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; /www/wwwroot
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 版本参考 GitHub&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git clone -b 2023.6 https://github.com/Anankke/SSPanel-Uim.git
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;5-设置站点运行目录和伪静态&#34;&gt;5. 设置站点运行目录和伪静态&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;站点目录设置为 &lt;code&gt;/www/wwwroot/SSPanel-Uim/public&lt;/code&gt;，关闭&lt;code&gt;防跨站攻击&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;编辑 Nginx 配置文件，在 location / 下添加：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;location&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nx&#34;&gt;try_files&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$uri&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;index&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;php&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$is_args$args&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ol&gt;
+&lt;li&gt;重启 Nginx。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;6-设置站点根目录整体权限&#34;&gt;6. 设置站点根目录整体权限&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;chmod -R &lt;span class=&#34;m&#34;&gt;775&lt;/span&gt; /www/wwwroot/SSPanel-Uim
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;7-编辑网站配置文件&#34;&gt;7. 编辑网站配置文件&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;将 &lt;code&gt;appprofile.example.php&lt;/code&gt; 重命名为 &lt;code&gt;appprofile.php&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;将 &lt;code&gt;.config.example.php&lt;/code&gt; 重命名为 &lt;code&gt;.config.php&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;编辑 &lt;code&gt;.config.php&lt;/code&gt;，填写必要的参数。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;$_ENV&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;key&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;abcde&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;//Cookie加密密钥，请务必修改此key为随机字符串
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$_ENV&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;appName&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;sspanel&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;//站点名称
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$_ENV&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;baseUrl&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;&amp;lt;https://www.aaa.com&amp;gt;&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;//站点地址,结尾不要带斜杠
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$_ENV&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;muKey&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;abcde&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;   &lt;span class=&#34;c1&#34;&gt;//WebAPI密钥，用于节点服务端与面板通信
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$_ENV&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;db_database&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;database&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;//数据库名
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$_ENV&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;db_username&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;user&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;//数据库用户名
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$_ENV&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;db_password&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;password&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;//用户名对应的密码
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$_ENV&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;enable_login_bind_ip&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;false&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;//是否将登陆和IP绑定,建议false
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$_ENV&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;checkNodeIp&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;false&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;//是否webapi验证节点ip,建议false
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$_ENV&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;cloudflare_enable&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;//是否开启 Cloudflare 解析
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$_ENV&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;cloudflare_email&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;aa@gmail.com&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;//Cloudflare 邮箱地址
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$_ENV&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;cloudflare_key&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;key&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;//Cloudflare API Key
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$_ENV&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;cloudflare_name&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;www.aaa.com&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;//站点域名
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// ...其他参数
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;8-站点初始化&#34;&gt;8. 站点初始化&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; /www/wwwroot/SSPanel-Uim
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 切换为PHP8.2&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo ln -sf /www/server/php/82/bin/php /usr/bin/php
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;wget https://getcomposer.org/installer -O composer.phar
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;php composer.phar
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;php composer.phar install --no-dev
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;php xcat Migration new
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;php xcat Tool importAllSettings
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;php xcat Tool createAdmin
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 将目录权限用户设为 www&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;chmod -R &lt;span class=&#34;m&#34;&gt;755&lt;/span&gt; /www/wwwroot/SSPanel-Uim
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;9-设置定时任务&#34;&gt;9. 设置定时任务&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 安装 cron&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt-get install cron
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 编辑定时任务&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;crontab -e
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 添加以下任务&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;*/5 * * * * /usr/bin/php /www/wwwroot/SSPanel-Uim/xcat Cron
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 保存并退出，重启 cron&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;systemctl restart cron
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;10-修改节点订阅下发端口问题&#34;&gt;10. 修改节点订阅下发端口问题&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;面板会将用户端口下发为ss节点端口&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;在 &lt;code&gt;SSPanel-Uim/src/Services/Subscribe&lt;/code&gt; 目录下，除了 &lt;code&gt;base.php&lt;/code&gt;、&lt;code&gt;Trojan.php&lt;/code&gt;、&lt;code&gt;V2ray.php&lt;/code&gt; 之外的文件都需要修改。&lt;/li&gt;
+&lt;li&gt;在每个文件的 &lt;code&gt;foreach ($nodes_raw as $node_raw) {&lt;/code&gt; 后添加以下代码：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 在 foreach ($nodes_raw as $node_raw) { 这一行的下一行添加下面这一行代码：
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$node_custom_config&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;json_decode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$node_raw&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;custom_config&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 在if ((int) $node_raw-&amp;gt;sort === 0) { 这一行的下一行添加下面这一行代码：
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$ss_port&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$node_custom_config&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;offset_port_user&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;??&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$node_custom_config&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;offset_port_node&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;??&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$user&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;port&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 这里是指按照 offset_port_user、offset_port_node、用户端口的顺序加载端口
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ol&gt;
+&lt;li&gt;将后面 &lt;code&gt;$links&lt;/code&gt; 开头的代码中的 &lt;code&gt;$user-&amp;gt;port&lt;/code&gt; 改为 &lt;code&gt;$ss_port&lt;/code&gt;。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;11-重启服务器&#34;&gt;11. 重启服务器&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;reboot
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://streamernote.online/index.php/2024/01/12/sspanel%E9%9D%A2%E6%9D%BF%E6%90%AD%E5%BB%BA%E6%94%AF%E6%8C%81reality/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Streamerfans之家&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
+        <title>记录一次PHP启动失败</title>
+        <link>http://localhost:5678/p/php/</link>
+        <pubDate>Fri, 26 Jan 2024 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:5678/p/php/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65f018ca9f345e8d030fc1a6.webp" alt="Featured image of post 记录一次PHP启动失败" /&gt;&lt;h2 id=&#34;问题&#34;&gt;问题&lt;/h2&gt;
 &lt;p&gt;在部署一个站点时，在安装了 &lt;code&gt;PHP 7.4&lt;/code&gt; 的情况下安装 &lt;code&gt;PHP 8.2&lt;/code&gt;，然而安装完成后启动报错。&lt;/p&gt;
 &lt;p&gt;具体报错内容如下：&lt;/p&gt;
@@ -4209,10 +4552,10 @@
         </item>
         <item>
         <title>Windows安装IDM下载器并解除限制</title>
-        <link>https://hugo.grew.cc/p/idm/</link>
+        <link>http://localhost:5678/p/idm/</link>
         <pubDate>Sun, 21 Jan 2024 00:00:00 +0000</pubDate>
         
-        <guid>https://hugo.grew.cc/p/idm/</guid>
+        <guid>http://localhost:5678/p/idm/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65dc4aef9f345e8d031516e3.webp" alt="Featured image of post Windows安装IDM下载器并解除限制" /&gt;&lt;p&gt;**前言：**在众多下载管理器中，IDM（Internet Download Manager）以其强大的功能和稳定的性能脱颖而出，成为许多用户的首选下载工具之一。IDM不仅能够加速下载速度，还具备智能任务管理、断点续传、调度下载等一系列实用功能，极大地提升了下载文件的效率。之前的破解版很多已经不能使用，因此这里介绍新发现的工具。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;⚠️本教程仅供学习和研究使用，如果你决定采用这种方法，那么风险自负。&lt;/p&gt;
@@ -4272,10 +4615,10 @@
         </item>
         <item>
         <title>Typora配合PicList快速上传图片并加速 </title>
-        <link>https://hugo.grew.cc/p/piclist/</link>
+        <link>http://localhost:5678/p/piclist/</link>
         <pubDate>Thu, 03 Aug 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://hugo.grew.cc/p/piclist/</guid>
+        <guid>http://localhost:5678/p/piclist/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65dc41809f345e8d03fcc5fb.webp" alt="Featured image of post Typora配合PicList快速上传图片并加速 " /&gt;&lt;p&gt;**前言：**在Typora写笔记时不免使用图片，这里使用GitHub作图床，配合PicList上传，并通过jsdelivr实现CDN加速。&lt;/p&gt;
 &lt;h2 id=&#34;一-准备&#34;&gt;&lt;strong&gt;一. 准备&lt;/strong&gt;&lt;/h2&gt;
 &lt;p&gt;首先在 GitHub 中创建一个新的公共仓库。接下来生成一个新的 Token，地址为&lt;a class=&#34;link&#34; href=&#34;https://github.com/settings/tokens&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -4349,10 +4692,10 @@
         </item>
         <item>
         <title>Gpower计算效应量</title>
-        <link>https://hugo.grew.cc/p/gpower/</link>
+        <link>http://localhost:5678/p/gpower/</link>
         <pubDate>Tue, 01 Aug 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://hugo.grew.cc/p/gpower/</guid>
+        <guid>http://localhost:5678/p/gpower/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65dc4b779f345e8d031659f6.webp" alt="Featured image of post Gpower计算效应量" /&gt;&lt;h2 id=&#34;background&#34;&gt;&lt;strong&gt;Background&lt;/strong&gt;&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;在零假设检验 （Null Hypothesis Significant Test,
@@ -4444,10 +4787,10 @@ NHST）中四个相互关联的统计量：样本量、效应量、alpha水平�
         </item>
         <item>
         <title>近红外数据分析步骤</title>
-        <link>https://hugo.grew.cc/p/fnirs/</link>
+        <link>http://localhost:5678/p/fnirs/</link>
         <pubDate>Sat, 13 May 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://hugo.grew.cc/p/fnirs/</guid>
+        <guid>http://localhost:5678/p/fnirs/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65f021be9f345e8d03339c1b.webp" alt="Featured image of post 近红外数据分析步骤" /&gt;&lt;h1 id=&#34;fnirs-data-preprocessing使用步骤&#34;&gt;fNIRS Data Preprocessing使用步骤&lt;/h1&gt;
 &lt;p&gt;本文是近红外数据分析步骤，适用于&lt;code&gt;joint Simon task&lt;/code&gt;，使用 宏程序&lt;code&gt;fNIRS Data Preprocessing&lt;/code&gt; 以及其他宏程序完成，&lt;code&gt;ETG7100&lt;/code&gt;型号设备数据格式为&lt;code&gt;编号_HBA_Probe1_Oxy.csv&lt;/code&gt;，编号自定义，最好写成&lt;code&gt;sub001_run1&lt;/code&gt;这种形式，命名最好采用单数，即第1对被试为&lt;code&gt;sub01&lt;/code&gt;，第2对为&lt;code&gt;sub03&lt;/code&gt;，方便后续分割两个被试的数据。&lt;/p&gt;
 &lt;h2 id=&#34;fnirs-data-preprocessing-宏程序介绍&#34;&gt;fNIRS Data Preprocessing 宏程序介绍&lt;/h2&gt;
@@ -5680,10 +6023,10 @@ NHST）中四个相互关联的统计量：样本量、效应量、alpha水平�
         </item>
         <item>
         <title>解决Surge部分应用代理提示</title>
-        <link>https://hugo.grew.cc/p/surge/</link>
+        <link>http://localhost:5678/p/surge/</link>
         <pubDate>Fri, 23 Sep 2022 00:00:00 +0000</pubDate>
         
-        <guid>https://hugo.grew.cc/p/surge/</guid>
+        <guid>http://localhost:5678/p/surge/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65dc44029f345e8d030343ea.webp" alt="Featured image of post 解决Surge部分应用代理提示" /&gt;&lt;blockquote&gt;
 &lt;p&gt;注意：Surge 更改了方式，目前已不需要此模块。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -5816,10 +6159,10 @@ NHST）中四个相互关联的统计量：样本量、效应量、alpha水平�
         </item>
         <item>
         <title>英文论文写作</title>
-        <link>https://hugo.grew.cc/p/thesis-writing/</link>
+        <link>http://localhost:5678/p/thesis-writing/</link>
         <pubDate>Wed, 31 Aug 2022 00:00:00 +0000</pubDate>
         
-        <guid>https://hugo.grew.cc/p/thesis-writing/</guid>
+        <guid>http://localhost:5678/p/thesis-writing/</guid>
         <description>&lt;p&gt;英文写作最重要：&lt;strong&gt;线性写作&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&#34;标题&#34;&gt;标题&lt;/h2&gt;
 &lt;ul&gt;
@@ -6307,10 +6650,10 @@ NHST）中四个相互关联的统计量：样本量、效应量、alpha水平�
         </item>
         <item>
         <title>订阅转换之一：subconverter加sub-web项目</title>
-        <link>https://hugo.grew.cc/p/subconverter/</link>
+        <link>http://localhost:5678/p/subconverter/</link>
         <pubDate>Mon, 22 Aug 2022 00:00:00 +0000</pubDate>
         
-        <guid>https://hugo.grew.cc/p/subconverter/</guid>
+        <guid>http://localhost:5678/p/subconverter/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65f00c8c9f345e8d03e0d8b8.webp" alt="Featured image of post 订阅转换之一：subconverter加sub-web项目" /&gt;&lt;blockquote&gt;
 &lt;p&gt;更新：网上找到的一键脚本，更加方便&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -6829,10 +7172,10 @@ NHST）中四个相互关联的统计量：样本量、效应量、alpha水平�
         </item>
         <item>
         <title>宝塔面板部署Bitwarden密码管理</title>
-        <link>https://hugo.grew.cc/p/bitwarden/</link>
+        <link>http://localhost:5678/p/bitwarden/</link>
         <pubDate>Fri, 22 Jul 2022 00:00:00 +0000</pubDate>
         
-        <guid>https://hugo.grew.cc/p/bitwarden/</guid>
+        <guid>http://localhost:5678/p/bitwarden/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65dc436d9f345e8d0301ccba.webp" alt="Featured image of post 宝塔面板部署Bitwarden密码管理" /&gt;&lt;h2 id=&#34;bitwarden-简介&#34;&gt;Bitwarden 简介&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://bitwarden.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Bitwarden&lt;/a&gt; 是一款免费开源的密码管理软件，同时官方提供了 &lt;code&gt;docker&lt;/code&gt; 镜像，将服务端部署在自己的设备上。&lt;code&gt;Bitwarden&lt;/code&gt; 官方 &lt;code&gt;docker&lt;/code&gt; 要求服务器内存在 &lt;code&gt;2G&lt;/code&gt; 以上，但有大佬使用 &lt;code&gt;Rust&lt;/code&gt; 进行重写，项目名为 &lt;code&gt;vaultwarden&lt;/code&gt;, 降低了配置要求,地址如下：
@@ -6985,11 +7328,151 @@ NHST）中四个相互关联的统计量：样本量、效应量、alpha水平�
 &lt;/div&gt;</description>
         </item>
         <item>
+        <title>Windows解除网络限制</title>
+        <link>http://localhost:5678/p/windows-network/</link>
+        <pubDate>Tue, 07 Jun 2022 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:5678/p/windows-network/</guid>
+        <description>&lt;img src="https://pic.imgdb.cn/item/65dc4c5c9f345e8d0318832b.webp" alt="Featured image of post Windows解除网络限制" /&gt;&lt;h2 id=&#34;原理解释&#34;&gt;&lt;strong&gt;原理解释&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;了解一下原理有助于软件的使用。不想看也可以直接跳到下一节。以下是非专业人士的理解，如有错误请指出。&lt;/p&gt;
+&lt;p&gt;首先需要知道，我们所有的网络活动都是进行数据交换，这些数据存储在服务器上，服务器可以理解为配置很高的电脑。我们浏览网页或者观看视频的过程就是向存储这些内容的服务器发起请求，然后服务器给我们返回内容，就像你要在图书馆看书，告诉管理员我要看哪一本书，然后管理员找到这本书交给你。只是这个过程再稍微复杂一点，也就是我们找书给书的过程需要遵循一定的准则，也就是网络通讯的协议。
+目前网络通讯的主要协议为 &lt;code&gt;TCP/IP&lt;/code&gt; 协议。为了能让我们能准确拿到想要的东西，所有的计算机设备都会分配一个唯一的IP地址，也就是说IP地址和我们的设备绑定，IP的形式为32位的二进制数，通常被分割为4个“8位二进制数”，用点分十进制表示为 &lt;code&gt;a.b.c.d&lt;/code&gt; 的形式，abcd的取值为 &lt;code&gt;0-255&lt;/code&gt; 间的十进制整数，以上内容为 &lt;code&gt;IPv4&lt;/code&gt; 地址，由于目前IPv4地址快不够用了，所以正在大力发展 &lt;code&gt;IPv6&lt;/code&gt;，地址数更多。
+IP地址分为公有地址和私有地址，像我们平时路由器使用的地址如 &lt;code&gt;192.168.0.0&lt;/code&gt; 就属于私有地址，也就是我们可以用这些地址组件内网，不能从互联网直接访问。留出的私有地址如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;A类 10.0.0.0--10.255.255.255
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;B类 172.16.0.0--172.31.255.255
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;C类 192.168.0.0--192.168.255.255
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;当我们访问网页时不可能每次输入一大串数字，因此我们通过一些好记的名称，指代IP地址，当我们输入这些名称时，就自动访问对应的IP，这就是域名。&lt;/p&gt;
+&lt;p&gt;比如当我们访问 &lt;code&gt;www.baidu.com&lt;/code&gt;，实际上我们访问的是 &lt;code&gt;220.181.38.148&lt;/code&gt;。那么我们怎么才能知道那个域名对应的是那个主机呢，这时候就需要一台专门的服务器做这个事情。也就是说你告诉管理员你要看一本书，这时候有一个人我们叫他小明，他告诉管理员你要看的书在哪个书架，管理员知道后再把书拿给你，完成这个流程的服务器叫域名服务器（Domain Name Server，DNS）。&lt;/p&gt;
+&lt;p&gt;那么知道这些后我们就能了解 &lt;code&gt;GFW&lt;/code&gt; 防火墙简单的阻断方法，比如你说你要看越狱类的书，这时候小明一看你要看这种书？不行，直接给你拦下，或者给告诉管理员一个错误的信息，那么你就看不到你想要的书了。还有一种情况就是小明记住了哪一个书架的书不能看，也就是哪一个服务器上的内容不可以访问，那么发现你要看的书在这里，对不起，也不行。&lt;/p&gt;
+&lt;p&gt;那么如何解决呢？防火墙不可能不让你访问所有的服务器内容。这个时候我们可以找一个中间人，即让一台在防火墙外，不在防火墙名单上的服务器访问我们想要的内容，然后我们访问这台服务器，就可以拿到我们想要的东西。这个服务器就是一个代理人的角色，这也就是很多软件里会有的 &lt;code&gt;Proxy&lt;/code&gt; 设置，即代理。&lt;/p&gt;
+&lt;p&gt;虽说有这种方法，但是如果小明能看到最后书的内容，那还是会被拦下来，因此我们就要对这些信息进行加密，这样他只知道你要看书，并且看的书不在黑名单书架上，内容也不清楚，那么他只能先给你。&lt;/p&gt;
+&lt;p&gt;因此就衍生出各种加密方法手段，这些加密方法都要有一定的载体，就像我们把书放在一个盒子里，不同的盒子都可以装书，但是我们的锁不一样。&lt;/p&gt;
+&lt;p&gt;总结一下解除限制的原理：以我们访问 &lt;code&gt;YouTube&lt;/code&gt; 为例，首先我们本地通过加密发往防火墙外一台服务器，服务器进行解密，然后访问谷歌的服务器，将得到的视频进行加密，最后通过防火墙，我们本地再进行解密。所以我们本地安装的软件只是加密解密的载体，还需要我们的服务器信息才能正常使用，每一台服务器的信息称为一个节点（Node），因为有些服务器会根据IP地址返回不同的内容，比如首页的热门视频等，或者有些网站也会设置防火墙对 &lt;code&gt;IP&lt;/code&gt; 地址进行限制，某些国家的 &lt;code&gt;IP&lt;/code&gt; 不能访问因此不同的节点访问到的内容也是不一样的。&lt;/p&gt;
+&lt;p&gt;目前有很多核心如 &lt;code&gt;Clash&lt;/code&gt;, &lt;code&gt;v2ray(xray)&lt;/code&gt;，基于这些核心很多开发者做出了图形界面方便我们操作，这些软件都是开源免费的，但真正核心的是服务器节点，有一些公益的，但是不稳定，主要还是收费的节点更稳定一些，提供这些节点的服务商称为 &lt;code&gt;机场&lt;/code&gt;。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;另外说一下 VPN，VPN 的初衷不是为了跨过防火墙，而是为了企业的信息安全，因为其加密特征十分明显，很容易被识别，所以如果正常访问谷歌学术或者观看视频不建议使用VPN。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;接下来介绍两个电脑软件的使用，电脑会用后安卓上的操作也异曲同工，而iOS上软件都收费，这里就先不讲。&lt;/p&gt;
+&lt;h2 id=&#34;v2rayn&#34;&gt;&lt;strong&gt;v2rayN&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;此软件使用较为简单，适合简单用途，初上手使用。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;首先下载软件，下载 &lt;code&gt;v2rayN-Core.zip&lt;/code&gt;。
+这是GUI图形界面和核心，如果下载另一个只有界面，还得再下载核心。
+&lt;a class=&#34;link&#34; href=&#34;https://github.com/2dust/v2rayN/releases&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;链接点这里&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;下载后直接解压，不需要安装，之后打开 &lt;code&gt;v2rayN.exe&lt;/code&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;打开后电脑任务栏右下角会有图标，双击打开界面，界面元素如下：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://pic.imgdb.cn/item/63218e1816f2c2beb1b3db6a.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;https://pic.imgdb.cn/item/63218e1816f2c2beb1b3db6a.png&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;点击 &lt;code&gt;订阅-订阅设置&lt;/code&gt; 即可添加订阅，添加完成后点击 &lt;code&gt;订阅-更新订阅&lt;/code&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;右击电脑任务栏右下角图标，将 &lt;code&gt;系统代理&lt;/code&gt; 后的选项设置为 &lt;code&gt;自动配置系统代理&lt;/code&gt;，即可正常使用。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://pic.imgdb.cn/item/63218e5616f2c2beb1b41b67.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;https://pic.imgdb.cn/item/63218e5616f2c2beb1b41b67.png&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;关闭软件前一定要将系统代理后的选项设置为清除系统代理，然后退出软件，如果不清除只退出软件，会无法访问网络。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;clash-for-windows&#34;&gt;&lt;strong&gt;Clash for Windows&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;此软件适合进阶用户使用，通过使用 &lt;code&gt;策略组&lt;/code&gt;，以域名或关键字进行分流，如一些流媒体视频网站使用某个节点，谷歌的服务使用某个节点。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;下载软件，此软件最好安装，可以第一时间更新，链接&lt;a class=&#34;link&#34; href=&#34;https://github.com/Fndroid/clash_for_windows_pkg/releases&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;点这里&lt;/a&gt;，安装后打开软件。&lt;/li&gt;
+&lt;li&gt;软件构成如下，只需要用到前三个。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://pic.imgdb.cn/item/6321901d16f2c2beb1b63047.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;https://pic.imgdb.cn/item/6321901d16f2c2beb1b63047.png&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://pic.imgdb.cn/item/63218ee116f2c2beb1b4be11.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;https://pic.imgdb.cn/item/63218ee116f2c2beb1b4be11.png&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;首先打开 &lt;code&gt;Profiles&lt;/code&gt;，将服务商给的链接粘贴，下载配置文件。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://pic.imgdb.cn/item/63218f2816f2c2beb1b50cfc.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;https://pic.imgdb.cn/item/63218f2816f2c2beb1b50cfc.png&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;然后打开 &lt;code&gt;Proxies&lt;/code&gt;，最上方选择 &lt;code&gt;Rule&lt;/code&gt;，代表通过策略组的设置分流代理，如果选择 &lt;code&gt;Global&lt;/code&gt; 代表全部流量经过节点代理，如果选择 &lt;code&gt;Direct&lt;/code&gt;，代表即使打开软件，仍然是直接访问目标服务器，不经过代理，人话就是开没开一样。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;选择各个策略组想用的节点，比如上图，&lt;code&gt;Proxy&lt;/code&gt; 组里包括了国外常用的网站，那么可以选择一个节点，&lt;code&gt;Netflix&lt;/code&gt; 组是 &lt;code&gt;Netflix&lt;/code&gt; 的域名和服务器的地址，那么我选择香港节点，&lt;code&gt;HBO Max&lt;/code&gt; 由于只有美国有，因此只能使用美国节点。策略组之间是可以嵌套选择的，比如如果我 &lt;code&gt;Netflix&lt;/code&gt; 策略组下面选择 &lt;code&gt;HBO Max&lt;/code&gt; 策略组，那么最后 &lt;code&gt;Netflix&lt;/code&gt; 也选用的美国节点，这样可以提高使用效率，不用频繁切换节点。图上只是自用的一些策略组，通常不同服务商提供的策略组有差异，当然如果有探索的心，也可进阶使用，根据自身需求定制策略组。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;如果学校订阅了一些期刊，代理后 IP 地址变化了，就无法正常使用学校的数据库了，这时候可以建立一个学术的策略组，这个组选择 Direct，那么就相当于直接通过学校的网络访问，其余一些情况也同理。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;最后同第一个软件，打开代理，不用了也是需要在这里关掉再退出软件。&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        </item>
+        <item>
         <title>Zotero简要使用指南</title>
-        <link>https://hugo.grew.cc/p/zotero/</link>
+        <link>http://localhost:5678/p/zotero/</link>
         <pubDate>Thu, 21 Apr 2022 00:00:00 +0000</pubDate>
         
-        <guid>https://hugo.grew.cc/p/zotero/</guid>
+        <guid>http://localhost:5678/p/zotero/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65dc484b9f345e8d030ea015.webp" alt="Featured image of post Zotero简要使用指南" /&gt;&lt;h2 id=&#34;前言&#34;&gt;&lt;strong&gt;前言：&lt;/strong&gt;&lt;/h2&gt;
 &lt;p&gt;Zotero 是一款文献及知识库管理软件，支持 Windows 、Mac、Linux 全平台，Zotero 词源可能来源于阿尔巴尼亚语动词，意为“掌握（to master）”。软件版本迭代周期较长，但每个版本都有非常实用的功能：&lt;/p&gt;
 &lt;ul&gt;
@@ -7265,10 +7748,10 @@ NHST）中四个相互关联的统计量：样本量、效应量、alpha水平�
         </item>
         <item>
         <title>IOS订阅管理软件使用体验</title>
-        <link>https://hugo.grew.cc/p/ios-subscription/</link>
+        <link>http://localhost:5678/p/ios-subscription/</link>
         <pubDate>Mon, 11 Oct 2021 00:00:00 +0000</pubDate>
         
-        <guid>https://hugo.grew.cc/p/ios-subscription/</guid>
+        <guid>http://localhost:5678/p/ios-subscription/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65dc46e19f345e8d030b1569.webp" alt="Featured image of post IOS订阅管理软件使用体验" /&gt;&lt;h2 id=&#34;前言&#34;&gt;&lt;strong&gt;前言：&lt;/strong&gt;&lt;/h2&gt;
 &lt;p&gt;最初在&lt;a class=&#34;link&#34; href=&#34;https://www.hostloc.com/thread-807666-1-1.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;论坛&lt;/a&gt;看到一位大佬发帖讨论如何做订阅的笔记，大佬使用 &lt;code&gt;Notion&lt;/code&gt; 中 &lt;code&gt;Table&lt;/code&gt; 来管理订阅，界面看起来非常美观，自定义程度非常高，同时&lt;a class=&#34;link&#34; href=&#34;https://t.me/NewlearnerChannel&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -7580,10 +8063,10 @@ NHST）中四个相互关联的统计量：样本量、效应量、alpha水平�
         </item>
         <item>
         <title>Windows10 Office安装指南</title>
-        <link>https://hugo.grew.cc/p/office/</link>
+        <link>http://localhost:5678/p/office/</link>
         <pubDate>Fri, 10 Sep 2021 00:00:00 +0000</pubDate>
         
-        <guid>https://hugo.grew.cc/p/office/</guid>
+        <guid>http://localhost:5678/p/office/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/62d6dc96f54cd3f937d50c8a.png" alt="Featured image of post Windows10 Office安装指南" /&gt;&lt;h2 id=&#34;前言&#34;&gt;&lt;strong&gt;前言：&lt;/strong&gt;&lt;/h2&gt;
 &lt;p&gt;Office 是日常办公必需品，目前新买到的笔记本都会自带正版 &lt;code&gt;Office 2019 家庭中文版&lt;/code&gt;，而且只需要拿邮箱激活一次，之后重装电脑只需要登录激活的邮箱账号即可自动激活，这里简单记录一下下载 &lt;code&gt;Office&lt;/code&gt; 的步骤。&lt;/p&gt;
 &lt;h2 id=&#34;使用工具&#34;&gt;&lt;strong&gt;使用工具&lt;/strong&gt;&lt;/h2&gt;
@@ -7655,10 +8138,10 @@ NHST）中四个相互关联的统计量：样本量、效应量、alpha水平�
         </item>
         <item>
         <title>Typecho博客Handsome主题美化</title>
-        <link>https://hugo.grew.cc/p/handsome/</link>
+        <link>http://localhost:5678/p/handsome/</link>
         <pubDate>Fri, 18 Sep 2020 00:00:00 +0000</pubDate>
         
-        <guid>https://hugo.grew.cc/p/handsome/</guid>
+        <guid>http://localhost:5678/p/handsome/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65dc461a9f345e8d03090cf5.webp" alt="Featured image of post Typecho博客Handsome主题美化" /&gt;&lt;h2 id=&#34;前言&#34;&gt;&lt;strong&gt;前言&lt;/strong&gt;&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.ihewro.com/archives/489/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Handsome&lt;/a&gt; 是一款精美的 &lt;code&gt;Typecho&lt;/code&gt; 主题，后台功能强大，这里记录一下自己从网上找到的对主题的一些美化。&lt;/p&gt;
@@ -8223,10 +8706,10 @@ NHST）中四个相互关联的统计量：样本量、效应量、alpha水平�
         </item>
         <item>
         <title>学习通刷课指南</title>
-        <link>https://hugo.grew.cc/p/xuexitong/</link>
+        <link>http://localhost:5678/p/xuexitong/</link>
         <pubDate>Thu, 10 Sep 2020 00:00:00 +0000</pubDate>
         
-        <guid>https://hugo.grew.cc/p/xuexitong/</guid>
+        <guid>http://localhost:5678/p/xuexitong/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65dc457b9f345e8d030782d8.webp" alt="Featured image of post 学习通刷课指南" /&gt;&lt;h2 id=&#34;前言&#34;&gt;&lt;strong&gt;前言：&lt;/strong&gt;&lt;/h2&gt;
 &lt;p&gt;很多学生需要完成网课的学习，但是这些课程往往很长，而且还会有一些题目，这就需要我们隔几分钟就要看一下页面，阻碍了我们进行&lt;del&gt;快乐的阅读文献&lt;/del&gt;，所以这里通过一些脚本插件来解放我们的双手。&lt;/p&gt;
 &lt;p&gt;通过插件可以实现：&lt;/p&gt;
@@ -8344,10 +8827,10 @@ NHST）中四个相互关联的统计量：样本量、效应量、alpha水平�
         </item>
         <item>
         <title>Windows10常见问题</title>
-        <link>https://hugo.grew.cc/p/windows10/</link>
+        <link>http://localhost:5678/p/windows10/</link>
         <pubDate>Tue, 01 Sep 2020 00:00:00 +0000</pubDate>
         
-        <guid>https://hugo.grew.cc/p/windows10/</guid>
+        <guid>http://localhost:5678/p/windows10/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/62d6de99f54cd3f937dd4e5f.jpg" alt="Featured image of post Windows10常见问题" /&gt;&lt;h2 id=&#34;删除自带输入法&#34;&gt;&lt;strong&gt;删除自带输入法&lt;/strong&gt;&lt;/h2&gt;
 &lt;p&gt;删除以下注册表&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -8565,10 +9048,10 @@ NHST）中四个相互关联的统计量：样本量、效应量、alpha水平�
         </item>
         <item>
         <title>Python学习笔记02 面向对象</title>
-        <link>https://hugo.grew.cc/p/python02/</link>
+        <link>http://localhost:5678/p/python02/</link>
         <pubDate>Thu, 20 Aug 2020 00:00:00 +0000</pubDate>
         
-        <guid>https://hugo.grew.cc/p/python02/</guid>
+        <guid>http://localhost:5678/p/python02/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65dc479d9f345e8d030ce5ff.webp" alt="Featured image of post Python学习笔记02 面向对象" /&gt;&lt;h2 id=&#34;1-面向对象&#34;&gt;1. 面向对象&lt;/h2&gt;
 &lt;p&gt;面向对象编程&amp;ndash;&lt;code&gt;Object Oriented Programming&lt;/code&gt;，简写 &lt;code&gt;OOP&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;面向对象三大特性:&lt;/strong&gt;&lt;/p&gt;
@@ -9615,10 +10098,10 @@ NHST）中四个相互关联的统计量：样本量、效应量、alpha水平�
         </item>
         <item>
         <title>VPS常用命令</title>
-        <link>https://hugo.grew.cc/p/vps/</link>
+        <link>http://localhost:5678/p/vps/</link>
         <pubDate>Mon, 17 Aug 2020 00:00:00 +0000</pubDate>
         
-        <guid>https://hugo.grew.cc/p/vps/</guid>
+        <guid>http://localhost:5678/p/vps/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65dc47829f345e8d030c9c98.webp" alt="Featured image of post VPS常用命令" /&gt;&lt;h2 id=&#34;宝塔面板&#34;&gt;&lt;strong&gt;宝塔面板&lt;/strong&gt;&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -9852,10 +10335,10 @@ NHST）中四个相互关联的统计量：样本量、效应量、alpha水平�
         </item>
         <item>
         <title>Netflix剧集介绍</title>
-        <link>https://hugo.grew.cc/p/netflix-info/</link>
+        <link>http://localhost:5678/p/netflix-info/</link>
         <pubDate>Mon, 10 Aug 2020 00:00:00 +0000</pubDate>
         
-        <guid>https://hugo.grew.cc/p/netflix-info/</guid>
+        <guid>http://localhost:5678/p/netflix-info/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65dc49059f345e8d03107123.webp" alt="Featured image of post Netflix剧集介绍" /&gt;&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
 &lt;p&gt;很多朋友很喜欢看 &lt;code&gt;Netflix&lt;/code&gt; 的剧集，但是 &lt;code&gt;Netflix&lt;/code&gt; 对于 &lt;code&gt;IP&lt;/code&gt; 有一定的要求，很多广播 &lt;code&gt;IP&lt;/code&gt; 无法访问，连首页都进不去。但是今年可能由于疫情，&lt;code&gt;Netflix&lt;/code&gt; 放宽了 &lt;code&gt;IP&lt;/code&gt; 审查，大部分广播 &lt;code&gt;IP&lt;/code&gt; 都可以看大部分的剧集，但是部分剧集仍无法观看，所以特地详细了解了一下 &lt;code&gt;Netflix&lt;/code&gt; 的剧集类型，并对 &lt;code&gt;Netflix&lt;/code&gt;做一个简要介绍。&lt;/p&gt;
 &lt;h2 id=&#34;netflix-简介&#34;&gt;Netflix 简介&lt;/h2&gt;
@@ -10039,10 +10522,10 @@ NHST）中四个相互关联的统计量：样本量、效应量、alpha水平�
         </item>
         <item>
         <title>Python学习笔记01-基础</title>
-        <link>https://hugo.grew.cc/p/python01/</link>
+        <link>http://localhost:5678/p/python01/</link>
         <pubDate>Mon, 10 Aug 2020 00:00:00 +0000</pubDate>
         
-        <guid>https://hugo.grew.cc/p/python01/</guid>
+        <guid>http://localhost:5678/p/python01/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65dc479d9f345e8d030ce5ff.webp" alt="Featured image of post Python学习笔记01-基础" /&gt;&lt;h2 id=&#34;1-命名和循环&#34;&gt;1. 命名和循环&lt;/h2&gt;
 &lt;h3 id=&#34;11-命名规则&#34;&gt;1.1 命名规则&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;项目&lt;/strong&gt;：以数字加名称表示&lt;/p&gt;

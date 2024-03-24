@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Zotero on Tom&#39;s Blog</title>
-        <link>https://hugo.grew.cc/tags/zotero/</link>
+        <link>http://localhost:5678/tags/zotero/</link>
         <description>Recent content in Zotero on Tom&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Tom Almighty</copyright>
-        <lastBuildDate>Thu, 21 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.grew.cc/tags/zotero/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 21 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:5678/tags/zotero/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Zotero简要使用指南</title>
-        <link>https://hugo.grew.cc/p/zotero/</link>
+        <link>http://localhost:5678/p/zotero/</link>
         <pubDate>Thu, 21 Apr 2022 00:00:00 +0000</pubDate>
         
-        <guid>https://hugo.grew.cc/p/zotero/</guid>
+        <guid>http://localhost:5678/p/zotero/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65dc484b9f345e8d030ea015.webp" alt="Featured image of post Zotero简要使用指南" /&gt;&lt;h2 id=&#34;前言&#34;&gt;&lt;strong&gt;前言：&lt;/strong&gt;&lt;/h2&gt;
 &lt;p&gt;Zotero 是一款文献及知识库管理软件，支持 Windows 、Mac、Linux 全平台，Zotero 词源可能来源于阿尔巴尼亚语动词，意为“掌握（to master）”。软件版本迭代周期较长，但每个版本都有非常实用的功能：&lt;/p&gt;
 &lt;ul&gt;

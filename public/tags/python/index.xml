@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Python on Tom&#39;s Blog</title>
-        <link>https://hugo.grew.cc/tags/python/</link>
+        <link>http://localhost:5678/tags/python/</link>
         <description>Recent content in Python on Tom&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Tom Almighty</copyright>
-        <lastBuildDate>Thu, 20 Aug 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.grew.cc/tags/python/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 20 Aug 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:5678/tags/python/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Python学习笔记02 面向对象</title>
-        <link>https://hugo.grew.cc/p/python02/</link>
+        <link>http://localhost:5678/p/python02/</link>
         <pubDate>Thu, 20 Aug 2020 00:00:00 +0000</pubDate>
         
-        <guid>https://hugo.grew.cc/p/python02/</guid>
+        <guid>http://localhost:5678/p/python02/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65dc479d9f345e8d030ce5ff.webp" alt="Featured image of post Python学习笔记02 面向对象" /&gt;&lt;h2 id=&#34;1-面向对象&#34;&gt;1. 面向对象&lt;/h2&gt;
 &lt;p&gt;面向对象编程&amp;ndash;&lt;code&gt;Object Oriented Programming&lt;/code&gt;，简写 &lt;code&gt;OOP&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;面向对象三大特性:&lt;/strong&gt;&lt;/p&gt;
@@ -1059,10 +1059,10 @@
         </item>
         <item>
         <title>Python学习笔记01-基础</title>
-        <link>https://hugo.grew.cc/p/python01/</link>
+        <link>http://localhost:5678/p/python01/</link>
         <pubDate>Mon, 10 Aug 2020 00:00:00 +0000</pubDate>
         
-        <guid>https://hugo.grew.cc/p/python01/</guid>
+        <guid>http://localhost:5678/p/python01/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65dc479d9f345e8d030ce5ff.webp" alt="Featured image of post Python学习笔记01-基础" /&gt;&lt;h2 id=&#34;1-命名和循环&#34;&gt;1. 命名和循环&lt;/h2&gt;
 &lt;h3 id=&#34;11-命名规则&#34;&gt;1.1 命名规则&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;项目&lt;/strong&gt;：以数字加名称表示&lt;/p&gt;

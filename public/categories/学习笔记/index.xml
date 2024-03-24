@@ -2,46 +2,113 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>学习笔记 on Tom&#39;s Blog</title>
-        <link>https://hugo.grew.cc/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
+        <link>http://localhost:5678/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
         <description>Recent content in 学习笔记 on Tom&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Tom Almighty</copyright>
-        <lastBuildDate>Sat, 23 Mar 2024 13:13:25 +0800</lastBuildDate><atom:link href="https://hugo.grew.cc/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>Obsidian快速发布hugo文章</title>
-        <link>https://hugo.grew.cc/p/obsidian%E5%BF%AB%E9%80%9F%E5%8F%91%E5%B8%83hugo%E6%96%87%E7%AB%A0/</link>
+        <lastBuildDate>Sat, 23 Mar 2024 13:13:25 +0800</lastBuildDate><atom:link href="http://localhost:5678/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Obsidian快速发布Hugo文章</title>
+        <link>http://localhost:5678/p/obsidian%E5%BF%AB%E9%80%9F%E5%8F%91%E5%B8%83hugo%E6%96%87%E7%AB%A0/</link>
         <pubDate>Sat, 23 Mar 2024 13:13:25 +0800</pubDate>
         
-        <guid>https://hugo.grew.cc/p/obsidian%E5%BF%AB%E9%80%9F%E5%8F%91%E5%B8%83hugo%E6%96%87%E7%AB%A0/</guid>
-        <description>&lt;img src="https://pic.imgdb.cn/item/65fc06b79f345e8d0317dd50.webp" alt="Featured image of post Obsidian快速发布hugo文章" /&gt;&lt;p&gt;&lt;strong&gt;前言：&lt;/strong&gt; 通常使用静态博客写文章比较麻烦，上传图片也不方便，最近发现使用 obsidian 配合 shellcommands 插件可以快速创建文章并预览发布，配合 image auto upload 插件还可以快捷上传图片到图床。
+        <guid>http://localhost:5678/p/obsidian%E5%BF%AB%E9%80%9F%E5%8F%91%E5%B8%83hugo%E6%96%87%E7%AB%A0/</guid>
+        <description>&lt;img src="https://pic.imgdb.cn/item/65fc06b79f345e8d0317dd50.webp" alt="Featured image of post Obsidian快速发布Hugo文章" /&gt;&lt;p&gt;&lt;strong&gt;前言：&lt;/strong&gt; 通常使用静态博客写文章比较麻烦，上传图片也不方便，最近发现使用 &lt;code&gt;Obsidian&lt;/code&gt; 配合 &lt;code&gt;Shell commands&lt;/code&gt; 插件可以快速创建文章并预览发布，配合 &lt;code&gt;Image auto upload Plugin&lt;/code&gt; 还可以快捷上传图片到图床。
 需要用到的工具：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;obsidian&lt;/li&gt;
-&lt;li&gt;picgo 或者 piclist 软件&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Obsidian&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Picgo&lt;/code&gt; 或者 &lt;code&gt;Piclist&lt;/code&gt; 软件&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;使用&#34;&gt;使用&lt;/h2&gt;
-&lt;p&gt;首先下载好 obsidian 并且开启第三方插件，在插件市场下载三个插件：&lt;/p&gt;
+&lt;h2 id=&#34;快捷发布文章&#34;&gt;快捷发布文章&lt;/h2&gt;
+&lt;p&gt;首先下载好 &lt;code&gt;Obsidian&lt;/code&gt; 并且开启第三方插件，在插件市场下载三个插件：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Image auto upload&lt;/li&gt;
-&lt;li&gt;Shellcommands&lt;/li&gt;
-&lt;li&gt;Commanders
-&lt;img src=&#34;https://jsd.cdn.zzko.cn/gh/tom2almighty/picx-images-hosting@master/piclist/202403231359340.webp&#34;
+&lt;li&gt;&lt;code&gt;Image auto upload Plugin&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Shell commands&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Commander&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;然后在博客文章所在目录打开项目，即可看到所有博客文章。接下来通过 &lt;code&gt;Shell commands&lt;/code&gt; 插件配置文章新建、预览、发布。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;原理很简单，就是通过插件调用 &lt;code&gt;CMD&lt;/code&gt; 程序，使用命令新建发布文章，然后通过 &lt;code&gt;Commander&lt;/code&gt; 将命令绑定到  &lt;code&gt;Obsidian &lt;/code&gt; 左侧快捷键，这样只需要点击对应的俺按钮即可快速运行命令。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;创建命令&#34;&gt;创建命令&lt;/h3&gt;
+&lt;p&gt;详细步骤以 &lt;code&gt;新建文章&lt;/code&gt; 命令为参考，其余命令步骤相同。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;设置工作目录&lt;/strong&gt;：首先进入插件设置页面，选择 &lt;code&gt;Environments&lt;/code&gt; 选项卡，在 &lt;code&gt;Working Directiory&lt;/code&gt; 处输入自己博客的根目录。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;新建命令&lt;/strong&gt;：首先打开 &lt;code&gt;Shell commands&lt;/code&gt; 插件设置，点击 &lt;code&gt;New shell command&lt;/code&gt;，新建一个命令，输入命令 &lt;code&gt;hugo new post/{{_post_title}}.md&lt;/code&gt; 。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;设置别名&lt;/strong&gt;：点击齿轮图标可以进入命令设置页面，在 &lt;code&gt;Alias&lt;/code&gt; 处输入命名别名，输入 &lt;code&gt;新建文章 &lt;/code&gt; ，可以自定义。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;选择 &lt;code&gt;Preactions&lt;/code&gt;&lt;/strong&gt;： 在 &lt;code&gt;Preactions&lt;/code&gt; 界面 &lt;code&gt;Prompt&lt;/code&gt; 选项选择 &lt;code&gt;Create a new prompt&lt;/code&gt; ，&lt;code&gt;Prompt title&lt;/code&gt; 写 &lt;code&gt;新建文章&lt;/code&gt; ，然后点击 &lt;code&gt;New prompt field&lt;/code&gt;，&lt;code&gt;Field lable&lt;/code&gt; 设置为 &lt;code&gt;请输入文章标题：&lt;/code&gt;，这个是文章运行前的提示，然后 &lt;code&gt;target value&lt;/code&gt; 处选择 &lt;code&gt;create a new custom variable&lt;/code&gt;，在 &lt;code&gt;Variable name&lt;/code&gt; 处填写 &lt;code&gt;post_title&lt;/code&gt; ，点击创建，最终值应该为为 &lt;code&gt;{{_post_title}}&lt;/code&gt;，完成后点击创建，效果参考下图。接着在 &lt;code&gt;Preaction&lt;/code&gt; 页面选择新创建的 &lt;code&gt;Prompt&lt;/code&gt; 即可。
+&lt;img src=&#34;https://jsd.cdn.zzko.cn/gh/tom2almighty/picx-images-hosting@master/piclist/202403241154677.webp&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Uploading file&amp;hellip;5sar2&#34;
+	
+	
+&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;按照同样的步骤再创建预览文章、发布文章、停止 &lt;code&gt;Hugo&lt;/code&gt; 进程几个命令。其中发布文章还需要创建新的 &lt;code&gt;Prompt&lt;/code&gt; ，预览文章和停止进程仅需要输入命令即可。具体的命令和参数如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# 新建文章命令
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;hugo new post/{{_post_title}}.md
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# 新建文章 Prompt Variable 注意输入时仅需要输入 `post_title`
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;{{_post_title}}
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# 文章预览命令
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;hugo server --navigateToChanged --buildDrafts -p 5678  &lt;span class=&#34;p&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;start&lt;/span&gt; chrome http://localhost:5678
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# 发布文章命令
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git add . &lt;span class=&#34;p&#34;&gt;&amp;amp;&lt;/span&gt; git commit -m &lt;span class=&#34;s2&#34;&gt;&amp;#34;{{_comment}}&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;&amp;amp;&lt;/span&gt; git push -u origin master
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# 发布文章 Prompt Variable 注意输入时仅需要输入 `comment`
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;{{_comment}}
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# 停止 Hugo 进程命令
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;taskkill /f /t /im hugo.exe
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;strong&gt;注意：&lt;/strong&gt; 停止进程命令需要在命令设置页面的 &lt;code&gt;Events&lt;/code&gt; 选项卡下将 &lt;code&gt;Obsidian quits&lt;/code&gt; 打勾，即退出应用时执行。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;如果使用的是 Mac 那么命令连接符需要使用 &lt;code&gt;&amp;amp;&amp;amp;&lt;/code&gt;，如果使用 &lt;code&gt;Windows&lt;/code&gt; 的 &lt;code&gt;Powershell&lt;/code&gt; ，命令连接符需要使用 &lt;code&gt;;&lt;/code&gt;。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;绑定左侧菜单&#34;&gt;绑定左侧菜单&lt;/h3&gt;
+&lt;p&gt;这一部分很简单，只需要打开 &lt;code&gt;commander&lt;/code&gt; 插件设置，将命令绑定到自己想要的位置即可，这里以左侧菜单为例。
+&lt;img src=&#34;https://jsd.cdn.zzko.cn/gh/tom2almighty/picx-images-hosting@master/piclist/202403241221047.webp&#34;
 	
 	
 	
 	loading=&#34;lazy&#34;
 	
 	
-&gt;&lt;/li&gt;
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;快捷上传图片&#34;&gt;快捷上传图片&lt;/h2&gt;
+&lt;p&gt;下载 &lt;code&gt;Image auto upload Plugin&lt;/code&gt; 插件后，打开剪贴板上传，上传模式可以选择核心模式或者应用模式，应用模式需要打开应用才能正常上传，核心模式则需要输入 &lt;code&gt;.exe&lt;/code&gt; 程序的路径，自行选择即可，图床的设置可以参考另一篇文章：&lt;a class=&#34;link&#34; href=&#34;https://blog.grew.cc/article/typora&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Typora 配合 Piclist 快速上传图片并加速 &lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://yelleis.top/p/38f84bb0/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Hugo 发布流程&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
         </item>
         <item>
         <title>Hugo Stack主题修改</title>
-        <link>https://hugo.grew.cc/p/stack/</link>
+        <link>http://localhost:5678/p/stack/</link>
         <pubDate>Thu, 21 Mar 2024 17:13:54 +0800</pubDate>
         
-        <guid>https://hugo.grew.cc/p/stack/</guid>
+        <guid>http://localhost:5678/p/stack/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65fc10be9f345e8d0349611a.webp" alt="Featured image of post Hugo Stack主题修改" /&gt;&lt;p&gt;&lt;strong&gt;前言&lt;/strong&gt;：上一篇文章介绍了如何部署 Hugo 博客，这里针对 Stack 主题的修改做一些记录。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;修改全部来自参考文章，这里仅记录。&lt;/p&gt;
@@ -1457,10 +1524,10 @@
         </item>
         <item>
         <title>使用Hugo搭建个人博客</title>
-        <link>https://hugo.grew.cc/p/hugo-blog/</link>
+        <link>http://localhost:5678/p/hugo-blog/</link>
         <pubDate>Thu, 21 Mar 2024 17:13:32 +0800</pubDate>
         
-        <guid>https://hugo.grew.cc/p/hugo-blog/</guid>
+        <guid>http://localhost:5678/p/hugo-blog/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65fc06b79f345e8d0317dd50.webp" alt="Featured image of post 使用Hugo搭建个人博客" /&gt;&lt;p&gt;&lt;strong&gt;前言&lt;/strong&gt;：博客的引擎选择一直是个问题。动态博客和静态博客各有优劣。动态博客 &lt;code&gt;Wordpress&lt;/code&gt;、&lt;code&gt;Typecho&lt;/code&gt; 等拥有精美的主题，后台管理也比较方便，但是需要服务器。静态博客如 &lt;code&gt;Hexo&lt;/code&gt;、&lt;code&gt;Hugo&lt;/code&gt;、&lt;code&gt;Astro&lt;/code&gt; 等可以直接部署静态页面，但是相对写文章比较繁琐一点。今天再次记录一下之前折腾的 &lt;code&gt;Hugo&lt;/code&gt;，之前使用的主题是 &lt;code&gt;Loveit&lt;/code&gt;，后来觉得 &lt;code&gt;Stack&lt;/code&gt; 不错，所以本次就拿这个主题记录一下。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;前提&lt;/strong&gt;：&lt;/p&gt;
 &lt;p&gt;部署静态博客需要的：&lt;/p&gt;
@@ -1571,10 +1638,10 @@
         </item>
         <item>
         <title>Gpower计算效应量</title>
-        <link>https://hugo.grew.cc/p/gpower/</link>
+        <link>http://localhost:5678/p/gpower/</link>
         <pubDate>Tue, 01 Aug 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://hugo.grew.cc/p/gpower/</guid>
+        <guid>http://localhost:5678/p/gpower/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65dc4b779f345e8d031659f6.webp" alt="Featured image of post Gpower计算效应量" /&gt;&lt;h2 id=&#34;background&#34;&gt;&lt;strong&gt;Background&lt;/strong&gt;&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;在零假设检验 （Null Hypothesis Significant Test,
@@ -1666,10 +1733,10 @@ NHST）中四个相互关联的统计量：样本量、效应量、alpha水平�
         </item>
         <item>
         <title>近红外数据分析步骤</title>
-        <link>https://hugo.grew.cc/p/fnirs/</link>
+        <link>http://localhost:5678/p/fnirs/</link>
         <pubDate>Sat, 13 May 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://hugo.grew.cc/p/fnirs/</guid>
+        <guid>http://localhost:5678/p/fnirs/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65f021be9f345e8d03339c1b.webp" alt="Featured image of post 近红外数据分析步骤" /&gt;&lt;h1 id=&#34;fnirs-data-preprocessing使用步骤&#34;&gt;fNIRS Data Preprocessing使用步骤&lt;/h1&gt;
 &lt;p&gt;本文是近红外数据分析步骤，适用于&lt;code&gt;joint Simon task&lt;/code&gt;，使用 宏程序&lt;code&gt;fNIRS Data Preprocessing&lt;/code&gt; 以及其他宏程序完成，&lt;code&gt;ETG7100&lt;/code&gt;型号设备数据格式为&lt;code&gt;编号_HBA_Probe1_Oxy.csv&lt;/code&gt;，编号自定义，最好写成&lt;code&gt;sub001_run1&lt;/code&gt;这种形式，命名最好采用单数，即第1对被试为&lt;code&gt;sub01&lt;/code&gt;，第2对为&lt;code&gt;sub03&lt;/code&gt;，方便后续分割两个被试的数据。&lt;/p&gt;
 &lt;h2 id=&#34;fnirs-data-preprocessing-宏程序介绍&#34;&gt;fNIRS Data Preprocessing 宏程序介绍&lt;/h2&gt;
@@ -2902,10 +2969,10 @@ NHST）中四个相互关联的统计量：样本量、效应量、alpha水平�
         </item>
         <item>
         <title>英文论文写作</title>
-        <link>https://hugo.grew.cc/p/thesis-writing/</link>
+        <link>http://localhost:5678/p/thesis-writing/</link>
         <pubDate>Wed, 31 Aug 2022 00:00:00 +0000</pubDate>
         
-        <guid>https://hugo.grew.cc/p/thesis-writing/</guid>
+        <guid>http://localhost:5678/p/thesis-writing/</guid>
         <description>&lt;p&gt;英文写作最重要：&lt;strong&gt;线性写作&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&#34;标题&#34;&gt;标题&lt;/h2&gt;
 &lt;ul&gt;
@@ -3393,10 +3460,10 @@ NHST）中四个相互关联的统计量：样本量、效应量、alpha水平�
         </item>
         <item>
         <title>Python学习笔记02 面向对象</title>
-        <link>https://hugo.grew.cc/p/python02/</link>
+        <link>http://localhost:5678/p/python02/</link>
         <pubDate>Thu, 20 Aug 2020 00:00:00 +0000</pubDate>
         
-        <guid>https://hugo.grew.cc/p/python02/</guid>
+        <guid>http://localhost:5678/p/python02/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65dc479d9f345e8d030ce5ff.webp" alt="Featured image of post Python学习笔记02 面向对象" /&gt;&lt;h2 id=&#34;1-面向对象&#34;&gt;1. 面向对象&lt;/h2&gt;
 &lt;p&gt;面向对象编程&amp;ndash;&lt;code&gt;Object Oriented Programming&lt;/code&gt;，简写 &lt;code&gt;OOP&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;面向对象三大特性:&lt;/strong&gt;&lt;/p&gt;
@@ -4443,10 +4510,10 @@ NHST）中四个相互关联的统计量：样本量、效应量、alpha水平�
         </item>
         <item>
         <title>Python学习笔记01-基础</title>
-        <link>https://hugo.grew.cc/p/python01/</link>
+        <link>http://localhost:5678/p/python01/</link>
         <pubDate>Mon, 10 Aug 2020 00:00:00 +0000</pubDate>
         
-        <guid>https://hugo.grew.cc/p/python01/</guid>
+        <guid>http://localhost:5678/p/python01/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65dc479d9f345e8d030ce5ff.webp" alt="Featured image of post Python学习笔记01-基础" /&gt;&lt;h2 id=&#34;1-命名和循环&#34;&gt;1. 命名和循环&lt;/h2&gt;
 &lt;h3 id=&#34;11-命名规则&#34;&gt;1.1 命名规则&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;项目&lt;/strong&gt;：以数字加名称表示&lt;/p&gt;

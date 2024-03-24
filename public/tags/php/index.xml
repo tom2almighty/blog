@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>PHP on Tom&#39;s Blog</title>
-        <link>https://hugo.grew.cc/tags/php/</link>
+        <link>http://localhost:5678/tags/php/</link>
         <description>Recent content in PHP on Tom&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Tom Almighty</copyright>
-        <lastBuildDate>Fri, 26 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.grew.cc/tags/php/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 26 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:5678/tags/php/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>记录一次PHP启动失败</title>
-        <link>https://hugo.grew.cc/p/php/</link>
+        <link>http://localhost:5678/p/php/</link>
         <pubDate>Fri, 26 Jan 2024 00:00:00 +0000</pubDate>
         
-        <guid>https://hugo.grew.cc/p/php/</guid>
+        <guid>http://localhost:5678/p/php/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65f018ca9f345e8d030fc1a6.webp" alt="Featured image of post 记录一次PHP启动失败" /&gt;&lt;h2 id=&#34;问题&#34;&gt;问题&lt;/h2&gt;
 &lt;p&gt;在部署一个站点时，在安装了 &lt;code&gt;PHP 7.4&lt;/code&gt; 的情况下安装 &lt;code&gt;PHP 8.2&lt;/code&gt;，然而安装完成后启动报错。&lt;/p&gt;
 &lt;p&gt;具体报错内容如下：&lt;/p&gt;

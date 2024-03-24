@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>导航 on Tom&#39;s Blog</title>
-        <link>https://hugo.grew.cc/tags/%E5%AF%BC%E8%88%AA/</link>
+        <link>http://localhost:5678/tags/%E5%AF%BC%E8%88%AA/</link>
         <description>Recent content in 导航 on Tom&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Tom Almighty</copyright>
-        <lastBuildDate>Thu, 21 Mar 2024 21:47:43 +0800</lastBuildDate><atom:link href="https://hugo.grew.cc/tags/%E5%AF%BC%E8%88%AA/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 21 Mar 2024 21:47:43 +0800</lastBuildDate><atom:link href="http://localhost:5678/tags/%E5%AF%BC%E8%88%AA/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Webstack Hugo导航</title>
-        <link>https://hugo.grew.cc/p/webstack-hugo/</link>
+        <link>http://localhost:5678/p/webstack-hugo/</link>
         <pubDate>Thu, 21 Mar 2024 21:47:43 +0800</pubDate>
         
-        <guid>https://hugo.grew.cc/p/webstack-hugo/</guid>
+        <guid>http://localhost:5678/p/webstack-hugo/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65fc44b29f345e8d03b73249.webp" alt="Featured image of post Webstack Hugo导航" /&gt;&lt;p&gt;&lt;strong&gt;前言：&lt;/strong&gt;&lt;code&gt;Webstack-Hugo&lt;/code&gt; 导航是基于纯静态的网址导航网站 &lt;a class=&#34;link&#34; href=&#34;https://github.com/WebStackPage/WebStackPage.github.io&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;webstack.cc&lt;/a&gt; 制作的 &lt;a class=&#34;link&#34; href=&#34;https://gohugo.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Hugo&lt;/a&gt; 主题，是一个基于 &lt;code&gt;Hugo&lt;/code&gt; 的静态响应式网址导航主题。添加了天气及夜间模式，主要的配置信息都集成到了 &lt;code&gt;config.toml&lt;/code&gt;，导航的各个信息都集成在 &lt;code&gt;data/webstack.yml&lt;/code&gt; 文件中。&lt;/p&gt;

@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Github on Tom&#39;s Blog</title>
-        <link>https://hugo.grew.cc/tags/github/</link>
+        <link>http://localhost:5678/tags/github/</link>
         <description>Recent content in Github on Tom&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Tom Almighty</copyright>
-        <lastBuildDate>Thu, 07 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.grew.cc/tags/github/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 07 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:5678/tags/github/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>部署自己的ChatGPT并白嫖GPT4的API</title>
-        <link>https://hugo.grew.cc/p/cogpt/</link>
+        <link>http://localhost:5678/p/cogpt/</link>
         <pubDate>Thu, 07 Mar 2024 00:00:00 +0000</pubDate>
         
-        <guid>https://hugo.grew.cc/p/cogpt/</guid>
+        <guid>http://localhost:5678/p/cogpt/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65e941339f345e8d03417c14.webp" alt="Featured image of post 部署自己的ChatGPT并白嫖GPT4的API" /&gt;&lt;blockquote&gt;
 &lt;p&gt;😀 &lt;strong&gt;前言：&lt;/strong&gt;&lt;code&gt;ChatGPT&lt;/code&gt; 官网使用不便，并且访问速度不佳，因此部署自己的 &lt;code&gt;web&lt;/code&gt; 页面，通过 &lt;code&gt;API&lt;/code&gt; 使用成为了主流选择，本文通过 &lt;code&gt;ChatGPTNextWeb&lt;/code&gt; 部署页面，并通过 &lt;code&gt;copilot&lt;/code&gt; 项目白嫖 &lt;code&gt;GPT4&lt;/code&gt; 的 &lt;code&gt;API&lt;/code&gt;。
 &lt;strong&gt;前提：&lt;/strong&gt;&lt;/p&gt;
@@ -139,10 +139,10 @@
         </item>
         <item>
         <title>Typora配合PicList快速上传图片并加速 </title>
-        <link>https://hugo.grew.cc/p/piclist/</link>
+        <link>http://localhost:5678/p/piclist/</link>
         <pubDate>Thu, 03 Aug 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://hugo.grew.cc/p/piclist/</guid>
+        <guid>http://localhost:5678/p/piclist/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65dc41809f345e8d03fcc5fb.webp" alt="Featured image of post Typora配合PicList快速上传图片并加速 " /&gt;&lt;p&gt;**前言：**在Typora写笔记时不免使用图片，这里使用GitHub作图床，配合PicList上传，并通过jsdelivr实现CDN加速。&lt;/p&gt;
 &lt;h2 id=&#34;一-准备&#34;&gt;&lt;strong&gt;一. 准备&lt;/strong&gt;&lt;/h2&gt;
 &lt;p&gt;首先在 GitHub 中创建一个新的公共仓库。接下来生成一个新的 Token，地址为&lt;a class=&#34;link&#34; href=&#34;https://github.com/settings/tokens&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;

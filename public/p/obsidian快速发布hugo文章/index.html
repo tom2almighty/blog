@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
-    <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='前言： 通常使用静态博客写文章比较麻烦，上传图片也不方便，最近发现使用 obsidian 配合 shellcommands 插件可以快速创建文章并预览发布，配合 image auto upload 插件还可以快捷上传图片'>
-<title>Obsidian快速发布hugo文章</title>
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=5678&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='前言： 通常使用静态博客写文章比较麻烦，上传图片也不方便，最近发现使用 Obsidian 配合 Shell commands 插件可以快速创建文章并预览发布，配合 Image auto upload Plugin 还可以快捷上传图片'>
+<title>Obsidian快速发布Hugo文章</title>
 
-<link rel='canonical' href='https://hugo.grew.cc/p/obsidian%E5%BF%AB%E9%80%9F%E5%8F%91%E5%B8%83hugo%E6%96%87%E7%AB%A0/'>
+<link rel='canonical' href='http://localhost:5678/p/obsidian%E5%BF%AB%E9%80%9F%E5%8F%91%E5%B8%83hugo%E6%96%87%E7%AB%A0/'>
 
-<link rel="stylesheet" href="/scss/style.min.918b080848931f419a68278a85726ae4a3ac8d99ae37b77db96a5c50779e8a12.css"><meta property='og:title' content='Obsidian快速发布hugo文章'>
-<meta property='og:description' content='前言： 通常使用静态博客写文章比较麻烦，上传图片也不方便，最近发现使用 obsidian 配合 shellcommands 插件可以快速创建文章并预览发布，配合 image auto upload 插件还可以快捷上传图片'>
-<meta property='og:url' content='https://hugo.grew.cc/p/obsidian%E5%BF%AB%E9%80%9F%E5%8F%91%E5%B8%83hugo%E6%96%87%E7%AB%A0/'>
+<link rel="stylesheet" href="/scss/style.min.918b080848931f419a68278a85726ae4a3ac8d99ae37b77db96a5c50779e8a12.css"><meta property='og:title' content='Obsidian快速发布Hugo文章'>
+<meta property='og:description' content='前言： 通常使用静态博客写文章比较麻烦，上传图片也不方便，最近发现使用 Obsidian 配合 Shell commands 插件可以快速创建文章并预览发布，配合 Image auto upload Plugin 还可以快捷上传图片'>
+<meta property='og:url' content='http://localhost:5678/p/obsidian%E5%BF%AB%E9%80%9F%E5%8F%91%E5%B8%83hugo%E6%96%87%E7%AB%A0/'>
 <meta property='og:site_name' content='Tom&#39;s Blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Hugo' /><meta property='article:tag' content='Obsidian' /><meta property='article:published_time' content='2024-03-23T13:13:25&#43;08:00'/><meta property='article:modified_time' content='2024-03-23T13:13:25&#43;08:00'/><meta property='og:image' content='https://pic.imgdb.cn/item/65fc06b79f345e8d0317dd50.webp' />
-<meta name="twitter:title" content="Obsidian快速发布hugo文章">
-<meta name="twitter:description" content="前言： 通常使用静态博客写文章比较麻烦，上传图片也不方便，最近发现使用 obsidian 配合 shellcommands 插件可以快速创建文章并预览发布，配合 image auto upload 插件还可以快捷上传图片"><meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Obsidian快速发布Hugo文章">
+<meta name="twitter:description" content="前言： 通常使用静态博客写文章比较麻烦，上传图片也不方便，最近发现使用 Obsidian 配合 Shell commands 插件可以快速创建文章并预览发布，配合 Image auto upload Plugin 还可以快捷上传图片"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://pic.imgdb.cn/item/65fc06b79f345e8d0317dd50.webp' />
     <link rel="shortcut icon" href="/favicon.ico" />
 
@@ -287,7 +287,45 @@
     </ol>
 </aside>
 
-    
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#快捷发布文章">快捷发布文章</a>
+      <ol>
+        <li><a href="#创建命令">创建命令</a></li>
+        <li><a href="#绑定左侧菜单">绑定左侧菜单</a></li>
+      </ol>
+    </li>
+    <li><a href="#快捷上传图片">快捷上传图片</a></li>
+    <li><a href="#参考">参考</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
 
             <main class="main full-width">
     <article class="has-image main-article">
@@ -295,7 +333,7 @@
         <div class="article-image">
             <a href="/p/obsidian%E5%BF%AB%E9%80%9F%E5%8F%91%E5%B8%83hugo%E6%96%87%E7%AB%A0/">
                 
-                    <img src="https://pic.imgdb.cn/item/65fc06b79f345e8d0317dd50.webp" loading="lazy" alt="Featured image of post Obsidian快速发布hugo文章" />
+                    <img src="https://pic.imgdb.cn/item/65fc06b79f345e8d0317dd50.webp" loading="lazy" alt="Featured image of post Obsidian快速发布Hugo文章" />
                 
             </a>
         </div>
@@ -314,7 +352,7 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/obsidian%E5%BF%AB%E9%80%9F%E5%8F%91%E5%B8%83hugo%E6%96%87%E7%AB%A0/">Obsidian快速发布hugo文章</a>
+            <a href="/p/obsidian%E5%BF%AB%E9%80%9F%E5%8F%91%E5%B8%83hugo%E6%96%87%E7%AB%A0/">Obsidian快速发布Hugo文章</a>
         </h2>
     
         
@@ -351,7 +389,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 1 分钟
+                    阅读时长: 3 分钟
                 </time>
             </div>
         
@@ -366,26 +404,93 @@
     <section class="article-content">
     
     
-    <p><strong>前言：</strong> 通常使用静态博客写文章比较麻烦，上传图片也不方便，最近发现使用 obsidian 配合 shellcommands 插件可以快速创建文章并预览发布，配合 image auto upload 插件还可以快捷上传图片到图床。
+    <p><strong>前言：</strong> 通常使用静态博客写文章比较麻烦，上传图片也不方便，最近发现使用 <code>Obsidian</code> 配合 <code>Shell commands</code> 插件可以快速创建文章并预览发布，配合 <code>Image auto upload Plugin</code> 还可以快捷上传图片到图床。
 需要用到的工具：</p>
 <ul>
-<li>obsidian</li>
-<li>picgo 或者 piclist 软件</li>
+<li><code>Obsidian</code></li>
+<li><code>Picgo</code> 或者 <code>Piclist</code> 软件</li>
 </ul>
-<h2 id="使用">使用</h2>
-<p>首先下载好 obsidian 并且开启第三方插件，在插件市场下载三个插件：</p>
+<h2 id="快捷发布文章">快捷发布文章</h2>
+<p>首先下载好 <code>Obsidian</code> 并且开启第三方插件，在插件市场下载三个插件：</p>
 <ul>
-<li>Image auto upload</li>
-<li>Shellcommands</li>
-<li>Commanders
-<img src="https://jsd.cdn.zzko.cn/gh/tom2almighty/picx-images-hosting@master/piclist/202403231359340.webp"
+<li><code>Image auto upload Plugin</code></li>
+<li><code>Shell commands</code></li>
+<li><code>Commander</code></li>
+</ul>
+<p>然后在博客文章所在目录打开项目，即可看到所有博客文章。接下来通过 <code>Shell commands</code> 插件配置文章新建、预览、发布。</p>
+<blockquote>
+<p>原理很简单，就是通过插件调用 <code>CMD</code> 程序，使用命令新建发布文章，然后通过 <code>Commander</code> 将命令绑定到  <code>Obsidian </code> 左侧快捷键，这样只需要点击对应的俺按钮即可快速运行命令。</p>
+</blockquote>
+<h3 id="创建命令">创建命令</h3>
+<p>详细步骤以 <code>新建文章</code> 命令为参考，其余命令步骤相同。</p>
+<ol>
+<li><strong>设置工作目录</strong>：首先进入插件设置页面，选择 <code>Environments</code> 选项卡，在 <code>Working Directiory</code> 处输入自己博客的根目录。</li>
+<li><strong>新建命令</strong>：首先打开 <code>Shell commands</code> 插件设置，点击 <code>New shell command</code>，新建一个命令，输入命令 <code>hugo new post/{{_post_title}}.md</code> 。</li>
+<li><strong>设置别名</strong>：点击齿轮图标可以进入命令设置页面，在 <code>Alias</code> 处输入命名别名，输入 <code>新建文章 </code> ，可以自定义。</li>
+<li><strong>选择 <code>Preactions</code></strong>： 在 <code>Preactions</code> 界面 <code>Prompt</code> 选项选择 <code>Create a new prompt</code> ，<code>Prompt title</code> 写 <code>新建文章</code> ，然后点击 <code>New prompt field</code>，<code>Field lable</code> 设置为 <code>请输入文章标题：</code>，这个是文章运行前的提示，然后 <code>target value</code> 处选择 <code>create a new custom variable</code>，在 <code>Variable name</code> 处填写 <code>post_title</code> ，点击创建，最终值应该为为 <code>{{_post_title}}</code>，完成后点击创建，效果参考下图。接着在 <code>Preaction</code> 页面选择新创建的 <code>Prompt</code> 即可。
+<img src="https://jsd.cdn.zzko.cn/gh/tom2almighty/picx-images-hosting@master/piclist/202403241154677.webp"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Uploading file&hellip;5sar2"
+	
+	
+></li>
+</ol>
+<p>按照同样的步骤再创建预览文章、发布文章、停止 <code>Hugo</code> 进程几个命令。其中发布文章还需要创建新的 <code>Prompt</code> ，预览文章和停止进程仅需要输入命令即可。具体的命令和参数如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 新建文章命令</span>
+</span></span><span class="line"><span class="cl">hugo new post/<span class="o">{{</span>_post_title<span class="o">}}</span>.md
+</span></span><span class="line"><span class="cl"><span class="c1"># 新建文章 Prompt Variable 注意输入时仅需要输入 `post_title`</span>
+</span></span><span class="line"><span class="cl"><span class="o">{{</span>_post_title<span class="o">}}</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 文章预览命令</span>
+</span></span><span class="line"><span class="cl">hugo server --navigateToChanged --buildDrafts -p <span class="m">5678</span>  <span class="p">&amp;</span> start chrome http://localhost:5678
+</span></span><span class="line"><span class="cl"><span class="c1"># 发布文章命令</span>
+</span></span><span class="line"><span class="cl">git add . <span class="p">&amp;</span> git commit -m <span class="s2">&#34;{{_comment}}&#34;</span> <span class="p">&amp;</span> git push -u origin master
+</span></span><span class="line"><span class="cl"><span class="c1"># 发布文章 Prompt Variable 注意输入时仅需要输入 `comment`</span>
+</span></span><span class="line"><span class="cl"><span class="o">{{</span>_comment<span class="o">}}</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 停止 Hugo 进程命令</span>
+</span></span><span class="line"><span class="cl">taskkill /f /t /im hugo.exe
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>注意：</strong> 停止进程命令需要在命令设置页面的 <code>Events</code> 选项卡下将 <code>Obsidian quits</code> 打勾，即退出应用时执行。</p>
+<blockquote>
+<p>如果使用的是 Mac 那么命令连接符需要使用 <code>&amp;&amp;</code>，如果使用 <code>Windows</code> 的 <code>Powershell</code> ，命令连接符需要使用 <code>;</code>。</p>
+</blockquote>
+<h3 id="绑定左侧菜单">绑定左侧菜单</h3>
+<p>这一部分很简单，只需要打开 <code>commander</code> 插件设置，将命令绑定到自己想要的位置即可，这里以左侧菜单为例。
+<img src="https://jsd.cdn.zzko.cn/gh/tom2almighty/picx-images-hosting@master/piclist/202403241221047.webp"
 	
 	
 	
 	loading="lazy"
 	
 	
-></li>
+></p>
+<h2 id="快捷上传图片">快捷上传图片</h2>
+<p>下载 <code>Image auto upload Plugin</code> 插件后，打开剪贴板上传，上传模式可以选择核心模式或者应用模式，应用模式需要打开应用才能正常上传，核心模式则需要输入 <code>.exe</code> 程序的路径，自行选择即可，图床的设置可以参考另一篇文章：<a class="link" href="https://blog.grew.cc/article/typora"  target="_blank" rel="noopener"
+    >Typora 配合 Piclist 快速上传图片并加速 </a></p>
+<h2 id="参考">参考</h2>
+<ul>
+<li><a class="link" href="https://yelleis.top/p/38f84bb0/"  target="_blank" rel="noopener"
+    >Hugo 发布流程</a></li>
 </ul>
 
 </section>

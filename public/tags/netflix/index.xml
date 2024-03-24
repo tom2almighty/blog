@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Netflix on Tom&#39;s Blog</title>
-        <link>https://hugo.grew.cc/tags/netflix/</link>
+        <link>http://localhost:5678/tags/netflix/</link>
         <description>Recent content in Netflix on Tom&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Tom Almighty</copyright>
-        <lastBuildDate>Sun, 03 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.grew.cc/tags/netflix/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 03 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:5678/tags/netflix/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>自建DNS解锁Netflix</title>
-        <link>https://hugo.grew.cc/p/netfli-dns/</link>
+        <link>http://localhost:5678/p/netfli-dns/</link>
         <pubDate>Sun, 03 Mar 2024 00:00:00 +0000</pubDate>
         
-        <guid>https://hugo.grew.cc/p/netfli-dns/</guid>
+        <guid>http://localhost:5678/p/netfli-dns/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65dc49059f345e8d03107123.webp" alt="Featured image of post 自建DNS解锁Netflix" /&gt;&lt;blockquote&gt;
 &lt;p&gt;通过 &lt;code&gt;DNSmasq&lt;/code&gt; 和一台已解锁 &lt;code&gt;Netflix&lt;/code&gt; 的服务器，将其余服务器全部解锁 &lt;code&gt;Netflix&lt;/code&gt; 。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -120,10 +120,10 @@
         </item>
         <item>
         <title>Netflix剧集介绍</title>
-        <link>https://hugo.grew.cc/p/netflix-info/</link>
+        <link>http://localhost:5678/p/netflix-info/</link>
         <pubDate>Mon, 10 Aug 2020 00:00:00 +0000</pubDate>
         
-        <guid>https://hugo.grew.cc/p/netflix-info/</guid>
+        <guid>http://localhost:5678/p/netflix-info/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65dc49059f345e8d03107123.webp" alt="Featured image of post Netflix剧集介绍" /&gt;&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
 &lt;p&gt;很多朋友很喜欢看 &lt;code&gt;Netflix&lt;/code&gt; 的剧集，但是 &lt;code&gt;Netflix&lt;/code&gt; 对于 &lt;code&gt;IP&lt;/code&gt; 有一定的要求，很多广播 &lt;code&gt;IP&lt;/code&gt; 无法访问，连首页都进不去。但是今年可能由于疫情，&lt;code&gt;Netflix&lt;/code&gt; 放宽了 &lt;code&gt;IP&lt;/code&gt; 审查，大部分广播 &lt;code&gt;IP&lt;/code&gt; 都可以看大部分的剧集，但是部分剧集仍无法观看，所以特地详细了解了一下 &lt;code&gt;Netflix&lt;/code&gt; 的剧集类型，并对 &lt;code&gt;Netflix&lt;/code&gt;做一个简要介绍。&lt;/p&gt;
 &lt;h2 id=&#34;netflix-简介&#34;&gt;Netflix 简介&lt;/h2&gt;

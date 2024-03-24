@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>甲骨文 on Tom&#39;s Blog</title>
-        <link>https://hugo.grew.cc/tags/%E7%94%B2%E9%AA%A8%E6%96%87/</link>
+        <link>http://localhost:5678/tags/%E7%94%B2%E9%AA%A8%E6%96%87/</link>
         <description>Recent content in 甲骨文 on Tom&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Tom Almighty</copyright>
-        <lastBuildDate>Tue, 27 Feb 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.grew.cc/tags/%E7%94%B2%E9%AA%A8%E6%96%87/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 27 Feb 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:5678/tags/%E7%94%B2%E9%AA%A8%E6%96%87/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>甲骨文相关</title>
-        <link>https://hugo.grew.cc/p/oracle/</link>
+        <link>http://localhost:5678/p/oracle/</link>
         <pubDate>Tue, 27 Feb 2024 00:00:00 +0000</pubDate>
         
-        <guid>https://hugo.grew.cc/p/oracle/</guid>
+        <guid>http://localhost:5678/p/oracle/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65f0112b9f345e8d03f2fe8b.webp" alt="Featured image of post 甲骨文相关" /&gt;&lt;p&gt;**前言：**记录甲骨文相关问题。&lt;/p&gt;
 &lt;h2 id=&#34;开启-root-登录&#34;&gt;开启 root 登录&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;

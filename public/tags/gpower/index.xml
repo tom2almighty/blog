@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Gpower on Tom&#39;s Blog</title>
-        <link>https://hugo.grew.cc/tags/gpower/</link>
+        <link>http://localhost:5678/tags/gpower/</link>
         <description>Recent content in Gpower on Tom&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Tom Almighty</copyright>
-        <lastBuildDate>Tue, 01 Aug 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.grew.cc/tags/gpower/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 01 Aug 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:5678/tags/gpower/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Gpower计算效应量</title>
-        <link>https://hugo.grew.cc/p/gpower/</link>
+        <link>http://localhost:5678/p/gpower/</link>
         <pubDate>Tue, 01 Aug 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://hugo.grew.cc/p/gpower/</guid>
+        <guid>http://localhost:5678/p/gpower/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65dc4b779f345e8d031659f6.webp" alt="Featured image of post Gpower计算效应量" /&gt;&lt;h2 id=&#34;background&#34;&gt;&lt;strong&gt;Background&lt;/strong&gt;&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;在零假设检验 （Null Hypothesis Significant Test,

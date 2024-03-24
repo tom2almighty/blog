@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>订阅 on Tom&#39;s Blog</title>
-        <link>https://hugo.grew.cc/tags/%E8%AE%A2%E9%98%85/</link>
+        <link>http://localhost:5678/tags/%E8%AE%A2%E9%98%85/</link>
         <description>Recent content in 订阅 on Tom&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Tom Almighty</copyright>
-        <lastBuildDate>Mon, 11 Oct 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.grew.cc/tags/%E8%AE%A2%E9%98%85/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 11 Oct 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:5678/tags/%E8%AE%A2%E9%98%85/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>IOS订阅管理软件使用体验</title>
-        <link>https://hugo.grew.cc/p/ios-subscription/</link>
+        <link>http://localhost:5678/p/ios-subscription/</link>
         <pubDate>Mon, 11 Oct 2021 00:00:00 +0000</pubDate>
         
-        <guid>https://hugo.grew.cc/p/ios-subscription/</guid>
+        <guid>http://localhost:5678/p/ios-subscription/</guid>
         <description>&lt;img src="https://pic.imgdb.cn/item/65dc46e19f345e8d030b1569.webp" alt="Featured image of post IOS订阅管理软件使用体验" /&gt;&lt;h2 id=&#34;前言&#34;&gt;&lt;strong&gt;前言：&lt;/strong&gt;&lt;/h2&gt;
 &lt;p&gt;最初在&lt;a class=&#34;link&#34; href=&#34;https://www.hostloc.com/thread-807666-1-1.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;论坛&lt;/a&gt;看到一位大佬发帖讨论如何做订阅的笔记，大佬使用 &lt;code&gt;Notion&lt;/code&gt; 中 &lt;code&gt;Table&lt;/code&gt; 来管理订阅，界面看起来非常美观，自定义程度非常高，同时&lt;a class=&#34;link&#34; href=&#34;https://t.me/NewlearnerChannel&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
