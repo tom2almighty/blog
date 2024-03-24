@@ -1,5 +1,5 @@
 ---
-title: "订阅转换之一：subconverter加sub-web项目"
+title: "订阅转换(一)：subconverter加sub-web项目"
 author: "Tom Almighty"
 date: 2022-08-22
 math: true

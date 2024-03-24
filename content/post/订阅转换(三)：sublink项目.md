@@ -1,5 +1,5 @@
 ---
-title: "订阅转换之三：sublink项目"
+title: 订阅转换(三)：sublink项目"
 author: "Tom Almighty"
 date: 2024-03-06
 math: true

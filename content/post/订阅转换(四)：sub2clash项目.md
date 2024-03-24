@@ -1,5 +1,5 @@
 ---
-title: "订阅转换之四：sub2clash项目"
+title: "订阅转换(四)：sub2clash项目"
 author: "Tom Almighty"
 date: 2024-03-18T14:01:34+08:00
 math: true
