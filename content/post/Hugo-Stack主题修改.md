@@ -757,7 +757,7 @@ html {
 
 字体的修改主题作者提供了模板，链接 [点击这里](https://stack.jimmycai.com/config/header-footer#example-custom-font-family-for-article-content)。
 
-首先将鸿蒙字体保存到 `Github` 或其他 `CDN` 存储中，字体链接可以在 [这里](https://github.com/Irithys/cdn/tree/master/src/fonts?ref=irithys.com) 找到。然后修改 ``~\blog\layouts\partials\head\custom.html` 文件，添加以下内容：
+首先将鸿蒙字体保存到 `Github` 或其他 `CDN` 存储中，字体链接可以在 [这里](https://github.com/Irithys/cdn/tree/master/src/fonts?ref=irithys.com) 找到。然后修改 `~\blog\layouts\partials\head\custom.html` 文件，添加以下内容：
 
 ```html
 <style>
