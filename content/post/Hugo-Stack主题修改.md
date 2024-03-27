@@ -139,8 +139,19 @@ code {
   color: #ff6f00;
   background-color: #fff9f3cc;
 }
+//-------------------------------
 
+// dark模式下代码块样式调整
+[data-scheme="dark"] .article-content .highlight {
+  background-color: #222327;
+}
+
+[data-scheme="dark"] .chroma {
+  color: #f8f8f2;
+  background-color: #222327;
+}
 //-------------------------------------------
+
 // 设置选中字体的区域背景颜色
 //修改选中颜色
 ::selection {
@@ -268,17 +279,17 @@ a {
 
 //----------------------------------------------------
 //固定代码块的高度
-.article-content {
-  .highlight {
-      padding: var(--card-padding);
-      pre {
-          width: auto;
-          max-height: 20em;
-      }
-  }
-}
-
+// .article-content {
+//   .highlight {
+//       padding: var(--card-padding);
+//       pre {
+//           width: auto;
+//           max-height: 20em;
+//       }
+//   }
+// }
 //--------------------------------------------------
+
 // 修改首页搜索框样式
 .search-form.widget input {
   font-size: 1.5rem;
@@ -623,8 +634,6 @@ html {
 }
 ```
 
-
-
 ## 代码块引入 Mac 样式
 
 首先在博客根目录下的 `static` 文件夹中创建名为 `img` 的文件夹,然后在 `img` 文件夹中创建一个名为 `code-header.svg` 的文件,在文件中写入以下内容:
@@ -744,9 +753,39 @@ html {
 }
 ```
 
+## 修改字体为鸿蒙字体
 
+字体的修改主题作者提供了模板，链接 [点击这里](https://stack.jimmycai.com/config/header-footer#example-custom-font-family-for-article-content)。
+
+首先将鸿蒙字体保存到 `Github` 或其他 `CDN` 存储中，字体链接可以在 [这里](https://github.com/Irithys/cdn/tree/master/src/fonts?ref=irithys.com) 找到。然后修改 ``~\blog\layouts\partials\head\custom.html` 文件，添加以下内容：
+
+```html
+<style>
+    :root {
+    /* 在style中,apple系统优先调用系统字体，其余优先调用 HarmonyOS_Sans_SC_Medium */
+    --sys-font-family: -apple-system, "HarmonyOS_Sans_SC_Medium", Georgia, 'Nimbus Roman No9 L', 'PingFang SC', 'Hiragino Sans GB', 'Noto Serif SC', 'Microsoft Yahei', 'WenQuanYi Micro Hei', 'ST Heiti', sans-serif;
+    --code-font-family: "JetBrainsMono Regular", Menlo, Monaco, Consolas, "Courier New";
+    --article-font-family: -apple-system, "HarmonyOS_Sans_SC_Medium", var(--base-font-family);
+  }
+</style>
+<script>  // 正文自重300，标题字重700
+		(function () {
+		    const customFont = document.createElement('link');
+		    customFont.href = "https://你的域名/font.css";  // css文件地址
+		
+		    customFont.type = "text/css";
+		    customFont.rel = "stylesheet";
+		
+		    document.head.appendChild(customFont);
+		}());
+</script>
+
+```
+
+> 记得在 `font.css` 文件中修改字体文件地址。
 
 ## 参考
 
 - [L1nSn0w's Blog](https://blog.linsnow.cn/p/modify-hugo/)
 - [Lovir's Blog](https://lovir.cn/p/changes-in-my-blog/)
+- [山茶花舍](https://irithys.com/hugo-mod-3/)
