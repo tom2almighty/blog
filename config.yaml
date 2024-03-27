@@ -34,6 +34,7 @@ permalinks:
     page: /:slug/
 
 params:
+    syntaxHighlighter: "highlight.js"
     mainSections:
         - post
     featuredImageField: image
@@ -252,4 +253,4 @@ markup:
         lineNos: false
         lineNumbersInTable: false
         tabWidth: 4
-        syntaxHighlighter: "highlight.js"
+
