@@ -112,7 +112,15 @@ code {
   color: #f8f8f2;
   background-color: #222327;
 }
+// dark模式下代码块样式调整
+[data-scheme="dark"] .article-content .highlight {
+  background-color: #222327;
+}
 
+[data-scheme="dark"] .chroma {
+  color: #f8f8f2;
+  background-color: #222327;
+}
 //-------------------------------------------
 // 设置选中字体的区域背景颜色
 //修改选中颜色
