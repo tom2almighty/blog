@@ -105,12 +105,12 @@ code {
 
 // light模式下的代码块样式调整
 [data-scheme="light"] .article-content .highlight {
-  background-color: #222327;
+  background-color: #fff9f3;
 }
 
 [data-scheme="light"] .chroma {
-  color: #2f7098;
-  background-color: #222327;
+  color: #ff6f00;
+  background-color: #fff9f3cc;
 }
 //-------------------------------
 
@@ -451,7 +451,7 @@ html {
   right: 18px;
   border-radius: 12px;
   opacity: 1;
-  color: #ffffffad;
+  color: #F9253F;
   background: none;
   border: none;
   padding: 0;
@@ -467,7 +467,7 @@ html {
   opacity: 1;
   padding: 0 5px;
   background: 0;
-  color: #ffffffad;
+  color: #F9253F;
   font-family: lato;
   font-size: 1.5rem;
 }
