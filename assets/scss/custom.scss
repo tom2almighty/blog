@@ -105,13 +105,15 @@ code {
 
 // light模式下的代码块样式调整
 [data-scheme="light"] .article-content .highlight {
-  background-color: #fff9f3;
+  background-color: #222327;
 }
 
 [data-scheme="light"] .chroma {
-  color: #f8f8f2;
+  color: #2f7098;
   background-color: #222327;
 }
+//-------------------------------
+
 // dark模式下代码块样式调整
 [data-scheme="dark"] .article-content .highlight {
   background-color: #222327;
@@ -122,6 +124,7 @@ code {
   background-color: #222327;
 }
 //-------------------------------------------
+
 // 设置选中字体的区域背景颜色
 //修改选中颜色
 ::selection {
