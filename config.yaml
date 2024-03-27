@@ -1,7 +1,7 @@
 baseurl: https://hugo.grew.cc
 languageCode: zh-cn
 theme: hugo-theme-stack
-paginate: 3
+paginate: 6
 title: Tom's Blog
 copyright: Tom Almighty
 
