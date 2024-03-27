@@ -34,7 +34,6 @@ permalinks:
     page: /:slug/
 
 params:
-    syntaxHighlighter: "highlight.js"
     mainSections:
         - post
     featuredImageField: image

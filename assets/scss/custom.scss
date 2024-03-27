@@ -12,7 +12,21 @@
   --section-separation: 40px;
   // 全局字体大小
   --article-font-size: 1.8rem;
-
+  // 行内代码背景色
+  --code-background-color: #f8f8f8;
+  // 行内代码前景色
+  --code-text-color: #e96900;
+  // 暗色模式下样式
+  &[data-scheme="dark"] {
+    // 行内代码背景色
+    --code-background-color: #ff6d1b17;
+    // 行内代码前景色
+    --code-text-color: #e96900;
+    // 暗黑模式下背景色
+    --body-background: #000;
+    // 暗黑模式下卡片背景色
+    --card-background: hsl(225 13% 8% / 1);
+  }
 }
 //------------------------------------------------------
 // 修复引用块内容窄页面显示问题
@@ -58,7 +72,46 @@ code {
     background: #3a97431f;
   }
 }
+// ---------------------------------------
+// 代码块样式修改
+.highlight {
+  max-width: 102% !important;
+  background-color: var(--pre-background-color);
+  padding: var(--card-padding);
+  position: relative;
+  border-radius: 20px;
+  margin-left: -7px !important;
+  margin-right: -12px;
+  box-shadow: var(--shadow-l1) !important;
 
+  &:hover {
+    .copyCodeButton {
+      opacity: 1;
+    }
+  }
+
+  // keep Codeblocks LTR
+  [dir="rtl"] & {
+    direction: ltr;
+  }
+
+  pre {
+    margin: initial;
+    padding: 0;
+    margin: 0;
+    width: auto;
+  }
+}
+
+// light模式下的代码块样式调整
+[data-scheme="light"] .article-content .highlight {
+  background-color: #222327;
+}
+
+[data-scheme="light"] .chroma {
+  color: #ff6f00;
+  background-color: #222327;
+}
 
 //-------------------------------------------
 // 设置选中字体的区域背景颜色
@@ -517,25 +570,4 @@ html {
   100% {
     transform: translateY(0);
   }
-}
-
-/*主页布局间距调整*/
-.main-container {
-  gap: 50px; //文章宽度
-
-  @include respond(md) {
-    padding: 0 30px;
-    gap: 40px; //中等屏幕时的文章宽度
-  }
-}
-
-.related-contents {
-  overflow-x: visible; //显示隐藏的图标
-  padding-bottom: 15px;
-}
-// hightlight.js 渲染完会多出一圈空白，这里去掉
-pre code.hljs {
-  display: block;
-  overflow-x: auto;
-  padding: 0 !important;
 }
