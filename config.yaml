@@ -246,7 +246,7 @@ markup:
         startLevel: 2
     highlight:
         noClasses: false
-        codeFences: false
+        codeFences: true
         guessSyntax: true
         lineNoStart: 1
         lineNos: false
